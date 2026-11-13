@@ -49,6 +49,15 @@ There is no dependency installation, frontend build, or business login. Use Node
 
 Use an authorized source directory. Both source repositories are private and require collaborator access. This project is not published as an npm package; the package private flag prevents accidental publication.
 
+Use `master` as the local and remote collaboration branch. Gitee Git operations use SSH; register your own public key with your account first:
+
+```sh
+git clone --branch master git@gitee.com:halavah/libra-boot-vue.git
+cd libra-boot-vue
+```
+
+The maintainer's `origin` pushes `master` to both GitHub and Gitee; a separate SSH remote named `gitee` is also retained. The repository owner selects the remote default branch in the hosting platform settings; example scripts do not change it.
+
 No npm install is required. Optional convenience commands are:
 
 ```sh

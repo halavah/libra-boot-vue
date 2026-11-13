@@ -49,6 +49,15 @@ node scripts/serve.mjs --port 8080
 
 当前提供授权源码目录使用方式。GitHub 与 Gitee 源码仓均为私有仓，仅向已授权协作者开放；不发布 npm 包。`package.json` 的 private 标记用于防止误发布到包仓库。
 
+本地与远端协作主线使用 `master`。Gitee 的 Git 操作使用 SSH，需先在账号中配置自己的公钥：
+
+```sh
+git clone --branch master git@gitee.com:halavah/libra-boot-vue.git
+cd libra-boot-vue
+```
+
+维护者的 `origin` 配置同时推送 GitHub 与 Gitee 的 `master`；另保留名为 `gitee` 的 SSH 远端。远程默认分支由仓库所有者在平台设置中选择，不由示例脚本修改。
+
 不需要执行 npm install。也可使用以下开发辅助命令：
 
 ```sh
