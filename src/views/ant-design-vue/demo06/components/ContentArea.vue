@@ -7,9 +7,9 @@
         <a-col :span="6">
           <a-card :bordered="false" class="list-card" size="small">
             <template #title>
-              <span>故障模式列表</span>
+              <span>退货原因列表</span>
             </template>
-            <!-- 故障模式表格 -->
+            <!-- 退货原因表格 -->
             <a-table
               :columns="tableColumns"
               :data-source="dataList"
@@ -33,7 +33,7 @@
         <a-col :span="18">
           <a-card :bordered="false" class="chart-card" size="small">
             <template #title>
-              <span>故障模式分布图（%）</span>
+              <span>退货原因分布图（%）</span>
             </template>
             <!-- ECharts 图表容器 -->
             <div ref="chartRef" class="chart-container"></div>
@@ -83,13 +83,13 @@ export default defineComponent({
       tableColumns: [
         // 定义表格列
         {
-          title: "故障模式",
+          title: "退货原因",
           dataIndex: "bkReasonName",
           key: "bkReasonName",
           ellipsis: true,
         },
         {
-          title: "停机时间",
+          title: "订单暂停时长",
           dataIndex: "totalBreakTime",
           key: "totalBreakTime",
           width: 100,
@@ -182,7 +182,7 @@ export default defineComponent({
           series: [
             // 系列数据 (饼图)
             {
-              name: "故障模式",
+              name: "退货原因",
               type: "pie",
               radius: "70%",
               center: ["60%", "50%"],

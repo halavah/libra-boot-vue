@@ -110,11 +110,11 @@ export default {
         vYear: dayjs().year().toString()
       },
 
-      // 停机次数
+      // 订单暂停次数
       countList: [],
       countBarChart: null,
 
-      // 停机时间
+      // 订单暂停时长
       timeList: [],
       timeLineChart: null,
 
@@ -521,7 +521,7 @@ export default {
               "Proportion": "2.50%"
             }
           ],
-          "analyse": "年份：2025年\n厂处：默认全厂处\n次数占比前三的类型分别是：图书旗舰店（11次）、服饰旗舰店（7次）、自营店铺（6次）\n次数占比近三个月呈上涨趋势：\n订单暂停时长前三的类型分别是：商品运营中心（807分钟）、图书旗舰店（552分钟）、自营店铺（346分钟）\n订单暂停时长近三个月呈上涨趋势：\n"
+          "analyse": "年份：2025年\n店铺：默认全店铺\n次数占比前三的类型分别是：图书旗舰店（11次）、服饰旗舰店（7次）、自营店铺（6次）\n次数占比近三个月呈上涨趋势：\n订单暂停时长前三的类型分别是：商品运营中心（807分钟）、图书旗舰店（552分钟）、自营店铺（346分钟）\n订单暂停时长近三个月呈上涨趋势：\n"
         },
         "timestamp": 1748142534583
       },
@@ -590,7 +590,7 @@ export default {
   mounted() {
     // 1.查询
     this.query();
-    // 2.查询厂处列表
+    // 2.查询店铺列表
     this.queryPlNoList();
     // 3.监听窗口大小变化
     this.handleResize();
@@ -603,9 +603,9 @@ export default {
     // 查询_表格
     async query() {
       let _this = this;
-      // 1. 停机次数表格
+      // 1. 订单暂停次数表格
       _this.countList = _this.listData.result.countList;
-      // 2. 停机时间表格
+      // 2. 订单暂停时长表格
       _this.timeList = _this.listData.result.timeList;
       // 3. 分析功能
       _this.analyse = _this.listData.result.analyse;
@@ -613,7 +613,7 @@ export default {
       _this.initCharts(_this.listData.result.countImgList, _this.listData.result.timeImgList);
     },
 
-    // 查询_厂处列表
+    // 查询_店铺列表
     async queryPlNoList() {
       let _this = this;
       _this.attrCnts.plNamesOptions = _this.plNoListData.result.map(item => ({
@@ -659,8 +659,8 @@ export default {
 
     /**
      * @description 初始化所有图表
-     * @param {Array} countData - 停机次数数据
-     * @param {Array} timeData - 停机时间数据
+     * @param {Array} countData - 订单暂停次数数据
+     * @param {Array} timeData - 订单暂停时长数据
      */
     initCharts(countData, timeData) {
       let _this = this;
@@ -698,11 +698,11 @@ export default {
         }
       };
 
-      // 停机次数图表配置
+      // 订单暂停次数图表配置
       const countOption = {
         ...baseOption,
         series: [{
-          name: '停机次数占比',
+          name: '订单暂停次数占比',
           type: 'pie',
           radius: '70%',
           center: ['40%', '50%'],
@@ -725,7 +725,7 @@ export default {
         }]
       };
 
-      // 停机时间图表配置
+      // 订单暂停时长图表配置
       const timeOption = {
         tooltip: {
           trigger: 'axis',

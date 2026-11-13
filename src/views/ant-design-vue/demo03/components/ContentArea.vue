@@ -7,7 +7,7 @@
         <a-col :span="6">
           <a-card :bordered="false" class="list-card" size="small">
             <template #title>
-              <span>故障模式列表</span>
+              <span>退货原因列表</span>
             </template>
             <a-table
               :columns="tableColumns"
@@ -31,7 +31,7 @@
         <a-col :span="18">
           <a-card :bordered="false" class="chart-card" size="small">
             <template #title>
-              <span>故障模式分布图（%）</span>
+              <span>退货原因分布图（%）</span>
             </template>
             <div ref="chartRef" class="chart-container"></div>
           </a-card>

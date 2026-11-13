@@ -10,14 +10,14 @@
       >
         <!-- 条件容器 -->
         <div class="search-filters">
-          <el-form-item label="产线" prop="plNoKey">
+          <el-form-item label="商品分类" prop="plNoKey">
             <el-tree-select
               v-model="searchForm.plNoKey"
               :props="treeProps"
               :data="treeData"
               check-strictly
               :render-after-expand="false"
-              placeholder="默认全部产线"
+              placeholder="默认全部商品分类"
               class="search-tree-select"
               value-key="key"
               multiple
@@ -39,7 +39,7 @@
               @input="onEquipmentNoInput"
             ></el-input>
           </el-form-item>
-          <!-- 设备号模糊查询表格 -->
+          <!-- 商品编号模糊查询表格 -->
           <el-table
             v-if="equipmentNoTableVisible"
             :data="
@@ -53,7 +53,7 @@
             highlight-current-row
             size="small"
           >
-            <el-table-column prop="EQUIPMENTNO" label="设备号" width="160" />
+            <el-table-column prop="EQUIPMENTNO" label="商品编号" width="160" />
             <el-table-column prop="EQUIPMENTNAME" label="商品名称" />
           </el-table>
           <el-pagination
@@ -66,18 +66,18 @@
             small
             style="margin-top: 4px"
           />
-          <el-form-item label="故障编号" prop="breakDownNo">
+          <el-form-item label="售后编号" prop="breakDownNo">
             <el-input
               v-model="searchForm.breakDownNo"
-              placeholder="请输入故障编号"
+              placeholder="请输入售后编号"
               clearable
               maxlength="14"
             ></el-input>
           </el-form-item>
-          <el-form-item label="停机类型" prop="relegationNames">
+          <el-form-item label="订单暂停类型" prop="relegationNames">
             <el-select
               v-model="searchForm.relegationNames"
-              placeholder="请选择停机类型"
+              placeholder="请选择订单暂停类型"
               multiple
               clearable
               collapse-tags
@@ -112,48 +112,6 @@
                 >查询</el-button
               >
               <el-button @click="fun_reset(searchFormRef)">重置</el-button>
-              <!--excel -->
-              <el-button type="info" @click="exportExcelEasyGetRequest"
-                >easyGet</el-button
-              >
-              <el-button type="info" @click="exportExcelEasyPostRequest"
-                >easyPost</el-button
-              >
-              <el-button type="success" @click="exportExcelPoi">poi</el-button>
-              <el-button type="success" @click="exportExcelPoiTemplate"
-                >poiTemplate</el-button
-              >
-              <el-button type="success" @click="exportExcelAspose"
-                >aspose</el-button
-              >
-              <el-button type="success" @click="exportExcelAsposeTemplate"
-                >asposeTemplate</el-button
-              >
-              <el-button type="success" @click="exportExcelAsposeUtil"
-                >asposeUtil</el-button
-              >
-              <!--word -->
-              <el-button type="warning" @click="exportWordPoi">poi</el-button>
-              <el-button type="warning" @click="exportWordPoiTemplate"
-                >poiTemplate</el-button
-              >
-              <el-button type="warning" @click="exportWordAspose"
-                >aspose</el-button
-              >
-              <el-button type="warning" @click="exportWordAsposeTemplate"
-                >asposeTemplate</el-button
-              >
-              <!--pptx -->
-              <el-button type="danger" @click="exportPptxPoi">poi</el-button>
-              <el-button type="danger" @click="exportPptxPoiTemplate"
-                >poiTemplate</el-button
-              >
-              <el-button type="danger" @click="exportPptxAspose"
-                >aspose</el-button
-              >
-              <el-button type="danger" @click="exportPptxAsposeTemplate"
-                >asposeTemplate</el-button
-              >
             </el-form-item>
           </div>
         </div>
@@ -172,13 +130,13 @@
         >
           <el-table-column
             prop="plName"
-            label="产线名称"
+            label="商品分类名称"
             min-width="120"
             align="center"
           />
           <el-table-column
             prop="equipmentNo"
-            label="设备号"
+            label="商品编号"
             min-width="100"
             align="center"
           />
@@ -198,7 +156,7 @@
                   v-if="scope.row.imageUrl"
                   :src="scope.row.imageUrl"
                   class="table-image"
-                  alt="设备图片"
+                  alt="商品图片"
                 />
                 <div v-else class="no-image">无图片</div>
               </div>
@@ -206,25 +164,25 @@
           </el-table-column>
           <el-table-column
             prop="breakDownNo"
-            label="故障编号"
+            label="售后编号"
             min-width="120"
             align="center"
           />
           <el-table-column
             prop="breakDownName"
-            label="故障名称"
+            label="售后问题"
             min-width="300"
             align="center"
           />
           <el-table-column
             prop="relegationName"
-            label="停机类型"
+            label="订单暂停类型"
             min-width="60"
             align="center"
           />
           <el-table-column
             prop="informDate"
-            label="故障时间"
+            label="售后处理时长"
             min-width="100"
             align="center"
           />
@@ -274,12 +232,12 @@
           <el-tab-pane label="基本信息" name="basic">
             <el-row>
               <el-col :span="12">
-                <el-form-item label="产线编号" prop="plNo">
+                <el-form-item label="商品分类编号" prop="plNo">
                   <el-input v-model="dataForm.plNo" autocomplete="off" />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item label="事故编号" prop="breakDownNo">
+                <el-form-item label="售后单号" prop="breakDownNo">
                   <el-input v-model="dataForm.breakDownNo" autocomplete="off" />
                 </el-form-item>
               </el-col>
@@ -312,7 +270,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item label="故障等级" prop="breakDownGrade">
+                <el-form-item label="售后等级" prop="breakDownGrade">
                   <el-input
                     v-model="dataForm.breakDownGrade"
                     autocomplete="off"
@@ -322,12 +280,12 @@
             </el-row>
             <el-row>
               <el-col :span="12">
-                <el-form-item label="设备部位" prop="bkPart">
+                <el-form-item label="商品规格" prop="bkPart">
                   <el-input v-model="dataForm.bkPart" autocomplete="off" />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item label="故障名称" prop="breakDownName">
+                <el-form-item label="售后问题" prop="breakDownName">
                   <el-input
                     v-model="dataForm.breakDownName"
                     autocomplete="off"
@@ -337,7 +295,7 @@
             </el-row>
             <el-row>
               <el-col :span="12">
-                <el-form-item label="停机类型" prop="relegation">
+                <el-form-item label="订单暂停类型" prop="relegation">
                   <el-input v-model="dataForm.relegation" autocomplete="off" />
                 </el-form-item>
               </el-col>

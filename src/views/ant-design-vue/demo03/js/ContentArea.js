@@ -10,7 +10,7 @@ export default {
   props: {
     // 定义从父组件接收的属性
     dataList: {
-      // 故障模式列表数据
+      // 退货原因列表数据
       type: Array, // 类型为数组
       required: true, // 必须传递
       default: () => [], // 默认值为空数组
@@ -24,13 +24,13 @@ export default {
       // 表格列定义 (从 setup 移到 data)
       tableColumns: [
         {
-          title: "故障模式", // 列标题
+          title: "退货原因", // 列标题
           dataIndex: "bkReasonName", // 数据字段
           key: "bkReasonName", // 唯一键
           ellipsis: true, // 开启单元格内容省略
         },
         {
-          title: "停机时间", // 列标题
+          title: "订单暂停时长", // 列标题
           dataIndex: "totalBreakTime", // 数据字段
           key: "totalBreakTime", // 唯一键
           width: 100, // 列宽度
@@ -123,7 +123,7 @@ export default {
           series: [
             // 系列列表
             {
-              name: "故障模式", // 系列名称
+              name: "退货原因", // 系列名称
               type: "pie", // 图表类型：饼图
               radius: "70%", // 饼图半径
               center: ["60%", "50%"], // 饼图中心位置 [水平, 垂直]

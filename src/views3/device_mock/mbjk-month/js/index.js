@@ -130,56 +130,56 @@ export default {
           "dataList": [
             {
               "plName": "图书旗舰店",
-              "mbmc": "故障时间",
+              "mbmc": "售后处理时长",
               "totalBreakTimes": "279,1797,927,2179,188,0,0,0,0,0,0,0"
             },
             {
               "plName": "电商物流中心",
-              "mbmc": "故障时间",
+              "mbmc": "售后处理时长",
               "totalBreakTimes": "0,0,60,0,0,0,0,0,0,0,0,0"
             },
             {
               "plName": "母婴旗舰店",
-              "mbmc": "故障时间",
+              "mbmc": "售后处理时长",
               "totalBreakTimes": "135,127,50,484,0,0,0,0,0,0,0,0"
             },
             {
               "plName": "美妆旗舰店",
-              "mbmc": "故障时间",
+              "mbmc": "售后处理时长",
               "totalBreakTimes": "168,118,409,381,129,0,0,0,0,0,0,0"
             },
             {
               "plName": "数码旗舰店",
-              "mbmc": "故障时间",
+              "mbmc": "售后处理时长",
               "totalBreakTimes": "327,98,108,63,0,0,0,0,0,0,0,0"
             },
             {
               "plName": "自营店铺",
-              "mbmc": "故障时间",
+              "mbmc": "售后处理时长",
               "totalBreakTimes": "0,60,0,0,0,0,0,0,0,0,0,0"
             },
             {
               "plName": "商品运营中心",
-              "mbmc": "故障时间",
+              "mbmc": "售后处理时长",
               "totalBreakTimes": "697,0,0,0,0,0,0,0,0,0,0,0"
             },
             {
               "plName": "食品旗舰店",
-              "mbmc": "故障时间",
+              "mbmc": "售后处理时长",
               "totalBreakTimes": "0,142,274,81,118,0,0,0,0,0,0,0"
             },
             {
               "plName": "服饰旗舰店",
-              "mbmc": "故障时间",
+              "mbmc": "售后处理时长",
               "totalBreakTimes": "295,202,107,125,57,0,0,0,0,0,0,0"
             },
             {
               "plName": "合计",
-              "mbmc": "故障时间",
+              "mbmc": "售后处理时长",
               "totalBreakTimes": "1901,2544,1935,3313,492,0,0,0,0,0,0,0"
             }
           ],
-          "analyse": "年份：2025年\n设备总停机时间：10185分钟\n同比2024年：增长29.70%\n订单暂停时长增长趋势：有\n次数占比前三的类型分别是：原料质量（16次）、操作延误（13次）、仪电故障（5次）\n订单暂停时长前三的类型分别是：能源介质（919分钟）、原料质量（642分钟）、操作延误（585分钟）",
+          "analyse": "年份：2025年\n商品总订单暂停时长：10185分钟\n同比2024年：增长29.70%\n订单暂停时长增长趋势：有\n次数占比前三的类型分别是：商品质量（16次）、操作延误（13次）、支付异常（5次）\n订单暂停时长前三的类型分别是：物流延误（919分钟）、商品质量（642分钟）、操作延误（585分钟）",
           "jxzList": "700.0,460.0"
         },
         "timestamp": 1748142316604
@@ -249,7 +249,7 @@ export default {
   mounted() {
     // 1.查询
     this.query();
-    // 2.查询厂处列表
+    // 2.查询店铺列表
     this.queryPlNoList();
     // 3.监听窗口大小变化
     this.handleResize();
@@ -280,7 +280,7 @@ export default {
       _this.initCharts(processedChartData, processedTargetData, yearMonths, currentYear);
     },
 
-    // 查询_厂处列表
+    // 查询_店铺列表
     async queryPlNoList() {
       const _this = this;
       _this.attrCnts.plNamesOptions = _this.plNoListData.result.map(item => ({
@@ -338,7 +338,7 @@ export default {
 
     /**
      * @description 根据获取的数据准备并设置柱状图和折线图的配置。
-     * @param {Array<number>} chartActualData - "故障时间"系列的数据数组。
+     * @param {Array<number>} chartActualData - "售后处理时长"系列的数据数组。
      * @param {Array<number>} chartTargetData - "指标值"系列的数据数组。
      * @param {Array<number>} yearMonths - 月份数组，例如 [1, 2, ..., 12]。
      * @param {string} currentYear - 当前选中的年份字符串，用于图表标题。
@@ -364,7 +364,7 @@ export default {
           axisPointer: { type: 'shadow' }
         },
         title: {
-          text: currentYear + '年设备事故管理目标监控',
+          text: currentYear + '年订单售后管理目标监控',
           left: 'center',
           top: -4,
           textStyle: {
@@ -372,7 +372,7 @@ export default {
           }
         },
         legend: {
-          data: ['故障时间', '指标值'],
+          data: ['售后处理时长', '指标值'],
           bottom: 10,
           left: 'center'
         },
@@ -401,7 +401,7 @@ export default {
         ...baseOption,
         series: [
           {
-            name: '故障时间',
+            name: '售后处理时长',
             type: 'bar',
             barWidth: '40%',
             data: chartActualData,
@@ -439,7 +439,7 @@ export default {
         ...baseOption,
         series: [
           {
-            name: '故障时间',
+            name: '售后处理时长',
             type: 'line',
             data: chartActualData,
             symbol: 'circle',

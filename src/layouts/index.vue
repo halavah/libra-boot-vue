@@ -246,7 +246,7 @@ export default defineComponent({
         .replace(/^\/layout\//, "")
         .split("/")
         .filter(Boolean);
-      return segments[0] || "layout";
+      return segments.length === 1 ? (route.meta.viewFolder || "layout") : (segments[0] || "layout");
     });
 
     const currentPage = computed(() => {
@@ -254,7 +254,7 @@ export default defineComponent({
         .replace(/^\/layout\//, "")
         .split("/")
         .filter(Boolean);
-      return segments[1] || "";
+      return segments[1] || segments[0] || "";
     });
 
     // 处理返回列表视图：去掉layout前缀并新标签页打开

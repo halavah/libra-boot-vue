@@ -63,7 +63,7 @@ export default {
         { validator: validateDateRange, trigger: 'change' }
       ],
       // equipmentNo: [
-      //     {required: true, message: '请输入设备号', trigger: 'blur'},
+      //     {required: true, message: '请输入商品编号', trigger: 'blur'},
       // ],
     })
 
@@ -267,11 +267,11 @@ export default {
             value: item.stopReasonType
           }));
         } else {
-          message.error(res.data.message || '获取故障模式失败');
+          message.error(res.data.message || '获取退货原因失败');
         }
       } catch (error) {
-        console.error("获取故障模式失败:", error);
-        message.error('获取故障模式失败');
+        console.error("获取退货原因失败:", error);
+        message.error('获取退货原因失败');
         throw error;
       }
     },
@@ -358,18 +358,18 @@ export default {
       // TODO: 根据实际需要，option 的数据源应该动态获取，而不是写死
       // 应该基于 this.dataList 或其他相关数据生成 option
       const option = {
-        title: { text: '旋转设备常见的故障模式分布图' },
+        title: { text: '商品退货原因分布图' },
         tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-        legend: { orient: 'vertical', right: 10, top: 'center', data: ['故障模式分布'] },
+        legend: { orient: 'vertical', right: 10, top: 'center', data: ['退货原因分布'] },
         grid: { left: '3%', right: '15%', bottom: '3%', containLabel: true },
         xAxis: {
           type: 'category',
-          data: ['异常振动', '机械摩损', '异常声响', '零部件损伤', '移动位移', '油质劣化', '轴承滑油', '跑管渗漏', '材质劣化', '异常温度', '机械倾斜', '绝缘老化'], // 示例数据
+          data: ['商品价格变动', '商品磨损', '商品异响', '商品配件破损', '商品规格不符', '商品临期', '配件漏发', '包装漏液', '商品材质不符', '冷链温控异常', '商品运输变形', '商品性能不符'], // 示例数据
           axisLabel: { interval: 0, rotate: 45 },
         },
         yAxis: { type: 'value', name: '%' },
         series: [{
-          name: '故障模式分布', type: 'bar',
+          name: '退货原因分布', type: 'bar',
           data: [30.4, 19.3, 11.4, 7.6, 7.6, 4.2, 3.8, 3.4, 2.9, 2.1, 2.1, 0.9], // 示例数据
           itemStyle: { color: '#1890ff' },
         }],

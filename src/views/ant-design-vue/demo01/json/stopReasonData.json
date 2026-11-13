@@ -7,16 +7,16 @@
       "stopReasonType": "质量原因"
     },
     {
-      "stopReasonType": "设计原因"
+      "stopReasonType": "商品描述问题"
     },
     {
-      "stopReasonType": "维修原因"
+      "stopReasonType": "售后处理原因"
     },
     {
-      "stopReasonType": "管理原因"
+      "stopReasonType": "订单管理问题"
     },
     {
-      "stopReasonType": "操作原因"
+      "stopReasonType": "订单操作问题"
     },
     {
       "stopReasonType": "其他原因"

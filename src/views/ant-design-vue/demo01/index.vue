@@ -14,14 +14,14 @@
             <!-- 条件容器 -->
             <div class="search-filters-flex">
               <a-form-item-rest>
-                <a-form-item label="产线" name="plNos">
+                <a-form-item label="商品分类" name="plNos">
                   <a-tree-select
                     v-model:value="searchForm.plNos"
                     style="width: 180px"
                     :tree-data="treeData"
                     tree-checkable
                     allow-clear
-                    placeholder="默认全部产线"
+                    placeholder="默认全部商品分类"
                     :field-names="treeProps"
                     :treeDefaultExpandedKeys="expandedKeys"
                     class="search-tree-select"
@@ -29,10 +29,10 @@
                 </a-form-item>
               </a-form-item-rest>
 
-              <a-form-item label="设备号" name="equipmentNo">
+              <a-form-item label="商品编号" name="equipmentNo">
                 <a-input
                   v-model:value="searchForm.equipmentNo"
-                  placeholder="请输入设备号"
+                  placeholder="请输入商品编号"
                   allow-clear
                   class="search-input"
                 />
@@ -41,7 +41,7 @@
                 <a-select
                   v-model:value="searchForm.stopReasonName"
                   mode="multiple"
-                  placeholder="请选择故障模式"
+                  placeholder="请选择退货原因"
                   :options="attrCnts.faultModeOptions"
                   allow-clear
                   class="search-select"
@@ -77,7 +77,7 @@
             <a-col :span="6">
               <a-card :bordered="false" class="list-card" size="small">
                 <template #title>
-                  <span>故障模式列表</span>
+                  <span>退货原因列表</span>
                 </template>
                 <a-table
                   :columns="tableColumns"
@@ -101,7 +101,7 @@
             <a-col :span="18">
               <a-card :bordered="false" class="chart-card" size="small">
                 <template #title>
-                  <span>故障模式分布图（%）</span>
+                  <span>退货原因分布图（%）</span>
                 </template>
                 <div ref="chartRef" class="chart-container"></div>
               </a-card>

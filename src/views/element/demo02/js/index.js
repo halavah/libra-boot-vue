@@ -17,18 +17,18 @@ export default {
     // --- Setup 中定义的响应式变量 ---
     const loading = ref(true); // 控制页面加载状态的 V-Loading 指令
 
-    // 产线树形选择器的配置项
+    // 商品分类树形选择器的配置项
     const treeProps = {
       label: 'plname', // 指定节点标签为节点对象的 'plname' 属性
       children: 'children', // 指定子树为节点对象的 'children' 属性
     };
-    const treeData = ref([]); // 产线树形选择器的数据源
+    const treeData = ref([]); // 商品分类树形选择器的数据源
 
     // 筛选表单的引用和验证规则
     const searchFormRef = ref(''); // 筛选表单的模板引用 (用于访问表单实例)
     const searchFormRules = reactive({ // 筛选表单的验证规则
-      // equipmentNo: [ // 设备号验证规则 (示例，当前注释掉)
-      //     {required: true, message: '请输入设备号', trigger: 'blur'},
+      // equipmentNo: [ // 商品编号验证规则 (示例，当前注释掉)
+      //     {required: true, message: '请输入商品编号', trigger: 'blur'},
       // ],
       vDay: [ // 日期范围验证规则
         { type: 'array', required: true, message: '请选择日期范围', trigger: 'change' }
@@ -53,8 +53,8 @@ export default {
       },
       // 筛选表单的数据模型
       searchForm: {
-        plNoKey: [], // 产线选择 (el-tree-select 的 v-model)
-        equipmentNo: '', // 设备号输入 (el-input 的 v-model)
+        plNoKey: [], // 商品分类选择 (el-tree-select 的 v-model)
+        equipmentNo: '', // 商品编号输入 (el-input 的 v-model)
         stopReasonName: [], // 商品售后模式选择 (el-select 的 v-model)
         vDay: [ // 日期范围选择 (el-date-picker 的 v-model)
           // dayjs().subtract(3, 'month').format('YYYY-MM-DD'), // 示例：默认最近三个月
@@ -69,7 +69,7 @@ export default {
       analysisText: '演示订单售后记录001',
 
       // --- 模拟数据 (实际应用中应通过 API 获取) ---
-      listData: { // 模拟故障模式列表接口返回数据
+      listData: { // 模拟退货原因列表接口返回数据
         "success": true,
         "message": "",
         "code": 200,
@@ -80,127 +80,127 @@ export default {
             "totalBreakTime": 3596
           },
           {
-            "bkReasonName": "设计机构，构造有问题",
+            "bkReasonName": "商品规格与描述不符",
             "totalBreakTimeRate": "19.58%",
             "totalBreakTime": 2545
           },
           {
-            "bkReasonName": "点检方法，判定基准有问题",
+            "bkReasonName": "商品颜色与描述不符",
             "totalBreakTimeRate": "8.54%",
             "totalBreakTime": 1110
           },
           {
-            "bkReasonName": "修理，维护方法有问题",
+            "bkReasonName": "商品尺寸不合适",
             "totalBreakTimeRate": "7.38%",
             "totalBreakTime": 960
           },
           {
-            "bkReasonName": "自然劣化(预测困难)",
+            "bkReasonName": "商品质量问题",
             "totalBreakTimeRate": "7.04%",
             "totalBreakTime": 915
           },
           {
-            "bkReasonName": "材质缺陷(质量，热处理，表面处理)",
+            "bkReasonName": "商品数量不足",
             "totalBreakTimeRate": "7.02%",
             "totalBreakTime": 913
           },
           {
-            "bkReasonName": "点检周期有问题",
+            "bkReasonName": "商品配件缺失",
             "totalBreakTimeRate": "3.50%",
             "totalBreakTime": 455
           },
           {
-            "bkReasonName": "修理维护周期不适当",
+            "bkReasonName": "商品外观破损",
             "totalBreakTimeRate": "3.18%",
             "totalBreakTime": 413
           },
           {
-            "bkReasonName": "机种，型式选定有问题",
+            "bkReasonName": "商品包装破损",
             "totalBreakTimeRate": "2.64%",
             "totalBreakTime": 343
           },
           {
-            "bkReasonName": "运转操作技能，知识不足",
+            "bkReasonName": "错发商品",
             "totalBreakTimeRate": "1.84%",
             "totalBreakTime": 239
           },
           {
-            "bkReasonName": "异物侵入",
+            "bkReasonName": "重复购买",
             "totalBreakTimeRate": "1.48%",
             "totalBreakTime": 193
           },
           {
-            "bkReasonName": "尺寸，强度，容量有问题",
+            "bkReasonName": "不再需要",
             "totalBreakTimeRate": "1.24%",
             "totalBreakTime": 161
           },
           {
-            "bkReasonName": "组装，配合施工技术差",
+            "bkReasonName": "物流配送延误",
             "totalBreakTimeRate": "1.18%",
             "totalBreakTime": 154
           },
           {
-            "bkReasonName": "松动松弛",
+            "bkReasonName": "签收后发现缺件",
             "totalBreakTimeRate": "1.08%",
             "totalBreakTime": 140
           },
           {
-            "bkReasonName": "组装，配合方法上有问题",
+            "bkReasonName": "商品保质期不足",
             "totalBreakTimeRate": "1.05%",
             "totalBreakTime": 137
           },
           {
-            "bkReasonName": "疲劳损伤",
+            "bkReasonName": "商品型号不匹配",
             "totalBreakTimeRate": "0.96%",
             "totalBreakTime": 125
           },
           {
-            "bkReasonName": "油质劣化",
+            "bkReasonName": "商品临期",
             "totalBreakTimeRate": "0.91%",
             "totalBreakTime": 118
           },
           {
-            "bkReasonName": "异常振动",
+            "bkReasonName": "商品价格变动",
             "totalBreakTimeRate": "0.74%",
             "totalBreakTime": 96
           },
           {
-            "bkReasonName": "配合加工有问题",
+            "bkReasonName": "优惠未正确抵扣",
             "totalBreakTimeRate": "0.69%",
             "totalBreakTime": 90
           },
           {
-            "bkReasonName": "异物混入",
+            "bkReasonName": "订单重复扣款",
             "totalBreakTimeRate": "0.68%",
             "totalBreakTime": 88
           },
           {
-            "bkReasonName": "规格不符",
+            "bkReasonName": "订单地址填写错误",
             "totalBreakTimeRate": "0.46%",
             "totalBreakTime": 60
           },
           {
-            "bkReasonName": "异常温度",
+            "bkReasonName": "冷链温控异常",
             "totalBreakTimeRate": "0.38%",
             "totalBreakTime": 50
           },
           {
-            "bkReasonName": "安装，拆卸方法上有问题",
+            "bkReasonName": "预售交付延期",
             "totalBreakTimeRate": "0.23%",
             "totalBreakTime": 30
           },
           {
-            "bkReasonName": "机械剥离",
+            "bkReasonName": "组合商品缺货",
             "totalBreakTimeRate": "0.22%",
             "totalBreakTime": 29
           },
           {
-            "bkReasonName": "误运转操作",
+            "bkReasonName": "商品标签信息错误",
             "totalBreakTimeRate": "0.19%",
             "totalBreakTime": 25
           },
           {
-            "bkReasonName": "温度(在计划设计时不能预测)",
+            "bkReasonName": "商品功能与介绍不符",
             "totalBreakTimeRate": "0.12%",
             "totalBreakTime": 15
           }
@@ -695,16 +695,16 @@ export default {
             "stopReasonType": "质量原因"
           },
           {
-            "stopReasonType": "设计原因"
+            "stopReasonType": "商品描述问题"
           },
           {
-            "stopReasonType": "维修原因"
+            "stopReasonType": "售后处理原因"
           },
           {
-            "stopReasonType": "管理原因"
+            "stopReasonType": "订单管理问题"
           },
           {
-            "stopReasonType": "操作原因"
+            "stopReasonType": "订单操作问题"
           },
           {
             "stopReasonType": "其他原因"
@@ -716,15 +716,15 @@ export default {
   },
   mounted() {
     // --- 组件挂载后执行 ---
-    this.query(); // 查询故障模式列表数据
-    this.queryTree(); // 查询产线树数据
-    this.queryStopReasonType(); // 查询故障模式下拉选项数据
+    this.query(); // 查询退货原因列表数据
+    this.queryTree(); // 查询商品分类树数据
+    this.queryStopReasonType(); // 查询退货原因下拉选项数据
   },
   methods: {
     // --- 数据查询方法 (当前使用模拟数据) ---
 
     /**
-     * @description 查询故障模式列表数据 (模拟)
+     * @description 查询退货原因列表数据 (模拟)
      * - 设置加载状态
      * - 使用本地模拟数据 `listData`
      * - 对数据按 `totalBreakTimeRate` 降序排序
@@ -752,7 +752,7 @@ export default {
     },
 
     /**
-     * @description 查询产线树数据 (模拟)
+     * @description 查询商品分类树数据 (模拟)
      * - 设置加载状态
      * - 使用本地模拟数据 `treeDataJson`
      * - 递归处理树节点，添加 `key` 和 `isLeaf` 属性以适配 `el-tree-select`
@@ -790,7 +790,7 @@ export default {
     },
 
     /**
-     * @description 查询故障模式下拉选项数据 (模拟)
+     * @description 查询退货原因下拉选项数据 (模拟)
      * - 设置加载状态
      * - 使用本地模拟数据 `stopReasonData`
      * - 将数据映射为 `el-select` 需要的 `{ label, value }` 格式

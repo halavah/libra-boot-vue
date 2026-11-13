@@ -7,18 +7,18 @@
           <el-card shadow="never" class="list-card">
             <template #header>
               <div>
-                <span>故障模式列表</span>
+                <span>退货原因列表</span>
               </div>
             </template>
             <el-table :data="dataList" stripe :height="innerContentHeight">
               <el-table-column
                 prop="bkReasonName"
-                label="故障模式"
+                label="退货原因"
                 show-overflow-tooltip
               />
               <el-table-column
                 prop="totalBreakTime"
-                label="停机时间"
+                label="订单暂停时长"
                 width="100"
                 align="right"
               />
@@ -30,7 +30,7 @@
           <el-card shadow="never" class="chart-card">
             <template #header>
               <div>
-                <span>故障模式分布图（%）</span>
+                <span>退货原因分布图（%）</span>
               </div>
             </template>
             <div
@@ -54,7 +54,7 @@ export default {
   props: {
     // 定义从父组件接收的属性
     dataList: {
-      // 故障模式列表数据
+      // 退货原因列表数据
       type: Array, // 类型为数组
       required: true, // 必须传递
       default: () => [], // 默认值为空数组
@@ -270,7 +270,7 @@ export default {
         yAxis: {
           // Y 轴配置 (类目轴)
           type: "category", // 类目轴
-          data: categories, // 类目数据 (故障模式名称)
+          data: categories, // 类目数据 (退货原因名称)
           axisTick: { alignWithLabel: true }, // 刻度线与标签对齐
           inverse: true, // 类目反转，使得排名高的在上面
           axisLabel: {
@@ -286,7 +286,7 @@ export default {
         series: [
           // 系列列表 (可以有多个系列，例如折线图、饼图等)
           {
-            name: "故障模式分布", // 系列名称 (用于 tooltip 等)
+            name: "退货原因分布", // 系列名称 (用于 tooltip 等)
             type: "bar", // 图表类型：条形图
             data: rates, // 系列数据 (百分比数组)
             label: {

@@ -15,13 +15,13 @@ function detectAvailableViewFolders() {
   try {
     // 使用 import.meta.glob 一次性扫描所有可能的 views* 文件夹
     // 支持 views, views2, views3, ... viewsN（任意数字）
-    const allModules = import.meta.glob('/src/views*/*/*/index.vue', { eager: false });
+    const allModules = import.meta.glob(['/src/views*/*/index.vue', '/src/views*/*/*/index.vue'], { eager: false });
 
     // 从扫描到的路径中提取文件夹名称
     const folderSet = new Set();
     Object.keys(allModules).forEach((path) => {
       // 匹配路径格式: /src/views*/module/page/index.vue
-      const match = path.match(/^\/src\/(views\d*)\/[^/]+\/[^/]+\/index\.vue$/);
+      const match = path.match(/^\/src\/(views\d*)\/[^/]+(?:\/[^/]+)?\/index\.vue$/);
       if (match) {
         folderSet.add(match[1]);
       }
@@ -114,7 +114,7 @@ export function scanViewFoldersAndGenerateRoutes() {
 }
 
 /**
- * 扫描单个视图文件夹（两层目录结构）
+ * 扫描单个视图文件夹（单层或两层目录结构）
  * @param {string} viewFolder - 视图文件夹名称
  * @param {Object} systemConfig - 系统配置
  * @returns {Array} 路由配置数组
@@ -125,8 +125,7 @@ function scanViewFolder(viewFolder, systemConfig) {
   try {
     // 使用 import.meta.glob 动态扫描当前视图文件夹
     // 支持任意 views* 文件夹（views, views2, views3, ... viewsN）
-    const pattern = `/src/${viewFolder}/*/*/index.vue`;
-    const modules = import.meta.glob('/src/views*/*/*/index.vue', { eager: false });
+    const modules = import.meta.glob(['/src/views*/*/index.vue', '/src/views*/*/*/index.vue'], { eager: false });
 
     // 过滤出当前文件夹的模块
     const folderModules = Object.keys(modules)
@@ -158,7 +157,7 @@ function scanViewFolder(viewFolder, systemConfig) {
 }
 
 /**
- * 从文件路径解析路由配置（两层结构）
+ * 从文件路径解析路由配置（单层或两层结构）
  * @param {string} filePath - 文件路径
  * @param {string} viewFolder - 视图文件夹名称
  * @param {Object} systemConfig - 系统配置
@@ -172,10 +171,10 @@ function parseRouteFromPath(filePath, viewFolder, systemConfig, component) {
       return null;
     }
 
-    // 提取相对路径（两层结构）
+    // 提取相对路径（单层或两层结构）
     // 例如：/src/views/element/demo01/index.vue
     // 提取：element/demo01
-    const regex = new RegExp(`/src/${viewFolder}/([^/]+)/([^/]+)/index\\.vue$`);
+    const regex = new RegExp(`/src/${viewFolder}/([^/]+)(?:/([^/]+))?/index\\.vue$`);
     const match = filePath.match(regex);
 
     if (!match) {
@@ -183,13 +182,13 @@ function parseRouteFromPath(filePath, viewFolder, systemConfig, component) {
     }
 
     const moduleName = match[1]; // element
-    const pageName = match[2]; // demo01
-    const relativePath = `${moduleName}/${pageName}`; // element/demo01
+    const pageName = match[2] || match[1]; // demo01 或单层页面
+    const relativePath = match[2] ? `${moduleName}/${pageName}` : pageName;
 
     // 生成路由名称：LayoutElementDemo01
     const routeName = 'Layout' +
       moduleName.charAt(0).toUpperCase() + moduleName.slice(1) +
-      pageName.charAt(0).toUpperCase() + pageName.slice(1);
+      (match[2] ? pageName.charAt(0).toUpperCase() + pageName.slice(1) : '');
 
     // 生成页面标题
     const pageTitle = pageName
@@ -216,7 +215,7 @@ function parseRouteFromPath(filePath, viewFolder, systemConfig, component) {
 }
 
 /**
- * 根据路由生成菜单配置（两层目录结构）
+ * 根据路由生成菜单配置（单层或两层目录结构）
  * @param {Array} routes - 路由配置数组
  * @param {string} systemId - 系统 ID
  * @returns {Array} 菜单配置数组
@@ -235,11 +234,27 @@ export function generateMenusFromRoutes(routes, systemId) {
     const { meta } = route;
     if (!meta || !meta.fullPath) return;
 
-    // 解析路径层级 - 两层结构
+    // 解析路径层级 - 单层或两层结构
     // 例如：/element/demo01
     const pathSegments = meta.fullPath.split('/').filter(Boolean);
 
-    // 必须是两层结构：[模块名]/[页面名]
+    // 单层页面直接成为可点击菜单，不增加虚构的目录层。
+    if (pathSegments.length === 1) {
+      const pageKey = pathSegments[0];
+      menuMap[pageKey] = {
+        id: `${systemId}-${pageKey}`,
+        name: pageKey,
+        title: pageKey,
+        icon: getDefaultIcon(pageKey),
+        type: 'C',
+        pageId: `${systemId}-${pageKey}`,
+        path: meta.fullPath,
+        orderNum: Object.keys(menuMap).length + 1
+      };
+      return;
+    }
+
+    // 必须是单层或两层结构：[模块名]/[页面名]
     if (pathSegments.length !== 2) {
       console.log(`   ⚠️  跳过非两层路径: ${meta.fullPath}`);
       return;

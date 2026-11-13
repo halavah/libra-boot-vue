@@ -7,19 +7,19 @@
           <el-card shadow="never" class="list-card">
             <template #header>
               <div>
-                <span>故障模式列表</span>
+                <span>退货原因列表</span>
               </div>
             </template>
             <!-- 表格高度通过 innerContentHeight 动态绑定 -->
             <el-table :data="dataList" stripe :height="innerContentHeight">
               <el-table-column
                 prop="bkReasonName"
-                label="故障模式"
+                label="退货原因"
                 show-overflow-tooltip
               />
               <el-table-column
                 prop="totalBreakTime"
-                label="停机时间"
+                label="订单暂停时长"
                 width="100"
                 align="right"
               />
@@ -31,7 +31,7 @@
           <el-card shadow="never" class="chart-card">
             <template #header>
               <div>
-                <span>故障模式分布图（%）</span>
+                <span>退货原因分布图（%）</span>
               </div>
             </template>
             <!-- 图表容器高度通过 innerContentHeight 动态绑定 -->
@@ -77,18 +77,18 @@ function debounce<T extends (...args: any[]) => any>(
 }
 
 // --- 类型定义 ---
-// 故障模式列表项接口 (导出供父组件使用)
+// 退货原因列表项接口 (导出供父组件使用)
 export interface FaultModeItem {
-  bkReasonName: string; // 故障模式名称
-  totalBreakTime: number | string; // 停机时间
-  totalBreakTimeRate?: string | number | null; // 停机时间占比 (可选)
+  bkReasonName: string; // 退货原因名称
+  totalBreakTime: number | string; // 订单暂停时长
+  totalBreakTimeRate?: string | number | null; // 订单暂停时长占比 (可选)
 }
 
 // --- 组件定义 ---
 export default defineComponent({
   name: "ContentArea", // 组件名称
   props: {
-    // 从父组件接收的故障模式列表数据
+    // 从父组件接收的退货原因列表数据
     dataList: {
       type: Array as PropType<FaultModeItem[]>, // 类型为 FaultModeItem 数组
       required: true, // 必传
@@ -254,7 +254,7 @@ export default defineComponent({
         xAxis: { type: "value", name: "占比 (%)", nameLocation: "middle", nameGap: 25, nameTextStyle: { padding: [0, 0, 5, 0] }, axisLabel: { formatter: "{value}%" }, position: "top", },
         // 注意：此处移除了之前误放在这里的注释
         yAxis: { type: "category", data: categories, axisTick: { alignWithLabel: true }, inverse: true, axisLabel: { interval: 0, fontSize: 12, formatter: (value: string) => value.length > 10 ? value.substring(0, 10) + "..." : value, }, },
-        series: [ { name: "故障模式分布", type: "bar", data: rates, label: { show: true, position: "right", formatter: "{c}%", color: "#333", fontSize: 10, }, itemStyle: { // 条形图颜色循环
+        series: [ { name: "退货原因分布", type: "bar", data: rates, label: { show: true, position: "right", formatter: "{c}%", color: "#333", fontSize: 10, }, itemStyle: { // 条形图颜色循环
               color: (params: { dataIndex: number }) => {
                 return defaultColors[params.dataIndex % defaultColors.length];
               },

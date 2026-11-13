@@ -9,24 +9,24 @@ dayjs.locale('zh-cn') // 设置 Dayjs 本地化为中文
 
 // --- 类型定义区域 ---
 
-// 故障模式列表项数据结构 (从 ContentArea.ts 移动过来)
+// 退货原因列表项数据结构 (从 ContentArea.ts 移动过来)
 export interface FaultModeItem {
-  bkReasonName: string; // 故障模式名称
-  totalBreakTime: number | string; // 停机时间 (可能是数字或字符串)
-  totalBreakTimeRate?: string | number | null; // 停机时间占比 (可选, 可能是字符串、数字或 null)
+  bkReasonName: string; // 退货原因名称
+  totalBreakTime: number | string; // 订单暂停时长 (可能是数字或字符串)
+  totalBreakTimeRate?: string | number | null; // 订单暂停时长占比 (可选, 可能是字符串、数字或 null)
 }
 
-// 产线树节点数据结构
+// 商品分类树节点数据结构
 interface PlTreeNode {
   parent_plno: string | null; // 父节点编号
-  plname: string; // 产线名称
-  plno: string; // 产线编号
+  plname: string; // 商品分类名称
+  plno: string; // 商品分类编号
   key?: string; // 树选择器使用的唯一标识
   isLeaf?: boolean; // 是否为叶子节点
   children?: PlTreeNode[] | null; // 子节点数组
 }
 
-// 故障模式下拉选项数据结构
+// 退货原因下拉选项数据结构
 interface FaultModeOption {
   label: string; // 显示文本
   value: string; // 选项值
@@ -34,9 +34,9 @@ interface FaultModeOption {
 
 // 筛选表单数据结构
 interface SearchForm {
-  plNoKey: string[]; // 选中的产线 key 数组
-  equipmentNo: string; // 设备号
-  stopReasonName: string[]; // 选中的故障模式名称数组
+  plNoKey: string[]; // 选中的商品分类 key 数组
+  equipmentNo: string; // 商品编号
+  stopReasonName: string[]; // 选中的退货原因名称数组
   vDay: [string, string]; // 日期范围 [开始日期, 结束日期]
 }
 
@@ -49,15 +49,15 @@ interface ApiResponse<T> {
   timestamp: number; // 服务器时间戳
 }
 
-// 故障模式列表 API 响应结果类型
+// 退货原因列表 API 响应结果类型
 type ListDataResult = FaultModeItem[];
 
-// 产线树 API 响应结果类型
+// 商品分类树 API 响应结果类型
 type TreeDataResult = PlTreeNode[];
 
-// 故障模式类型 API 响应结果类型
+// 退货原因类型 API 响应结果类型
 interface StopReasonTypeItem {
-  stopReasonType: string; // 故障模式类型名称
+  stopReasonType: string; // 退货原因类型名称
 }
 type StopReasonDataResult = StopReasonTypeItem[];
 
@@ -73,12 +73,12 @@ export default defineComponent({
     // 响应式状态：加载状态
     const loading: Ref<boolean> = ref(true);
 
-    // 产线树选择器配置
+    // 商品分类树选择器配置
     const treeProps = {
       label: 'plname', // 指定节点标签名为 'plname'
       children: 'children', // 指定子树为 'children'
     };
-    // 响应式状态：产线树数据
+    // 响应式状态：商品分类树数据
     const treeData: Ref<PlTreeNode[]> = ref([]);
 
     // 响应式引用：筛选表单实例 (使用 any 绕过类型检查)
@@ -103,7 +103,7 @@ export default defineComponent({
   data(): {
     // 属性容器，用于存放下拉选项等
     attrCnts: {
-      faultModeOptions: FaultModeOption[]; // 故障模式下拉选项
+      faultModeOptions: FaultModeOption[]; // 退货原因下拉选项
     };
     // 筛选表单数据模型
     searchForm: SearchForm;
@@ -119,25 +119,25 @@ export default defineComponent({
     return {
       // 属性容器初始化
       attrCnts: {
-        faultModeOptions: [], // 故障模式下拉选项初始化为空
+        faultModeOptions: [], // 退货原因下拉选项初始化为空
       },
       // 筛选表单数据初始化
       searchForm: {
-        plNoKey: [], // 产线选择默认为空
-        equipmentNo: '', // 设备号默认为空
-        stopReasonName: [], // 故障模式选择默认为空
+        plNoKey: [], // 商品分类选择默认为空
+        equipmentNo: '', // 商品编号默认为空
+        stopReasonName: [], // 退货原因选择默认为空
         vDay: [ // 日期范围默认值
           '2000-01-01',
           '2026-01-01'
         ],
       },
-      // 故障模式列表数据初始化为空
+      // 退货原因列表数据初始化为空
       dataList: [],
       // 分析文本初始化
       analysisText: '演示订单售后记录001',
 
       // --- 模拟数据 (实际应用中应通过 API 获取) ---
-      listData: { // 模拟故障模式列表接口返回数据
+      listData: { // 模拟退货原因列表接口返回数据
         "success": true,
         "message": "",
         "code": 200,
@@ -148,127 +148,127 @@ export default defineComponent({
             "totalBreakTime": 3596
           },
           {
-            "bkReasonName": "设计机构，构造有问题",
+            "bkReasonName": "商品规格与描述不符",
             "totalBreakTimeRate": "19.58%",
             "totalBreakTime": 2545
           },
           {
-            "bkReasonName": "点检方法，判定基准有问题",
+            "bkReasonName": "商品颜色与描述不符",
             "totalBreakTimeRate": "8.54%",
             "totalBreakTime": 1110
           },
           {
-            "bkReasonName": "修理，维护方法有问题",
+            "bkReasonName": "商品尺寸不合适",
             "totalBreakTimeRate": "7.38%",
             "totalBreakTime": 960
           },
           {
-            "bkReasonName": "自然劣化(预测困难)",
+            "bkReasonName": "商品质量问题",
             "totalBreakTimeRate": "7.04%",
             "totalBreakTime": 915
           },
           {
-            "bkReasonName": "材质缺陷(质量，热处理，表面处理)",
+            "bkReasonName": "商品数量不足",
             "totalBreakTimeRate": "7.02%",
             "totalBreakTime": 913
           },
           {
-            "bkReasonName": "点检周期有问题",
+            "bkReasonName": "商品配件缺失",
             "totalBreakTimeRate": "3.50%",
             "totalBreakTime": 455
           },
           {
-            "bkReasonName": "修理维护周期不适当",
+            "bkReasonName": "商品外观破损",
             "totalBreakTimeRate": "3.18%",
             "totalBreakTime": 413
           },
           {
-            "bkReasonName": "机种，型式选定有问题",
+            "bkReasonName": "商品包装破损",
             "totalBreakTimeRate": "2.64%",
             "totalBreakTime": 343
           },
           {
-            "bkReasonName": "运转操作技能，知识不足",
+            "bkReasonName": "错发商品",
             "totalBreakTimeRate": "1.84%",
             "totalBreakTime": 239
           },
           {
-            "bkReasonName": "异物侵入",
+            "bkReasonName": "重复购买",
             "totalBreakTimeRate": "1.48%",
             "totalBreakTime": 193
           },
           {
-            "bkReasonName": "尺寸，强度，容量有问题",
+            "bkReasonName": "不再需要",
             "totalBreakTimeRate": "1.24%",
             "totalBreakTime": 161
           },
           {
-            "bkReasonName": "组装，配合施工技术差",
+            "bkReasonName": "物流配送延误",
             "totalBreakTimeRate": "1.18%",
             "totalBreakTime": 154
           },
           {
-            "bkReasonName": "松动松弛",
+            "bkReasonName": "签收后发现缺件",
             "totalBreakTimeRate": "1.08%",
             "totalBreakTime": 140
           },
           {
-            "bkReasonName": "组装，配合方法上有问题",
+            "bkReasonName": "商品保质期不足",
             "totalBreakTimeRate": "1.05%",
             "totalBreakTime": 137
           },
           {
-            "bkReasonName": "疲劳损伤",
+            "bkReasonName": "商品型号不匹配",
             "totalBreakTimeRate": "0.96%",
             "totalBreakTime": 125
           },
           {
-            "bkReasonName": "油质劣化",
+            "bkReasonName": "商品临期",
             "totalBreakTimeRate": "0.91%",
             "totalBreakTime": 118
           },
           {
-            "bkReasonName": "异常振动",
+            "bkReasonName": "商品价格变动",
             "totalBreakTimeRate": "0.74%",
             "totalBreakTime": 96
           },
           {
-            "bkReasonName": "配合加工有问题",
+            "bkReasonName": "优惠未正确抵扣",
             "totalBreakTimeRate": "0.69%",
             "totalBreakTime": 90
           },
           {
-            "bkReasonName": "异物混入",
+            "bkReasonName": "订单重复扣款",
             "totalBreakTimeRate": "0.68%",
             "totalBreakTime": 88
           },
           {
-            "bkReasonName": "规格不符",
+            "bkReasonName": "订单地址填写错误",
             "totalBreakTimeRate": "0.46%",
             "totalBreakTime": 60
           },
           {
-            "bkReasonName": "异常温度",
+            "bkReasonName": "冷链温控异常",
             "totalBreakTimeRate": "0.38%",
             "totalBreakTime": 50
           },
           {
-            "bkReasonName": "安装，拆卸方法上有问题",
+            "bkReasonName": "预售交付延期",
             "totalBreakTimeRate": "0.23%",
             "totalBreakTime": 30
           },
           {
-            "bkReasonName": "机械剥离",
+            "bkReasonName": "组合商品缺货",
             "totalBreakTimeRate": "0.22%",
             "totalBreakTime": 29
           },
           {
-            "bkReasonName": "误运转操作",
+            "bkReasonName": "商品标签信息错误",
             "totalBreakTimeRate": "0.19%",
             "totalBreakTime": 25
           },
           {
-            "bkReasonName": "温度(在计划设计时不能预测)",
+            "bkReasonName": "商品功能与介绍不符",
             "totalBreakTimeRate": "0.12%",
             "totalBreakTime": 15
           }
@@ -763,16 +763,16 @@ export default defineComponent({
             "stopReasonType": "质量原因"
           },
           {
-            "stopReasonType": "设计原因"
+            "stopReasonType": "商品描述问题"
           },
           {
-            "stopReasonType": "维修原因"
+            "stopReasonType": "售后处理原因"
           },
           {
-            "stopReasonType": "管理原因"
+            "stopReasonType": "订单管理问题"
           },
           {
-            "stopReasonType": "操作原因"
+            "stopReasonType": "订单操作问题"
           },
           {
             "stopReasonType": "其他原因"
@@ -785,19 +785,19 @@ export default defineComponent({
   // --- 生命周期钩子 ---
   mounted() {
     // 组件挂载后，执行初始化查询
-    this.query(); // 查询故障模式列表
-    this.queryTree(); // 查询产线树
-    this.queryStopReasonType(); // 查询故障模式类型
+    this.query(); // 查询退货原因列表
+    this.queryTree(); // 查询商品分类树
+    this.queryStopReasonType(); // 查询退货原因类型
   },
   // --- 方法定义 ---
   methods: {
     /**
-     * 查询故障模式列表数据 (模拟)
+     * 查询退货原因列表数据 (模拟)
      */
     query(): void {
       this.loading = true; // 显示加载状态
       if (this.listData.success) {
-        // 模拟数据排序 (按停机时间占比降序)
+        // 模拟数据排序 (按订单暂停时长占比降序)
         const sortedData = [...this.listData.result].sort((a, b) => {
           const valueA = parseFloat(String(a.totalBreakTimeRate || '0').replace('%', ''));
           const valueB = parseFloat(String(b.totalBreakTimeRate || '0').replace('%', ''));
@@ -812,7 +812,7 @@ export default defineComponent({
     },
 
     /**
-     * 查询产线树数据 (模拟)
+     * 查询商品分类树数据 (模拟)
      */
     queryTree(): void {
       this.loading = true;
@@ -841,7 +841,7 @@ export default defineComponent({
     },
 
     /**
-     * 查询故障模式下拉选项数据 (模拟)
+     * 查询退货原因下拉选项数据 (模拟)
      */
     queryStopReasonType(): void {
       this.loading = true;

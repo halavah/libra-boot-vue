@@ -30,7 +30,7 @@ export default {
     const searchFormRef = ref('')
     const searchFormRules = reactive({
       // equipmentNo: [
-      //     {required: true, message: '请输入设备号', trigger: 'blur'},
+      //     {required: true, message: '请输入商品编号', trigger: 'blur'},
       // ],
       vDay: [
         { type: 'array', required: true, message: '请选择日期范围', trigger: 'change' }
@@ -125,21 +125,21 @@ export default {
       dataList: [],
       // 筛选-表格-弹框表单
       dataForm: {
-        plNo: '', // 厂处编号
-        plName: '', // 厂处中文名
-        breakDownNo: '', // 事故编号
-        informDate: '', // 停机起始日期
-        informTime: '', // 停机起始时间
-        informfullDate: '', // 停机起始完整日期
-        arriveDate: '', // 停机结束日期
-        arriveTime: '', // 停机结束时间
-        arrivefullDate: '', // 停机结束完整日期
-        totalBreakTime: '', // 停机总时间
+        plNo: '', // 店铺编号
+        plName: '', // 店铺中文名
+        breakDownNo: '', // 售后单号
+        informDate: '', // 订单暂停起始日期
+        informTime: '', // 订单暂停起始时间
+        informfullDate: '', // 订单暂停起始完整日期
+        arriveDate: '', // 订单暂停结束日期
+        arriveTime: '', // 订单暂停结束时间
+        arrivefullDate: '', // 订单暂停结束完整日期
+        totalBreakTime: '', // 订单暂停总时间
         breakDownGrade: '', // 重要度
-        bkPart: '', // 故障部位
+        bkPart: '', // 售后异常部位
         bkReason: '', // 不良原因
         breakDownName: '', // 维护履历名称
-        relegation: '', // 事故归属
+        relegation: '', // 售后事件归属
         textArea2: '', // 退货原因分析
         textArea3: '', // 改进防范措施
         textArea4: '', // 改进防范措施
@@ -147,9 +147,9 @@ export default {
         reportMemo: '', // 整改回报内容
       },
 
-      // 设备号模糊查询
-      equipmentNoTableVisible: false, // 设备号表格是否显示
-      equipmentNoTableData: [],       // 设备号表格数据
+      // 商品编号模糊查询
+      equipmentNoTableVisible: false, // 商品编号表格是否显示
+      equipmentNoTableData: [],       // 商品编号表格数据
       equipmentNoTablePage: 1,        // 当前页码
       equipmentNoTablePageSize: 5,    // 每页条数
 
@@ -192,7 +192,7 @@ export default {
           {
             "plName": "服饰旗舰店-商品分组01",
             "breakDownNo": "Y201020104-001",
-            "breakDownName": "家电旗舰店一工场二商品分组1#编码器异常事故",
+            "breakDownName": "演示售后单001：订单商品漏发需补寄",
             "plNo": "Y201",
             "equipmentName": "演示订单售后记录005",
             "relegationName": "电气",
@@ -212,7 +212,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组01",
             "breakDownNo": "W901020701-001",
-            "breakDownName": "一线密封风机电机烧",
+            "breakDownName": "演示售后单101：商品规格与描述不符",
             "plNo": "W901",
             "equipmentName": "演示商品006",
             "relegationName": "机械",
@@ -262,7 +262,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组03",
             "breakDownNo": "W903050101-003",
-            "breakDownName": "关于顺盛三线入库斗提机链条异响售后报告",
+            "breakDownName": "演示售后单002：商品规格与下单选择不符",
             "plNo": "W903",
             "equipmentName": "演示商品009",
             "relegationName": "机械",
@@ -332,7 +332,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组04",
             "breakDownNo": "W904020401-003",
-            "breakDownName": "关于四线立磨主辊液压站故障售后报告",
+            "breakDownName": "演示售后单003：物流包裹破损申请换货",
             "plNo": "W904",
             "equipmentName": "演示订单售后记录019",
             "relegationName": "机械",
@@ -342,7 +342,7 @@ export default {
           {
             "plName": "母婴旗舰店",
             "breakDownNo": "Y401060301-001",
-            "breakDownName": "1号下夹送辊裂纹事故",
+            "breakDownName": "演示售后单102：商品颜色与描述不符",
             "plNo": "Y401",
             "equipmentName": "演示商品014",
             "relegationName": "机械",
@@ -372,7 +372,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组04",
             "breakDownNo": "W904020401-002",
-            "breakDownName": "关于四线立磨主辊液压站故障售后报告",
+            "breakDownName": "演示售后单003：物流包裹破损申请换货",
             "plNo": "W904",
             "equipmentName": "演示订单售后记录019",
             "relegationName": "机械",
@@ -392,7 +392,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y812012007-001",
-            "breakDownName": "酸平线氩弧焊机剪切油缸缸头断裂处理的售后报告",
+            "breakDownName": "演示售后单004：订单重复扣款申请退款",
             "plNo": "Y807",
             "equipmentName": "演示商品016",
             "relegationName": "机械",
@@ -402,7 +402,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y812021916-001",
-            "breakDownName": "酸平线平整机下支承辊接轴异响处理",
+            "breakDownName": "演示售后单005：预售订单延期发货",
             "plNo": "Y807",
             "equipmentName": "演示商品017",
             "relegationName": "机械",
@@ -412,7 +412,7 @@ export default {
           {
             "plName": "母婴旗舰店",
             "breakDownNo": "Y401113402-002",
-            "breakDownName": "测厚仪射源无法启动故障",
+            "breakDownName": "演示售后单103：商品尺寸不合适",
             "plNo": "Y401",
             "equipmentName": "演示订单售后记录025",
             "relegationName": "电气",
@@ -422,7 +422,7 @@ export default {
           {
             "plName": "服饰旗舰店-商品分组02",
             "breakDownNo": "Y202040903-001",
-            "breakDownName": "家电旗舰店一工场三商品分组预穿水阀门事故",
+            "breakDownName": "演示售后单006：商品配件缺失申请补发",
             "plNo": "Y202",
             "equipmentName": "演示订单售后记录026",
             "relegationName": "机械",
@@ -432,7 +432,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y812012010-001",
-            "breakDownName": "近期酸平板面压坑缺陷处理",
+            "breakDownName": "演示售后单104：商品质量问题",
             "plNo": "Y807",
             "equipmentName": "演示商品018",
             "relegationName": "机械",
@@ -462,7 +462,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组04",
             "breakDownNo": "W904020401-001",
-            "breakDownName": "关于四线立磨主辊液压站溢流阀故障售后报告",
+            "breakDownName": "演示售后单007：商品外观划痕申请退货",
             "plNo": "W904",
             "equipmentName": "演示订单售后记录019",
             "relegationName": "机械",
@@ -472,7 +472,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组03",
             "breakDownNo": "W903050101-002",
-            "breakDownName": "顺盛三期入库斗提机链条断开停机售后报告",
+            "breakDownName": "演示售后单008：优惠券未抵扣需核对差额",
             "plNo": "W903",
             "equipmentName": "演示商品009",
             "relegationName": "机械",
@@ -492,7 +492,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y812012702-001",
-            "breakDownName": "酸平线2#纠偏刮边停机处理",
+            "breakDownName": "演示售后单009：退货已签收待退款",
             "plNo": "Y807",
             "equipmentName": "演示商品020",
             "relegationName": "机械",
@@ -502,7 +502,7 @@ export default {
           {
             "plName": "服饰旗舰店-商品分组02",
             "breakDownNo": "Y202040208-001",
-            "breakDownName": "家电旗舰店一工场三商品分组12架电机故障",
+            "breakDownName": "演示售后单010：错发商品申请换货",
             "plNo": "Y202",
             "equipmentName": "演示订单售后记录031",
             "relegationName": "电气",
@@ -512,7 +512,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y805040903-002",
-            "breakDownName": "酸平线5#纠偏辊面开裂",
+            "breakDownName": "演示售后单105：商品数量不足",
             "plNo": "Y807",
             "equipmentName": "演示商品021",
             "relegationName": "机械",
@@ -522,7 +522,7 @@ export default {
           {
             "plName": "母婴旗舰店",
             "breakDownNo": "Y401110401-002",
-            "breakDownName": "层冷6#辊道变频器故障",
+            "breakDownName": "演示售后单106：商品配件缺失",
             "plNo": "Y401",
             "equipmentName": "演示商品022",
             "relegationName": "电气",
@@ -532,7 +532,7 @@ export default {
           {
             "plName": "电商物流中心-商品分组01",
             "breakDownNo": "W106051109-001",
-            "breakDownName": "电商物流中心原料加工工场烘干机区域LPV9配电柜故障",
+            "breakDownName": "演示售后单011：订单地址变更需拦截",
             "plNo": "W101",
             "equipmentName": "演示商品023",
             "relegationName": "电气",
@@ -542,7 +542,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组02",
             "breakDownNo": "W902020601-001",
-            "breakDownName": "关于顺盛二线选粉机叶片脱落停机售后报告",
+            "breakDownName": "关于顺盛二线选粉机叶片脱落订单暂停售后报告",
             "plNo": "W902",
             "equipmentName": "演示商品024",
             "relegationName": "机械",
@@ -552,7 +552,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y802021501-001",
-            "breakDownName": "酸平线5#纠偏框架行走轮焊缝开裂",
+            "breakDownName": "演示售后单012：组合商品缺货需拆单",
             "plNo": "Y807",
             "equipmentName": "演示商品025",
             "relegationName": "机械",
@@ -592,7 +592,7 @@ export default {
           {
             "plName": "服饰旗舰店-商品分组02",
             "breakDownNo": "Y202050102-001",
-            "breakDownName": "三商品分组冷床裙板故障",
+            "breakDownName": "演示售后单107：商品外观破损",
             "plNo": "Y202",
             "equipmentName": "演示订单售后记录036",
             "relegationName": "电气",
@@ -602,7 +602,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y805040903-001",
-            "breakDownName": "酸平线5#纠偏辊面开裂",
+            "breakDownName": "演示售后单105：商品数量不足",
             "plNo": "Y807",
             "equipmentName": "演示商品021",
             "relegationName": "机械",
@@ -672,7 +672,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组02",
             "breakDownNo": "W909010701-001",
-            "breakDownName": "二线三通分料阀抽屉柜短路故障售后报告",
+            "breakDownName": "二线三通分料阀抽屉柜短路售后异常售后报告",
             "plNo": "W902",
             "equipmentName": "演示商品030",
             "relegationName": "电气",
@@ -682,7 +682,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y812031302-001",
-            "breakDownName": "酸平线涂油机故障",
+            "breakDownName": "演示售后单108：商品包装破损",
             "plNo": "Y807",
             "equipmentName": "演示商品031",
             "relegationName": "机械",
@@ -692,7 +692,7 @@ export default {
           {
             "plName": "母婴旗舰店",
             "breakDownNo": "Y401110401-001",
-            "breakDownName": "层冷6#辊道变频器故障",
+            "breakDownName": "演示售后单106：商品配件缺失",
             "plNo": "Y401",
             "equipmentName": "演示商品022",
             "relegationName": "电气",
@@ -702,7 +702,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y812021701-001",
-            "breakDownName": "酸平线5#纠偏框架断裂",
+            "breakDownName": "演示售后单109：错发商品",
             "plNo": "Y807",
             "equipmentName": "演示商品032",
             "relegationName": "机械",
@@ -722,7 +722,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组01",
             "breakDownNo": "W901040201-005",
-            "breakDownName": "一线主排风机电机变频器散热风机烧售后报告",
+            "breakDownName": "演示售后单013：订单商品漏发需补寄",
             "plNo": "W901",
             "equipmentName": "演示商品034",
             "relegationName": "电气",
@@ -742,7 +742,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组02",
             "breakDownNo": "W902040201-005",
-            "breakDownName": "二线主风机变频柜C8功率单元光纤故障售后报告",
+            "breakDownName": "演示售后单014：商品规格与下单选择不符",
             "plNo": "W902",
             "equipmentName": "演示商品034",
             "relegationName": "电气",
@@ -772,7 +772,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y812031804-001",
-            "breakDownName": "酸平出口二号卷取故障（单通道降速生产）",
+            "breakDownName": "演示售后单015：物流包裹破损申请换货",
             "plNo": "Y807",
             "equipmentName": "演示商品037",
             "relegationName": "机械",
@@ -792,7 +792,7 @@ export default {
           {
             "plName": "服饰旗舰店-商品分组02",
             "breakDownNo": "Y202030208-001",
-            "breakDownName": "三商品分组6#电机故障",
+            "breakDownName": "演示售后单110：重复购买",
             "plNo": "Y202",
             "equipmentName": "演示订单售后记录050",
             "relegationName": "电气",
@@ -832,7 +832,7 @@ export default {
           {
             "plName": "商品运营中心-商品分组01",
             "breakDownNo": "W202060117-001",
-            "breakDownName": "1#10kV 转接柜出线电缆接头外绝缘局部击穿事故",
+            "breakDownName": "1#10kV 转接柜出线电缆接头外绝缘局部击穿售后事件",
             "plNo": "W201",
             "equipmentName": "演示商品040",
             "relegationName": "电气",
@@ -842,7 +842,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组04",
             "breakDownNo": "W908020213-001",
-            "breakDownName": "渣二皮带跳闸停机事故",
+            "breakDownName": "渣二皮带跳闸订单暂停售后事件",
             "plNo": "W904",
             "equipmentName": "演示订单售后记录056",
             "relegationName": "电气",
@@ -852,7 +852,7 @@ export default {
           {
             "plName": "服饰旗舰店-商品分组02",
             "breakDownNo": "Y202080312-001",
-            "breakDownName": "家电旗舰店三商品分组2#动力变高压电缆头故障",
+            "breakDownName": "演示售后单016：订单重复扣款申请退款",
             "plNo": "Y202",
             "equipmentName": "演示订单售后记录057",
             "relegationName": "电气",
@@ -872,7 +872,7 @@ export default {
           {
             "plName": "母婴旗舰店",
             "breakDownNo": "Y401060303-001",
-            "breakDownName": "1#卷取机十字推板油缸耳环滑扣事故",
+            "breakDownName": "演示售后单017：预售订单延期发货",
             "plNo": "Y401",
             "equipmentName": "演示商品042",
             "relegationName": "机械",
@@ -892,7 +892,7 @@ export default {
           {
             "plName": "母婴旗舰店",
             "breakDownNo": "Y401060201-001",
-            "breakDownName": "1#卷取31#机前辊道死辊事故",
+            "breakDownName": "演示售后单018：商品配件缺失申请补发",
             "plNo": "Y401",
             "equipmentName": "演示商品043",
             "relegationName": "机械",
@@ -902,7 +902,7 @@ export default {
           {
             "plName": "商品运营中心-商品分组04",
             "breakDownNo": "W204060119-001",
-            "breakDownName": "4#脱硫引风机跳闸停机事故",
+            "breakDownName": "演示售后单019：商品外观划痕申请退货",
             "plNo": "W204",
             "equipmentName": "演示商品044",
             "relegationName": "电气",
@@ -1435,7 +1435,7 @@ export default {
     this.query();
     // 2.查询树形列表
     this.queryTree();
-    // 3.查询故障模式列表
+    // 3.查询退货原因列表
     this.queryRelegationNames();
   },
   methods: {
@@ -1488,7 +1488,7 @@ export default {
       await formEl.validate((valid) => {
         if (valid) {
           _this.query();
-          // 重置时隐藏设备号模糊查询表格
+          // 重置时隐藏商品编号模糊查询表格
           this.equipmentNoTableVisible = false;
         } else {
           ElMessage.warning('请检查相关参数');
@@ -1504,15 +1504,15 @@ export default {
       }
       formEl.resetFields();
       _this.query();
-      // 重置时隐藏设备号模糊查询表格
+      // 重置时隐藏商品编号模糊查询表格
       this.equipmentNoTableVisible = false;
       this.equipmentNoTableData = [];
       this.equipmentNoTablePage = 1;
     },
 
-    /*******************************************************调用：设备号输入*******************************************************/
+    /*******************************************************调用：商品编号输入*******************************************************/
 
-    // 设备号输入监听
+    // 商品编号输入监听
     onEquipmentNoInput(val) {
       let _this = this;
       // 限制长度
@@ -1520,7 +1520,7 @@ export default {
         _this.searchForm.equipmentNo = val.slice(0, 12);
         return;
       }
-      // 自动产线匹配
+      // 自动商品分类匹配
       if (val.length >= 2) {
         const plNo = val.slice(0, 4);
         const found = _this.findPlNamesByPlNos([plNo], _this.treeData);
@@ -1542,7 +1542,7 @@ export default {
       } else {
         _this.searchForm.plNoKey = [];
       }
-      // 自动设备号模糊查询
+      // 自动商品编号模糊查询
       if (val.length >= 4) {
         _this.queryEquipmentNoList(val);
         // 自动赋值商品名称
@@ -1554,26 +1554,26 @@ export default {
         _this.searchForm.equipmentName = '';
       }
     },
-    // 设备号模糊查询
+    // 商品编号模糊查询
     async queryEquipmentNoList(val) {
       let _this = this;
       _this.equipmentNoTableData = _this.equipmentNoListData.result;
       _this.equipmentNoTableVisible = _this.equipmentNoTableData.length > 0;
       _this.equipmentNoTablePage = 1;
     },
-    // 单击表格行填充设备号
+    // 单击表格行填充商品编号
     onEquipmentNoRowClick(row) {
       let _this = this;
       _this.searchForm.equipmentNo = row.EQUIPMENTNO;
       _this.searchForm.equipmentName = row.EQUIPMENTNAME;
       _this.equipmentNoTableVisible = false;
-      // 自动产线匹配
+      // 自动商品分类匹配
       if (row.EQUIPMENTNO && row.EQUIPMENTNO.length >= 4) {
         const plNo = row.EQUIPMENTNO.slice(0, 4);
         _this.searchForm.plNoKey = [plNo];
       }
     },
-    // 产线输入框focus时重置treeData为原始数据
+    // 商品分类输入框focus时重置treeData为原始数据
     onPlNoTreeFocus() {
       let _this = this;
       if (_this.originalTreeData && _this.originalTreeData.length > 0) {

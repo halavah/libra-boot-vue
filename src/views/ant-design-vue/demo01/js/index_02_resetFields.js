@@ -310,7 +310,7 @@ export default {
       const myChart = echarts.init(this.$refs.chartRef);
       const option = {
         title: {
-          text: '旋转设备常见的故障模式分布图',
+          text: '商品退货原因分布图',
         },
         tooltip: {
           trigger: 'axis',
@@ -320,7 +320,7 @@ export default {
           orient: 'vertical',
           right: 10,
           top: 'center',
-          data: ['故障模式分布'],
+          data: ['退货原因分布'],
         },
         grid: {
           left: '3%',
@@ -331,15 +331,15 @@ export default {
         xAxis: {
           type: 'category',
           data: [
-            '异常振动', '机械摩损', '异常声响', '零部件损伤', '移动位移', '油质劣化',
-            '轴承滑油', '跑管渗漏', '材质劣化', '异常温度', '机械倾斜', '绝缘老化',
+            '商品价格变动', '商品磨损', '商品异响', '商品配件破损', '商品规格不符', '商品临期',
+            '配件漏发', '包装漏液', '商品材质不符', '冷链温控异常', '商品运输变形', '商品性能不符',
           ],
           axisLabel: { interval: 0, rotate: 45 },
         },
         yAxis: { type: 'value', name: '%' },
         series: [
           {
-            name: '故障模式分布',
+            name: '退货原因分布',
             type: 'bar',
             data: [30.4, 19.3, 11.4, 7.6, 7.6, 4.2, 3.8, 3.4, 2.9, 2.1, 2.1, 0.9],
             itemStyle: { color: '#1890ff' },

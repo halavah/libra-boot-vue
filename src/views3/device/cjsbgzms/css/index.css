@@ -76,17 +76,17 @@
 }
 
 /* 设置具体筛选控件的宽度 */
-/* 产线树形选择器宽度 */
+/* 商品分类树形选择器宽度 */
 .root-container .layout-search .search-tree-select {
   width: 240px;
 }
 
-/* 设备号输入框宽度 */
+/* 商品编号输入框宽度 */
 .root-container .layout-search .search-input {
   width: 240px;
 }
 
-/* 故障模式选择器宽度 */
+/* 退货原因选择器宽度 */
 .root-container .layout-search .search-select {
   width: 240px;
 }

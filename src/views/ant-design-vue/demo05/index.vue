@@ -24,28 +24,28 @@
             -->
             <!-- 筛选条件 Flex 容器 -->
             <div class="search-filters-flex">
-              <!-- 产线选择 (TreeSelect) -->
+              <!-- 商品分类选择 (TreeSelect) -->
               <!-- a-form-item-rest 用于包裹非受控组件或自定义组件 -->
               <a-form-item-rest>
-                <a-form-item label="产线" name="plNos">
+                <a-form-item label="商品分类" name="plNos">
                   <a-tree-select
                     v-model:value="searchForm.plNos"
                     style="width: 180px"
                     :tree-data="treeData"
                     tree-checkable
                     allow-clear
-                    placeholder="默认全部产线"
+                    placeholder="默认全部商品分类"
                     :field-names="treeProps"
                     :treeDefaultExpandedKeys="expandedKeys"
                     class="search-tree-select"
                   />
                   <!--
-                    绑定产线数据: v-model:value="searchForm.plNos"
+                    绑定商品分类数据: v-model:value="searchForm.plNos"
                     固定宽度: style="width: 180px"
                     树数据源: :tree-data="treeData"
                     显示复选框: tree-checkable
                     允许清除: allow-clear
-                    占位提示: placeholder="默认全部产线"
+                    占位提示: placeholder="默认全部商品分类"
                     字段名映射: :field-names="treeProps"
                     默认展开节点: :treeDefaultExpandedKeys="expandedKeys"
                     自定义样式类: class="search-tree-select"
@@ -53,17 +53,17 @@
                 </a-form-item>
               </a-form-item-rest>
 
-              <!-- 设备号输入 (Input) -->
-              <a-form-item label="设备号" name="equipmentNo">
+              <!-- 商品编号输入 (Input) -->
+              <a-form-item label="商品编号" name="equipmentNo">
                 <a-input
                   v-model:value="searchForm.equipmentNo"
-                  placeholder="请输入设备号"
+                  placeholder="请输入商品编号"
                   allow-clear
                   class="search-input"
                 />
                 <!--
-                  绑定设备号数据: v-model:value="searchForm.equipmentNo"
-                  占位提示: placeholder="请输入设备号"
+                  绑定商品编号数据: v-model:value="searchForm.equipmentNo"
+                  占位提示: placeholder="请输入商品编号"
                   允许清除: allow-clear
                   自定义样式类: class="search-input"
                 -->
@@ -73,15 +73,15 @@
                 <a-select
                   v-model:value="searchForm.stopReasonName"
                   mode="multiple"
-                  placeholder="请选择故障模式"
+                  placeholder="请选择退货原因"
                   :options="attrCnts.faultModeOptions"
                   allow-clear
                   class="search-select"
                 />
                 <!--
-                  绑定故障模式数据: v-model:value="searchForm.stopReasonName"
+                  绑定退货原因数据: v-model:value="searchForm.stopReasonName"
                   多选模式: mode="multiple"
-                  占位提示: placeholder="请选择故障模式"
+                  占位提示: placeholder="请选择退货原因"
                   下拉选项: :options="attrCnts.faultModeOptions"
                   允许清除: allow-clear
                   自定义样式类: class="search-select"
@@ -213,7 +213,7 @@ export default defineComponent({
     const loading: Ref<boolean> = ref(true); // 页面整体加载状态
     const dataFormLoading: Ref<boolean> = ref(false); // 弹窗表单加载状态 (当前未使用)
 
-    // 筛选区域 - 产线树 (TreeSelect)
+    // 筛选区域 - 商品分类树 (TreeSelect)
     const treeProps = {
       // TreeSelect 节点属性映射
       title: "plname",
@@ -253,7 +253,7 @@ export default defineComponent({
       // 表单校验规则
       vDay: [{ validator: validateDateRange, trigger: "change" }],
       // equipmentNo: [ // 暂时移除必填，方便测试
-      //   { required: true, message: '请输入设备号', trigger: 'blur' },
+      //   { required: true, message: '请输入商品编号', trigger: 'blur' },
       // ],
     });
 
@@ -349,127 +349,127 @@ export default defineComponent({
             totalBreakTime: 3596,
           },
           {
-            bkReasonName: "设计机构，构造有问题",
+            bkReasonName: "商品规格与描述不符",
             totalBreakTimeRate: "19.58%",
             totalBreakTime: 2545,
           },
           {
-            bkReasonName: "点检方法，判定基准有问题",
+            bkReasonName: "商品颜色与描述不符",
             totalBreakTimeRate: "8.54%",
             totalBreakTime: 1110,
           },
           {
-            bkReasonName: "修理，维护方法有问题",
+            bkReasonName: "商品尺寸不合适",
             totalBreakTimeRate: "7.38%",
             totalBreakTime: 960,
           },
           {
-            bkReasonName: "自然劣化(预测困难)",
+            bkReasonName: "商品质量问题",
             totalBreakTimeRate: "7.04%",
             totalBreakTime: 915,
           },
           {
-            bkReasonName: "材质缺陷(质量，热处理，表面处理)",
+            bkReasonName: "商品数量不足",
             totalBreakTimeRate: "7.02%",
             totalBreakTime: 913,
           },
           {
-            bkReasonName: "点检周期有问题",
+            bkReasonName: "商品配件缺失",
             totalBreakTimeRate: "3.50%",
             totalBreakTime: 455,
           },
           {
-            bkReasonName: "修理维护周期不适当",
+            bkReasonName: "商品外观破损",
             totalBreakTimeRate: "3.18%",
             totalBreakTime: 413,
           },
           {
-            bkReasonName: "机种，型式选定有问题",
+            bkReasonName: "商品包装破损",
             totalBreakTimeRate: "2.64%",
             totalBreakTime: 343,
           },
           {
-            bkReasonName: "运转操作技能，知识不足",
+            bkReasonName: "错发商品",
             totalBreakTimeRate: "1.84%",
             totalBreakTime: 239,
           },
           {
-            bkReasonName: "异物侵入",
+            bkReasonName: "重复购买",
             totalBreakTimeRate: "1.48%",
             totalBreakTime: 193,
           },
           {
-            bkReasonName: "尺寸，强度，容量有问题",
+            bkReasonName: "不再需要",
             totalBreakTimeRate: "1.24%",
             totalBreakTime: 161,
           },
           {
-            bkReasonName: "组装，配合施工技术差",
+            bkReasonName: "物流配送延误",
             totalBreakTimeRate: "1.18%",
             totalBreakTime: 154,
           },
           {
-            bkReasonName: "松动松弛",
+            bkReasonName: "签收后发现缺件",
             totalBreakTimeRate: "1.08%",
             totalBreakTime: 140,
           },
           {
-            bkReasonName: "组装，配合方法上有问题",
+            bkReasonName: "商品保质期不足",
             totalBreakTimeRate: "1.05%",
             totalBreakTime: 137,
           },
           {
-            bkReasonName: "疲劳损伤",
+            bkReasonName: "商品型号不匹配",
             totalBreakTimeRate: "0.96%",
             totalBreakTime: 125,
           },
           {
-            bkReasonName: "油质劣化",
+            bkReasonName: "商品临期",
             totalBreakTimeRate: "0.91%",
             totalBreakTime: 118,
           },
           {
-            bkReasonName: "异常振动",
+            bkReasonName: "商品价格变动",
             totalBreakTimeRate: "0.74%",
             totalBreakTime: 96,
           },
           {
-            bkReasonName: "配合加工有问题",
+            bkReasonName: "优惠未正确抵扣",
             totalBreakTimeRate: "0.69%",
             totalBreakTime: 90,
           },
           {
-            bkReasonName: "异物混入",
+            bkReasonName: "订单重复扣款",
             totalBreakTimeRate: "0.68%",
             totalBreakTime: 88,
           },
           {
-            bkReasonName: "规格不符",
+            bkReasonName: "订单地址填写错误",
             totalBreakTimeRate: "0.46%",
             totalBreakTime: 60,
           },
           {
-            bkReasonName: "异常温度",
+            bkReasonName: "冷链温控异常",
             totalBreakTimeRate: "0.38%",
             totalBreakTime: 50,
           },
           {
-            bkReasonName: "安装，拆卸方法上有问题",
+            bkReasonName: "预售交付延期",
             totalBreakTimeRate: "0.23%",
             totalBreakTime: 30,
           },
           {
-            bkReasonName: "机械剥离",
+            bkReasonName: "组合商品缺货",
             totalBreakTimeRate: "0.22%",
             totalBreakTime: 29,
           },
           {
-            bkReasonName: "误运转操作",
+            bkReasonName: "商品标签信息错误",
             totalBreakTimeRate: "0.19%",
             totalBreakTime: 25,
           },
           {
-            bkReasonName: "温度(在计划设计时不能预测)",
+            bkReasonName: "商品功能与介绍不符",
             totalBreakTimeRate: "0.12%",
             totalBreakTime: 15,
           },
@@ -920,10 +920,10 @@ export default defineComponent({
         message: "",
         code: 200,
         result: [
-          { stopReasonType: "设备原因" },
-          { stopReasonType: "维修原因" },
-          { stopReasonType: "管理原因" },
-          { stopReasonType: "操作原因" },
+          { stopReasonType: "商品质量原因" },
+          { stopReasonType: "售后处理原因" },
+          { stopReasonType: "订单管理问题" },
+          { stopReasonType: "订单操作问题" },
           { stopReasonType: "其他原因" },
         ],
         timestamp: 1745118762197,
@@ -1006,7 +1006,7 @@ export default defineComponent({
         );
       } else {
         message.error(
-          this.stopReasonDataJson.message || "获取故障模式失败 (来自 JSON)"
+          this.stopReasonDataJson.message || "获取退货原因失败 (来自 JSON)"
         );
         this.attrCnts.faultModeOptions = [];
       }
@@ -1138,7 +1138,7 @@ export default defineComponent({
 /* --- 特定筛选控件宽度 --- */
 .search-tree-select {
   width: 240px;
-  /* 产线树选择器宽度 */
+  /* 商品分类树选择器宽度 */
 }
 
 .search-input,

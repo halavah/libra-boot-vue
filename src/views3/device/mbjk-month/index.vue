@@ -8,10 +8,10 @@
         :inline="true"
       >
         <div class="search-filters">
-          <el-form-item label="厂处" prop="plNoKey">
+          <el-form-item label="店铺" prop="plNoKey">
             <el-select
               v-model="searchForm.plNoKey"
-              placeholder="默认全部厂处"
+              placeholder="默认全部店铺"
               class="search-select"
               multiple
               clearable

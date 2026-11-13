@@ -5,7 +5,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 
 export default {
-  name: 'export',
+  name: 'upload-form',
   setup() {
     // 加载
     // 1.主页面
@@ -30,7 +30,7 @@ export default {
     const searchFormRef = ref('')
     const searchFormRules = reactive({
       // equipmentNo: [
-      //     {required: true, message: '请输入设备号', trigger: 'blur'},
+      //     {required: true, message: '请输入商品编号', trigger: 'blur'},
       // ],
       vDay: [
         { type: 'array', required: true, message: '请选择日期范围', trigger: 'change' }
@@ -72,9 +72,9 @@ export default {
 
     // ===== 文件上传 =====
     // 文件地址
-    const fileUrl = "http://localhost:9932/libra-office/sys/common/upload"
+    const fileUrl = "http://localhost:9932/libra-office/file/upload"
     // 图片地址
-    const imageUrl = "http://localhost:9932/libra-office/sys/common/static/"
+    const imageUrl = "http://localhost:9932/libra-office/file/static/"
     // 调用Token
     const uploadHeaders = {
       'X-Access-Token': ''
@@ -439,21 +439,21 @@ export default {
       dataList: [],
       // 筛选-表格-弹框表单
       dataForm: {
-        plNo: '', // 厂处编号
-        plName: '', // 厂处中文名
-        breakDownNo: '', // 事故编号
-        informDate: '', // 停机起始日期
-        informTime: '', // 停机起始时间
-        informfullDate: '', // 停机起始完整日期
-        arriveDate: '', // 停机结束日期
-        arriveTime: '', // 停机结束时间
-        arrivefullDate: '', // 停机结束完整日期
-        totalBreakTime: '', // 停机总时间
+        plNo: '', // 店铺编号
+        plName: '', // 店铺中文名
+        breakDownNo: '', // 售后单号
+        informDate: '', // 订单暂停起始日期
+        informTime: '', // 订单暂停起始时间
+        informfullDate: '', // 订单暂停起始完整日期
+        arriveDate: '', // 订单暂停结束日期
+        arriveTime: '', // 订单暂停结束时间
+        arrivefullDate: '', // 订单暂停结束完整日期
+        totalBreakTime: '', // 订单暂停总时间
         breakDownGrade: '', // 重要度
-        bkPart: '', // 故障部位
+        bkPart: '', // 售后异常部位
         bkReason: '', // 不良原因
         breakDownName: '', // 维护履历名称
-        relegation: '', // 事故归属
+        relegation: '', // 售后事件归属
         textArea2: '', // 退货原因分析
         textArea3: '', // 改进防范措施
         textArea4: '', // 改进防范措施
@@ -461,9 +461,9 @@ export default {
         reportMemo: '', // 整改回报内容
       },
 
-      // 设备号模糊查询
-      equipmentNoTableVisible: false, // 设备号表格是否显示
-      equipmentNoTableData: [],       // 设备号表格数据
+      // 商品编号模糊查询
+      equipmentNoTableVisible: false, // 商品编号表格是否显示
+      equipmentNoTableData: [],       // 商品编号表格数据
       equipmentNoTablePage: 1,        // 当前页码
       equipmentNoTablePageSize: 5,    // 每页条数
 
@@ -509,7 +509,7 @@ export default {
           {
             "plName": "服饰旗舰店-商品分组01",
             "breakDownNo": "Y201020104-001",
-            "breakDownName": "家电旗舰店一工场二商品分组1#编码器异常事故",
+            "breakDownName": "演示售后单001：订单商品漏发需补寄",
             "plNo": "Y201",
             "equipmentName": "演示订单售后记录005",
             "relegationName": "电气",
@@ -531,7 +531,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组01",
             "breakDownNo": "W901020701-001",
-            "breakDownName": "一线密封风机电机烧",
+            "breakDownName": "演示售后单101：商品规格与描述不符",
             "plNo": "W901",
             "equipmentName": "演示商品006",
             "relegationName": "机械",
@@ -586,7 +586,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组03",
             "breakDownNo": "W903050101-003",
-            "breakDownName": "关于顺盛三线入库斗提机链条异响售后报告",
+            "breakDownName": "演示售后单002：商品规格与下单选择不符",
             "plNo": "W903",
             "equipmentName": "演示商品009",
             "relegationName": "机械",
@@ -663,7 +663,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组04",
             "breakDownNo": "W904020401-003",
-            "breakDownName": "关于四线立磨主辊液压站故障售后报告",
+            "breakDownName": "演示售后单003：物流包裹破损申请换货",
             "plNo": "W904",
             "equipmentName": "演示订单售后记录019",
             "relegationName": "机械",
@@ -674,7 +674,7 @@ export default {
           {
             "plName": "母婴旗舰店",
             "breakDownNo": "Y401060301-001",
-            "breakDownName": "1号下夹送辊裂纹事故",
+            "breakDownName": "演示售后单102：商品颜色与描述不符",
             "plNo": "Y401",
             "equipmentName": "演示商品014",
             "relegationName": "机械",
@@ -707,7 +707,7 @@ export default {
           {
             "plName": "美妆旗舰店-商品分组04",
             "breakDownNo": "W904020401-002",
-            "breakDownName": "关于四线立磨主辊液压站故障售后报告",
+            "breakDownName": "演示售后单003：物流包裹破损申请换货",
             "plNo": "W904",
             "equipmentName": "演示订单售后记录019",
             "relegationName": "机械",
@@ -729,7 +729,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y812012007-001",
-            "breakDownName": "酸平线氩弧焊机剪切油缸缸头断裂处理的售后报告",
+            "breakDownName": "演示售后单004：订单重复扣款申请退款",
             "plNo": "Y807",
             "equipmentName": "演示商品016",
             "relegationName": "机械",
@@ -740,7 +740,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y812021916-001",
-            "breakDownName": "酸平线平整机下支承辊接轴异响处理",
+            "breakDownName": "演示售后单005：预售订单延期发货",
             "plNo": "Y807",
             "equipmentName": "演示商品017",
             "relegationName": "机械",
@@ -751,7 +751,7 @@ export default {
           {
             "plName": "母婴旗舰店",
             "breakDownNo": "Y401113402-002",
-            "breakDownName": "测厚仪射源无法启动故障",
+            "breakDownName": "演示售后单103：商品尺寸不合适",
             "plNo": "Y401",
             "equipmentName": "演示订单售后记录025",
             "relegationName": "电气",
@@ -762,7 +762,7 @@ export default {
           {
             "plName": "服饰旗舰店-商品分组02",
             "breakDownNo": "Y202040903-001",
-            "breakDownName": "家电旗舰店一工场三商品分组预穿水阀门事故",
+            "breakDownName": "演示售后单006：商品配件缺失申请补发",
             "plNo": "Y202",
             "equipmentName": "演示订单售后记录026",
             "relegationName": "机械",
@@ -773,7 +773,7 @@ export default {
           {
             "plName": "图书旗舰店-商品分组07",
             "breakDownNo": "Y812012010-001",
-            "breakDownName": "近期酸平板面压坑缺陷处理",
+            "breakDownName": "演示售后单104：商品质量问题",
             "plNo": "Y807",
             "equipmentName": "演示商品018",
             "relegationName": "机械",
@@ -1287,7 +1287,7 @@ export default {
     this.query();
     // 2.查询树形列表
     this.queryTree();
-    // 3.查询故障模式列表
+    // 3.查询退货原因列表
     this.queryRelegationNames();
   },
   methods: {
@@ -1340,7 +1340,7 @@ export default {
       await formEl.validate((valid) => {
         if (valid) {
           _this.query();
-          // 重置时隐藏设备号模糊查询表格
+          // 重置时隐藏商品编号模糊查询表格
           this.equipmentNoTableVisible = false;
         } else {
           ElMessage.warning('请检查相关参数');
@@ -1356,15 +1356,15 @@ export default {
       }
       formEl.resetFields();
       _this.query();
-      // 重置时隐藏设备号模糊查询表格
+      // 重置时隐藏商品编号模糊查询表格
       this.equipmentNoTableVisible = false;
       this.equipmentNoTableData = [];
       this.equipmentNoTablePage = 1;
     },
 
-    /*******************************************************调用：设备号输入*******************************************************/
+    /*******************************************************调用：商品编号输入*******************************************************/
 
-    // 设备号输入监听
+    // 商品编号输入监听
     onEquipmentNoInput(val) {
       let _this = this;
       // 限制长度
@@ -1372,7 +1372,7 @@ export default {
         _this.searchForm.equipmentNo = val.slice(0, 12);
         return;
       }
-      // 自动产线匹配
+      // 自动商品分类匹配
       if (val.length >= 2) {
         const plNo = val.slice(0, 4);
         const found = _this.findPlNamesByPlNos([plNo], _this.treeData);
@@ -1394,7 +1394,7 @@ export default {
       } else {
         _this.searchForm.plNoKey = [];
       }
-      // 自动设备号模糊查询
+      // 自动商品编号模糊查询
       if (val.length >= 4) {
         _this.queryEquipmentNoList(val);
         // 自动赋值商品名称
@@ -1406,26 +1406,26 @@ export default {
         _this.searchForm.equipmentName = '';
       }
     },
-    // 设备号模糊查询
+    // 商品编号模糊查询
     async queryEquipmentNoList(val) {
       let _this = this;
       _this.equipmentNoTableData = _this.equipmentNoListData.result;
       _this.equipmentNoTableVisible = _this.equipmentNoTableData.length > 0;
       _this.equipmentNoTablePage = 1;
     },
-    // 单击表格行填充设备号
+    // 单击表格行填充商品编号
     onEquipmentNoRowClick(row) {
       let _this = this;
       _this.searchForm.equipmentNo = row.EQUIPMENTNO;
       _this.searchForm.equipmentName = row.EQUIPMENTNAME;
       _this.equipmentNoTableVisible = false;
-      // 自动产线匹配
+      // 自动商品分类匹配
       if (row.EQUIPMENTNO && row.EQUIPMENTNO.length >= 4) {
         const plNo = row.EQUIPMENTNO.slice(0, 4);
         _this.searchForm.plNoKey = [plNo];
       }
     },
-    // 产线输入框focus时重置treeData为原始数据
+    // 商品分类输入框focus时重置treeData为原始数据
     onPlNoTreeFocus() {
       let _this = this;
       if (_this.originalTreeData && _this.originalTreeData.length > 0) {
@@ -1480,167 +1480,6 @@ export default {
       _this.dataFormTitle = '详情'
       _this.dataFormVisible = true;
       _this.dataFormStatus = 'detail';
-    },
-
-    /*******************************************************导出：Excel*******************************************************/
-
-    // easy：get请求
-    async exportExcelEasyGetRequest() {
-      const url = new URL(this.wsUrl + '/exportExcel/easy/getRequest');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // easy：post请求
-    async exportExcelEasyPostRequest() {
-      let _this = this;
-      _this.loading = true;
-      let params = {
-        year: dayjs().format('YYYY'),
-        title: '故障数据导出'
-      };
-      await axios({
-        url: _this.wsUrl + '/exportExcel/easy/postRequest',
-        method: 'POST',
-        data: JSON.stringify(params),
-        headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-        responseType: 'blob'
-      }).then(res => {
-        if (res.data) {
-          const blob = new Blob([res.data], {
-            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-          });
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.download = decodeURIComponent(res.headers['file-name']);
-          link.click();
-          window.URL.revokeObjectURL(link.href);
-        } else {
-          ElMessage.error('导出失败');
-        }
-        _this.loading = false;
-      });
-    },
-
-    // poi：get请求
-    async exportExcelPoi() {
-      const url = new URL(this.wsUrl + '/exportExcel/poi');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // poi：get请求，template
-    async exportExcelPoiTemplate() {
-      const url = new URL(this.wsUrl + '/exportExcel/poi/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求
-    async exportExcelAspose() {
-      const url = new URL(this.wsUrl + '/exportExcel/aspose');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求，util
-    async exportExcelAsposeUtil() {
-      const url = new URL(this.wsUrl + '/exportExcel/aspose/util');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求，template
-    async exportExcelAsposeTemplate() {
-      const url = new URL(this.wsUrl + '/exportExcel/aspose/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-
-    /*******************************************************导出：Word*******************************************************/
-
-    // poi：get请求
-    async exportWordPoi() {
-      const url = new URL(this.wsUrl + '/exportWord/poi');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // poi：get请求，template
-    async exportWordPoiTemplate() {
-      const url = new URL(this.wsUrl + '/exportWord/poi/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-
-    // aspose：get请求
-    async exportWordAspose() {
-      const url = new URL(this.wsUrl + '/exportWord/aspose');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求，template
-    async exportWordAsposeTemplate() {
-      const url = new URL(this.wsUrl + '/exportWord/aspose/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    /*******************************************************导出：Pptx*******************************************************/
-
-    // poi：get请求
-    async exportPptxPoi() {
-      const url = new URL(this.wsUrl + '/exportPptx/poi');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // poi：get请求，template
-    async exportPptxPoiTemplate() {
-      const url = new URL(this.wsUrl + '/exportPptx/poi/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求
-    async exportPptxAspose() {
-      const url = new URL(this.wsUrl + '/exportPptx/aspose');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求，template
-    async exportPptxAsposeTemplate() {
-      const url = new URL(this.wsUrl + '/exportPptx/aspose/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '故障数据导出');
-      window.open(url.toString());
-    },
-
-    // 表格图片预览
-    previewTableImage(row) {
-      if (row.imageUrl) {
-        this.dialogImageUrl = row.imageUrl;
-        this.dialogVisible = true;
-      } else {
-        ElMessage.warning('该行没有图片');
-      }
     },
   },
 };

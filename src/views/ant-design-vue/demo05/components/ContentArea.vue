@@ -7,7 +7,7 @@
         <a-col :span="6">
           <a-card :bordered="false" class="list-card" size="small">
             <template #title>
-              <span>故障模式列表</span>
+              <span>退货原因列表</span>
             </template>
             <a-table
               :columns="tableColumns"
@@ -31,7 +31,7 @@
         <a-col :span="18">
           <a-card :bordered="false" class="chart-card" size="small">
             <template #title>
-              <span>故障模式分布图（%）</span>
+              <span>退货原因分布图（%）</span>
             </template>
             <div ref="chartRef" class="chart-container"></div>
           </a-card>
@@ -81,13 +81,13 @@ export default defineComponent({
       resizeHandler: null,
       tableColumns: [
         {
-          title: "故障模式",
+          title: "退货原因",
           dataIndex: "bkReasonName",
           key: "bkReasonName",
           ellipsis: true,
         },
         {
-          title: "停机时间",
+          title: "订单暂停时长",
           dataIndex: "totalBreakTime",
           key: "totalBreakTime",
           width: 100,
@@ -184,7 +184,7 @@ export default defineComponent({
           },
           series: [
             {
-              name: "故障模式",
+              name: "退货原因",
               type: "pie",
               radius: "70%",
               center: ["60%", "50%"],

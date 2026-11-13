@@ -30,7 +30,7 @@ export default {
     const searchFormRef = ref('')
     const searchFormRules = reactive({
       // equipmentNo: [
-      //     {required: true, message: '请输入设备号', trigger: 'blur'},
+      //     {required: true, message: '请输入商品编号', trigger: 'blur'},
       // ],
       vDay: [
         { type: 'array', required: true, message: '请选择日期范围', trigger: 'change' }
@@ -125,21 +125,21 @@ export default {
       dataList: [],
       // 筛选-表格-弹框表单
       dataForm: {
-        plNo: '', // 厂处编号
-        plName: '', // 厂处中文名
-        breakDownNo: '', // 事故编号
-        informDate: '', // 停机起始日期
-        informTime: '', // 停机起始时间
-        informfullDate: '', // 停机起始完整日期
-        arriveDate: '', // 停机结束日期
-        arriveTime: '', // 停机结束时间
-        arrivefullDate: '', // 停机结束完整日期
-        totalBreakTime: '', // 停机总时间
+        plNo: '', // 店铺编号
+        plName: '', // 店铺中文名
+        breakDownNo: '', // 售后单号
+        informDate: '', // 订单暂停起始日期
+        informTime: '', // 订单暂停起始时间
+        informfullDate: '', // 订单暂停起始完整日期
+        arriveDate: '', // 订单暂停结束日期
+        arriveTime: '', // 订单暂停结束时间
+        arrivefullDate: '', // 订单暂停结束完整日期
+        totalBreakTime: '', // 订单暂停总时间
         breakDownGrade: '', // 重要度
-        bkPart: '', // 故障部位
+        bkPart: '', // 售后异常部位
         bkReason: '', // 不良原因
         breakDownName: '', // 维护履历名称
-        relegation: '', // 事故归属
+        relegation: '', // 售后事件归属
         textArea2: '', // 退货原因分析
         textArea3: '', // 改进防范措施
         textArea4: '', // 改进防范措施
@@ -147,9 +147,9 @@ export default {
         reportMemo: '', // 整改回报内容
       },
 
-      // 设备号模糊查询
-      equipmentNoTableVisible: false, // 设备号表格是否显示
-      equipmentNoTableData: [],       // 设备号表格数据
+      // 商品编号模糊查询
+      equipmentNoTableVisible: false, // 商品编号表格是否显示
+      equipmentNoTableData: [],       // 商品编号表格数据
       equipmentNoTablePage: 1,        // 当前页码
       equipmentNoTablePageSize: 5,    // 每页条数
     };
@@ -159,7 +159,7 @@ export default {
     this.query();
     // 2.查询树形列表
     this.queryTree();
-    // 3.查询故障模式列表
+    // 3.查询退货原因列表
     this.queryRelegationNames();
   },
   methods: {
@@ -169,7 +169,7 @@ export default {
       _this.loading = true;
       // 取plNoKey
       const plNoKeyArr = Array.isArray(_this.searchForm.plNoKey) ? _this.searchForm.plNoKey : [];
-      // 如果设备号有值且设备号表格只查到1条，自动赋值商品名称
+      // 如果商品编号有值且商品编号表格只查到1条，自动赋值商品名称
       if (_this.searchForm.equipmentNo && _this.equipmentNoTableData.length === 1) {
         const onlyRow = _this.equipmentNoTableData[0];
         if (onlyRow.EQUIPMENTNO === _this.searchForm.equipmentNo) {
@@ -258,7 +258,7 @@ export default {
             label: item.relegationNameType
           }));
         } else {
-          ElMessage.error(res.data.message || '获取停机类型失败');
+          ElMessage.error(res.data.message || '获取订单暂停类型失败');
         }
         _this.loading = false;
       });
@@ -273,7 +273,7 @@ export default {
       await formEl.validate((valid) => {
         if (valid) {
           _this.query();
-          // 重置时隐藏设备号模糊查询表格
+          // 重置时隐藏商品编号模糊查询表格
           this.equipmentNoTableVisible = false;
         } else {
           ElMessage.warning('请检查相关参数');
@@ -289,15 +289,15 @@ export default {
       }
       formEl.resetFields();
       _this.query();
-      // 重置时隐藏设备号模糊查询表格
+      // 重置时隐藏商品编号模糊查询表格
       this.equipmentNoTableVisible = false;
       this.equipmentNoTableData = [];
       this.equipmentNoTablePage = 1;
     },
 
-    /*******************************************************调用：设备号输入*******************************************************/
+    /*******************************************************调用：商品编号输入*******************************************************/
 
-    // 设备号输入监听
+    // 商品编号输入监听
     onEquipmentNoInput(val) {
       let _this = this;
       // 限制长度
@@ -305,7 +305,7 @@ export default {
         _this.searchForm.equipmentNo = val.slice(0, 12);
         return;
       }
-      // 自动产线匹配
+      // 自动商品分类匹配
       if (val.length >= 2) {
         const plNo = val.slice(0, 4);
         const found = _this.findPlNamesByPlNos([plNo], _this.treeData);
@@ -327,7 +327,7 @@ export default {
       } else {
         _this.searchForm.plNoKey = [];
       }
-      // 自动设备号模糊查询
+      // 自动商品编号模糊查询
       if (val.length >= 4) {
         _this.queryEquipmentNoList(val);
         // 自动赋值商品名称
@@ -339,7 +339,7 @@ export default {
         _this.searchForm.equipmentName = '';
       }
     },
-    // 设备号模糊查询
+    // 商品编号模糊查询
     async queryEquipmentNoList(val) {
       let _this = this;
       _this.loading = true;
@@ -360,19 +360,19 @@ export default {
         _this.loading = false;
       });
     },
-    // 单击表格行填充设备号
+    // 单击表格行填充商品编号
     onEquipmentNoRowClick(row) {
       let _this = this;
       _this.searchForm.equipmentNo = row.EQUIPMENTNO;
       _this.searchForm.equipmentName = row.EQUIPMENTNAME;
       _this.equipmentNoTableVisible = false;
-      // 自动产线匹配
+      // 自动商品分类匹配
       if (row.EQUIPMENTNO && row.EQUIPMENTNO.length >= 4) {
         const plNo = row.EQUIPMENTNO.slice(0, 4);
         _this.searchForm.plNoKey = [plNo];
       }
     },
-    // 产线输入框focus时重置treeData为原始数据
+    // 商品分类输入框focus时重置treeData为原始数据
     onPlNoTreeFocus() {
       let _this = this;
       if (_this.originalTreeData && _this.originalTreeData.length > 0) {

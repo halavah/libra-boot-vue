@@ -125,8 +125,8 @@ export default {
           "dataList": [
             {
               "mzrqfw": "第1周(05.01-05.07),第2周(05.08-05.14),第3周(05.15-05.21),第4周(05.22-05.28),第5周(05.29-05.31)",
-              "zbgkglbm": "设备处+信息自动化处",
-              "mbmc": "故障时间",
+              "zbgkglbm": "售后团队+订单运营团队",
+              "mbmc": "售后处理时长",
               "jxz": {
                 "source": "0.0",
                 "parsedValue": 0
@@ -219,7 +219,7 @@ export default {
 
     /**
      * @description 根据获取的数据准备并设置柱状图和折线图的配置。
-     * @param {Array<number>} chartActualData - "故障时间"系列的数据数组。
+     * @param {Array<number>} chartActualData - "售后处理时长"系列的数据数组。
      * @param {number} chartTargetValue - "指标值"的单一数值。
      * @param {Array<number>} weekNumbers - 周数组，例如 [1, 2, ..., ]。
      * @param {string} currentMonth - 当前选中的月份字符串，用于图表标题。
@@ -246,7 +246,7 @@ export default {
           axisPointer: { type: 'shadow' }
         },
         legend: {
-          data: ['故障时间', '指标值'],
+          data: ['售后处理时长', '指标值'],
           bottom: 10,
           left: 'center'
         },
@@ -269,7 +269,7 @@ export default {
           name: '时间'
         },
         title: {
-          text: currentMonth + '设备事故管理目标监控',
+          text: currentMonth + '订单售后管理目标监控',
           left: 'center',
           top: -5,
           textStyle: {
@@ -283,7 +283,7 @@ export default {
         ...baseOption,
         series: [
           {
-            name: '故障时间',
+            name: '售后处理时长',
             type: 'bar',
             barWidth: '40%',
             data: processedChartData,
@@ -327,7 +327,7 @@ export default {
         ...baseOption,
         series: [
           {
-            name: '故障时间',
+            name: '售后处理时长',
             type: 'line',
             data: processedChartData,
             symbol: 'circle',

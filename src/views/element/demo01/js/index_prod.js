@@ -28,7 +28,7 @@ export default {
     const searchFormRef = ref('')
     const searchFormRules = reactive({
       // equipmentNo: [
-      //     {required: true, message: '请输入设备号', trigger: 'blur'},
+      //     {required: true, message: '请输入商品编号', trigger: 'blur'},
       // ],
       vDay: [
         { type: 'array', required: true, message: '请选择日期范围', trigger: 'change' }
@@ -227,7 +227,7 @@ export default {
             return { label: item.stopReasonType, value: item.stopReasonType };
           });
         } else {
-          ElMessage.error(res.data.message || '获取下拉框_故障模式失败');
+          ElMessage.error(res.data.message || '获取下拉框_退货原因失败');
         }
         _this.loading = false;
       });
@@ -297,7 +297,7 @@ export default {
       ];
       const option = {
         // title: { // 移除标题
-        //   text: '故障模式分布图 (%)',
+        //   text: '退货原因分布图 (%)',
         //   left: 'center'
         // },
         tooltip: {
@@ -309,7 +309,7 @@ export default {
           orient: 'vertical', // 垂直布局
           right: 10,          // 靠右
           top: 'center',      // 垂直居中
-          data: categories,   // 图例数据使用故障模式名称
+          data: categories,   // 图例数据使用退货原因名称
           type: 'scroll',     // 如果图例项过多，允许滚动
           tooltip: {          // 为图例添加提示框
             show: true
@@ -338,7 +338,7 @@ export default {
         },
         yAxis: { // 原来的 X 轴
           type: 'category',
-          data: categories, // Y 轴数据使用故障模式名称
+          data: categories, // Y 轴数据使用退货原因名称
           axisTick: {
             alignWithLabel: true
           },
@@ -349,7 +349,7 @@ export default {
           }
         },
         series: [{
-          name: '故障模式分布', // 系列名称，与图例对应
+          name: '退货原因分布', // 系列名称，与图例对应
           type: 'bar',
           data: rates, // 系列数据使用解析后的百分比数值
           label: { // 添加标签配置

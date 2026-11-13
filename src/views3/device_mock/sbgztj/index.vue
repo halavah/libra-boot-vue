@@ -9,7 +9,7 @@
         :inline="true"
         class="vertical-center-form"
       >
-        <el-form-item label="厂处" prop="plNames">
+        <el-form-item label="店铺" prop="plNames">
           <el-select
             v-model="searchForm.plNames"
             multiple
@@ -17,7 +17,7 @@
             collapse-tags
             collapse-tags-tooltip
             :max-collapse-tags="1"
-            placeholder="请选择厂处"
+            placeholder="请选择店铺"
             style="width: 240px"
           >
             <el-option
@@ -57,7 +57,7 @@
           <!-- 表格1 -->
           <el-col :span="16">
             <el-card shadow="never" class="list-card">
-              <template #header>停机次数统计</template>
+              <template #header>订单暂停次数统计</template>
               <div style="overflow-x: auto" ref="tableARef">
                 <el-table
                   :data="countList"
@@ -166,7 +166,7 @@
           <el-col :span="8">
             <el-card shadow="never" class="chart-card">
               <template #header>
-                <span>停机次数统计图</span>
+                <span>订单暂停次数统计图</span>
               </template>
               <div class="charts-wrapper">
                 <div ref="countBarChart" class="chart-container" />
@@ -179,7 +179,7 @@
           <!-- 表格2 -->
           <el-col :span="16">
             <el-card shadow="never" class="list-card">
-              <template #header>停机时间统计</template>
+              <template #header>订单暂停时长统计</template>
               <div style="overflow-x: auto" ref="tableBRef">
                 <el-table
                   :data="timeList"
@@ -288,7 +288,7 @@
           <el-col :span="8">
             <el-card shadow="never" class="chart-card">
               <template #header>
-                <span>停机时间统计图</span>
+                <span>订单暂停时长统计图</span>
               </template>
               <div class="charts-wrapper">
                 <div ref="timeLineChart" class="chart-container" />

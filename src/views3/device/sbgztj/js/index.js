@@ -110,11 +110,11 @@ export default {
         vYear: dayjs().year().toString()
       },
 
-      // 停机次数
+      // 订单暂停次数
       countList: [],
       countBarChart: null,
 
-      // 停机时间
+      // 订单暂停时长
       timeList: [],
       timeLineChart: null,
 
@@ -125,7 +125,7 @@ export default {
   mounted() {
     // 1.查询
     this.query();
-    // 2.查询厂处列表
+    // 2.查询店铺列表
     this.queryPlNoList();
     // 3.监听窗口大小变化
     this.handleResize();
@@ -154,9 +154,9 @@ export default {
         }
       }).then(res => {
         if (res.data.success) {
-          // 1. 停机次数表格
+          // 1. 订单暂停次数表格
           _this.countList = res.data.result.countList;
-          // 2. 停机时间表格
+          // 2. 订单暂停时长表格
           _this.timeList = res.data.result.timeList;
           // 3. 分析功能
           _this.analyse = res.data.result.analyse;
@@ -169,7 +169,7 @@ export default {
       });
     },
 
-    // 查询_厂处列表
+    // 查询_店铺列表
     async queryPlNoList() {
       let _this = this;
       _this.loading = true;
@@ -186,7 +186,7 @@ export default {
             label: item.plname
           }));
         } else {
-          ElMessage.error(res.data.message || '获取厂处列表失败');
+          ElMessage.error(res.data.message || '获取店铺列表失败');
         }
         _this.loading = false;
       });
@@ -229,8 +229,8 @@ export default {
 
     /**
      * @description 初始化所有图表
-     * @param {Array} countData - 停机次数数据
-     * @param {Array} timeData - 停机时间数据
+     * @param {Array} countData - 订单暂停次数数据
+     * @param {Array} timeData - 订单暂停时长数据
      */
     initCharts(countData, timeData) {
       let _this = this;
@@ -268,11 +268,11 @@ export default {
         }
       };
 
-      // 停机次数图表配置
+      // 订单暂停次数图表配置
       const countOption = {
         ...baseOption,
         series: [{
-          name: '停机次数占比',
+          name: '订单暂停次数占比',
           type: 'pie',
           radius: '70%',
           center: ['40%', '50%'],
@@ -295,7 +295,7 @@ export default {
         }]
       };
 
-      // 停机时间图表配置
+      // 订单暂停时长图表配置
       const timeOption = {
         tooltip: {
           trigger: 'axis',

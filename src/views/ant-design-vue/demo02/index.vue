@@ -24,28 +24,28 @@
             -->
             <!-- 筛选条件 Flex 容器 -->
             <div class="search-filters-flex">
-              <!-- 产线选择 (TreeSelect) -->
+              <!-- 商品分类选择 (TreeSelect) -->
               <!-- a-form-item-rest 用于包裹非受控组件或自定义组件 -->
               <a-form-item-rest>
-                <a-form-item label="产线" name="plNos">
+                <a-form-item label="商品分类" name="plNos">
                   <a-tree-select
                     v-model:value="searchForm.plNos"
                     style="width: 180px"
                     :tree-data="treeData"
                     tree-checkable
                     allow-clear
-                    placeholder="默认全部产线"
+                    placeholder="默认全部商品分类"
                     :field-names="treeProps"
                     :treeDefaultExpandedKeys="expandedKeys"
                     class="search-tree-select"
                   />
                   <!--
-                    绑定产线数据: v-model:value="searchForm.plNos"
+                    绑定商品分类数据: v-model:value="searchForm.plNos"
                     固定宽度: style="width: 180px"
                     树数据源: :tree-data="treeData"
                     显示复选框: tree-checkable
                     允许清除: allow-clear
-                    占位提示: placeholder="默认全部产线"
+                    占位提示: placeholder="默认全部商品分类"
                     字段名映射: :field-names="treeProps"
                     默认展开节点: :treeDefaultExpandedKeys="expandedKeys"
                     自定义样式类: class="search-tree-select"
@@ -53,17 +53,17 @@
                 </a-form-item>
               </a-form-item-rest>
 
-              <!-- 设备号输入 (Input) -->
-              <a-form-item label="设备号" name="equipmentNo">
+              <!-- 商品编号输入 (Input) -->
+              <a-form-item label="商品编号" name="equipmentNo">
                 <a-input
                   v-model:value="searchForm.equipmentNo"
-                  placeholder="请输入设备号"
+                  placeholder="请输入商品编号"
                   allow-clear
                   class="search-input"
                 />
                 <!--
-                  绑定设备号数据: v-model:value="searchForm.equipmentNo"
-                  占位提示: placeholder="请输入设备号"
+                  绑定商品编号数据: v-model:value="searchForm.equipmentNo"
+                  占位提示: placeholder="请输入商品编号"
                   允许清除: allow-clear
                   自定义样式类: class="search-input"
                 -->
@@ -73,15 +73,15 @@
                 <a-select
                   v-model:value="searchForm.stopReasonName"
                   mode="multiple"
-                  placeholder="请选择故障模式"
+                  placeholder="请选择退货原因"
                   :options="attrCnts.faultModeOptions"
                   allow-clear
                   class="search-select"
                 />
                 <!--
-                  绑定故障模式数据: v-model:value="searchForm.stopReasonName"
+                  绑定退货原因数据: v-model:value="searchForm.stopReasonName"
                   多选模式: mode="multiple"
-                  占位提示: placeholder="请选择故障模式"
+                  占位提示: placeholder="请选择退货原因"
                   下拉选项: :options="attrCnts.faultModeOptions"
                   允许清除: allow-clear
                   自定义样式类: class="search-select"

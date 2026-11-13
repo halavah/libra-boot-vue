@@ -112,11 +112,11 @@ export default {
         vYear: dayjs().year().toString()
       },
 
-      // 停机次数
+      // 订单暂停次数
       countList: [],
       countBarChart: null,
 
-      // 停机时间
+      // 订单暂停时长
       timeList: [],
       timeBarChart: null,
 
@@ -131,7 +131,7 @@ export default {
         "result": {
           "countImgList": [
             {
-              "Type": "原料质量",
+              "Type": "商品质量",
               "YearlyTotal": 16,
               "Proportion": "39.02%"
             },
@@ -141,17 +141,17 @@ export default {
               "Proportion": "31.71%"
             },
             {
-              "Type": "仪电故障",
+              "Type": "支付异常",
               "YearlyTotal": 5,
               "Proportion": "12.20%"
             },
             {
-              "Type": "机械故障",
+              "Type": "商品破损",
               "YearlyTotal": 3,
               "Proportion": "7.32%"
             },
             {
-              "Type": "能源介质",
+              "Type": "物流延误",
               "YearlyTotal": 2,
               "Proportion": "4.88%"
             },
@@ -161,7 +161,7 @@ export default {
               "Proportion": "2.44%"
             },
             {
-              "Type": "系统故障",
+              "Type": "订单异常",
               "YearlyTotal": 1,
               "Proportion": "2.44%"
             }
@@ -175,7 +175,7 @@ export default {
               "March": 0,
               "April": 0,
               "August": 0,
-              "Type": "能源介质",
+              "Type": "物流延误",
               "October": 0,
               "December": 0,
               "Proportion": "32.87%",
@@ -192,7 +192,7 @@ export default {
               "March": 0,
               "April": 0,
               "August": 0,
-              "Type": "原料质量",
+              "Type": "商品质量",
               "October": 0,
               "December": 0,
               "Proportion": "22.96%",
@@ -226,7 +226,7 @@ export default {
               "March": 0,
               "April": 0,
               "August": 0,
-              "Type": "仪电故障",
+              "Type": "支付异常",
               "October": 0,
               "December": 0,
               "Proportion": "12.70%",
@@ -243,7 +243,7 @@ export default {
               "March": 0,
               "April": 0,
               "August": 0,
-              "Type": "机械故障",
+              "Type": "商品破损",
               "October": 0,
               "December": 0,
               "Proportion": "7.40%",
@@ -277,7 +277,7 @@ export default {
               "March": 0,
               "April": 0,
               "August": 0,
-              "Type": "系统故障",
+              "Type": "订单异常",
               "October": 0,
               "December": 0,
               "Proportion": "1.43%",
@@ -313,7 +313,7 @@ export default {
               "March": 0,
               "April": 0,
               "August": 0,
-              "Type": "原料质量",
+              "Type": "商品质量",
               "October": 0,
               "December": 0,
               "Proportion": "39.02%",
@@ -347,7 +347,7 @@ export default {
               "March": 0,
               "April": 0,
               "August": 0,
-              "Type": "仪电故障",
+              "Type": "支付异常",
               "October": 0,
               "December": 0,
               "Proportion": "12.20%",
@@ -364,7 +364,7 @@ export default {
               "March": 0,
               "April": 0,
               "August": 0,
-              "Type": "机械故障",
+              "Type": "商品破损",
               "October": 0,
               "December": 0,
               "Proportion": "7.32%",
@@ -381,7 +381,7 @@ export default {
               "March": 0,
               "April": 0,
               "August": 0,
-              "Type": "能源介质",
+              "Type": "物流延误",
               "October": 0,
               "December": 0,
               "Proportion": "4.88%",
@@ -415,7 +415,7 @@ export default {
               "March": 0,
               "April": 0,
               "August": 0,
-              "Type": "系统故障",
+              "Type": "订单异常",
               "October": 0,
               "December": 0,
               "Proportion": "2.44%",
@@ -444,12 +444,12 @@ export default {
           ],
           "timeImgList": [
             {
-              "Type": "能源介质",
+              "Type": "物流延误",
               "YearlyTotal": 919,
               "Proportion": "32.87%"
             },
             {
-              "Type": "原料质量",
+              "Type": "商品质量",
               "YearlyTotal": 642,
               "Proportion": "22.96%"
             },
@@ -459,12 +459,12 @@ export default {
               "Proportion": "20.92%"
             },
             {
-              "Type": "仪电故障",
+              "Type": "支付异常",
               "YearlyTotal": 355,
               "Proportion": "12.70%"
             },
             {
-              "Type": "机械故障",
+              "Type": "商品破损",
               "YearlyTotal": 207,
               "Proportion": "7.40%"
             },
@@ -474,12 +474,12 @@ export default {
               "Proportion": "1.72%"
             },
             {
-              "Type": "系统故障",
+              "Type": "订单异常",
               "YearlyTotal": 40,
               "Proportion": "1.43%"
             }
           ],
-          "analyse": "年份：2025年\n厂处：默认全厂处\n退货原因：\n该厂本年度共计停机类型：7种\n次数占比前三的类型分别是：原料质量（16次）、操作延误（13次）、仪电故障（5次）\n订单暂停时长前三的类型分别是：能源介质（919分钟）、原料质量（642分钟）、操作延误（585分钟）"
+          "analyse": "年份：2025年\n店铺：默认全店铺\n退货原因：\n该店铺本年度共计订单暂停类型：7种\n次数占比前三的类型分别是：商品质量（16次）、操作延误（13次）、支付异常（5次）\n订单暂停时长前三的类型分别是：物流延误（919分钟）、商品质量（642分钟）、操作延误（585分钟）"
         },
         "timestamp": 1748142060899
       },
@@ -552,25 +552,25 @@ export default {
             "reasonNameType": "运输影响"
           },
           {
-            "reasonNameType": "计划检修停机"
+            "reasonNameType": "预约订单暂停"
           },
           {
-            "reasonNameType": "计划外检修停机"
+            "reasonNameType": "异常订单暂停"
           },
           {
-            "reasonNameType": "行车故障"
+            "reasonNameType": "物流延误"
           },
           {
-            "reasonNameType": "能源介质"
+            "reasonNameType": "物流延误"
           },
           {
-            "reasonNameType": "系统故障"
+            "reasonNameType": "订单异常"
           },
           {
-            "reasonNameType": "程控故障"
+            "reasonNameType": "库存异常"
           },
           {
-            "reasonNameType": "机械故障"
+            "reasonNameType": "商品破损"
           },
           {
             "reasonNameType": "操作延误"
@@ -582,19 +582,19 @@ export default {
             "reasonNameType": "工艺计划"
           },
           {
-            "reasonNameType": "工艺装备故障"
+            "reasonNameType": "商品订单地址填写错误"
           },
           {
             "reasonNameType": "外部影响"
           },
           {
-            "reasonNameType": "原料质量"
+            "reasonNameType": "商品质量"
           },
           {
-            "reasonNameType": "仪表故障"
+            "reasonNameType": "价格异常"
           },
           {
-            "reasonNameType": "仪电故障"
+            "reasonNameType": "支付异常"
           }
         ],
         "timestamp": 1748142172399
@@ -604,7 +604,7 @@ export default {
   mounted() {
     // 1.查询
     this.query();
-    // 2.查询厂处列表
+    // 2.查询店铺列表
     this.queryPlNoList();
     // 3.查询退货原因列表
     this.queryReasonNameList();
@@ -619,9 +619,9 @@ export default {
     // 查询_表格
     async query() {
       let _this = this;
-      // 1. 停机次数表格
+      // 1. 订单暂停次数表格
       _this.countList = _this.listData.result.countList;
-      // 2. 停机时间表格
+      // 2. 订单暂停时长表格
       _this.timeList = _this.listData.result.timeList;
       // 3. 分析功能
       _this.analyse = _this.listData.result.analyse;
@@ -629,7 +629,7 @@ export default {
       _this.initCharts(_this.listData.result.countImgList, _this.listData.result.timeImgList);
     },
 
-    // 查询_厂处列表
+    // 查询_店铺列表
     async queryPlNoList() {
       let _this = this;
       _this.attrCnts.plNamesOptions = _this.plNoListData.result.map(item => ({
@@ -684,8 +684,8 @@ export default {
 
     /**
      * @description 初始化所有图表
-     * @param {Array} countData - 停机次数数据
-     * @param {Array} timeData - 停机时间数据
+     * @param {Array} countData - 订单暂停次数数据
+     * @param {Array} timeData - 订单暂停时长数据
      */
     initCharts(countData, timeData) {
       let _this = this;
@@ -723,11 +723,11 @@ export default {
         }
       };
 
-      // 停机次数图表配置
+      // 订单暂停次数图表配置
       const countOption = {
         ...baseOption,
         series: [{
-          name: '停机次数占比',
+          name: '订单暂停次数占比',
           type: 'pie',
           radius: '70%',
           center: ['40%', '50%'],
@@ -750,11 +750,11 @@ export default {
         }]
       };
 
-      // 停机时间图表配置
+      // 订单暂停时长图表配置
       const timeOption = {
         ...baseOption,
         series: [{
-          name: '停机时间占比',
+          name: '订单暂停时长占比',
           type: 'pie',
           radius: '70%',
           center: ['40%', '50%'],

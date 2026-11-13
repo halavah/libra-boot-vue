@@ -7,7 +7,7 @@
         <a-col :span="6">
           <a-card :bordered="false" class="list-card" size="small">
             <template #title>
-              <span>故障模式列表</span>
+              <span>退货原因列表</span>
             </template>
             <a-table
               :columns="tableColumns"
@@ -31,7 +31,7 @@
         <a-col :span="18">
           <a-card :bordered="false" class="chart-card" size="small">
             <template #title>
-              <span>故障模式分布图（%）</span>
+              <span>退货原因分布图（%）</span>
             </template>
             <div ref="chartRef" class="chart-container"></div>
           </a-card>
@@ -49,7 +49,7 @@ import { ref, watch, onMounted, onBeforeUnmount, inject, nextTick } from "vue";
 const echarts = inject("echarts"); // 从父组件或全局获取 ECharts 实例
 
 // --- Props 定义 ---
-// 接收父组件传递的故障模式列表数据
+// 接收父组件传递的退货原因列表数据
 const props = defineProps({
   dataList: {
     // 列表数据
@@ -67,13 +67,13 @@ let myChart = null; // ECharts 图表实例变量
 // 左侧表格的列定义
 const tableColumns = [
   {
-    title: "故障模式", // 列标题
+    title: "退货原因", // 列标题
     dataIndex: "bkReasonName", // 数据字段
     key: "bkReasonName", // 唯一键
     ellipsis: true, // 开启单元格内容省略
   },
   {
-    title: "停机时间", // 列标题
+    title: "订单暂停时长", // 列标题
     dataIndex: "totalBreakTime", // 数据字段
     key: "totalBreakTime", // 唯一键
     width: 100, // 列宽度
@@ -110,7 +110,7 @@ const setChartOption = (data) => {
       series: [
         // 系列列表
         {
-          name: "故障模式", // 系列名称
+          name: "退货原因", // 系列名称
           type: "pie", // 图表类型：饼图
           radius: "70%", // 饼图半径
           center: ["60%", "50%"], // 饼图中心位置 [水平, 垂直]

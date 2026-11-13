@@ -10,24 +10,24 @@
       >
         <!-- 条件容器 -->
         <div class="search-filters">
-          <el-form-item label="产线" prop="plNoKey">
+          <el-form-item label="商品分类" prop="plNoKey">
             <el-tree-select
               v-model="searchForm.plNoKey"
               :props="treeProps"
               :data="treeData"
               check-strictly
               :render-after-expand="false"
-              placeholder="默认全部产线"
+              placeholder="默认全部商品分类"
               class="search-tree-select"
               value-key="key"
               multiple
               clearable
             />
           </el-form-item>
-          <el-form-item label="设备号" prop="equipmentNo">
+          <el-form-item label="商品编号" prop="equipmentNo">
             <el-input
               v-model="searchForm.equipmentNo"
-              placeholder="请输入设备号"
+              placeholder="请输入商品编号"
               clearable
               class="search-input"
             ></el-input>
@@ -35,7 +35,7 @@
           <el-form-item label="商品售后模式" prop="stopReasonName">
             <el-select
               v-model="searchForm.stopReasonName"
-              placeholder="请选择故障模式"
+              placeholder="请选择退货原因"
               multiple
               clearable
               class="search-select"
@@ -119,17 +119,17 @@ dayjs.locale("zh-cn");
 
 // --- 类型定义 ---
 
-// 产线树节点接口
+// 商品分类树节点接口
 interface PlTreeNode {
   parent_plno: string | null; // 父节点编号
-  plname: string; // 产线名称
-  plno: string; // 产线编号
+  plname: string; // 商品分类名称
+  plno: string; // 商品分类编号
   key?: string; // 树选择器使用的 key
   isLeaf?: boolean; // 是否叶子节点
   children?: PlTreeNode[] | null; // 子节点
 }
 
-// 故障模式下拉选项接口
+// 退货原因下拉选项接口
 interface FaultModeOption {
   label: string; // 显示文本
   value: string; // 选项值
@@ -137,9 +137,9 @@ interface FaultModeOption {
 
 // 筛选表单数据接口
 interface SearchForm {
-  plNoKey: string[]; // 产线 key 数组
-  equipmentNo: string; // 设备号
-  stopReasonName: string[]; // 故障模式名称数组
+  plNoKey: string[]; // 商品分类 key 数组
+  equipmentNo: string; // 商品编号
+  stopReasonName: string[]; // 退货原因名称数组
   vDay: [string, string]; // 日期范围 [开始, 结束]
 }
 
@@ -152,17 +152,17 @@ interface ApiResponse<T> {
   timestamp: number; // 时间戳
 }
 
-// 故障模式列表 API 响应结果类型 (使用导入的类型)
+// 退货原因列表 API 响应结果类型 (使用导入的类型)
 type ListDataResult = FaultModeItem[];
 
-// 产线树 API 响应结果类型
+// 商品分类树 API 响应结果类型
 type TreeDataResult = PlTreeNode[];
 
-// 故障模式类型 API 响应结果接口
+// 退货原因类型 API 响应结果接口
 interface StopReasonTypeItem {
-  stopReasonType: string; // 故障模式类型名称
+  stopReasonType: string; // 退货原因类型名称
 }
-// 故障模式类型 API 响应结果类型
+// 退货原因类型 API 响应结果类型
 type StopReasonDataResult = StopReasonTypeItem[];
 
 // --- 组件定义 ---
@@ -176,12 +176,12 @@ export default defineComponent({
     // 定义响应式状态：页面加载状态
     const loading: Ref<boolean> = ref(true);
 
-    // 定义产线树选择器的配置
+    // 定义商品分类树选择器的配置
     const treeProps = {
       label: "plname", // 节点显示文本字段
       children: "children", // 子节点字段
     };
-    // 定义响应式状态：产线树数据
+    // 定义响应式状态：商品分类树数据
     const treeData: Ref<PlTreeNode[]> = ref([]);
 
     // 定义响应式引用：筛选表单实例
@@ -211,18 +211,18 @@ export default defineComponent({
   data(): {
     // 属性容器，存放下拉选项等动态数据
     attrCnts: {
-      faultModeOptions: FaultModeOption[]; // 故障模式下拉选项
+      faultModeOptions: FaultModeOption[]; // 退货原因下拉选项
     };
     // 筛选表单数据模型
     searchForm: SearchForm;
-    // 传递给子组件的故障模式列表数据
+    // 传递给子组件的退货原因列表数据
     dataList: FaultModeItem[];
     // 分析功能区域显示的文本
     analysisText: string;
     // 模拟 API 返回数据 (实际应通过 API 获取)
     listData: ApiResponse<ListDataResult>; // 列表数据
     treeDataJson: ApiResponse<TreeDataResult>; // 树数据
-    stopReasonData: ApiResponse<StopReasonDataResult>; // 故障类型数据
+    stopReasonData: ApiResponse<StopReasonDataResult>; // 售后异常类型数据
   } {
     return {
       // 初始化属性容器
@@ -243,9 +243,9 @@ export default defineComponent({
         "演示订单售后记录001",
 
       // --- 模拟数据区 (实际应用中应移除或替换为 API 调用) ---
-      listData: { success: true, message: "", code: 200, result: [ { bkReasonName: "其他", totalBreakTimeRate: "27.66%", totalBreakTime: 3596, }, { bkReasonName: "设计机构，构造有问题", totalBreakTimeRate: "19.58%", totalBreakTime: 2545, }, { bkReasonName: "点检方法，判定基准有问题", totalBreakTimeRate: "8.54%", totalBreakTime: 1110, }, { bkReasonName: "修理，维护方法有问题", totalBreakTimeRate: "7.38%", totalBreakTime: 960, }, { bkReasonName: "自然劣化(预测困难)", totalBreakTimeRate: "7.04%", totalBreakTime: 915, }, { bkReasonName: "材质缺陷(质量，热处理，表面处理)", totalBreakTimeRate: "7.02%", totalBreakTime: 913, }, { bkReasonName: "点检周期有问题", totalBreakTimeRate: "3.50%", totalBreakTime: 455, }, { bkReasonName: "修理维护周期不适当", totalBreakTimeRate: "3.18%", totalBreakTime: 413, }, { bkReasonName: "机种，型式选定有问题", totalBreakTimeRate: "2.64%", totalBreakTime: 343, }, { bkReasonName: "运转操作技能，知识不足", totalBreakTimeRate: "1.84%", totalBreakTime: 239, }, { bkReasonName: "异物侵入", totalBreakTimeRate: "1.48%", totalBreakTime: 193, }, { bkReasonName: "尺寸，强度，容量有问题", totalBreakTimeRate: "1.24%", totalBreakTime: 161, }, { bkReasonName: "组装，配合施工技术差", totalBreakTimeRate: "1.18%", totalBreakTime: 154, }, { bkReasonName: "松动松弛", totalBreakTimeRate: "1.08%", totalBreakTime: 140, }, { bkReasonName: "组装，配合方法上有问题", totalBreakTimeRate: "1.05%", totalBreakTime: 137, }, { bkReasonName: "疲劳损伤", totalBreakTimeRate: "0.96%", totalBreakTime: 125, }, { bkReasonName: "油质劣化", totalBreakTimeRate: "0.91%", totalBreakTime: 118, }, { bkReasonName: "异常振动", totalBreakTimeRate: "0.74%", totalBreakTime: 96, }, { bkReasonName: "配合加工有问题", totalBreakTimeRate: "0.69%", totalBreakTime: 90, }, { bkReasonName: "异物混入", totalBreakTimeRate: "0.68%", totalBreakTime: 88, }, { bkReasonName: "规格不符", totalBreakTimeRate: "0.46%", totalBreakTime: 60, }, { bkReasonName: "异常温度", totalBreakTimeRate: "0.38%", totalBreakTime: 50, }, { bkReasonName: "安装，拆卸方法上有问题", totalBreakTimeRate: "0.23%", totalBreakTime: 30, }, { bkReasonName: "机械剥离", totalBreakTimeRate: "0.22%", totalBreakTime: 29, }, { bkReasonName: "误运转操作", totalBreakTimeRate: "0.19%", totalBreakTime: 25, }, { bkReasonName: "温度(在计划设计时不能预测)", totalBreakTimeRate: "0.12%", totalBreakTime: 15, }, ], timestamp: 1745118762285, },
+      listData: { success: true, message: "", code: 200, result: [ { bkReasonName: "其他", totalBreakTimeRate: "27.66%", totalBreakTime: 3596, }, { bkReasonName: "商品规格与描述不符", totalBreakTimeRate: "19.58%", totalBreakTime: 2545, }, { bkReasonName: "商品颜色与描述不符", totalBreakTimeRate: "8.54%", totalBreakTime: 1110, }, { bkReasonName: "商品尺寸不合适", totalBreakTimeRate: "7.38%", totalBreakTime: 960, }, { bkReasonName: "商品质量问题", totalBreakTimeRate: "7.04%", totalBreakTime: 915, }, { bkReasonName: "商品数量不足", totalBreakTimeRate: "7.02%", totalBreakTime: 913, }, { bkReasonName: "商品配件缺失", totalBreakTimeRate: "3.50%", totalBreakTime: 455, }, { bkReasonName: "商品外观破损", totalBreakTimeRate: "3.18%", totalBreakTime: 413, }, { bkReasonName: "商品包装破损", totalBreakTimeRate: "2.64%", totalBreakTime: 343, }, { bkReasonName: "错发商品", totalBreakTimeRate: "1.84%", totalBreakTime: 239, }, { bkReasonName: "重复购买", totalBreakTimeRate: "1.48%", totalBreakTime: 193, }, { bkReasonName: "不再需要", totalBreakTimeRate: "1.24%", totalBreakTime: 161, }, { bkReasonName: "物流配送延误", totalBreakTimeRate: "1.18%", totalBreakTime: 154, }, { bkReasonName: "签收后发现缺件", totalBreakTimeRate: "1.08%", totalBreakTime: 140, }, { bkReasonName: "商品保质期不足", totalBreakTimeRate: "1.05%", totalBreakTime: 137, }, { bkReasonName: "商品型号不匹配", totalBreakTimeRate: "0.96%", totalBreakTime: 125, }, { bkReasonName: "商品临期", totalBreakTimeRate: "0.91%", totalBreakTime: 118, }, { bkReasonName: "商品价格变动", totalBreakTimeRate: "0.74%", totalBreakTime: 96, }, { bkReasonName: "优惠未正确抵扣", totalBreakTimeRate: "0.69%", totalBreakTime: 90, }, { bkReasonName: "订单重复扣款", totalBreakTimeRate: "0.68%", totalBreakTime: 88, }, { bkReasonName: "订单地址填写错误", totalBreakTimeRate: "0.46%", totalBreakTime: 60, }, { bkReasonName: "冷链温控异常", totalBreakTimeRate: "0.38%", totalBreakTime: 50, }, { bkReasonName: "预售交付延期", totalBreakTimeRate: "0.23%", totalBreakTime: 30, }, { bkReasonName: "组合商品缺货", totalBreakTimeRate: "0.22%", totalBreakTime: 29, }, { bkReasonName: "商品标签信息错误", totalBreakTimeRate: "0.19%", totalBreakTime: 25, }, { bkReasonName: "商品功能与介绍不符", totalBreakTimeRate: "0.12%", totalBreakTime: 15, }, ], timestamp: 1745118762285, },
       treeDataJson: { success: true, message: "", code: 200, result: [ { parent_plno: null, plname: "根节点", children: [ { parent_plno: "A1", plname: "电商物流中心", children: [ { parent_plno: "W1", plname: "电商物流中心-商品分组01", plno: "W101", }, ], plno: "W1", }, { parent_plno: "A1", plname: "商品运营中心", children: [ { parent_plno: "W2", plname: "商品运营中心-商品分组01", plno: "W201", }, { parent_plno: "W2", plname: "商品运营中心-商品分组02", plno: "W202", }, { parent_plno: "W2", plname: "商品运营中心-商品分组03", plno: "W203", }, { parent_plno: "W2", plname: "商品运营中心-商品分组04", plno: "W204", }, { parent_plno: "W2", plname: "商品运营中心-商品分组05", plno: "W205", }, { parent_plno: "W2", plname: "商品运营中心-商品分组06", plno: "W206", }, ], plno: "W2", }, { parent_plno: "A1", plname: "自营店铺", children: [ { parent_plno: "W3", plname: "自营店铺-商品分组01", plno: "W301", }, { parent_plno: "W3", plname: "自营店铺-商品分组02", plno: "W302", }, { parent_plno: "W3", plname: "自营店铺-商品分组03", plno: "W303", }, { parent_plno: "W3", plname: "自营店铺-商品分组04", plno: "W304", }, { parent_plno: "W3", plname: "自营店铺-商品分组05", plno: "W305", }, ], plno: "W3", }, { parent_plno: "A1", plname: "数码旗舰店", children: [ { parent_plno: "W4", plname: "数码旗舰店-商品分组01", plno: "W401", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组02", plno: "W402", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组03", plno: "W403", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组04", plno: "W404", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组05", plno: "W405", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组06", plno: "W406", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组07", plno: "W407", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组08", plno: "W408", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组09", plno: "W409", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组10", plno: "W410", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组11", plno: "W411", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组12", plno: "W412", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组13", plno: "W413", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组14", plno: "W414", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组15", plno: "W415", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组16", plno: "W416", }, { parent_plno: "W4", plname: "数码旗舰店-商品分组17", plno: "W417", }, ], plno: "W4", }, { parent_plno: "A1", plname: "客户服务中心", children: [ { parent_plno: "W5", plname: "客户服务中心-商品分组01", plno: "W503", }, { parent_plno: "W5", plname: "客户服务中心-商品分组02", plno: "W504", }, { parent_plno: "W5", plname: "客户服务中心-商品分组03", plno: "W505", }, { parent_plno: "W5", plname: "客户服务中心-商品分组04", plno: "W506", }, { parent_plno: "W5", plname: "客户服务中心-商品分组05", plno: "W507", }, { parent_plno: "W5", plname: "客户服务中心-商品分组06", plno: "W508", }, { parent_plno: "W5", plname: "客户服务中心-商品分组07", plno: "W509", }, { parent_plno: "W5", plname: "客户服务中心-商品分组08", plno: "W510", }, { parent_plno: "W5", plname: "客户服务中心-商品分组09", plno: "W511", }, { parent_plno: "W5", plname: "客户服务中心-商品分组10", plno: "W512", }, { parent_plno: "W5", plname: "客户服务中心-商品分组11", plno: "W513", }, { parent_plno: "W5", plname: "客户服务中心-商品分组12", plno: "W514", }, { parent_plno: "W5", plname: "客户服务中心-商品分组13", plno: "W515", }, ], plno: "W5", }, { parent_plno: "A1", plname: "家居旗舰店", children: [ { parent_plno: "W8", plname: "家居旗舰店-商品分组01", plno: "W801", }, { parent_plno: "W8", plname: "家居旗舰店-商品分组02", plno: "W802", }, { parent_plno: "W8", plname: "家居旗舰店-商品分组03", plno: "W803", }, { parent_plno: "W8", plname: "家居旗舰店-商品分组04", plno: "W804", }, { parent_plno: "W8", plname: "家居旗舰店-商品分组05", plno: "W805", }, { parent_plno: "W8", plname: "家居旗舰店-商品分组06", plno: "W806", }, { parent_plno: "W8", plname: "家居旗舰店-商品分组07", plno: "W807", }, ], plno: "W8", }, { parent_plno: "A1", plname: "美妆旗舰店", children: [ { parent_plno: "W9", plname: "美妆旗舰店-商品分组01", plno: "W901", }, { parent_plno: "W9", plname: "美妆旗舰店-商品分组02", plno: "W902", }, { parent_plno: "W9", plname: "美妆旗舰店-商品分组03", plno: "W903", }, { parent_plno: "W9", plname: "美妆旗舰店-商品分组04", plno: "W904", }, { parent_plno: "W9", plname: "美妆旗舰店-商品分组05", plno: "W905", }, { parent_plno: "W9", plname: "美妆旗舰店-商品分组06", plno: "W906", }, { parent_plno: "W9", plname: "美妆旗舰店-商品分组07", plno: "W907", }, ], plno: "W9", }, { parent_plno: "A1", plname: "户外旗舰店", children: [ { parent_plno: "WA", plname: "户外旗舰店-商品分组01", plno: "WA01", }, { parent_plno: "WA", plname: "户外旗舰店-商品分组02", plno: "WA02", }, { parent_plno: "WA", plname: "户外旗舰店-商品分组03", plno: "WA03", }, { parent_plno: "WA", plname: "户外旗舰店-商品分组04", plno: "WA04", }, { parent_plno: "WA", plname: "户外旗舰店-商品分组05", plno: "WA05", }, ], plno: "WA", }, { parent_plno: "A1", plname: "服饰旗舰店", children: [ { parent_plno: "Y2", plname: "服饰旗舰店-商品分组01", plno: "Y201", }, { parent_plno: "Y2", plname: "服饰旗舰店-商品分组02", plno: "Y202", }, { parent_plno: "Y2", plname: "服饰旗舰店-商品分组03", plno: "Y203", }, ], plno: "Y2", }, { parent_plno: "A1", plname: "运动旗舰店", children: [ { parent_plno: "Y3", plname: "运动旗舰店-商品分组01", plno: "Y301", }, { parent_plno: "Y3", plname: "运动旗舰店-商品分组02", plno: "Y302", }, { parent_plno: "Y3", plname: "运动旗舰店-商品分组03", plno: "Y303", }, ], plno: "Y3", }, { parent_plno: "A1", plname: "母婴旗舰店", children: null, plno: "Y4", }, { parent_plno: "A1", plname: "食品旗舰店", children: null, plno: "Y5", }, { parent_plno: "A1", plname: "图书旗舰店", children: [ { parent_plno: "Y8", plname: "图书旗舰店-商品分组01", plno: "Y801", }, { parent_plno: "Y8", plname: "图书旗舰店-商品分组02", plno: "Y802", }, { parent_plno: "Y8", plname: "图书旗舰店-商品分组03", plno: "Y803", }, { parent_plno: "Y8", plname: "图书旗舰店-商品分组04", plno: "Y804", }, { parent_plno: "Y8", plname: "图书旗舰店-商品分组05", plno: "Y805", }, { parent_plno: "Y8", plname: "图书旗舰店-商品分组06", plno: "Y806", }, { parent_plno: "Y8", plname: "图书旗舰店-商品分组07", plno: "Y807", }, { parent_plno: "Y8", plname: "图书旗舰店-商品分组08", plno: "Y808", }, ], plno: "Y8", }, ], plno: "A1", }, ], timestamp: 1745118762288, },
-      stopReasonData: { success: true, message: "", code: 200, result: [ { stopReasonType: "质量原因", }, { stopReasonType: "设计原因", }, { stopReasonType: "维修原因", }, { stopReasonType: "管理原因", }, { stopReasonType: "操作原因", }, { stopReasonType: "其他原因", }, ], timestamp: 1745118762197, },
+      stopReasonData: { success: true, message: "", code: 200, result: [ { stopReasonType: "质量原因", }, { stopReasonType: "商品描述问题", }, { stopReasonType: "售后处理原因", }, { stopReasonType: "订单管理问题", }, { stopReasonType: "订单操作问题", }, { stopReasonType: "其他原因", }, ], timestamp: 1745118762197, },
     };
   },
   // --- 生命周期钩子 ---
@@ -253,12 +253,12 @@ export default defineComponent({
     // 组件挂载后执行初始化数据查询
     this.query(); // 查询列表数据
     this.queryTree(); // 查询树数据
-    this.queryStopReasonType(); // 查询故障类型下拉选项
+    this.queryStopReasonType(); // 查询售后异常类型下拉选项
   },
   // --- 方法定义 ---
   methods: {
     /**
-     * 查询故障模式列表数据 (模拟)
+     * 查询退货原因列表数据 (模拟)
      * 更新 dataList 状态
      */
     query(): void {
@@ -286,7 +286,7 @@ export default defineComponent({
     },
 
     /**
-     * 查询产线树数据 (模拟)
+     * 查询商品分类树数据 (模拟)
      * 更新 treeData 状态
      */
     queryTree(): void {
@@ -318,13 +318,13 @@ export default defineComponent({
     },
 
     /**
-     * 查询故障模式下拉选项数据 (模拟)
+     * 查询退货原因下拉选项数据 (模拟)
      * 更新 attrCnts.faultModeOptions 状态
      */
     queryStopReasonType(): void {
       this.loading = true;
       if (this.stopReasonData.success) {
-        // 将 API 返回的故障类型列表转换为下拉选项格式
+        // 将 API 返回的售后异常类型列表转换为下拉选项格式
         this.attrCnts.faultModeOptions = this.stopReasonData.result.map(
           (item): FaultModeOption => {
             return { label: item.stopReasonType, value: item.stopReasonType };

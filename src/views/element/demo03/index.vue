@@ -10,24 +10,24 @@
       >
         <!-- 条件容器 -->
         <div class="search-filters">
-          <el-form-item label="产线" prop="plNoKey">
+          <el-form-item label="商品分类" prop="plNoKey">
             <el-tree-select
               v-model="searchForm.plNoKey"
               :props="treeProps"
               :data="treeData"
               check-strictly
               :render-after-expand="false"
-              placeholder="默认全部产线"
+              placeholder="默认全部商品分类"
               class="search-tree-select"
               value-key="key"
               multiple
               clearable
             />
           </el-form-item>
-          <el-form-item label="设备号" prop="equipmentNo">
+          <el-form-item label="商品编号" prop="equipmentNo">
             <el-input
               v-model="searchForm.equipmentNo"
-              placeholder="请输入设备号"
+              placeholder="请输入商品编号"
               clearable
               class="search-input"
             ></el-input>
@@ -35,7 +35,7 @@
           <el-form-item label="商品售后模式" prop="stopReasonName">
             <el-select
               v-model="searchForm.stopReasonName"
-              placeholder="请选择故障模式"
+              placeholder="请选择退货原因"
               multiple
               clearable
               class="search-select"

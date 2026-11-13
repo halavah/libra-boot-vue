@@ -7,18 +7,18 @@
           <el-card shadow="never" class="list-card">
             <template #header>
               <div>
-                <span>故障模式列表</span>
+                <span>退货原因列表</span>
               </div>
             </template>
             <el-table :data="dataList" stripe :height="innerContentHeight">
               <el-table-column
                 prop="bkReasonName"
-                label="故障模式"
+                label="退货原因"
                 show-overflow-tooltip
               />
               <el-table-column
                 prop="totalBreakTime"
-                label="停机时间"
+                label="订单暂停时长"
                 width="100"
                 align="right"
               />
@@ -30,7 +30,7 @@
           <el-card shadow="never" class="chart-card">
             <template #header>
               <div>
-                <span>故障模式分布图（%）</span>
+                <span>退货原因分布图（%）</span>
               </div>
             </template>
             <div

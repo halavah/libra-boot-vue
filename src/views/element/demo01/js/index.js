@@ -31,7 +31,7 @@ export default {
     const searchFormRef = ref('')
     const searchFormRules = reactive({
       // equipmentNo: [
-      //     {required: true, message: '请输入设备号', trigger: 'blur'},
+      //     {required: true, message: '请输入商品编号', trigger: 'blur'},
       // ],
       vDay: [
         { type: 'array', required: true, message: '请选择日期范围', trigger: 'change' }
@@ -142,127 +142,127 @@ export default {
             "totalBreakTime": 3596
           },
           {
-            "bkReasonName": "设计机构，构造有问题",
+            "bkReasonName": "商品规格与描述不符",
             "totalBreakTimeRate": "19.58%",
             "totalBreakTime": 2545
           },
           {
-            "bkReasonName": "点检方法，判定基准有问题",
+            "bkReasonName": "商品颜色与描述不符",
             "totalBreakTimeRate": "8.54%",
             "totalBreakTime": 1110
           },
           {
-            "bkReasonName": "修理，维护方法有问题",
+            "bkReasonName": "商品尺寸不合适",
             "totalBreakTimeRate": "7.38%",
             "totalBreakTime": 960
           },
           {
-            "bkReasonName": "自然劣化(预测困难)",
+            "bkReasonName": "商品质量问题",
             "totalBreakTimeRate": "7.04%",
             "totalBreakTime": 915
           },
           {
-            "bkReasonName": "材质缺陷(质量，热处理，表面处理)",
+            "bkReasonName": "商品数量不足",
             "totalBreakTimeRate": "7.02%",
             "totalBreakTime": 913
           },
           {
-            "bkReasonName": "点检周期有问题",
+            "bkReasonName": "商品配件缺失",
             "totalBreakTimeRate": "3.50%",
             "totalBreakTime": 455
           },
           {
-            "bkReasonName": "修理维护周期不适当",
+            "bkReasonName": "商品外观破损",
             "totalBreakTimeRate": "3.18%",
             "totalBreakTime": 413
           },
           {
-            "bkReasonName": "机种，型式选定有问题",
+            "bkReasonName": "商品包装破损",
             "totalBreakTimeRate": "2.64%",
             "totalBreakTime": 343
           },
           {
-            "bkReasonName": "运转操作技能，知识不足",
+            "bkReasonName": "错发商品",
             "totalBreakTimeRate": "1.84%",
             "totalBreakTime": 239
           },
           {
-            "bkReasonName": "异物侵入",
+            "bkReasonName": "重复购买",
             "totalBreakTimeRate": "1.48%",
             "totalBreakTime": 193
           },
           {
-            "bkReasonName": "尺寸，强度，容量有问题",
+            "bkReasonName": "不再需要",
             "totalBreakTimeRate": "1.24%",
             "totalBreakTime": 161
           },
           {
-            "bkReasonName": "组装，配合施工技术差",
+            "bkReasonName": "物流配送延误",
             "totalBreakTimeRate": "1.18%",
             "totalBreakTime": 154
           },
           {
-            "bkReasonName": "松动松弛",
+            "bkReasonName": "签收后发现缺件",
             "totalBreakTimeRate": "1.08%",
             "totalBreakTime": 140
           },
           {
-            "bkReasonName": "组装，配合方法上有问题",
+            "bkReasonName": "商品保质期不足",
             "totalBreakTimeRate": "1.05%",
             "totalBreakTime": 137
           },
           {
-            "bkReasonName": "疲劳损伤",
+            "bkReasonName": "商品型号不匹配",
             "totalBreakTimeRate": "0.96%",
             "totalBreakTime": 125
           },
           {
-            "bkReasonName": "油质劣化",
+            "bkReasonName": "商品临期",
             "totalBreakTimeRate": "0.91%",
             "totalBreakTime": 118
           },
           {
-            "bkReasonName": "异常振动",
+            "bkReasonName": "商品价格变动",
             "totalBreakTimeRate": "0.74%",
             "totalBreakTime": 96
           },
           {
-            "bkReasonName": "配合加工有问题",
+            "bkReasonName": "优惠未正确抵扣",
             "totalBreakTimeRate": "0.69%",
             "totalBreakTime": 90
           },
           {
-            "bkReasonName": "异物混入",
+            "bkReasonName": "订单重复扣款",
             "totalBreakTimeRate": "0.68%",
             "totalBreakTime": 88
           },
           {
-            "bkReasonName": "规格不符",
+            "bkReasonName": "订单地址填写错误",
             "totalBreakTimeRate": "0.46%",
             "totalBreakTime": 60
           },
           {
-            "bkReasonName": "异常温度",
+            "bkReasonName": "冷链温控异常",
             "totalBreakTimeRate": "0.38%",
             "totalBreakTime": 50
           },
           {
-            "bkReasonName": "安装，拆卸方法上有问题",
+            "bkReasonName": "预售交付延期",
             "totalBreakTimeRate": "0.23%",
             "totalBreakTime": 30
           },
           {
-            "bkReasonName": "机械剥离",
+            "bkReasonName": "组合商品缺货",
             "totalBreakTimeRate": "0.22%",
             "totalBreakTime": 29
           },
           {
-            "bkReasonName": "误运转操作",
+            "bkReasonName": "商品标签信息错误",
             "totalBreakTimeRate": "0.19%",
             "totalBreakTime": 25
           },
           {
-            "bkReasonName": "温度(在计划设计时不能预测)",
+            "bkReasonName": "商品功能与介绍不符",
             "totalBreakTimeRate": "0.12%",
             "totalBreakTime": 15
           }
@@ -757,16 +757,16 @@ export default {
             "stopReasonType": "质量原因"
           },
           {
-            "stopReasonType": "设计原因"
+            "stopReasonType": "商品描述问题"
           },
           {
-            "stopReasonType": "维修原因"
+            "stopReasonType": "售后处理原因"
           },
           {
-            "stopReasonType": "管理原因"
+            "stopReasonType": "订单管理问题"
           },
           {
-            "stopReasonType": "操作原因"
+            "stopReasonType": "订单操作问题"
           },
           {
             "stopReasonType": "其他原因"
@@ -851,7 +851,7 @@ export default {
           return { label: item.stopReasonType, value: item.stopReasonType };
         });
       } else {
-        ElMessage.error(_this.stopReasonData.message || '获取下拉框_故障模式失败 (来自 JSON)');
+        ElMessage.error(_this.stopReasonData.message || '获取下拉框_退货原因失败 (来自 JSON)');
         _this.attrCnts.faultModeOptions = []; // 清空选项以防万一
       }
       _this.loading = false; // 结束加载状态
@@ -921,7 +921,7 @@ export default {
       ];
       const option = {
         // title: { // 移除标题
-        //   text: '故障模式分布图 (%)',
+        //   text: '退货原因分布图 (%)',
         //   left: 'center'
         // },
         tooltip: {
@@ -933,7 +933,7 @@ export default {
           orient: 'vertical', // 垂直布局
           right: 10,          // 靠右
           top: 'center',      // 垂直居中
-          data: ['故障模式分布'], // <-- Set legend data to match the series name
+          data: ['退货原因分布'], // <-- Set legend data to match the series name
           type: 'scroll',     // 如果图例项过多，允许滚动
           tooltip: {          // 为图例添加提示框
             show: true
@@ -963,7 +963,7 @@ export default {
         },
         yAxis: { // 原来的 X 轴
           type: 'category',
-          data: categories, // Y 轴数据使用故障模式名称
+          data: categories, // Y 轴数据使用退货原因名称
           axisTick: {
             alignWithLabel: true
           },
@@ -974,7 +974,7 @@ export default {
           }
         },
         series: [{
-          name: '故障模式分布', // 系列名称，与图例对应
+          name: '退货原因分布', // 系列名称，与图例对应
           type: 'bar',
           data: rates, // 系列数据使用解析后的百分比数值
           label: { // 添加标签配置

@@ -7,7 +7,7 @@ import type { CallbackDataParams } from 'echarts/types/dist/shared'; // 导入 E
 export default defineComponent({
   name: "ContentArea", // 组件名称
   props: {
-    // 接收父组件传递的故障模式列表数据
+    // 接收父组件传递的退货原因列表数据
     dataList: {
       // 直接定义期望的数组元素结构，而不是引用外部类型
       type: Array as PropType<Array<{
@@ -203,7 +203,7 @@ export default defineComponent({
           axisLabel: { formatter: "{value}%" }, // 标签格式化
           position: "top", // X 轴位于顶部
         },
-        yAxis: { // Y 轴配置 (垂直轴，显示故障模式名称)
+        yAxis: { // Y 轴配置 (垂直轴，显示退货原因名称)
           type: "category", // 类别轴
           data: categories, // 类别数据
           axisTick: { alignWithLabel: true }, // 刻度线与标签对齐
@@ -218,7 +218,7 @@ export default defineComponent({
         },
         series: [ // 系列列表
           {
-            name: "故障模式分布", // 系列名称
+            name: "退货原因分布", // 系列名称
             type: "bar", // 条形图
             data: rates, // 系列数据
             label: { // 条形图标签配置
