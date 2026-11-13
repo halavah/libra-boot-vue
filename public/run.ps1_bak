@@ -1,0 +1,36 @@
+# pnpm add -D http-server
+# npx http-server . -p 5500
+
+# 1. Vue 3
+Invoke-WebRequest -Uri "https://unpkg.com/vue@3/dist/vue.global.prod.js" -OutFile "test\resource\vue.global.prod.js"
+Invoke-WebRequest -Uri "https://unpkg.com/vue3-sfc-loader/dist/vue3-sfc-loader.js" -OutFile "test\resource\vue3-sfc-loader.js"
+
+# 2. Element Plus
+Invoke-WebRequest -Uri "https://unpkg.com/element-plus@2.7.3/dist/index.full.min.js" -OutFile "test\resource\element-plus.index.full.min.js"
+Invoke-WebRequest -Uri "https://unpkg.com/element-plus/dist/locale/zh-cn.min.js" -OutFile "test\resource\element-plus.locale.zh-cn.min.js"
+Invoke-WebRequest -Uri "https://unpkg.com/element-plus/dist/index.css" -OutFile "test\resource\element-plus.index.css"
+
+# 3. Ant Design Vue
+Invoke-WebRequest -Uri "https://unpkg.com/ant-design-vue@4/dist/antd.min.js" -OutFile "test\resource\antd.min.js"
+Invoke-WebRequest -Uri "https://unpkg.com/ant-design-vue@4/dist/reset.css" -OutFile "test\resource\antd.reset.css"
+Invoke-WebRequest -Uri "https://unpkg.com/ant-design-vue@4/dist/locale/zh_CN.js" -OutFile "test\resource\antd.locale.zh_CN.js"
+Invoke-WebRequest -Uri "https://unpkg.com/ant-design-vue@4/dist/antd-with-locales.min.js" -OutFile "test\resource\antd-with-locales.min.js"
+Invoke-WebRequest -Uri "https://cdn.jsdelivr.net/npm/ant-design-vue@4/dist/locale/zh_CN.min.js" -OutFile "test\resource\antd.locale.zh_CN.min.js" -UseBasicParsing
+
+# 4. ECharts
+Invoke-WebRequest -Uri "https://unpkg.com/echarts/dist/echarts.min.js" -OutFile "test\resource\echarts.min.js"
+
+# 5. Axios
+Invoke-WebRequest -Uri "https://unpkg.com/axios/dist/axios.min.js" -OutFile "test\resource\axios.min.js"
+
+# 6. Dayjs
+Invoke-WebRequest -Uri "https://unpkg.com/dayjs/dayjs.min.js" -OutFile "test\resource\dayjs.min.js"
+Invoke-WebRequest -Uri "https://unpkg.com/dayjs/plugin/isBetween.js" -OutFile "test\resource\dayjs.plugin.isBetween.js"
+Invoke-WebRequest -Uri "https://unpkg.com/dayjs/plugin/isSameOrBefore.js" -OutFile "test\resource\dayjs.plugin.isSameOrBefore.js"
+Invoke-WebRequest -Uri "https://unpkg.com/dayjs/locale/zh-cn.js" -OutFile "test\resource\dayjs.locale.zh-cn.js"
+
+# 7. Sucrase JS
+Invoke-WebRequest -Uri "https://unpkg.com/sucrase@3/dist/index.js" -OutFile "test\resource\sucrase.index.js"
+Invoke-WebRequest -Uri "https://unpkg.com/sucrase@3/dist/umd/sucrase.js" -OutFile "test\resource\sucrase.umd.js"
+
+Write-Host "Downloads attempted. Please check the test/resource directory."

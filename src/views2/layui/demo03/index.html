@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文本域</title>
+  <!-- 导入 ICON -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <!-- 导入 ElementPlus -->
+  <link rel="stylesheet" href="/public/element-plus/index.css">
+  <!-- 导入 Layui -->
+  <link rel="stylesheet" href="/public/layui/css/layui.css">
+  <!-- 其他头部信息 -->
+  <style>
+    .el-table__row {
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <form class="layui-form" action="">
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">文本域 a1</label>
+        <div class="layui-input-block">
+          <textarea placeholder="请输入内容" class="layui-textarea" lay-verify="required" name="a1"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">文本域 a2</label>
+        <div class="layui-input-block">
+          <textarea placeholder="请输入内容" class="layui-textarea" lay-verify="required" name="a2"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">文本域 a3</label>
+        <div class="layui-input-block">
+          <textarea placeholder="请输入内容" class="layui-textarea" lay-verify="required" name="a3"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button type="submit" class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+<!-- 导入 Vue3 -->
+<script src="/public/vue/vue.global.prod.js"></script>
+<script src="/public/axios/axios.min.js"></script>
+<!-- 导入 ElementPlus -->
+<script src="/public/element-plus/index.full.min.js"></script>
+<script src="/public/element-plus/locale/zh-cn.min.js"></script>
+<!-- 导入 Layui -->
+<script src="/public/layui/layui.js"></script>
+<!-- 导入 Dayjs -->
+<script src="/public/dayjs/dayjs.min.js"></script>
+<!-- 导入 Echarts -->
+<script src="/public/echarts/echarts.js"></script>
+<!-- 导入 Jquery -->
+<script src="/public/jquery/jquery.min.js"></script>
+<!-- 导入 index.js -->
+<script src="index.js" type="module"></script>

@@ -2,9 +2,9 @@
 
 # Libra Boot Vue
 
-**Build-free Vue examples, single-file component previews, and directly addressable HTML demos for frontend developers.**
+**A Vue example project retaining its original components, layouts, routing and static-page organization for developers to read, run and reuse.**
 
-[![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933)](https://nodejs.org/en/download)
+[![Vue](https://img.shields.io/badge/Vue-3-42b883)](https://vuejs.org/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-browser-F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -18,171 +18,132 @@
 
 - [Quick start](#-quick-start)
 - [Installation](#-installation)
-- [Examples](#-examples)
-- [Directory structure](#-directory-structure)
-- [Runtime model](#-runtime-model)
-- [Data and privacy](#-data-and-privacy)
-- [Validation](#-validation)
-- [Deployment and troubleshooting](#-deployment-and-troubleshooting)
+- [Directories and entry points](#-directories-and-entry-points)
+- [Examples and APIs](#-examples-and-apis)
+- [Data and resources](#-data-and-resources)
+- [Validation and troubleshooting](#-validation-and-troubleshooting)
 - [Contributing](#-contributing)
 - [License](#-license)
 - [Contact](#-contact)
 - [Star History](#-star-history)
 - [Back to top](#-back-to-top)
 
-
-External SFC JavaScript modules use `.mjs` so the loader treats them as ESM. HTML examples use native module scripts. Optional browser acceptance requires a separate Playwright and Chromium installation; run `node tests/browser/examples.mjs`. These tools are not runtime dependencies of the static site.
-
 ## 🚀 Quick start
 
-Obtain an authorized source checkout and run this command at the project root:
+Prepare Node.js and pnpm. Run at the project root:
 
 ```sh
-node scripts/serve.mjs --port 8080
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-Open `http://127.0.0.1:8080/`. The catalogue should contain 23 examples. Select an SFC or HTML example and open it; the Element Plus table example includes local filtering, paging, and editing.
+Open `http://127.0.0.1:5173/`. The homepage discovers systems, modules and pages. Choose a page to enter its layout; API-dependent examples also require your own service configuration.
 
-There is no dependency installation, frontend build, or business login. Use Node.js 20 or newer. If the port is occupied, select another port between 1024 and 65535. Opening HTML via the file protocol is unsupported because catalogues, components, and demo JSON are fetched over HTTP.
+```sh
+pnpm build
+pnpm preview
+```
+
+These are the original Vite commands. Output goes to `dist/`; a successful build does not establish that every business API works.
 
 ## 📦 Installation
 
-Use an authorized source directory. Both source repositories are private and require collaborator access. This project is not published as an npm package; the package private flag prevents accidental publication.
-
-Use `master` as the local and remote collaboration branch. Gitee Git operations use SSH; register your own public key with your account first:
+Source repositories remain private. Obtain collaborator access and register your SSH public key:
 
 ```sh
 git clone --branch master git@gitee.com:halavah/libra-boot-vue.git
 cd libra-boot-vue
 ```
 
-The maintainer's `origin` pushes `master` to both GitHub and Gitee; a separate SSH remote named `gitee` is also retained. The repository owner selects the remote default branch in the hosting platform settings; example scripts do not change it.
+Local and remote collaboration use `master`. The maintainer synchronizes GitHub and Gitee and manually selects repository visibility and the remote default branch. No npm package or business backend is distributed. Refer to the authorized release channel for project versions.
 
-No npm install is required. Optional convenience commands are:
-
-```sh
-npm start
-npm run check
-npm test
-npm run scan
-```
-
-Consult the authorized repository tags or releases for the project version. Exact dependency versions and hashes are recorded separately in docs/dependency-manifest.json.
-
-## 🧩 Examples
-
-| Format | Category | Count | Topics |
-|---|---|---:|---|
-| Vue SFC | Element Plus | 4 | Tables and JSON, child components, external JS/CSS, charts, inline scripts |
-| Vue SFC | Ant Design Vue | 4 | Corresponding UI patterns with per-example dependencies |
-| Vue SFC | Local files | 3 | Local CSV export, file preview, and file form validation |
-| HTML | Element Plus | 5 | Filtering, pagination, local CRUD, layout, and export |
-| HTML | Ant Design Vue | 1 | Local table and editing state |
-| HTML | ECharts | 3 | Dashboard, grouped bars, donut chart, and readable data tables |
-| HTML | Layui | 3 | Local pagination, filtering and date controls, form feedback |
-
-Examples were rewritten around the original technical topics using neutral data. Business authentication and services are absent. TypeScript patterns use ordinary JavaScript; no TypeScript, Less, or SCSS runtime compiler is provided. Missing and unregistered historical entries are not advertised as available examples.
-
-## 🗂️ Directory structure
+## 🗂️ Directories and entry points
 
 ```text
 libra-boot-vue/
-├─ site/                         Deployable static site
-│  ├─ index.html                 Catalogue homepage
-│  ├─ app/                       Catalogue and preview tooling
-│  │  ├─ examples.json           Single source of example registrations
-│  │  └─ preview.html            Vue preview page
-│  ├─ examples/
-│  │  ├─ vue/                    Vue component examples
-│  │  └─ html/                   Standalone HTML examples
-│  ├─ shared/
-│  │  ├─ components/             Shared Vue components
-│  │  ├─ data/                   Synthetic product fixtures
-│  │  ├─ helpers/                CSV, validation and record helpers
-│  │  ├─ demos/                  Shared example controllers
-│  │  └─ styles/                 Shared CSS
-│  └─ vendor/                    Verified upstream files and licenses
-├─ scripts/                      Local server and checks
-├─ tests/
-│  ├─ unit/                      Domain rules and pure functions
-│  ├─ integration/               Static HTTP access boundaries
-│  └─ browser/                   Full example acceptance
-├─ docs/                         Usage evidence and provenance manifests
+├─ src/
+│  ├─ App.vue                 Root component
+│  ├─ Home.vue                Discovered-page overview
+│  ├─ Home_bak.vue            Retained implementation
+│  ├─ main.js                 Application entry
+│  ├─ views/                  Base components and file examples
+│  ├─ views2/                 HTML and component examples
+│  ├─ views3/                 Extended and Mock examples
+│  ├─ views4/                 Further API-dependent examples
+│  ├─ layouts/                Layouts and menus
+│  ├─ router/                 Routes and retained implementation
+│  ├─ mixins/                 Shared mixins
+│  ├─ plugins/                Plugins
+│  └─ assets/                 Source styles
+├─ public/                    Browser resources and licenses
+├─ mock/                      Local Mock data and endpoints
+├─ test/                      Static catalogue and SFC preview
+├─ docs/验证说明.md            Chinese validation record
+├─ index.html
 ├─ package.json
-├─ LICENSE
-├─ THIRD_PARTY_NOTICES.md
+├─ pnpm-lock.yaml
+├─ vite.config.js
 ├─ README.md
-└─ README_EN.md
+├─ README_EN.md
+└─ LICENSE
 ```
 
-Run development commands from the repository root; the server resolves `site/` automatically. Edit demos in `site/examples/`, register them in `site/app/examples.json`, and keep dependency provenance in `docs/dependency-manifest.json`. The catalogue groups examples by format and library; examples use meaningful names such as `parent-child` and `external-files`. Simple examples keep `index.vue`, `demo.mjs` and optional `style.css` together; only teaching-specific component splits remain local. Shared chart and selection components live in `site/shared/components/`.
+Original directories, filenames, example boundaries, Vue sections and indentation are retained. Examples are not merged into a new architecture, and TypeScript examples remain TypeScript. Retained Home/router implementations and supporting files remain present.
 
-## ⚙️ Runtime model
-
-The SFC preview accepts registered example identities only. Vue and vue3-sfc-loader fetch and compile trusted local components in the browser. UI and chart packages load by dependency group. HTML examples open their own pages without Vue Router, Vite, or an application backend.
-
-The preview rejects external and unregistered resources. The included server serves only `site/` as its document root, denying dotfiles, traversal, symlinks, and writes.
-
-Vue and the SFC loader require runtime compilation. The included CSP therefore permits self scripts plus unsafe-eval and library-injected styles. This is not a strict no-eval CSP implementation or a sandbox for untrusted components. Run reviewed examples on an origin separate from sensitive applications.
-
-## 🔐 Data and privacy
-
-Records, labels, groups, and statistics are synthetic. Filtering, editing, and deletion affect page memory only; reset or reload restores the initial data. No business cookies, authentication records, or persistent browser data are used.
-
-File examples read local txt, csv, or json files up to 1 MiB and preview at most 2000 characters. They do not upload anything. Use synthetic files; clearing removes preview state. CSV export escapes delimiters, quotes, and spreadsheet formula prefixes.
-
-Upstream attribution remains intact. Proprietary fonts, screenshots, backups, environment files, and business databases are excluded. Pattern scans cannot prove the absence of every sensitive value; review changes and generated output before sharing.
-
-The demo domain is an e-commerce product catalogue: synthetic `SKU-001` identifiers, product names, digital accessories/home goods/stationery categories, on-sale/off-shelf states and integer stock quantities in units. Filtering, editing, charts and CSV export use the same fields. Products are stored only in page memory; there are no real customers, orders, payments, merchants or production APIs. File examples preview local demonstration documents without uploading them.
-
-## ✅ Validation
+`test/` is a manual static example catalogue, not an automated test suite. To inspect original static paths, run another HTTP server from the project root:
 
 ```sh
-node scripts/check.mjs
-npm test
-node scripts/scan-sensitive.mjs
+pnpm exec http-server . -p 5174
 ```
 
-check validates registrations, entries, local references, dependency hashes, and notices. Tests cover filtering, paging, CSV, file constraints, catalogue rejection, and HTTP serving boundaries. scan reports locations and categories without printing suspected secrets; vendor files are independently hash-verified.
+Open `http://127.0.0.1:5174/test/index.html`. It loads `public/` and source components directly. File-protocol access is unsupported; do not expose the full source directory as a public service.
 
-Also test each example in a browser, inspecting errors, requests, CRUD, file input, and exports. Review narrow layouts and keyboard focus. Passing commands is not equivalent to cross-browser or human accessibility acceptance. See the [validation record](docs/verification.md) for the checks actually performed.
+## 🧩 Examples and APIs
 
-## 🧭 Deployment and troubleshooting
+Original layouts, routing, plugins, mixins, views, static registrations and loader behavior remain. Missing registered entries and loader compatibility limits are reported rather than hidden by removing registrations or creating empty pages.
 
-Deploy the contents of `site/` to a separate origin. Keep `scripts/`, `tests/`, `docs/`, `.git`, archives and environment files outside the web root. The catalogue documentation links point to the authorized source repository and require repository access. Preserve MIME types for JavaScript, JSON, Vue source text, and fonts. The Beichuang portfolio shows a project description and GitHub/Gitee source links only. It does not host this demo site or change repository visibility. The owner controls when the private repositories become public.
+Mock and API integrations, including upload/export calls, remain structurally unchanged. Real origins are replaced by unavailable examples such as `api.example.invalid`, and literal credentials are cleared. Local Vite proxies are configuration examples; their servers are not included. Request paths, methods, field keys and authentication call structure remain for users to configure their own services and test credentials. An unavailable example address is not a working replacement backend.
 
-- **Catalogue fails:** use HTTP and verify that the document root is `site/` and that its app/examples.json exists.
-- **Missing component:** run check and review the registered entry and relative paths.
-- **Blank chart or widget:** check local vendor files and declared dependencies; do not substitute a live CDN ad hoc.
-- **Strict CSP blocks eval:** this runtime compiler requires a different policy or a precompiled implementation. Do not relax a sensitive site's policy.
-- **Font/source-map notices:** only upstream widget icon fonts are distributed. Debug source maps are omitted and are not runtime dependencies.
+## 🔐 Data and resources
+
+Personal records, contact details, organizations and industrial content use demonstration values. Replaced business labels use e-commerce shops, products, orders and after-sales terminology while retaining field keys, types, trees and interactions. Public region dictionaries are not treated as personal addresses.
+
+Phone/identity placeholders deliberately cannot identify or contact a real person. Original strict validation may reject them; use synthetic data in your isolated environment rather than real personal data.
+
+Twenty-six business screenshots use neutral placeholders at the same paths and dimensions with no original pixels or metadata. Two fonts with unverified redistribution permission are excluded; their stylesheet location remains with local-font fallback. Upstream browser files retain their notices and required licenses in their resource directories.
+
+## ✅ Validation and troubleshooting
+
+See the [Chinese validation record](docs/验证说明.md) for checks actually performed and their limits. Results from another implementation are not inherited.
+
+- API-dependent pages require your backend and proxy configuration.
+- Missing static registrations are reported as source/catalogue discrepancies, not removed silently.
+- Use your own test credentials for authorized file endpoints; none are embedded.
+- Changed screenshots and fonts are deliberate content redaction, with source paths and component structure retained.
+- Existing chunk-size and dependency-comment warnings do not authorize unrelated refactoring.
 
 ## 🤝 Contributing
 
-Authorized collaborators work on a branch and submit a PR; a Fork workflow becomes relevant if the repository is made public. Add a unique registration, minimal dependencies, complete assets, and synthetic data for every new example.
+Authorized collaborators branch from `master` and submit a PR. Preserve directories, naming, Vue sections, indentation and interactions; redaction is not a reason to rewrite, abstract or merge examples.
 
-After shared changes, run check, tests, and scan, then exercise affected examples. Dependency updates include provenance hashes and notices. State which checks ran and which did not; never fill the catalogue with empty placeholder pages.
+Check dependencies and references, build, exercise affected pages and state checks not run. Do not commit real credentials, personal records, unredacted screenshots, environment files or unlicensed fonts. Agree on scope before architectural changes.
 
 ## 📄 License
 
-Project-authored code uses the [MIT License](LICENSE). Third-party assets keep their [own licenses and notices](THIRD_PARTY_NOTICES.md).
-
-MIT permits use, modification, copying, and distribution, including commercial reuse, with copyright and permission notices retained. Software is provided as-is without warranty. MIT was selected to make examples easy to reuse; it neither overrides third-party obligations nor grants repository access to unauthorized readers.
+Project-authored code uses [MIT](LICENSE), permitting use, modification, commercial use and distribution while requiring retention of copyright and license notices, without warranty. MIT facilitates example reuse; third-party resources retain their own licenses.
 
 ## 📮 Contact
 
-Maintainer: [halavah](https://github.com/halavah). Authorized collaborators can use repository Issues or PRs with the example identity, reproduction steps, and sanitized results. Do not post real files or business data in public feedback.
+Maintainer: [halavah](https://github.com/halavah). Authorized collaborators can use repository Issues or PRs with file paths, reproduction steps and sanitized evidence. Do not upload real business records.
 
 ## ⭐ Star History
 
-The repositories are private. Inaccessible stars, releases, and Star History graphics are not embedded. Revisit public channel links if visibility changes in the future.
+Repositories remain private, so inaccessible statistics graphics are omitted. Public channels can be configured after the maintainer approves publication.
 
 ## ⬆ Back to top
 
 ---
 
-用 ❤️ 构建 | Made with ❤️
-
-If these examples help, consider following and supporting the project when it becomes public.
+Made with ❤️. If the examples help, consider following and supporting the project when it becomes public.
 
 [Back to top](#libra-boot-vue)

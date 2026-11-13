@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>容器布局，prod</title>
+  <!-- 导入 ICON -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <!-- 导入 ElementPlus -->
+  <link rel="stylesheet" href="/public/element-plus/index.css">
+  <!-- 导入 Layui -->
+  <link rel="stylesheet" href="/public/layui/css/layui.css">
+  <!-- 其他头部信息 -->
+  <style>
+    .el-table__row {
+      user-select: none;
+    }
+
+    .centered-text {
+      display: grid;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .el-form--inline .el-form-item {
+      margin-right: 5px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <el-container>
+      <!--    <el-header>-->
+      <!--      <el-row>-->
+      <!--        <el-col :span="24">-->
+      <!--          <strong class="centered-text">通信检修票管理</strong>-->
+      <!--        </el-col>-->
+      <!--      </el-row>-->
+      <!--    </el-header>-->
+      <el-container v-loading.lock="loading">
+        <!--      <el-aside>-->
+        <!--        <el-card shadow="always">-->
+        <!--          <el-tree ref="treeRef" :data="treeData" :props="treeProps" node-key="id"-->
+        <!--                   default-expand-all highlight-current @node-click="handleNodeClick"/>-->
+        <!--        </el-card>-->
+        <!--      </el-aside>-->
+        <el-main>
+          <el-form ref="searchFormRef" :model="searchForm" :rules="searchFormRules" :inline="true">
+            <el-form-item label="检像票状态" v-show="false">
+              <el-input v-model="searchForm.vState" clearable />
+            </el-form-item>
+            <el-form-item label="关键字" prop="searchKey">
+              <el-input v-model="searchForm.searchKey" clearable />
+            </el-form-item>
+            <el-form-item label="年月" prop="vDay">
+              <el-date-picker v-model="searchForm.vDay" type="month" format="YYYY年MM月" value-format="YYYY-MM-01"
+                placeholder="选择年月" @change="fun_search(searchFormRef)">
+              </el-date-picker>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="fun_search(searchFormRef)">查询</el-button>
+              <el-button type="success" @click="fun_create">新建</el-button>
+              <el-button type="danger" @click="fun_delete">删除</el-button>
+            </el-form-item>
+          </el-form>
+
+          <el-table ref="dataTableRef" :data="dataList.slice((currentPage-1)*pageSize, currentPage*pageSize)"
+            row-key="obj_id" @current-change="handleCurrentRowChange" @row-dblclick="fun_detail" table-layout="auto"
+            :height="dataTableHeight" border stripe highlight-current-row>
+            <el-table-column label="序号" type="index" width="60"></el-table-column>
+            <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+            <el-table-column prop="rq" label="日期" width="180" :formatter="formatDate"></el-table-column>
+            <el-table-column prop="address" label="地址"></el-table-column>
+          </el-table>
+
+          <el-dialog width="30%" v-model="dataFormVisible" :title="dataFormTitle">
+            <el-form ref="dataFormRef" :model="dataForm" :rules="dataFormRules" :disabled="dataFormStatus == 'detail'">
+              <el-form-item label="姓名" prop="name">
+                <el-input v-model="dataForm.name" clearable></el-input>
+              </el-form-item>
+              <el-form-item label="日期" prop="rq">
+                <el-date-picker v-model="dataForm.rq" type="month" format="YYYY年MM月DD日" value-format="YYYY-MM-DD"
+                  placeholder="选择年月"></el-date-picker>
+              </el-form-item>
+              <el-form-item label="地址" prop="address">
+                <el-input v-model="dataForm.address" clearable></el-input>
+              </el-form-item>
+            </el-form>
+            <template #footer v-if="dataFormStatus != 'detail' && !loading">
+              <span class="dialog-footer">
+                <el-button @click="cancle(dataFormRef)">取 消</el-button>
+                <el-button type="primary" @click="fun_save(dataFormRef)" v-if="dataFormStatus != 'detail'">确
+                  定</el-button>
+              </span>
+            </template>
+          </el-dialog>
+
+          <el-pagination v-modeL:currentPage="currentPage" v-model:page-size="pageSize" :page-sizes="pageSizes"
+            :totaL="dataTotal" hide-on-singLe-page @current-change="handleCurrentPagerChange"
+            Layout="total, sizes, prev, pager, next, jumper" />
+        </el-main>
+      </el-container>
+    </el-container>
+  </div>
+</body>
+<!-- 导入 Vue3 -->
+<script src="/public/vue/vue.global.prod.js"></script>
+<script src="/public/axios/axios.min.js"></script>
+<!-- 导入 ElementPlus -->
+<script src="/public/element-plus/index.full.min.js"></script>
+<script src="/public/element-plus/locale/zh-cn.min.js"></script>
+<!-- 导入 Layui -->
+<script src="/public/layui/layui.js"></script>
+<!-- 导入 Dayjs -->
+<script src="/public/dayjs/dayjs.min.js"></script>
+<!-- 导入 Echarts -->
+<script src="/public/echarts/echarts.js"></script>
+<!-- 导入 Jquery -->
+<script src="/public/jquery/jquery.min.js"></script>
+<!-- 导入 index.js -->
+<script src="index.js" type="module"></script>
+
+</html>

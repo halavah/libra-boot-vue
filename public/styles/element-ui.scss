@@ -1,0 +1,395 @@
+// cover some element-ui styles
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type='file'] {
+    display: none !important;
+  }
+}
+
+.el-picker-panel.el-date-picker {
+  max-width: 400px !important;
+}
+
+.el-picker-panel.el-date-range-picker {
+  max-width: 646px !important;
+}
+
+// .el-picker-panel.el-date-range-picker .el-picker-panel__body{
+//   display: flex!important;
+// }
+
+
+.el-picker-panel .el-date-table-cell__text {
+  transform: none !important;
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.cell {
+  .el-tag {
+    margin-right: 0px;
+  }
+}
+
+.small-padding {
+  .cell {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.fixed-width {
+  .el-button--mini {
+    padding: 7px 10px;
+    width: 60px;
+  }
+}
+
+.status-col {
+  .cell {
+    padding: 0 10px;
+    text-align: center;
+
+    .el-tag {
+      margin-right: 0px;
+    }
+  }
+}
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+// refine element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+.el-dropdown-menu {
+  a {
+    display: block;
+  }
+}
+
+// fix date ui bug in filter-item
+.el-range-editor.el-input__inner {
+  display: inline-flex !important;
+}
+
+element // to fix el-date css style
+
+.el-range-separator {
+  box-sizing: content-box;
+}
+
+.el-menu--collapse>div>.el-submenu>.el-submenu__title .el-submenu__icon-arrow {
+  display: none;
+}
+
+.el-dropdown .el-dropdown-link {
+  color: var(--el-color-primary) !important;
+}
+
+//.el-dialog__body {
+//  padding-top: 15px !important;
+//  padding-bottom: 10px !important;
+//}
+// 部分表单  输入框样式修改
+.el-date-editor.el-input,
+.el-date-editor.el-input__wrapper {
+  width: 100% !important;
+
+  // .el-input__wrapper {
+  //   width: 172px !important;
+  // }
+}
+
+/* 宽度使用max-width显示,占比为屏幕占比
+当在限制的宽度之内,padding正好15行省略看  */
+.container-body .el-popper {
+  max-width: 25%;
+  padding-bottom: 5px !important;
+  bottom: -20px !important;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 15;
+  -webkit-box-orient: vertical;
+}
+
+// 表格  内样式修改    ---------------------------------------------------------------------------------------------------
+html .el-table--default .el-table__row {
+  height: 58px !important;
+}
+
+.el-table {
+  .el-table__header-wrapper tr th {
+    background-color: #f2f7f7 !important;
+    // background: rgb(147, 181, 207) !important;
+  }
+
+  //   表格高亮的颜色修改
+  .el-table__body-wrapper {
+    tr.el-table__row.current-row>td {
+      background-color: #F0F3FF !important; 
+    }
+
+    td .cell:empty::after {
+      content: '--';
+    }
+
+    .el-image {
+      width: 48px;
+      height: 48px;
+    }
+
+    .image-slot {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background: var(--el-fill-color-light);
+      color: var(--el-text-color-secondary);
+      font-size: 30px;
+    }
+
+    .el-form-item--default {
+      margin-bottom: 0;
+    }
+
+    .el-form-item__content {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+
+    .el-tag {
+      min-width: 70px !important;
+    }
+  }
+
+  .el-table__header-wrapper,
+  .el-table__fixed-header-wrapper {
+    th {
+      word-break: break-word;
+      color: #515a6e;
+      height: 40px !important;
+      font-size: 13px;
+    }
+
+    .cell {
+      left: 0px !important;
+    }
+  }
+
+  .el-table__body-wrapper {
+    .el-button>span {
+      margin-left: 1px !important;
+    }
+  }
+}
+
+// 弹窗    表单   详情 ---------------------------------------------------------------------------------------------------
+.el-dialog {
+  border-radius: 8px !important;
+  min-width: 560px;
+
+  &.w62 {
+    width: 62% !important;
+    min-width: 860px;
+  }
+
+  .el-dialog__header {
+    position: relative;
+    margin-right: 0;
+    font-weight: 600;
+    background-color: var(--el-color-primary);
+    height: 42px;
+    line-height: 42px;
+    padding: 0 16px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+
+    .el-dialog__title {
+      color: #fff;
+      font-weight: normal;
+    }
+
+    .el-dialog__headerbtn {
+      font-size: 24px;
+      top: 10px;
+      right: 16px;
+
+      .el-dialog__close {
+        color: #fff;
+      }
+    }
+  }
+
+  .el-dialog__body {
+    padding: 12px 16px 12px !important;
+    max-height: 720px;
+    overflow: auto;
+
+    .el-select {
+      width: 100%;
+    }
+
+    .el-tab-pane {
+      max-height: 640px;
+      overflow: auto;
+    }
+
+    .el-tabs__header {
+      margin-bottom: 6px !important;
+    }
+  }
+
+  // 弹窗-底部按钮样式
+  .footer_btns {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .el-dialog__footer {
+    padding: 6px 16px 12px !important;
+
+    .el-button+.el-button {
+      margin-left: 12px !important;
+    }
+  }
+}
+.el-dialog.performance{
+  border-radius: 0!important;
+}
+//   滚动条样式
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 var(--el-color-primary) !important;
+  background-color: var(--el-color-primary) !important;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px !important;
+  background: transparent !important;
+}
+
+// 步骤条 样式--------------------------------------------------------------------------------------------------
+:deep(.el-steps) {
+  max-width: 100% !important;
+
+  .el-step.is-horizontal {
+    .el-step__line {
+      height: 2px !important;
+      left: 36px;
+      right: 12px;
+    }
+
+    .el-step__head {
+      &.is-process {
+        color: #fff;
+        border-color: var(--el-color-primary);
+
+        .el-step__icon {
+          background: var(--el-color-primary);
+        }
+      }
+    }
+
+    .el-step__main {
+      .el-step__title {
+        line-height: 28px;
+        margin-bottom: 4px;
+      }
+    }
+  }
+}
+
+// ------------------------------------------------------------------按钮， radio,  更多， 伪类线条，  margin值--------
+// 相邻两个按钮的样式
+.el-button+.el-button {
+  margin-left: 2px !important;
+}
+
+.el-radio-button__inner {
+  padding: 6px 11px;
+}
+
+// 线条伪类
+.afterLine {
+  position: relative;
+  display: flex;
+  align-items: center;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 18px;
+    background-color: #4368ff;
+    margin-right: 5px;
+    border-radius: 2px;
+  }
+  &::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+    content: '';
+    border: 1px solid #eeeeee;
+  }
+}
+
+// .el-tag.el-tag--plain.el-tag--info{
+
+// }
+// 去掉el-tag   主题为 dark   的边框线条影响
+.el-tag.el-tag--dark{
+  border-color: transparent !important;
+}
+
+
+.el-tabs {
+  .custom-tabs-label {
+    .el-icon {
+      vertical-align: middle;
+    }
+
+    span {
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+  }
+}
+
+// 下拉挑选宽，可搜索时候，宽度变化调整，因为后面的图标高度导致
+.el-input__suffix {
+  .com-icon {
+    padding: 3px !important;
+  }
+}

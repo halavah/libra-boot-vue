@@ -1,0 +1,37 @@
+/* 继承父组件样式，添加业务特定样式 */
+@import '../../onbApplicant/css/index.css';
+
+/* ==========================================================================
+   录用操作
+   ========================================================================== */
+
+/* 录用弹框样式 */
+.el-dialog__title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 录用表单样式 */
+.el-form-item__label {
+  font-weight: 500;
+}
+
+/* 薪资输入框样式 */
+.el-input-number {
+  width: 100%;
+}
+
+/* 录用状态单选按钮样式 */
+.el-radio-group .el-radio {
+  margin-right: 30px;
+}
+
+/* 录用反馈按钮特殊样式 */
+.offer-btn {
+  color: #e6a23c;
+}
+
+.offer-btn:hover {
+  color: #ebb563;
+}
+

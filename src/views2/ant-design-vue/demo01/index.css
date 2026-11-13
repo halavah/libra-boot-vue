@@ -1,0 +1,48 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-layout {
+  height: 100%;
+  /* 确保布局充满容器 */
+}
+
+.ant-layout-content {
+  padding: 15px;
+  overflow-y: auto;
+  /* 内容区域允许滚动 */
+  background: #fff;
+  /* 添加背景色以便区分 */
+}
+
+.search-form .ant-form-item {
+  margin-right: 8px;
+  /* 调整表单项间距 */
+  margin-bottom: 10px;
+  /* 调整表单项底部间距 */
+}
+
+.action-buttons .ant-btn {
+  margin-right: 8px;
+}
+
+.ant-table-wrapper {
+  margin-top: 15px;
+  /* 表格上方间距 */
+}
+
+.ant-pagination {
+  margin-top: 15px;
+  /* 分页器上方间距 */
+  text-align: right;
+  /* 分页器右对齐 */
+}

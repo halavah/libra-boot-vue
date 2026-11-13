@@ -1,0 +1,22 @@
+{
+  "ant-design-vue": [
+    "demo01"
+  ],
+  "echarts": [
+    "demo01",
+    "demo02",
+    "demo03"
+  ],
+  "element": [
+    "demo01",
+    "demo02",
+    "demo03",
+    "demo04",
+    "demo05"
+  ],
+  "layui": [
+    "demo01",
+    "demo02",
+    "demo03"
+  ]
+}

@@ -1,0 +1,91 @@
+/* scoped 样式确保只作用于当前组件 */
+/* --- 卡片基础样式 --- */
+/* 左右卡片 (列表卡片和图表卡片) 的通用基础样式 */
+.list-card,
+.chart-card {
+  background: #fff;
+  /* 白色背景 */
+  border-radius: 4px;
+  /* 圆角 */
+  border: 1px solid #ebeef5;
+  /* 边框 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* 阴影 */
+  display: flex;
+  /* 使用 Flexbox 布局内部元素 (header 和 body) */
+  flex-direction: column;
+  /* 内部元素垂直排列 */
+  /* 高度由父级 Flexbox (el-col) 和 JS 动态计算决定，这里不需要设置固定高度 */
+  /* 确保卡片自身能正确处理内部滚动 (如果需要的话，但这里由 el-table 和 chart-container 处理) */
+  overflow: hidden;
+  /* 隐藏卡片自身可能产生的滚动条 */
+}
+
+/* --- 卡片内部布局 (使用 :deep 穿透 scoped) --- */
+/* 深度选择器 :deep() 用于修改子组件 Element Plus 的内部样式 */
+/* 使卡片主体 (el-card__body) 能够填充卡片的剩余垂直空间 */
+:deep(.el-card__header) {
+  /* 如果需要，可以调整卡片头部的样式，例如内边距 */
+  padding: 15px;
+  /* 示例：调整头部内边距 */
+  font-weight: bold;
+  /* 示例：头部文字加粗 */
+  border-bottom: 1px solid #ebeef5;
+  /* 示例：添加下边框 */
+}
+
+:deep(.el-card__body) {
+  flex-grow: 1;
+  /* 占据所有可用的垂直空间 (关键) */
+  padding: 15px;
+  /* 调整内边距，比默认的 20px 稍小 */
+  overflow: hidden;
+  /* 隐藏内部可能溢出的内容 (重要，防止破坏布局) */
+  display: flex;
+  /* 允许内部元素 (如表格、图表容器) 使用 Flex */
+  flex-direction: column;
+  /* 内部元素垂直排列 */
+  /* 确保 body 在 flex 布局下能正确收缩 */
+  min-height: 0;
+}
+
+/* --- 表格和图表容器样式 --- */
+/* 表格样式 */
+:deep(.el-table) {
+  /* 表格高度由模板中的 :height="innerContentHeight" 动态绑定 */
+  /* 这里不需要设置 height */
+  /* 确保表格在 flex 容器 (el-card__body) 中能正确填充 */
+  flex-grow: 1;
+  /* 如果 el-card__body 中只有表格，让表格填充 */
+  /* 如果表格需要滚动条，确保其父容器 el-card__body 设置了 overflow: hidden; */
+}
+
+/* 图表容器样式 */
+.chart-container {
+  width: 100%;
+  /* 宽度充满父容器 (el-card__body) */
+  /* 图表高度由模板中的 :style="{ height: innerContentHeight + 'px' }" 动态绑定 */
+  /* 这里不需要设置 height */
+  /* 确保图表容器在 flex 容器 (el-card__body) 中能正确填充 */
+  flex-grow: 1;
+  /* 如果 el-card__body 中只有图表容器，让其填充 */
+  /* 保证最小高度，防止计算错误时完全塌陷 */
+  min-height: 150px;
+}
+
+/* --- 可选辅助样式 --- */
+/* 表格单元格内文本过长时显示省略号的样式 (可选，如果 el-table-column 的 show-overflow-tooltip 不满足需求) */
+.table-cell-tooltip {
+  display: inline-block;
+  /* 行内块元素 */
+  max-width: 100%;
+  /* 最大宽度不超过单元格 */
+  overflow: hidden;
+  /* 隐藏溢出部分 */
+  white-space: nowrap;
+  /* 不换行 */
+  text-overflow: ellipsis;
+  /* 显示省略号 */
+  vertical-align: bottom;
+  /* 垂直对齐方式 (根据需要调整) */
+}

@@ -1,0 +1,176 @@
+<template>
+  <div v-loading.lock="loading" class="root-container">
+    <!-- 布局 1: 筛选区域 -->
+    <div class="layout-search">
+      <el-form
+        ref="searchFormRef"
+        :model="searchForm"
+        :rules="searchFormRules"
+        :inline="true"
+      >
+        <!-- 条件容器 -->
+        <div class="search-filters">
+          <el-form-item label="产线" prop="plNoKey">
+            <el-tree-select
+              v-model="searchForm.plNoKey"
+              :props="treeProps"
+              :data="treeData"
+              check-strictly
+              :render-after-expand="false"
+              placeholder="默认全部产线"
+              class="search-tree-select"
+              value-key="key"
+              multiple
+              clearable
+              collapse-tags
+              collapse-tags-tooltip
+              :max-collapse-tags="1"
+              @focus="onPlNoTreeFocus"
+              :disabled="!!searchForm.equipmentNo"
+            />
+          </el-form-item>
+          <el-form-item label="设备号" prop="equipmentNo">
+            <el-input
+              v-model="searchForm.equipmentNo"
+              placeholder="请输入设备号"
+              clearable
+              class="search-input"
+              maxlength="12"
+              @input="onEquipmentNoInput"
+            ></el-input>
+          </el-form-item>
+          <!-- 设备号模糊查询表格 -->
+          <el-table
+            v-if="equipmentNoTableVisible"
+            :data="
+              equipmentNoTableData.slice(
+                (equipmentNoTablePage - 1) * equipmentNoTablePageSize,
+                equipmentNoTablePage * equipmentNoTablePageSize
+              )
+            "
+            style="width: 100%; margin-top: 8px"
+            @row-click="onEquipmentNoRowClick"
+            highlight-current-row
+            size="small"
+          >
+            <el-table-column prop="EQUIPMENTNO" label="设备号" width="160" />
+            <el-table-column prop="EQUIPMENTNAME" label="商品名称" />
+          </el-table>
+          <el-pagination
+            v-if="equipmentNoTableVisible"
+            :current-page="equipmentNoTablePage"
+            :page-size="equipmentNoTablePageSize"
+            :total="equipmentNoTableData.length"
+            @current-change="(val) => (equipmentNoTablePage = val)"
+            layout="prev, pager, next"
+            small
+            style="margin-top: 4px"
+          />
+          <el-form-item label="商品售后模式" prop="stopReasonName">
+            <el-select
+              v-model="searchForm.stopReasonName"
+              placeholder="请选择故障模式"
+              multiple
+              clearable
+              collapse-tags
+              collapse-tags-tooltip
+              :max-collapse-tags="1"
+              class="search-select"
+            >
+              <el-option
+                v-for="item in attrCnts.stopReasonNameOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+          </el-form-item>
+          <el-form-item label="日期范围" prop="vDay">
+            <el-date-picker
+              v-model="searchForm.vDay"
+              type="daterange"
+              start-placeholder="开始日期"
+              range-separator="至"
+              end-placeholder="结束日期"
+              format="YYYY-MM-DD"
+              value-format="YYYY-MM-DD"
+              class="search-datepicker"
+            >
+            </el-date-picker>
+          </el-form-item>
+          <div class="search-buttons">
+            <el-form-item>
+              <el-button type="primary" @click="fun_search(searchFormRef)"
+                >查询</el-button
+              >
+              <el-button @click="fun_reset(searchFormRef)">重置</el-button>
+            </el-form-item>
+          </div>
+        </div>
+      </el-form>
+    </div>
+    <!-- 布局 2: 内容区域 -->
+    <div class="layout-content">
+      <div class="content-area">
+        <el-row :gutter="24">
+          <!-- 左侧列表 -->
+          <el-col :span="6">
+            <el-card shadow="never" class="list-card">
+              <template #header>
+                <div>
+                  <span>故障模式列表</span>
+                </div>
+              </template>
+              <el-table :data="dataList" stripe>
+                <el-table-column
+                  prop="bkReasonName"
+                  label="故障模式"
+                  show-overflow-tooltip
+                />
+                <el-table-column
+                  prop="totalBreakTime"
+                  label="停机时间"
+                  width="100"
+                  align="right"
+                />
+              </el-table>
+            </el-card>
+          </el-col>
+          <!-- 右侧图表 -->
+          <el-col :span="18">
+            <el-card shadow="never" class="chart-card">
+              <template #header>
+                <div>
+                  <span>故障模式分布图</span>
+                </div>
+              </template>
+              <div ref="chartRef" class="chart-container"></div>
+            </el-card>
+          </el-col>
+        </el-row>
+      </div>
+    </div>
+    <!-- 布局 3: 分析功能区域 -->
+    <div class="layout-analysis">
+      <el-card class="analysis-card">
+        <template #header>
+          <div>
+            <span>分析功能</span>
+          </div>
+        </template>
+        <div>
+          <el-input
+            type="textarea"
+            v-model="analyse"
+            :rows="6"
+            readonly
+            resize="none"
+          />
+        </div>
+      </el-card>
+    </div>
+  </div>
+</template>
+
+<script src="./js/index.js" type="module"></script>
+<style scoped src="./css/index.css"></style>

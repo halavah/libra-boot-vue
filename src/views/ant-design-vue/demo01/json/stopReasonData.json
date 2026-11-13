@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "message": "",
+  "code": 200,
+  "result": [
+    {
+      "stopReasonType": "质量原因"
+    },
+    {
+      "stopReasonType": "设计原因"
+    },
+    {
+      "stopReasonType": "维修原因"
+    },
+    {
+      "stopReasonType": "管理原因"
+    },
+    {
+      "stopReasonType": "操作原因"
+    },
+    {
+      "stopReasonType": "其他原因"
+    }
+  ],
+  "timestamp": 1745118762197
+}

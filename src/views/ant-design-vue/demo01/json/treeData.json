@@ -1,0 +1,479 @@
+{
+  "success": true,
+  "message": "",
+  "code": 200,
+  "result": [
+    {
+      "parent_plno": null,
+      "plname": "根节点",
+      "children": [
+        {
+          "parent_plno": "A1",
+          "plname": "电商物流中心",
+          "children": [
+            {
+              "parent_plno": "W1",
+              "plname": "电商物流中心-商品分组01",
+              "plno": "W101"
+            }
+          ],
+          "plno": "W1"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "商品运营中心",
+          "children": [
+            {
+              "parent_plno": "W2",
+              "plname": "商品运营中心-商品分组01",
+              "plno": "W201"
+            },
+            {
+              "parent_plno": "W2",
+              "plname": "商品运营中心-商品分组02",
+              "plno": "W202"
+            },
+            {
+              "parent_plno": "W2",
+              "plname": "商品运营中心-商品分组03",
+              "plno": "W203"
+            },
+            {
+              "parent_plno": "W2",
+              "plname": "商品运营中心-商品分组04",
+              "plno": "W204"
+            },
+            {
+              "parent_plno": "W2",
+              "plname": "商品运营中心-商品分组05",
+              "plno": "W205"
+            },
+            {
+              "parent_plno": "W2",
+              "plname": "商品运营中心-商品分组06",
+              "plno": "W206"
+            }
+          ],
+          "plno": "W2"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "自营店铺",
+          "children": [
+            {
+              "parent_plno": "W3",
+              "plname": "自营店铺-商品分组01",
+              "plno": "W301"
+            },
+            {
+              "parent_plno": "W3",
+              "plname": "自营店铺-商品分组02",
+              "plno": "W302"
+            },
+            {
+              "parent_plno": "W3",
+              "plname": "自营店铺-商品分组03",
+              "plno": "W303"
+            },
+            {
+              "parent_plno": "W3",
+              "plname": "自营店铺-商品分组04",
+              "plno": "W304"
+            },
+            {
+              "parent_plno": "W3",
+              "plname": "自营店铺-商品分组05",
+              "plno": "W305"
+            }
+          ],
+          "plno": "W3"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "数码旗舰店",
+          "children": [
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组01",
+              "plno": "W401"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组02",
+              "plno": "W402"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组03",
+              "plno": "W403"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组04",
+              "plno": "W404"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组05",
+              "plno": "W405"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组06",
+              "plno": "W406"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组07",
+              "plno": "W407"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组08",
+              "plno": "W408"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组09",
+              "plno": "W409"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组10",
+              "plno": "W410"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组11",
+              "plno": "W411"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组12",
+              "plno": "W412"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组13",
+              "plno": "W413"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组14",
+              "plno": "W414"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组15",
+              "plno": "W415"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组16",
+              "plno": "W416"
+            },
+            {
+              "parent_plno": "W4",
+              "plname": "数码旗舰店-商品分组17",
+              "plno": "W417"
+            }
+          ],
+          "plno": "W4"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "客户服务中心",
+          "children": [
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组01",
+              "plno": "W503"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组02",
+              "plno": "W504"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组03",
+              "plno": "W505"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组04",
+              "plno": "W506"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组05",
+              "plno": "W507"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组06",
+              "plno": "W508"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组07",
+              "plno": "W509"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组08",
+              "plno": "W510"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组09",
+              "plno": "W511"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组10",
+              "plno": "W512"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组11",
+              "plno": "W513"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组12",
+              "plno": "W514"
+            },
+            {
+              "parent_plno": "W5",
+              "plname": "客户服务中心-商品分组13",
+              "plno": "W515"
+            }
+          ],
+          "plno": "W5"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "家居旗舰店",
+          "children": [
+            {
+              "parent_plno": "W8",
+              "plname": "家居旗舰店-商品分组01",
+              "plno": "W801"
+            },
+            {
+              "parent_plno": "W8",
+              "plname": "家居旗舰店-商品分组02",
+              "plno": "W802"
+            },
+            {
+              "parent_plno": "W8",
+              "plname": "家居旗舰店-商品分组03",
+              "plno": "W803"
+            },
+            {
+              "parent_plno": "W8",
+              "plname": "家居旗舰店-商品分组04",
+              "plno": "W804"
+            },
+            {
+              "parent_plno": "W8",
+              "plname": "家居旗舰店-商品分组05",
+              "plno": "W805"
+            },
+            {
+              "parent_plno": "W8",
+              "plname": "家居旗舰店-商品分组06",
+              "plno": "W806"
+            },
+            {
+              "parent_plno": "W8",
+              "plname": "家居旗舰店-商品分组07",
+              "plno": "W807"
+            }
+          ],
+          "plno": "W8"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "美妆旗舰店",
+          "children": [
+            {
+              "parent_plno": "W9",
+              "plname": "美妆旗舰店-商品分组01",
+              "plno": "W901"
+            },
+            {
+              "parent_plno": "W9",
+              "plname": "美妆旗舰店-商品分组02",
+              "plno": "W902"
+            },
+            {
+              "parent_plno": "W9",
+              "plname": "美妆旗舰店-商品分组03",
+              "plno": "W903"
+            },
+            {
+              "parent_plno": "W9",
+              "plname": "美妆旗舰店-商品分组04",
+              "plno": "W904"
+            },
+            {
+              "parent_plno": "W9",
+              "plname": "美妆旗舰店-商品分组05",
+              "plno": "W905"
+            },
+            {
+              "parent_plno": "W9",
+              "plname": "美妆旗舰店-商品分组06",
+              "plno": "W906"
+            },
+            {
+              "parent_plno": "W9",
+              "plname": "美妆旗舰店-商品分组07",
+              "plno": "W907"
+            }
+          ],
+          "plno": "W9"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "户外旗舰店",
+          "children": [
+            {
+              "parent_plno": "WA",
+              "plname": "户外旗舰店-商品分组01",
+              "plno": "WA01"
+            },
+            {
+              "parent_plno": "WA",
+              "plname": "户外旗舰店-商品分组02",
+              "plno": "WA02"
+            },
+            {
+              "parent_plno": "WA",
+              "plname": "户外旗舰店-商品分组03",
+              "plno": "WA03"
+            },
+            {
+              "parent_plno": "WA",
+              "plname": "户外旗舰店-商品分组04",
+              "plno": "WA04"
+            },
+            {
+              "parent_plno": "WA",
+              "plname": "户外旗舰店-商品分组05",
+              "plno": "WA05"
+            }
+          ],
+          "plno": "WA"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "服饰旗舰店",
+          "children": [
+            {
+              "parent_plno": "Y2",
+              "plname": "服饰旗舰店-商品分组01",
+              "plno": "Y201"
+            },
+            {
+              "parent_plno": "Y2",
+              "plname": "服饰旗舰店-商品分组02",
+              "plno": "Y202"
+            },
+            {
+              "parent_plno": "Y2",
+              "plname": "服饰旗舰店-商品分组03",
+              "plno": "Y203"
+            }
+          ],
+          "plno": "Y2"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "运动旗舰店",
+          "children": [
+            {
+              "parent_plno": "Y3",
+              "plname": "运动旗舰店-商品分组01",
+              "plno": "Y301"
+            },
+            {
+              "parent_plno": "Y3",
+              "plname": "运动旗舰店-商品分组02",
+              "plno": "Y302"
+            },
+            {
+              "parent_plno": "Y3",
+              "plname": "运动旗舰店-商品分组03",
+              "plno": "Y303"
+            }
+          ],
+          "plno": "Y3"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "母婴旗舰店",
+          "children": null,
+          "plno": "Y4"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "食品旗舰店",
+          "children": null,
+          "plno": "Y5"
+        },
+        {
+          "parent_plno": "A1",
+          "plname": "图书旗舰店",
+          "children": [
+            {
+              "parent_plno": "Y8",
+              "plname": "图书旗舰店-商品分组01",
+              "plno": "Y801"
+            },
+            {
+              "parent_plno": "Y8",
+              "plname": "图书旗舰店-商品分组02",
+              "plno": "Y802"
+            },
+            {
+              "parent_plno": "Y8",
+              "plname": "图书旗舰店-商品分组03",
+              "plno": "Y803"
+            },
+            {
+              "parent_plno": "Y8",
+              "plname": "图书旗舰店-商品分组04",
+              "plno": "Y804"
+            },
+            {
+              "parent_plno": "Y8",
+              "plname": "图书旗舰店-商品分组05",
+              "plno": "Y805"
+            },
+            {
+              "parent_plno": "Y8",
+              "plname": "图书旗舰店-商品分组06",
+              "plno": "Y806"
+            },
+            {
+              "parent_plno": "Y8",
+              "plname": "图书旗舰店-商品分组07",
+              "plno": "Y807"
+            },
+            {
+              "parent_plno": "Y8",
+              "plname": "图书旗舰店-商品分组08",
+              "plno": "Y808"
+            }
+          ],
+          "plno": "Y8"
+        }
+      ],
+      "plno": "A1"
+    }
+  ],
+  "timestamp": 1745118762288
+}

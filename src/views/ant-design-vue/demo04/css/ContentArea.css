@@ -1,0 +1,49 @@
+/* --- 布局样式 --- */
+.layout-content {
+  /* 内容区域外层容器 */
+  flex-grow: 1; /* 占据剩余垂直空间 */
+  display: flex; /* 使用 Flexbox 布局 */
+  flex-direction: column; /* 垂直排列子元素 */
+  overflow: hidden; /* 隐藏溢出内容 */
+  padding-top: 2px; /* 与上方元素的间距 */
+}
+
+.content-area {
+  /* 包含左右两列的区域 */
+  flex-grow: 1; /* 占据 layout-content 的剩余空间 */
+  overflow: hidden; /* 隐藏溢出内容 */
+}
+
+/* --- 卡片样式 --- */
+.list-card, /* 左侧列表卡片 */
+.chart-card {
+  /* 右侧图表卡片 */
+  height: 620px; /* 固定卡片高度 */
+  display: flex; /* 使用 Flexbox 布局 */
+  flex-direction: column; /* 垂直排列卡片内部元素 (标题和内容) */
+}
+
+.list-card .ant-card-body, /* 左侧卡片内容区域 */
+.chart-card .ant-card-body {
+  /* 右侧卡片内容区域 */
+  flex-grow: 1; /* 占据卡片内剩余空间 */
+  overflow: hidden; /* 隐藏溢出内容 (如图表或表格) */
+  padding: 0px 1px 0px 0px !important; /* 覆盖 Antd 默认内边距，进行微调 */
+}
+
+/* --- 图表与表格样式 --- */
+.chart-container {
+  /* ECharts 图表容器 */
+  height: 515px; /* 固定图表高度 */
+  width: 100%; /* 图表宽度占满父容器 */
+}
+
+.table-cell-tooltip {
+  /* 表格单元格内用于省略提示的 span */
+  display: inline-block; /* 使其可以设置宽度 */
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: bottom; /* 对齐方式 */
+}

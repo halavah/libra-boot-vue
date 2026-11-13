@@ -1,0 +1,286 @@
+/* --- 页面整体容器 --- */
+.root-container {
+  padding: 20px;
+  /* 页面内边距 */
+  box-sizing: border-box;
+  /* border 和 padding 计算在宽度内 */
+  background-color: #f5f7fa;
+  /* 页面背景色 */
+  overflow-x: hidden;
+  /* 防止水平滚动条 */
+  font-size: 14px;
+  /* 基础字体大小 */
+}
+
+/* --- 通用 Ant Design 卡片样式覆盖 --- */
+/* 卡片头部 */
+:deep(.root-container .ant-card-head) {
+  padding: 15px 20px;
+  /* 头部内边距 */
+  border-bottom: 1px solid #ebeef5;
+  /* 头部下边框 */
+  font-size: 14px;
+  /* 头部字体大小 */
+  font-weight: bold;
+  /* 头部字体加粗 */
+  min-height: auto;
+  /* 覆盖 antd 默认最小高度 */
+}
+
+/* 卡片标题 */
+:deep(.root-container .ant-card-head-title) {
+  padding: 0;
+  /* 移除 antd 默认标题内边距 */
+}
+
+/* 卡片主体 */
+:deep(.root-container .ant-card-body) {
+  padding: 20px;
+  /* 主体内边距 */
+}
+
+/* --- 布局 1: 筛选区域 --- */
+.layout-search {
+  margin-bottom: 15px;
+  /* 与下方内容区域间距 */
+  padding: 20px;
+  /* 筛选区域内边距 */
+  background: #fff;
+  /* 背景色 */
+  border-radius: 4px;
+  /* 圆角 */
+  border: 1px solid #ebeef5;
+  /* 边框 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* 阴影 */
+}
+
+/* 筛选条件 Flex 容器 */
+.search-filters-flex {
+  display: flex;
+  /* 使用 Flex 布局 */
+  flex-wrap: wrap;
+  /* 允许换行 */
+  align-items: flex-start;
+  /* 顶部对齐 */
+  gap: 15px 20px;
+  /* 行间距和列间距 */
+}
+
+/* 筛选表单项 */
+.search-filters-flex .ant-form-item {
+  margin-bottom: 0;
+  /* 移除默认下边距 */
+  flex-grow: 0;
+  /* 禁止拉伸 */
+  flex-shrink: 0;
+  /* 禁止收缩 */
+}
+
+/* --- 特定筛选控件宽度 --- */
+.search-tree-select {
+  width: 240px;
+  /* 产线树选择器宽度 */
+}
+
+.search-input,
+.search-select {
+  width: 220px;
+  /* 输入框和普通选择器宽度 */
+}
+
+.search-datepicker {
+  width: 280px !important;
+  /* 日期范围选择器宽度 (使用 !important 确保生效) */
+}
+
+/* 查询/重置按钮容器 */
+.search-buttons {
+  /* 无需特殊样式，随 Flex 布局排列 */
+}
+
+/* 查询/重置按钮的表单项 */
+.search-buttons .ant-form-item {
+  margin-bottom: 0;
+  /* 移除下边距 */
+}
+
+/* --- TreeSelect 多选样式修复与调整 --- */
+/* 限制选择器高度并允许滚动 */
+.search-tree-select .ant-select-selector {
+  max-height: 70px;
+  /* 最大高度，约显示 2-3 行 */
+  overflow-y: auto;
+  /* 超出时显示垂直滚动条 */
+}
+
+/* 调整选中项标签间距 */
+.search-tree-select .ant-select-selection-item {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  line-height: normal;
+  /* 确保行高正常 */
+}
+
+/* 调整下拉树节点内容布局 */
+:deep(.ant-select-tree-node-content-wrapper) {
+  display: flex !important;
+  /* 强制 Flex 布局 */
+  align-items: center !important;
+  /* 垂直居中 */
+}
+
+/* 调整下拉树复选框样式 */
+:deep(.ant-select-tree-checkbox) {
+  margin-right: 4px !important;
+  /* 与文本间距 */
+  flex-shrink: 0 !important;
+  /* 防止被压缩 */
+}
+
+/* 调整下拉树节点标题样式 */
+:deep(.ant-select-tree-title) {
+  overflow: hidden !important;
+  /* 隐藏溢出 */
+  text-overflow: ellipsis !important;
+  /* 显示省略号 */
+  white-space: nowrap !important;
+  /* 不换行 */
+  flex-grow: 1 !important;
+  /* 占据剩余空间 */
+}
+
+/* --- 布局 2: 内容区域 --- */
+.layout-content {
+  margin-bottom: 15px;
+  /* 与下方分析区域间距 */
+}
+
+/* 左右卡片通用样式 */
+.list-card,
+.chart-card {
+  background: #fff;
+  /* 背景色 */
+  border-radius: 4px;
+  /* 圆角 */
+  border: 1px solid #ebeef5;
+  /* 边框 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* 阴影 */
+}
+
+/* 左侧表格单元格省略提示 */
+.table-cell-tooltip {
+  display: inline-block;
+  /* 允许设置宽度 */
+  max-width: 100%;
+  /* 最大宽度 */
+  overflow: hidden;
+  /* 隐藏溢出 */
+  white-space: nowrap;
+  /* 不换行 */
+  text-overflow: ellipsis;
+  /* 显示省略号 */
+  vertical-align: bottom;
+  /* 垂直对齐 */
+}
+
+/* 右侧图表容器 */
+.chart-container {
+  width: 100%;
+  /* 宽度占满 */
+  height: 515px;
+  /* 固定高度 */
+}
+
+/* --- 布局 3: 分析功能区域 --- */
+.analysis-card {
+  background: #fff;
+  /* 背景色 */
+  border-radius: 4px;
+  /* 圆角 */
+  border: 1px solid #ebeef5;
+  /* 边框 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* 阴影 */
+}
+
+/* 分析文本域样式 (模拟静态文本) */
+.analysis-textarea {
+  border: none;
+  /* 无边框 */
+  resize: none;
+  /* 禁止调整大小 */
+  background-color: transparent;
+  /* 透明背景 */
+  padding: 5px 0;
+  /* 上下内边距 */
+  box-shadow: none;
+  /* 无阴影 */
+  cursor: default;
+  /* 默认光标 */
+  color: #606266;
+  /* 文本颜色 */
+  font-size: inherit;
+  /* 继承父元素字体大小 */
+}
+
+/* --- 响应式布局 --- */
+/* 中等屏幕 (宽度 <= 1366px) */
+@media screen and (max-width: 1366px) {
+  .root-container {
+    padding: 12px;
+    /* 减小页面内边距 */
+  }
+
+  .layout-search {
+    padding: 12px;
+    /* 减小筛选区域内边距 */
+  }
+
+  .search-filters-flex {
+    gap: 12px;
+    /* 减小筛选条件间距 */
+  }
+}
+
+/* 小屏幕 (宽度 <= 768px) */
+@media screen and (max-width: 768px) {
+
+  /* 筛选条件垂直排列 */
+  .search-filters-flex {
+    flex-direction: column;
+    /* 改为垂直方向 */
+    align-items: stretch;
+    /* 拉伸项目以填充宽度 */
+  }
+
+  /* 筛选控件占满整行 */
+  .search-tree-select,
+  .search-input,
+  .search-select,
+  .search-datepicker {
+    width: 100%;
+  }
+
+  /* 查询按钮组靠右 */
+  .search-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* 内容区域左右列垂直排列 */
+  .layout-content .ant-row>.ant-col {
+    flex: 1 1 100%;
+    /* 每列占满一行 */
+    max-width: 100%;
+    margin-bottom: 16px;
+    /* 添加列间距 */
+  }
+
+  /* 移除最后一列的下边距 */
+  .layout-content .ant-row>.ant-col:last-child {
+    margin-bottom: 0;
+  }
+}

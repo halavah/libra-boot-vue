@@ -1,0 +1,291 @@
+//main-container全局样式
+.app-container {
+  // padding: 16px 16px 0px 16px;
+  // margin: 16px;
+  // background: #ffffff;
+  // border-radius: 4px;
+}
+.app-tree-table-container {
+  margin: 16px;
+  background: #ffffff;
+  display: flex;
+  border-radius: 4px;
+  .left-tree-box {
+    width: 232px;
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 16px;
+    .el-scrollbar__bar {
+      bottom: 4px;
+    }
+    .search-input-box {
+      height: 32px;
+      margin-bottom: 12px;
+    }
+    .el-scrollbar {
+      width: 214px;
+      .is-horizontal {
+        height: 8px;
+        &:hover {
+          background: rgba(0, 0, 0, 0.15);
+        }
+      }
+      .is-vertical {
+        width: 8px;
+        &:hover {
+          background: rgba(0, 0, 0, 0.15);
+        }
+      }
+      .el-scrollbar__thumb {
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        opacity: 1;
+        &:hover {
+          background: rgba(0, 0, 0, 0.45);
+        }
+      }
+    }
+    .com-tree-wrap {
+      //width: 224px !important;
+      .com-tree {
+        //width: 224px !important;
+        width: 200px;
+        .el-tree {
+          width: 100%;
+          .is-leaf {
+            //left: 16px;
+            //display: none;
+          }
+        }
+        .com-tree-node-label {
+          div {
+            width: 158px;
+            display: block;
+            overflow: hidden !important;
+            white-space: nowrap !important;
+            text-overflow: ellipsis !important;
+          }
+        }
+      }
+    }
+  }
+  .right-table-box {
+    flex: 1;
+    padding: 16px 16px 0px 16px;
+    .right-table {
+      height: 100%;
+    }
+    .pagination-box {
+      //margin-top: 5px;
+    }
+  }
+}
+.app-container,
+.app-tree-table-container {
+  .el-form-item {
+    //min-width: 210px;
+    &:nth-child(4n + 4) {
+      // margin-right: 0;
+    }
+  }
+  .el-form-item:last-child {
+    margin-right: 0;
+  }
+  .form-box {
+    display: flex;
+    justify-content: space-between;
+    height: 32px;
+    margin-bottom: 16px;
+    .form-item-box {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 75%;
+      //width: 87%;
+      //width: calc(100% - 168px);
+      .el-form-item {
+        flex: 1;
+        width: 32%;
+        max-width: 32% !important;
+        //width: 24%;
+        //max-width: 24% !important;
+        margin-right: 16px;
+        .el-form-item__label {
+          position: relative;
+          &:after {
+            content: ':';
+            margin-left: 2px;
+          }
+        }
+      }
+      .el-form-item--default {
+        margin-bottom: 16px;
+      }
+    }
+  }
+  .form-more-box {
+    height: 32px;
+    margin-bottom: 16px;
+    .form-more-item-box {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+      .el-form-item {
+        flex: 1;
+        width: 25%;
+        max-width: 25%;
+        .el-form-item__label {
+          position: relative;
+          &:after {
+            content: ':';
+            margin-left: 2px;
+          }
+        }
+      }
+      //.el-form-item--default{
+      //  margin-bottom: 4px;
+      //}
+      .el-form-item:not(:last-child) {
+        margin-right: 16px;
+      }
+    }
+  }
+  .form-more-query-box {
+    height: 82px;
+    margin-bottom: 16px;
+    .form-more-item-box {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+      .el-form-item {
+        .el-form-item__label {
+          position: relative;
+          &:after {
+            content: ':';
+            margin-left: 2px;
+          }
+        }
+      }
+      .more-item {
+        flex: 1;
+        width: 25%;
+        max-width: 25%;
+        min-width: 25%;
+        margin-right: 0px;
+        //width: 24%;
+        //max-width: 24%;
+        //min-width: 23%;
+        //margin-right: 16px;
+        .el-date-editor.el-input,
+        .el-date-editor.el-input__wrapper {
+          width: 50%;
+        }
+        &:not(:nth-child(4n)) {
+          padding-right: 16px;
+        }
+      }
+      .more-search {
+        .el-button {
+          &:first-child {
+            right: 88px;
+            position: absolute;
+          }
+          &:last-child {
+            right: 0px;
+            position: absolute;
+          }
+        }
+      }
+      .two-input-item {
+        width: 25%;
+        max-width: 25%;
+        min-width: 25%;
+        padding-right: 16px;
+        margin-right: 0px;
+      }
+      .el-form-item--default {
+        margin-bottom: 16px;
+      }
+      .el-form-item:not(:last-child) {
+        //margin-right: 16px;
+      }
+    }
+  }
+  .search-form-item,
+  .search-form-more-item,
+  .search-form-more-query-item,
+  .search-form-log-item {
+    margin-right: 0px;
+    height: 32px;
+    width: calc(25% - 16px);
+    min-width: calc(25% - 16px);
+    //width: 168px;
+    //min-width: 168px;
+  }
+  .search-form-item,
+  .search-form-more-item,
+  .search-form-more-query-item,
+  .search-form-log-item {
+    .el-form-item__content {
+      .el-button:first-child {
+        position: absolute;
+        right: 88px;
+      }
+      .el-button:last-child {
+        position: absolute;
+        right: 0px;
+      }
+    }
+  }
+  .search-form-more-item,
+  .search-form-more-query-item,
+  .search-form-log-item {
+    .el-form-item__content {
+      right: 30px !important;
+      position: absolute !important;
+    }
+  }
+  .search-form-more-item {
+    margin-top: 8px;
+  }
+  .search-form-more-query-item {
+    margin-top: -68px;
+  }
+  .search-form-log-item {
+    margin-top: -42px;
+  }
+  .pagination-box {
+    height: 48px;
+  }
+}
+.el-table .el-popper {
+  z-index: 2097;
+  position: fixed;
+  inset: auto auto 0px 0px;
+  margin: 0px;
+  transform: translate(0px, -589x);
+  max-width: 40%;
+  overflow: hidden;
+  //display: -webkit-box;
+  ////overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 15;
+  //-webkit-box-orient: vertical;
+  padding: 4px 8px 4px 8px !important;
+}
+
+.el-table .el-popper.is-dark {
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.12);
+  font-family: PingFangSC, PingFang SC;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 22px;
+  text-align: left;
+  font-style: normal;
+}
+.menu-container-box {
+  border-radius: 4px;
+}

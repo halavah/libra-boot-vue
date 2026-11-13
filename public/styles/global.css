@@ -1,0 +1,33 @@
+/* --- 全局根元素样式 --- */
+:root {
+  /* 默认字体栈 */
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* 基础字体大小 */
+  font-size: 16px;
+  /* 默认行高 */
+  line-height: 1.5;
+  /* 默认字重 */
+  font-weight: 400;
+
+  /* 浅色主题默认颜色 */
+  color: #213547;
+  /* 文本颜色 */
+  background-color: #ffffff;
+  /* 背景颜色 */
+
+  /* 字体合成与渲染优化 */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- body 元素样式 --- */
+body {
+  /* 移除默认外边距 */
+  margin: 0;
+  /* 最小宽度，防止内容在小屏幕上溢出 */
+  min-width: 320px;
+  /* 确保 body 至少占据整个视口高度 */
+  min-height: 100vh;
+}

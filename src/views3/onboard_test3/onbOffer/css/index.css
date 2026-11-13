@@ -1,0 +1,493 @@
+/* 继承父组件样式，添加业务特定样式 */
+@import '../../onbApplicant/css/index.css';
+
+/* ==========================================================================
+ 弹框相关样式
+ ========================================================================== */
+.approval-dialog {
+  /* 弹框底部按钮区域 */
+  .dialog-footer {
+    /* 使用flex布局 */
+    display: flex;
+    /* 水平靠右对齐 */
+    justify-content: flex-end;
+    /* 元素间距 */
+    gap: 10px;
+  }
+
+  /* 审批流程容器 */
+  .approval-trail-container {
+    /* 最大高度 */
+    max-height: 60vh;
+    /* 垂直方向溢出时滚动 */
+    overflow-y: auto;
+    /* 内边距 */
+    padding: 10px;
+  }
+
+  /* 审批状态徽章通用样式 */
+  .approval-status {
+    /* 显示为行内块元素 */
+    display: inline-block;
+    /* 内边距 */
+    padding: 2px 8px;
+    /* 圆角 */
+    border-radius: 4px;
+    /* 字体大小 */
+    font-size: 12px;
+    /* 字体粗细 */
+    font-weight: 500;
+
+    /* 审批状态 - 已完成 */
+    &.status-done {
+      /* 背景色 */
+      background-color: #f0f9ff;
+      /* 文字颜色 */
+      color: #67c23a;
+      /* 边框 */
+      border: 1px solid #c6f6d5;
+    }
+
+    /* 审批状态 - 处理中 */
+    &.status-doing {
+      /* 背景色 */
+      background-color: #fdf6ec;
+      /* 文字颜色 */
+      color: #e6a23c;
+      /* 边框 */
+      border: 1px solid #f5dab1;
+    }
+
+    /* 审批状态 - 已退回 */
+    &.status-returned {
+      /* 背景色 */
+      background-color: #fef0f0;
+      /* 文字颜色 */
+      color: #f56c6c;
+      /* 边框 */
+      border: 1px solid #fbc4c4;
+    }
+
+    /* 审批状态 - 已取消 */
+    &.status-cancel {
+      /* 背景色 */
+      background-color: #f4f4f5;
+      /* 文字颜色 */
+      color: #909399;
+      /* 边框 */
+      border: 1px solid #e9e9eb;
+    }
+
+    /* 审批状态 - 不同意 */
+    &.status-disagree {
+      /* 背景色 */
+      background-color: #fef0f0;
+      /* 文字颜色 */
+      color: #f56c6c;
+      /* 边框 */
+      border: 1px solid #fbc4c4;
+    }
+
+    /* 审批状态 - 已撤回 */
+    &.status-withdraw {
+      /* 背景色 */
+      background-color: #f4f4f5;
+      /* 文字颜色 */
+      color: #909399;
+      /* 边框 */
+      border: 1px solid #e9e9eb;
+    }
+  }
+
+  /* 无数据提示 */
+  .no-data {
+    /* 文本居中 */
+    text-align: center;
+    /* 文字颜色 */
+    color: #909399;
+    /* 内边距 */
+    padding: 20px;
+  }
+
+  /* 审批时间线 */
+  .approval-trail-timeline {
+    /* 相对定位 */
+    position: relative;
+  }
+
+  /* 审批时间线项目 */
+  .approval-trail-item {
+    /* 使用flex布局 */
+    display: flex;
+    /* 垂直排列 */
+    flex-direction: column;
+    /* 相对定位 */
+    position: relative;
+    /* 左内边距 */
+    padding-left: 25px;
+    /* 下内边距 */
+    padding-bottom: 16px;
+
+    /* 时间线竖线 */
+    .timeline-line {
+      /* 绝对定位 */
+      position: absolute;
+      /* 距离左侧 */
+      left: 7px;
+      /* 距离顶部 */
+      top: 16px;
+      /* 距离底部 */
+      bottom: -16px;
+      /* 宽度 */
+      width: 2px;
+      /* 背景色 */
+      background-color: #e4e7ed;
+    }
+
+    /* 时间线节点圆点 */
+    &:before {
+      /* 内容为空 */
+      content: "";
+      /* 绝对定位 */
+      position: absolute;
+      /* 距离左侧 */
+      left: 0;
+      /* 距离顶部 */
+      top: 0;
+      /* 宽度 */
+      width: 16px;
+      /* 高度 */
+      height: 16px;
+      /* 圆形 */
+      border-radius: 50%;
+      /* 背景色 */
+      background-color: #409eff;
+      /* 边框 */
+      border: 3px solid #fff;
+      /* 层级 */
+      z-index: 1;
+    }
+
+    /* 审批人头部区域 */
+    .approver-header {
+      /* 使用flex布局 */
+      display: flex;
+      /* 垂直居中 */
+      align-items: center;
+      /* 两端对齐 */
+      justify-content: space-between;
+      /* 下外边距 */
+      margin-bottom: 8px;
+      /* 左外边距 */
+      margin-left: 5px;
+      /* 右内边距 */
+      padding-right: 5px;
+    }
+
+    /* 审批人姓名 */
+    .approver-name {
+      /* 字体加粗 */
+      font-weight: bold;
+      /* 字体大小 */
+      font-size: 14px;
+      /* 文字颜色 */
+      color: #409eff;
+    }
+
+    /* 审批内容区域 */
+    .approval-content {
+      /* 相对定位 */
+      position: relative;
+      /* 背景色 */
+      background-color: #fff;
+      /* 边框 */
+      border: 1px solid #e5e7eb;
+      /* 圆角 */
+      border-radius: 8px;
+      /* 内边距 */
+      padding: 12px 14px;
+      /* 左外边距 */
+      margin-left: 5px;
+      /* 阴影 */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  /* 审批详情区域 */
+  .approval-details {
+    /* 字体大小 */
+    font-size: 13px;
+    /* 文字颜色 */
+    color: #606266;
+  }
+
+  /* 审批详情单项 */
+  .approval-detail-item {
+    /* 使用flex布局 */
+    display: flex;
+    /* 行高 */
+    line-height: 1.6;
+    /* 下外边距 */
+    margin-bottom: 4px;
+
+    /* 最后一个子元素无下外边距 */
+    &:last-child {
+      /* 下外边距 */
+      margin-bottom: 0;
+    }
+
+    /* 详情标签 */
+    .detail-label {
+      /* 防止被压缩 */
+      flex-shrink: 0;
+      /* 宽度 */
+      width: 80px;
+      /* 文字颜色 */
+      color: #909399;
+    }
+
+    /* 详情值 */
+    .detail-value {
+      /* 允许长单词或URL换行 */
+      word-break: break-all;
+    }
+  }
+
+  /* 信息项 */
+  .info-item {
+    /* 使用flex布局 */
+    display: flex;
+    /* 垂直排列 */
+    flex-direction: column;
+    /* 元素间距 */
+    gap: 6px;
+    /* 下外边距 */
+    margin-bottom: 10px;
+    /* 内边距 */
+    padding: 10px 12px;
+    /* 背景色 */
+    background-color: #f9fafb;
+    /* 圆角 */
+    border-radius: 6px;
+    /* 边框 */
+    border: 1px solid #e5e7eb;
+    /* 过渡效果 */
+    transition: all 0.2s ease;
+
+    /* 悬停效果 */
+    &:hover {
+      /* 背景色 */
+      background-color: #f3f4f6;
+      /* 边框颜色 */
+      border-color: #d1d5db;
+    }
+
+    /* 信息标签 */
+    .info-label {
+      /* 字体大小 */
+      font-size: 12px;
+      /* 文字颜色 */
+      color: #6b7280;
+      /* 字体粗细 */
+      font-weight: 600;
+      /* 文本大写 */
+      text-transform: uppercase;
+      /* 字母间距 */
+      letter-spacing: 0.5px;
+    }
+
+    /* 信息值 */
+    .info-value {
+      /* 字体大小 */
+      font-size: 14px;
+      /* 文字颜色 */
+      color: #1f2937;
+      /* 字体粗细 */
+      font-weight: 500;
+      /* 允许长单词或URL换行 */
+      word-break: break-all;
+      /* 行高 */
+      line-height: 1.6;
+      /* 最小高度 */
+      min-height: 20px;
+    }
+  }
+
+  /* 弹框详情容器 */
+  .merged-detail-container {
+    /* 使用flex布局 */
+    display: flex;
+    /* 元素间距 */
+    gap: 20px;
+    /* 交叉轴拉伸对齐 */
+    align-items: stretch;
+    /* 最大高度 */
+    max-height: 80vh;
+    /* 溢出隐藏 */
+    overflow: hidden;
+  }
+
+  /* 左侧详情信息 */
+  .detail-left {
+    /* 占据剩余空间 */
+    flex: 1;
+    /* 背景色 */
+    background: #ffffff;
+    /* 边框 */
+    border: 1px solid #e5e7eb;
+    /* 圆角 */
+    border-radius: 8px;
+    /* 内边距 */
+    padding: 18px;
+    /* 阴影 */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    /* 垂直溢出时滚动 */
+    overflow-y: auto;
+  }
+
+  /* 右侧流程信息 */
+  .detail-right {
+    /* 固定宽度 */
+    width: 320px;
+    /* 背景色 */
+    background: #f5f7fa;
+    /* 圆角 */
+    border-radius: 8px;
+    /* 内边距 */
+    padding: 16px;
+    /* 使用flex布局 */
+    display: flex;
+    /* 垂直排列 */
+    flex-direction: column;
+    /* 最大高度 */
+    max-height: 100%;
+    /* 溢出隐藏 */
+    overflow: hidden;
+  }
+
+  /* 详情标题 */
+  .detail-title {
+    /* 外边距 */
+    margin: 0 0 12px 0;
+    /* 字体大小 */
+    font-size: 15px;
+    /* 文字颜色 */
+    color: #303133;
+    /* 字体粗细 */
+    font-weight: 600;
+    /* 左内边距 */
+    padding-left: 10px;
+    /* 相对定位 */
+    position: relative;
+
+    /* 标题前的竖线 */
+    &::before {
+      /* 内容为空 */
+      content: '';
+      /* 绝对定位 */
+      position: absolute;
+      /* 距离左侧 */
+      left: 0;
+      /* 距离顶部 */
+      top: 50%;
+      /* 垂直居中 */
+      transform: translateY(-50%);
+      /* 宽度 */
+      width: 4px;
+      /* 高度 */
+      height: 16px;
+      /* 圆角 */
+      border-radius: 2px;
+    }
+  }
+
+  /* 左侧标题（蓝色竖线） */
+  .detail-title-left::before {
+    /* 背景色 */
+    background-color: #409eff;
+  }
+
+  /* 右侧标题（蓝色竖线） */
+  .detail-title-right::before {
+    /* 背景色 */
+    background-color: #409eff;
+  }
+
+  /* 审批流程内容区 */
+  .approval-trail-content {
+    /* 占据剩余空间 */
+    flex: 1;
+    /* 垂直方向溢出时滚动 */
+    overflow-y: auto;
+    /* 滚动条宽度 */
+    scrollbar-width: thin;
+    /* 滚动条颜色 */
+    scrollbar-color: #c1c1c1 #f5f7fa;
+
+    /* Webkit 浏览器滚动条样式 */
+    &::-webkit-scrollbar {
+      /* 宽度 */
+      width: 6px;
+    }
+
+    /* 滚动条轨道 */
+    &::-webkit-scrollbar-track {
+      /* 背景色 */
+      background: #f5f7fa;
+      /* 圆角 */
+      border-radius: 3px;
+    }
+
+    /* 滚动条滑块 */
+    &::-webkit-scrollbar-thumb {
+      /* 背景色 */
+      background: #c1c1c1;
+      /* 圆角 */
+      border-radius: 3px;
+
+      /* 悬停效果 */
+      &:hover {
+        /* 背景色 */
+        background: #a8a8a8;
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+ 批量操作弹框样式
+ ========================================================================== */
+.batch-applicants-section {
+  /* 下外边距 */
+  margin-bottom: 16px;
+}
+
+.batch-applicants-section .section-title {
+  /* 字体大小 */
+  font-size: 14px;
+  /* 字体粗细 */
+  font-weight: 600;
+  /* 文字颜色 */
+  color: #303133;
+  /* 下外边距 */
+  margin-bottom: 12px;
+  /* 左内边距 */
+  padding-left: 8px;
+  /* 左边框作为装饰 */
+  border-left: 3px solid #409eff;
+}
+
+.batch-applicants-section .applicants-list {
+  /* 背景色 */
+  background-color: #f5f7fa;
+  /* 圆角 */
+  border-radius: 8px;
+  /* 内边距 */
+  padding: 12px;
+  /* 最小高度 */
+  min-height: 60px;
+  /* 最大高度 */
+  max-height: 200px;
+  /* 垂直方向溢出时滚动 */
+  overflow-y: auto;
+}

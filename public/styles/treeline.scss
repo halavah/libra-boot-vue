@@ -1,0 +1,31 @@
+/* 树形结构连接线样式 */
+.el-tree-node__children {
+  position: relative;
+//   padding-left: 20px;
+}
+
+/* 竖线 */
+.el-tree-node__children::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  border-left: 1px solid #ccc;
+}
+
+/* 横线 */
+.el-tree-node::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  width: 12px;
+  border-top: 1px solid #ccc;
+}
+
+/* 最后一个节点的竖线不显示 */
+.el-tree-node:last-child > .el-tree-node__children::before {
+  height: 12px;
+}

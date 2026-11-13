@@ -1,0 +1,31 @@
+// 选人用户的显示样式   --    预警中心的推送人员  等等地方
+.selectUl {
+  max-height: 560px;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 6px 0;
+  background-color: rgba(245, 247, 250, 1);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* 隐藏滚动条的整个部分 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  :deep(.el-tag) {
+    margin: 0 !important;
+    margin-bottom: 6px !important;
+    width: 48%;
+    height: 32px;
+    line-height: 32px;
+    display: flex;
+    justify-content: space-between;
+    .el-tag__content {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

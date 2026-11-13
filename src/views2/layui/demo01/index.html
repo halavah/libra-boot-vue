@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可编辑表格</title>
+  <!-- 导入 ICON -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <!-- 导入 ElementPlus -->
+  <link rel="stylesheet" href="/public/element-plus/index.css">
+  <!-- 导入 Layui -->
+  <link rel="stylesheet" href="/public/layui/css/layui.css">
+  <!-- 其他头部信息 -->
+  <style>
+    .el-table__row {
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="layui-container">
+      <table id="demo" lay-filter="test"></table>
+    </div>
+  </div>
+</body>
+<!-- 导入 Vue3 -->
+<script src="/public/vue/vue.global.prod.js"></script>
+<script src="/public/axios/axios.min.js"></script>
+<!-- 导入 ElementPlus -->
+<script src="/public/element-plus/index.full.min.js"></script>
+<script src="/public/element-plus/locale/zh-cn.min.js"></script>
+<!-- 导入 Layui -->
+<script src="/public/layui/layui.js"></script>
+<!-- 导入 Dayjs -->
+<script src="/public/dayjs/dayjs.min.js"></script>
+<!-- 导入 Echarts -->
+<script src="/public/echarts/echarts.js"></script>
+<!-- 导入 Jquery -->
+<script src="/public/jquery/jquery.min.js"></script>
+<!-- 导入 index.js -->
+<script src="index.js" type="module"></script>

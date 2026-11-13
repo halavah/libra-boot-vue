@@ -1,0 +1,273 @@
+/* ==========================================================================
+   通用页面和容器样式 (Scoped to .root-container)
+   ========================================================================== */
+
+/* 页面根容器 (模仿 demo1) */
+.root-container {
+  padding: 20px;
+  /* 统一内边距 */
+  box-sizing: border-box;
+  background-color: #f5f7fa;
+  /* 统一背景色 */
+  overflow-x: hidden;
+  /* 防止横向滚动 */
+  font-size: 14px;
+  /* 统一基础字体大小 */
+}
+
+/* 通用 Ant Design 卡片头部样式 */
+:deep(.root-container .ant-card-head) {
+  padding: 15px 20px;
+  /* 统一标题内边距 */
+  border-bottom: 1px solid #ebeef5;
+  /* 添加下边框 */
+  font-size: 14px;
+  font-weight: bold;
+  /* 统一加粗 */
+  min-height: auto;
+  /* 覆盖 antd 默认最小高度 */
+}
+
+:deep(.root-container .ant-card-head-title) {
+  padding: 0;
+  /* 移除 antd 默认的 title 内边距 */
+}
+
+/* 通用 Ant Design 卡片主体样式 */
+:deep(.root-container .ant-card-body) {
+  padding: 20px;
+  /* 统一内容内边距 */
+}
+
+/* ==========================================================================
+   布局 1: 筛选区域 (.layout-search)
+   ========================================================================== */
+
+/* 筛选区域外层容器 */
+.layout-search {
+  margin-bottom: 15px;
+  /* 与下方内容区域的间距 */
+  padding: 20px;
+  /* 统一内边距 */
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ebeef5;
+  /* 添加边框 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* 统一阴影 */
+}
+
+/* 筛选条件容器 (包含所有 a-form-item 和按钮组) */
+.search-filters-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  /* 改为顶部对齐 */
+  gap: 15px 20px;
+  /* 统一 gap */
+}
+
+/* 筛选条件表单项 */
+.search-filters-flex .ant-form-item {
+  margin-bottom: 0;
+  /* 移除内联表单项的默认下边距 */
+  flex-grow: 0;
+  /* 防止表单项自动拉伸 */
+  flex-shrink: 0;
+}
+
+/* 设置具体筛选控件的宽度 (匹配 demo1) */
+.search-tree-select {
+  width: 240px;
+}
+
+.search-input,
+.search-select {
+  width: 220px;
+}
+
+.search-datepicker {
+  width: 280px !important;
+  /* 日期范围选择器需要更宽 */
+}
+
+/* 查询/重置按钮容器 */
+.search-buttons {
+  /* 按钮现在自然排列，无需特殊样式 */
+}
+
+/* 查询/重置按钮的表单项 */
+.search-buttons .ant-form-item {
+  margin-bottom: 0;
+  /* 确保按钮表单项也没有下边距 */
+}
+
+/* --- 修复 TreeSelect 多选样式问题 --- */
+/* 限制 TreeSelect 输入框高度并允许滚动 */
+.search-tree-select .ant-select-selector {
+  max-height: 70px;
+  /* 允许大约 2-3 行标签的高度 */
+  overflow-y: auto;
+}
+
+/* 微调选中项标签的垂直间距 */
+.search-tree-select .ant-select-selection-item {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  line-height: normal;
+  /* 确保标签行高正常 */
+}
+
+/* 调整 TreeSelect 下拉列表项的显示 */
+:deep(.ant-select-tree-node-content-wrapper) {
+  display: flex !important;
+  /* 强制 flex 布局 */
+  align-items: center !important;
+  /* 垂直居中 */
+}
+
+:deep(.ant-select-tree-checkbox) {
+  margin-right: 4px !important;
+  /* 复选框和文本间距 */
+  flex-shrink: 0 !important;
+}
+
+:deep(.ant-select-tree-title) {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  flex-grow: 1 !important;
+  /* 允许标题伸展 */
+}
+
+
+/* ==========================================================================
+   布局 2: 内容区域 (.layout-content)
+   ========================================================================== */
+
+/* 内容区域外层容器 (包含左右两列) */
+.layout-content {
+  margin-bottom: 15px;
+  /* 与下方分析区域的间距 */
+}
+
+/* 左右卡片 (列表卡片和图表卡片) 的通用基础样式 */
+.list-card,
+.chart-card {
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ebeef5;
+  /* 添加边框 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* 统一阴影 */
+}
+
+/* 左侧列表区域的表格样式 */
+/* 表格单元格省略提示 */
+.table-cell-tooltip {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  /* 对齐方式 */
+}
+
+/* 注意：表格高度由 index.vue 中的 :scroll="{ y: 515 }" 控制 */
+
+
+/* 右侧图表区域的图表容器样式 */
+.chart-container {
+  width: 100%;
+  height: 515px;
+  /* 图表固定高度 */
+}
+
+/* ==========================================================================
+   布局 3: 分析功能区域 (.layout-analysis)
+   ========================================================================== */
+
+/* 分析功能区域卡片样式 */
+.analysis-card {
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ebeef5;
+  /* 添加边框 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* 统一阴影 */
+}
+
+/* 分析功能区域文本域样式 (使其看起来像普通文本) */
+.analysis-textarea {
+  border: none;
+  /* 移除边框 */
+  resize: none;
+  /* 禁止调整大小 */
+  background-color: transparent;
+  padding: 5px 0;
+  /* 统一内边距 */
+  box-shadow: none;
+  cursor: default;
+  color: #606266;
+  /* 统一文本颜色 */
+  font-size: inherit;
+  /* 继承字体大小 */
+}
+
+/* ==========================================================================
+   响应式样式
+   ========================================================================== */
+
+@media screen and (max-width: 1366px) {
+  .root-container {
+    padding: 12px;
+    /* 调整小屏幕下的内边距 */
+  }
+
+  .layout-search {
+    padding: 12px;
+  }
+
+  .search-filters-flex {
+    gap: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search-filters-flex {
+    flex-direction: column;
+    /* 在更小屏幕上垂直排列 */
+    align-items: stretch;
+    /* 拉伸项目以填充宽度 */
+  }
+
+  .search-tree-select,
+  .search-input,
+  .search-select,
+  .search-datepicker {
+    width: 100%;
+    /* 占满整行 */
+  }
+
+  .search-buttons {
+    /* margin-left: 0; */
+    /* 按钮不再推到右侧 */
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    /* 按钮组靠右 */
+  }
+
+  .layout-content .ant-row>.ant-col {
+    flex: 1 1 100%;
+    /* 在小屏幕上，左右列都占满宽度 */
+    max-width: 100%;
+    margin-bottom: 16px;
+    /* 添加列之间的间距 */
+  }
+
+  .layout-content .ant-row>.ant-col:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,77 @@
+.flexEnd {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleContent {
+  width: 100%;
+
+  > div {
+    margin: 0px;
+  }
+}
+
+.title {
+  height: 32px;
+  font-weight: 600;
+  line-height: 32px;
+  margin-left: 5px;
+  padding-left: 5px;
+  position: relative;
+  color: #000;
+  z-index: 0;
+}
+
+.title1 {
+  padding-left: 15px;
+
+  &:after {
+    content: " ";
+    width: 4px;
+    height: 20px;
+    background: #12a3f5;
+    position: absolute;
+    left: 0;
+    top: 6px;
+    // border-radius: 2px;
+  }
+}
+
+.group-tit {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px 0px;
+  padding-left: 8px;
+  font-size: 14px;
+  height: 14px;
+  line-height: 14px;
+  color: #333;
+  border-left: 4px solid #4368ff;
+  font-weight: 800;
+}
+
+:deep(.el-dialog:not(.is-fullscreen, .not-limit) .el-dialog__body) {
+  padding: 20px 24px;
+  max-height: calc(88vh - 80px) !important;
+  overflow-y: auto;
+}
+:deep(html .el-dialog .el-dialog__body) {
+  padding: 24px;
+  max-height: calc(88vh - 30px) !important;
+}
+:deep .el-picker__popper.el-popper {
+  width: 15% !important;
+}
+:deep(
+    .el-date-editor.el-input .el-input__wrapper,
+    .el-date-editor.el-input__wrapper .el-input__wrapper
+  ) {
+  width: 100% !important;
+}

@@ -1,0 +1,138 @@
+{
+  "success": true,
+  "message": "",
+  "code": 200,
+  "result": [
+    {
+      "bkReasonName": "其他",
+      "totalBreakTimeRate": "27.66%",
+      "totalBreakTime": 3596
+    },
+    {
+      "bkReasonName": "设计机构，构造有问题",
+      "totalBreakTimeRate": "19.58%",
+      "totalBreakTime": 2545
+    },
+    {
+      "bkReasonName": "点检方法，判定基准有问题",
+      "totalBreakTimeRate": "8.54%",
+      "totalBreakTime": 1110
+    },
+    {
+      "bkReasonName": "修理，维护方法有问题",
+      "totalBreakTimeRate": "7.38%",
+      "totalBreakTime": 960
+    },
+    {
+      "bkReasonName": "自然劣化(预测困难)",
+      "totalBreakTimeRate": "7.04%",
+      "totalBreakTime": 915
+    },
+    {
+      "bkReasonName": "材质缺陷(质量，热处理，表面处理)",
+      "totalBreakTimeRate": "7.02%",
+      "totalBreakTime": 913
+    },
+    {
+      "bkReasonName": "点检周期有问题",
+      "totalBreakTimeRate": "3.50%",
+      "totalBreakTime": 455
+    },
+    {
+      "bkReasonName": "修理维护周期不适当",
+      "totalBreakTimeRate": "3.18%",
+      "totalBreakTime": 413
+    },
+    {
+      "bkReasonName": "机种，型式选定有问题",
+      "totalBreakTimeRate": "2.64%",
+      "totalBreakTime": 343
+    },
+    {
+      "bkReasonName": "运转操作技能，知识不足",
+      "totalBreakTimeRate": "1.84%",
+      "totalBreakTime": 239
+    },
+    {
+      "bkReasonName": "异物侵入",
+      "totalBreakTimeRate": "1.48%",
+      "totalBreakTime": 193
+    },
+    {
+      "bkReasonName": "尺寸，强度，容量有问题",
+      "totalBreakTimeRate": "1.24%",
+      "totalBreakTime": 161
+    },
+    {
+      "bkReasonName": "组装，配合施工技术差",
+      "totalBreakTimeRate": "1.18%",
+      "totalBreakTime": 154
+    },
+    {
+      "bkReasonName": "松动松弛",
+      "totalBreakTimeRate": "1.08%",
+      "totalBreakTime": 140
+    },
+    {
+      "bkReasonName": "组装，配合方法上有问题",
+      "totalBreakTimeRate": "1.05%",
+      "totalBreakTime": 137
+    },
+    {
+      "bkReasonName": "疲劳损伤",
+      "totalBreakTimeRate": "0.96%",
+      "totalBreakTime": 125
+    },
+    {
+      "bkReasonName": "油质劣化",
+      "totalBreakTimeRate": "0.91%",
+      "totalBreakTime": 118
+    },
+    {
+      "bkReasonName": "异常振动",
+      "totalBreakTimeRate": "0.74%",
+      "totalBreakTime": 96
+    },
+    {
+      "bkReasonName": "配合加工有问题",
+      "totalBreakTimeRate": "0.69%",
+      "totalBreakTime": 90
+    },
+    {
+      "bkReasonName": "异物混入",
+      "totalBreakTimeRate": "0.68%",
+      "totalBreakTime": 88
+    },
+    {
+      "bkReasonName": "规格不符",
+      "totalBreakTimeRate": "0.46%",
+      "totalBreakTime": 60
+    },
+    {
+      "bkReasonName": "异常温度",
+      "totalBreakTimeRate": "0.38%",
+      "totalBreakTime": 50
+    },
+    {
+      "bkReasonName": "安装，拆卸方法上有问题",
+      "totalBreakTimeRate": "0.23%",
+      "totalBreakTime": 30
+    },
+    {
+      "bkReasonName": "机械剥离",
+      "totalBreakTimeRate": "0.22%",
+      "totalBreakTime": 29
+    },
+    {
+      "bkReasonName": "误运转操作",
+      "totalBreakTimeRate": "0.19%",
+      "totalBreakTime": 25
+    },
+    {
+      "bkReasonName": "温度(在计划设计时不能预测)",
+      "totalBreakTimeRate": "0.12%",
+      "totalBreakTime": 15
+    }
+  ],
+  "timestamp": 1745118762285
+}

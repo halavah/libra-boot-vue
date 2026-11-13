@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态组件加载器</title>
+  <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
+
+  <!-- ==================== 核心库和 UI 框架引入 ==================== -->
+  <script src="/public/vue/vue.global.prod.js"></script>
+  <script src="/public/element-plus/index.full.min.js"></script>
+  <script src="/public/element-plus/locale/zh-cn.min.js"></script>
+  <link rel="stylesheet" href="/public/element-plus/index.css">
+  <script src="/public/dayjs/dayjs.min.js"></script>
+  <script src="/public/dayjs/locale/zh-cn.js"></script>
+  <script src="/public/dayjs/plugin/isBetween.js"></script>
+  <script src="/public/dayjs/plugin/isSameOrBefore.js"></script>
+  <script src="/public/dayjs/plugin/customParseFormat.js"></script>
+  <script src="/public/dayjs/plugin/advancedFormat.js"></script>
+  <script src="/public/dayjs/plugin/weekday.js"></script>
+  <script src="/public/dayjs/plugin/localeData.js"></script>
+  <script src="/public/dayjs/plugin/weekOfYear.js"></script>
+  <script src="/public/dayjs/plugin/weekYear.js"></script>
+  <script src="/public/dayjs/plugin/quarterOfYear.js"></script>
+  <script src="/public/ant-design-vue/antd.min.js"></script>
+  <link rel="stylesheet" href="/public/ant-design-vue/antd.reset.css">
+  <link rel="stylesheet" href="/public/ant-design-vue/antd.min.css">
+  <script src="/public/echarts/echarts.min.js"></script>
+  <script src="/public/axios/axios.min.js"></script>
+  <script src="/public/vue/vue3-sfc-loader.js"></script>
+  <script src="/public/vue/babel.min.js"></script>
+
+  <!-- ==================== 全局样式引入 ==================== -->
+  <link rel="stylesheet" href="/styles/global.css">
+
+  <!-- ==================== 页面特定样式 (加载/错误信息) ==================== -->
+  <style>
+    /* 加载/错误信息的样式 */
+    .message {
+      padding: 20px;
+      text-align: center;
+      font-size: 1.1em;
+      color: #555;
+    }
+
+    .error {
+      color: red;
+    }
+
+    /* 确保 #app 容器充满屏幕 */
+    html,
+    body,
+    #app {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <p class="message">正在加载组件...</p> <!-- 初始加载提示 -->
+  </div>
+
+  <script>
+    // ==================== 初始化和全局设置 ====================
+    const { createApp, defineAsyncComponent, h } = Vue; // Vue 相关函数
+    const { loadModule } = window['vue3-sfc-loader']; // SFC 加载器函数
+    const appContainer = document.getElementById('app'); // Vue 挂载点
+
+    // ==================== 配置 Dayjs ====================
+    if (window.dayjs) {
+      // 设置中文
+      if (window.dayjs_locale_zh_cn) {
+        dayjs.locale('zh-cn');
+      }
+      // 扩展插件
+      const pluginsToExtend = [
+        'isBetween', 'isSameOrBefore', 'customParseFormat', 'advancedFormat',
+        'weekday', 'localeData', 'weekOfYear', 'weekYear', 'quarterOfYear'
+      ];
+      pluginsToExtend.forEach(pluginName => {
+        const pluginKey = `dayjs_plugin_${pluginName}`;
+        if (window[pluginKey]) {
+          dayjs.extend(window[pluginKey]);
+        }
+      });
+    }
+
+    // ==================== 获取要加载的组件名 ====================
+    const urlParams = new URLSearchParams(window.location.search); // 解析 URL 参数
+    const componentName = urlParams.get('component'); // 获取组件名 (例如 "ant-design-vue/demo1")
+
+    // 定义需要忽略解析的相对路径前缀
+    const ignoredRelativePathPrefixes = [
+      '../json/' // 忽略所有指向 '../json/' 的路径
+    ];
+    // 定义允许解析的 '../' 开头的相对路径前缀
+    const allowedRelativePathPrefixes = [
+      '../ts/',
+      '../js/',
+      '../css/',
+      '../components/'
+    ];
+
+    // ==================== 配置 vue3-sfc-loader ====================
+    const loaderOptions = {
+      // 模块缓存: 映射 import 库名到全局对象
+      moduleCache: {
+        vue: Vue,
+        'element-plus': window.ElementPlus,
+        'ant-design-vue': window.antd,
+        'echarts': window.echarts,
+        'axios': window.axios,
+        'dayjs': window.dayjs
+      },
+      // 路径解析: 将 import/src 路径转为绝对路径标识符
+      pathResolve({ refPath, relPath }) {
+        // 1. 拦截特定库内部 locale 路径 (保持不变)
+        if (relPath === 'ant-design-vue/es/locale/zh_CN') {
+          console.log(`路径解析 (Antd Locale): ref='${refPath}', rel='${relPath}' -> 'ant-design-vue'`);
+          return 'ant-design-vue';
+        }
+        if (relPath === 'dayjs/locale/zh-cn') {
+          console.log(`路径解析 (Dayjs Locale): ref='${refPath}', rel='${relPath}' -> 'dayjs'`);
+          return 'dayjs';
+        }
+
+        // 2. 拦截所有其他 'ant-design-vue/' 开头的内部路径
+        // 目的：强制这些内部导入指向全局 antd 对象，而不是去服务器请求文件
+        if (relPath.startsWith('ant-design-vue/')) {
+          console.warn(`路径解析 (强制 Antd 内部路径修正): ref='${refPath}', rel='${relPath}'. 修正为 -> 'ant-design-vue'`);
+          return 'ant-design-vue'; // 强制返回主库标识符
+        }
+
+        // 新增: 拦截所有 'echarts/' 开头的内部路径 (特别是 types)
+        if (relPath.startsWith('echarts/')) {
+          console.warn(`路径解析 (强制 ECharts 内部路径修正): ref='${refPath}', rel='${relPath}'. 修正为 -> 'echarts'`);
+          return 'echarts'; // 强制返回主库标识符
+        }
+
+        // 3. 处理库名 (非相对/绝对路径，且非上述拦截情况)
+        if (!relPath.startsWith('.') && !relPath.startsWith('/')) {
+          console.log(`路径解析 (库名): ref='${refPath}', rel='${relPath}' -> '${relPath}'`);
+          return relPath;
+        }
+
+        // 4. 处理文件路径 (绝对路径 / 和相对路径 ./ ../)
+        let resolvedPath = '';
+        if (relPath.startsWith('/')) {
+          // 绝对路径直接使用
+          resolvedPath = relPath;
+        } else if (relPath.startsWith('.')) {
+          // 相对路径处理
+          if (!refPath) return 'error:missing_refPath_for_relative_import'; // 缺少参照物
+
+          // 处理 '../' 开头的相对路径
+          if (relPath.startsWith('../')) {
+            // 1. 检查是否在忽略列表
+            const shouldIgnore = ignoredRelativePathPrefixes.some(prefix => relPath.startsWith(prefix));
+            if (shouldIgnore) {
+              console.warn(`路径解析 (忽略 JSON): ref='${refPath}', rel='${relPath}'`);
+              return null; // 明确忽略 JSON 路径
+            }
+
+            // 2. 检查是否在允许列表
+            const isAllowed = allowedRelativePathPrefixes.some(prefix => relPath.startsWith(prefix));
+            if (!isAllowed) {
+              console.warn(`路径解析 (阻止): ref='${refPath}', rel='${relPath}' 不在允许的 '../' 前缀列表中 (js/, css/, components/).`);
+              return null; // 阻止加载不允许的 '../' 路径
+            }
+
+            // 3. 如果未被忽略且在允许列表内，则执行路径修正
+            const urlParamsFix = new URLSearchParams(window.location.search);
+            const componentParamFix = urlParamsFix.get('component');
+            if (componentParamFix && componentParamFix.includes('/')) {
+              const [moduleName, componentNameSuffix] = componentParamFix.split('/');
+              const relativePathSuffix = relPath.substring(3);
+              resolvedPath = `/src/views/${moduleName}/${componentNameSuffix}/${relativePathSuffix}`;
+              console.warn(`路径解析 (强制 '../' 修正): ref='${refPath}', rel='${relPath}'. 修正为: ${resolvedPath}`);
+            } else {
+              console.error(`路径解析错误: 无法修正 '../' 路径 '${relPath}' (URL: ${componentParamFix})`);
+              return 'error:cannot_fix_relative_path_invalid_url';
+            }
+          } else {
+            // 标准相对路径解析 (例如 './style.css')
+            // --- 添加详细日志 ---
+            console.log(`路径解析 (./): refPath='${refPath}', relPath='${relPath}'`);
+            // --- 结束添加日志 ---
+            const refDir = refPath.substring(0, refPath.lastIndexOf('/'));
+            const combinedPath = refDir + '/' + relPath;
+            const parts = combinedPath.split('/');
+            const stack = [];
+            for (const part of parts) {
+              if (part === '..') stack.pop();
+              else if (part !== '.' && part !== '') stack.push(part);
+            }
+            resolvedPath = '/' + stack.join('/');
+          }
+        } else {
+          // 未知类型路径
+          resolvedPath = relPath;
+        }
+        return resolvedPath; // 返回最终解析的绝对路径
+      },
+
+      // 获取文件内容: 通过 fetch 获取
+      async getFile(resolvedPath) {
+        const fetchUrl = new URL(resolvedPath, window.location.origin).href; // 构造完整 URL
+        try {
+          const res = await fetch(fetchUrl);
+          if (!res.ok) throw Object.assign(new Error(`HTTP ${res.status} ${res.statusText}`), { res });
+          return await res.text();
+        } catch (err) {
+          console.error(`SFC 加载器: 获取 ${fetchUrl} 失败:`, err);
+          throw err;
+        }
+      },
+
+      // 添加样式: 将 <style> 内容注入 <head>
+      addStyle(css) {
+        const style = document.createElement('style');
+        style.textContent = css;
+        document.head.appendChild(style);
+      },
+      // 日志记录: 使用浏览器 console
+      log(type, ...args) {
+        console[type](...args);
+      },
+      // 添加 script 处理配置
+      processScript(content, file) {
+        // 检查是否是 TypeScript 文件
+        if (file.endsWith('.ts')) {
+          // 检查全局 Babel 对象是否存在
+          if (typeof Babel === 'undefined' || typeof Babel.transform !== 'function') {
+            console.error('Babel Standalone 未正确加载或 transform 函数不可用！');
+            throw new Error('Babel transform function is not available.');
+          }
+          try {
+            // 使用 Babel Standalone 进行转译
+            const result = Babel.transform(content, {
+              presets: ['typescript'], // 指定使用 typescript 预设
+              filename: file // 提供文件名有助于错误报告和 source map
+            });
+            return result.code; // 返回转译后的 JavaScript 代码
+          } catch (error) {
+            console.error(`Babel 转译失败 (${file}):`, error);
+            throw error; // 抛出错误，中断加载
+          }
+        }
+        return content; // 如果不是 .ts 文件，直接返回原始内容
+      }
+    };
+
+    // ==================== 加载并挂载 Vue 组件 ====================
+    async function initializeComponent() {
+      // 检查 URL 参数
+      if (!componentName) {
+        appContainer.innerHTML = '<p class="message error">错误：URL 中未指定组件名 (?component=...)</p>';
+        return;
+      }
+
+      document.title = `加载中 - ${componentName}`; // 设置加载中标题
+
+      try {
+        // 构造目标 .vue 文件的绝对路径
+        const componentPath = `/src/views/${componentName}/index.vue`;
+
+        // 异步加载 .vue 组件
+        const AsyncComp = defineAsyncComponent(() =>
+          loadModule(componentPath, loaderOptions)
+        );
+
+        // 创建 Vue 应用
+        const app = createApp({
+          render() { return h(AsyncComp); },
+          provide: { dayjs: window.dayjs } // 提供 dayjs
+        });
+
+        // 全局挂载 dayjs
+        if (window.dayjs) {
+          app.config.globalProperties.$dayjs = window.dayjs;
+        }
+
+        // 注册 UI 框架插件
+        if (window.ElementPlus) app.use(ElementPlus, { locale: window.ElementPlusLocaleZhCn });
+        if (window.antd) app.use(antd);
+
+        // 挂载应用
+        app.mount(appContainer);
+        document.title = `已加载 - ${componentName}`; // 设置加载完成标题
+        console.log(`Vue 应用: 组件 "${componentName}" 加载并挂载成功。`);
+
+      } catch (error) {
+        // 处理错误
+        console.error(`Vue 应用: 加载组件 "${componentName}" 出错:`, error);
+        appContainer.innerHTML = `<p class="message error">加载组件 "${componentName}" 时出错，请查看控制台。</p>`;
+        document.title = `错误 - ${componentName}`;
+      }
+    }
+
+    // ==================== DOM 加载完成后执行初始化 ====================
+    document.addEventListener('DOMContentLoaded', () => {
+      // 确保 Babel 已加载 (可选的检查)
+      if (typeof Babel === 'undefined') {
+        console.warn('Babel Standalone 可能尚未加载完成，延迟组件初始化...');
+        setTimeout(initializeComponent, 100); // 简单延迟示例
+      } else {
+        initializeComponent(); // 开始加载组件
+      }
+    });
+  </script>
+
+</body>
+
+</html>

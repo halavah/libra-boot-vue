@@ -1,0 +1,237 @@
+/* ==========================================================================
+   通用页面和容器样式
+   ========================================================================== */
+
+/* 页面根容器 */
+.root-container {
+  padding: 20px;
+  font-size: 14px;
+  overflow-x: hidden;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+}
+
+/* 通用 Element Plus 卡片样式 */
+.root-container .el-card__header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #ebeef5;
+  font-weight: bold;
+}
+
+.root-container .el-card__body {
+  padding: 20px;
+}
+
+/* ==========================================================================
+   布局 1: 筛选区域
+   ========================================================================== */
+
+/* 筛选区域 */
+.root-container .layout-search {
+  margin-bottom: 15px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ebeef5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 筛选表单垂直居中 */
+.vertical-center-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px 20px;
+}
+
+.vertical-center-form :deep(.el-form-item) {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   布局 2: 内容区域
+   ========================================================================== */
+
+/* 内容区域 */
+.root-container .layout-content {
+  margin-bottom: 15px;
+}
+
+/* 表格行间距 */
+.root-container .layout-content .table-row {
+  margin-bottom: 24px;
+}
+
+.root-container .layout-content .table-row:last-child {
+  margin-bottom: 0;
+}
+
+/* 列表卡片和图表卡片通用样式 */
+.root-container .layout-content .list-card,
+.root-container .layout-content .chart-card {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ebeef5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 列表卡片样式 */
+.root-container .layout-content .list-card .el-card__body {
+  padding: 0 20px;
+  height: calc(100% - 56px);
+  overflow: hidden;
+}
+
+/* 图表卡片样式 */
+.root-container .layout-content .chart-card .el-card__body {
+  flex: 1;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 图表包装器样式 */
+.root-container .layout-content .charts-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 图表容器样式 */
+.root-container .layout-content .chart-container {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+}
+
+/* ==========================================================================
+   布局 3: 分析功能区域
+   ========================================================================== */
+
+/* 分析功能区域 */
+.root-container .layout-analysis {
+  margin-top: 15px;
+}
+
+/* 分析功能卡片 */
+.root-container .layout-analysis .analysis-card {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ebeef5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 分析功能文本域 */
+.root-container .layout-analysis .el-textarea__inner {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 5px 0;
+  font-size: inherit;
+  color: #606266;
+  cursor: default;
+  resize: none;
+}
+
+/* ==========================================================================
+   响应式布局
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* 内容区域列布局 */
+  .root-container .layout-content .el-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .root-container .layout-content .el-col:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* 新增图表容器样式 */
+.chart-container {
+  width: 100%;
+  height: 600px;
+  /* 固定高度确保图表空间 */
+  position: relative;
+}
+
+/* 调整布局间距 */
+.layout-content .el-col {
+  /*margin-bottom: 20px;*/
+}
+
+/* 调整卡片样式 */
+.chart-card {
+  height: 100%;
+}
+
+.chart-card .el-card__body {
+  padding: 0;
+  height: calc(100% - 56px);
+  /* 减去header高度 */
+}
+
+/* 响应式设计 */
+@media (max-width: 1400px) {
+  .chart-container {
+    height: 500px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .chart-container {
+    height: 400px;
+  }
+}
+
+.custom-background {
+  background-color: #f3d07e;
+  /* 设置你想要的背景颜色 */
+}
+
+/*.charts-wrapper{*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  gap: 20px; !* 控制间距 *!*/
+/*}*/
+
+.custom-button {
+  padding: 4px 10px;
+  border: none !important;
+  height: auto !important;
+}
+
+.custom-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.vertical-center-form :deep(.el-form-item__label) {
+  /* line-height: 32px; */
+  padding-bottom: 0;
+}
+
+.vertical-center-form :deep(.el-form-item__content) {
+  display: flex;
+  align-items: center;
+}
+
+/* 调整日期选择器 */
+.vertical-center-form :deep(.el-date-editor) {
+  line-height: 32px;
+}
+
+/* 调整按钮 */
+.vertical-center-form :deep(.el-button) {
+  height: 32px;
+  line-height: 32px;
+}

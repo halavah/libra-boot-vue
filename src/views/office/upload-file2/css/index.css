@@ -1,0 +1,351 @@
+/* ==========================================================================
+   整体布局 - 通用样式
+   ========================================================================== */
+
+/* 页面根容器 */
+.root-container {
+  /* 页面内容与浏览器边缘的内边距 */
+  padding: 20px;
+  /* 基础字体大小 */
+  font-size: 14px;
+  /* 防止因内部元素意外溢出导致横向滚动条 */
+  overflow-x: hidden;
+  /* 可以设置一个浅灰色背景，与卡片区分 */
+  background-color: #f5f7fa;
+  /* 设置根容器高度为视口高度减去头部预留空间 */
+  height: calc(100vh - 40px);
+  /* 使用 flex 布局 */
+  display: flex;
+  flex-direction: column;
+  /*!* --- 添加缩放样式 --- *!*/
+  /*!* 原始布局 1920*929，调整后布局 1710*832 *!*/
+  /*!* 注意：这可能会导致模糊和交互问题 *!*/
+  /*transform-origin: top left;*/
+  /*!* 设置缩放基点为左上角 *!*/
+  /*transform: scale(0.89);*/
+  /*!* 应用计算出的缩放因子 *!*/
+}
+
+/* ==========================================================================
+   卡片组件样式
+  ==========================================================================*/
+
+/* 卡片通用样式 */
+.upload-card {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ebeef5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 卡片头部样式 */
+.upload-card .el-card__header {
+  /* 卡片头部的内边距 */
+  padding: 15px 20px;
+  /* 头部下方的分隔线 */
+  border-bottom: 1px solid #ebeef5;
+  /* 头部标题加粗 */
+  font-weight: bold;
+}
+
+/* 卡片主体样式 */
+.upload-card .el-card__body {
+  /* 卡片主体的内边距 */
+  padding: 20px;
+}
+
+/* ==========================================================================
+   上传组件样式
+  ==========================================================================*/
+
+/* 上传区域通用样式 */
+.layout-upload {
+  margin-top: 15px;
+}
+
+/* 上传容器样式 */
+.upload-container {
+  padding: 20px;
+}
+
+/* 上传组件提示文字样式 */
+.el-upload__tip {
+  color: #909399;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   图片预览样式
+   ========================================================================== */
+
+/* 自定义图片预览样式 */
+.custom-image-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/* 自定义图片预览样式 - 图片 */
+.custom-image-preview img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  cursor: default;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   1. 图片列表
+   ========================================================================== */
+
+/* 图片列表组件样式 */
+.file-list-upload {
+  width: 100%;
+}
+
+/* 图片列表组件样式 - 上传列表 */
+.file-list-upload .el-upload-list {
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   2. 自定义表单样式
+   ========================================================================== */
+
+/* 自定义表单项样式 */
+.el-form--inline .el-form-item {
+  margin-right: 16px;
+  margin-bottom: 10px;
+}
+
+.el-form--inline .el-form-item__label {
+  font-weight: 500;
+  color: #606266;
+}
+
+/* 文件状态指示器 */
+.file-status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.file-status-success {
+  background-color: #67c23a;
+}
+
+.file-status-uploading {
+  background-color: #409eff;
+}
+
+.file-status-error {
+  background-color: #f56c6c;
+}
+
+/* ==========================================================================
+   4. 拖拽上传
+   ========================================================================== */
+
+/* 拖拽上传组件样式 */
+.drag-upload {
+  width: 100%;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.drag-upload .el-upload {
+  width: 100%;
+  display: block;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.drag-upload .el-upload-dragger {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.drag-upload-content {
+  text-align: center;
+  padding: 20px;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.upload-icon {
+  font-size: 48px;
+  color: #909399;
+  margin-bottom: 10px;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.drag-upload .el-upload__text {
+  color: #606266;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.drag-upload .el-upload__text em {
+  color: #409EFF;
+  font-style: normal;
+}
+
+/* 表格中的图片样式 */
+.table-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* 表格中的图片样式 */
+.table-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: transform 0.3s;
+}
+
+/* 表格中的图片样式 - 鼠标悬停 */
+.table-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* 表格中的图片样式 - 没有图片 */
+.no-image {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f7fa;
+  color: #909399;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px dashed #d9d9d9;
+}
+
+/* 自定义预览对话框样式 */
+.preview-dialog {
+  background: transparent !important;
+}
+
+/* 自定义预览对话框样式 - 对话框头部 */
+.preview-dialog .el-dialog__header,
+.preview-dialog .el-dialog__body {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+/* 自定义预览对话框样式 - 对话框头部 - 关闭按钮 */
+.preview-dialog .el-dialog__headerbtn {
+  display: none;
+}
+
+/* 自定义预览对话框样式 - 关闭按钮 */
+.image-preview-close {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 2001;
+  transition: all 0.3s;
+}
+
+/* 自定义预览对话框样式 - 关闭按钮 - 鼠标悬停 */
+.image-preview-close:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: rotate(90deg);
+}
+
+/* 覆盖 Element Plus 对话框默认样式 */
+.preview-dialog .el-dialog {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+/* 覆盖 Element Plus 对话框默认样式 - 遮罩层 */
+.preview-dialog .el-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* 纯图片预览样式 - 没有任何边框和按钮 */
+.pure-image-preview .el-dialog {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* 纯图片预览样式 - 对话框头部和主体 */
+.pure-image-preview .el-dialog__header,
+.pure-image-preview .el-dialog__body {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  width: 100%;
+  height: 100%;
+}
+
+/* 纯图片预览样式 - 图片 */
+.image-preview-pure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* 纯图片预览样式 - 图片 */
+.image-preview-pure img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 纯图片预览样式 - 遮罩层 */
+.pure-image-preview .el-overlay {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}

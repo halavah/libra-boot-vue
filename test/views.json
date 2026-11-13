@@ -1,0 +1,31 @@
+{
+  "ant-design-vue": [
+    "demo01",
+    "demo02",
+    "demo03",
+    "demo04",
+    "demo05",
+    "demo06-less不可用"
+  ],
+  "element": [
+    "demo01",
+    "demo02",
+    "demo03",
+    "demo04",
+    "demo05",
+    "demo06-less不可用"
+  ],
+  "office": [
+    "export",
+    "upload-file",
+    "upload-form"
+  ],
+  "device": [
+    "cjsbgzms",
+    "gltjlxzb",
+    "mbjk-month",
+    "mbjk-week",
+    "sbgztj",
+    "sgbhgl"
+  ]
+}

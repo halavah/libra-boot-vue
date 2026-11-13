@@ -1,0 +1,920 @@
+/* ==========================================================================
+   通用页面和容器样式 (Scoped to .root-container)
+   ========================================================================== */
+
+/* 页面根容器 */
+.root-container {
+  /* 页面内容与浏览器边缘的内边距 */
+  padding: 20px;
+  /* 基础字体大小 */
+  font-size: 14px;
+  /* 防止因内部元素意外溢出导致横向滚动条 */
+  overflow-x: hidden;
+  /* 可以设置一个浅灰色背景，与卡片区分 */
+  background-color: #f5f7fa;
+  /* 设置根容器高度为视口高度减去头部预留空间 */
+  height: calc(100vh - 40px);
+  /* 使用 flex 布局 */
+  display: flex;
+  flex-direction: column;
+  /*!* --- 添加缩放样式 --- *!*/
+  /*!* 原始布局 1920*929，调整后布局 1710*832 *!*/
+  /*!* 注意：这可能会导致模糊和交互问题 *!*/
+  /*transform-origin: top left;*/
+  /*!* 设置缩放基点为左上角 *!*/
+  /*transform: scale(0.89);*/
+  /*!* 应用计算出的缩放因子 *!*/
+}
+
+/* 通用 Element Plus 卡片头部样式 */
+.root-container .el-card__header {
+  /* 卡片头部的内边距 */
+  padding: 15px 20px;
+  /* 头部下方的分隔线 */
+  border-bottom: 1px solid #ebeef5;
+  /* 头部标题加粗 */
+  font-weight: bold;
+}
+
+/* 通用 Element Plus 卡片主体样式 */
+.root-container .el-card__body {
+  /* 卡片主体的内边距 */
+  padding: 20px;
+}
+
+/* ==========================================================================
+   布局 1: 筛选区域 (.layout-search)
+   ========================================================================== */
+
+/* 筛选区域外层容器 - 应用原 .search-form-flex 的样式 */
+.root-container .layout-search {
+  /* 与下方内容区域的间距 */
+  margin-bottom: 15px;
+  /* 筛选区域内部的内边距 */
+  padding: 20px;
+  /* 白色背景 */
+  background-color: #fff;
+  /* 圆角 */
+  border-radius: 4px;
+  /* 浅灰色边框 */
+  border: 1px solid #ebeef5;
+  /* 轻微阴影效果 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 筛选条件容器 (包含所有 el-form-item 和按钮组) */
+.root-container .layout-search .search-filters {
+  /* 使用 Flexbox 布局 */
+  display: flex;
+  /* 允许筛选条件换行 */
+  flex-wrap: wrap;
+  /* 行间距 15px，列间距 20px */
+  gap: 15px 20px;
+  /* 垂直居中对齐筛选条件 */
+  align-items: center;
+}
+
+/* 筛选条件表单项 */
+.root-container .layout-search .search-filters .el-form-item {
+  /* 移除 Element Plus 表单项默认的下外边距，使用 gap 控制间距 */
+  margin-bottom: 0;
+}
+
+/* 设置具体筛选控件的宽度 */
+/* 产线树形选择器宽度 */
+.root-container .layout-search .search-tree-select {
+  width: 240px;
+}
+
+/* 设备号输入框宽度 */
+.root-container .layout-search .search-input {
+  width: 240px;
+}
+
+/* 故障模式选择器宽度 */
+.root-container .layout-search .search-select {
+  width: 240px;
+}
+
+/* 日期范围选择器宽度 */
+.root-container .layout-search .search-datepicker {
+  width: 240px;
+}
+
+/* 查询/重置按钮容器 - 现在是 flex 项目 */
+.root-container .layout-search .search-buttons {
+  margin-left: 0px;
+  /* 添加 flex-wrap 允许按钮换行 */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 查询/重置按钮的表单项 */
+.root-container .layout-search .search-buttons .el-form-item {
+  /* 移除 Element Plus 表单项默认的下外边距 */
+  margin-bottom: 0;
+  /* 添加 flex-wrap 允许按钮换行 */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 按钮样式 */
+.root-container .layout-search .search-buttons .el-button {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   布局 2: 表格区域 (.layout-content)
+   ========================================================================== */
+
+/* 内容区域容器 */
+.layout-content {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* 使用 flex 布局 */
+  display: flex;
+  flex-direction: column;
+  /* 占据剩余空间 */
+  flex: 1;
+  /* 超出部分隐藏 */
+  overflow: hidden;
+}
+
+/* 表格和分页的容器 */
+.table-container {
+  position: relative;
+  /* 占据除分页器外的所有空间 */
+  flex: 1;
+  /* 允许内容滚动 */
+  overflow-y: auto;
+  /* 隐藏水平滚动条 */
+  overflow-x: hidden;
+  /* 添加一些底部间距 */
+  margin-bottom: 16px;
+}
+
+/* 分页器样式 */
+.pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 0;
+  /* 确保分页器不会滚动 */
+  flex-shrink: 0;
+  background-color: #fff;
+  /* 可选：添加上边框区分 */
+  border-top: 1px solid #ebeef5;
+}
+
+/* ==========================================================================
+   布局 3: 文件上传测试区域 (.layout-upload)
+   ========================================================================== */
+
+/* ==========================================================================
+   卡片组件样式
+  ==========================================================================*/
+
+/* 卡片通用样式 */
+.upload-card {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ebeef5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 卡片头部样式 */
+.upload-card .el-card__header {
+  /* 卡片头部的内边距 */
+  padding: 15px 20px;
+  /* 头部下方的分隔线 */
+  border-bottom: 1px solid #ebeef5;
+  /* 头部标题加粗 */
+  font-weight: bold;
+}
+
+/* 卡片主体样式 */
+.upload-card .el-card__body {
+  /* 卡片主体的内边距 */
+  padding: 20px;
+}
+
+/* ==========================================================================
+   上传组件样式
+  ==========================================================================*/
+
+/* 上传区域通用样式 */
+.layout-upload {
+  margin-top: 15px;
+}
+
+/* 上传容器样式 */
+.upload-container {
+  padding: 20px;
+}
+
+/* 上传组件提示文字样式 */
+.el-upload__tip {
+  color: #909399;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   图片预览样式
+   ========================================================================== */
+
+/* 自定义图片预览样式 */
+.custom-image-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/* 自定义图片预览样式 - 图片 */
+.custom-image-preview img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  cursor: default;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   1. 图片列表
+   ========================================================================== */
+
+/* 图片列表组件样式 */
+.file-list-upload {
+  width: 100%;
+}
+
+/* 图片列表组件样式 - 上传列表 */
+.file-list-upload .el-upload-list {
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   2. 图片列表-缩略图
+   ========================================================================== */
+
+/* 图片列表缩略图组件样式 */
+.thumbnail-upload {
+  width: 100%;
+}
+
+/* 图片列表缩略图组件样式 - 上传列表 */
+.thumbnail-upload .el-upload-list--picture {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-top: 10px;
+}
+
+/* 图片列表缩略图组件样式 - 上传列表 - 上传列表项 */
+.thumbnail-upload .el-upload-list--picture .el-upload-list__item {
+  width: 100%;
+  height: auto;
+  margin-right: 0;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #c0ccda;
+  padding: 0;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+/* 图片列表缩略图组件样式 - 上传列表 - 上传列表项 - 缩略图 */
+.thumbnail-upload .el-upload-list--picture .el-upload-list__item-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  margin-right: 10px;
+}
+
+/* 图片列表缩略图组件样式 - 上传列表 - 上传列表项 - 文件名 */
+.thumbnail-upload .el-upload-list--picture .el-upload-list__item-name {
+  display: block;
+  margin: 0;
+  padding: 5px 8px;
+  text-align: left;
+  color: #606266;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+/* 图片列表缩略图组件样式 - 上传列表 - 上传列表项 - 状态 */
+.thumbnail-upload .el-upload-list--picture .el-upload-list__item-status-label {
+  position: absolute;
+  left: -15px;
+  top: -6px;
+  width: 40px;
+  height: 24px;
+  background: #13ce66;
+  text-align: center;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail-upload .el-upload-list--picture .el-upload-list__item-status-label i {
+  font-size: 12px;
+  margin-top: 11px;
+  transform: rotate(-45deg);
+  color: #fff;
+}
+
+/* 图片列表缩略图组件样式 - 上传列表 - 上传列表项 - 操作按钮 */
+.thumbnail-upload .el-upload-list--picture .el-upload-list__item-actions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* 图片列表缩略图组件样式 - 上传列表 - 上传列表项 - 操作按钮 - 鼠标悬停 */
+.thumbnail-upload .el-upload-list--picture .el-upload-list__item:hover .el-upload-list__item-actions {
+  opacity: 1;
+}
+
+/* 图片列表缩略图组件样式 - 上传列表 - 上传列表项 - 操作按钮 - 图标 */
+.thumbnail-upload .el-upload-list--picture .el-upload-list__item-actions span {
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 6px;
+}
+
+/* 图片列表缩略图组件样式 - 上传列表 - 上传列表项 - 操作按钮 - 鼠标悬停 */
+.thumbnail-upload .el-upload-list--picture .el-upload-list__item-actions span:hover {
+  color: #409EFF;
+}
+
+/* ==========================================================================
+   3. 头像上传
+   ========================================================================== */
+
+/* 图片上传组件样式 */
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+/* 图片上传组件样式 - 鼠标悬停 */
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+
+/* 图片上传组件样式 - 图片 */
+.avatar {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* 美化上传组件 */
+.avatar-uploader .el-upload--picture-card {
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  margin: 0 8px 8px 0;
+}
+
+/* 设置上传列表中的图片项大小与上传按钮一致 */
+.avatar-uploader .el-upload-list--picture-card .el-upload-list__item {
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  margin: 0 8px 8px 0;
+}
+
+/* 确保上传列表中的图片大小合适 */
+.avatar-uploader .el-upload-list--picture-card .el-upload-list__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 美化上传组件内的图标 */
+.avatar-uploader .el-upload-list--picture-card .el-upload-list__item-actions {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s;
+}
+
+/* 美化上传组件内的图标 - 鼠标悬停 */
+.avatar-uploader .el-upload-list--picture-card .el-upload-list__item-actions:hover {
+  opacity: 1;
+}
+
+/* 美化上传组件内的图标 - 图标 */
+.avatar-uploader .el-upload-list--picture-card .el-upload-list__item-actions span {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  opacity: 0.85;
+}
+
+/* 美化上传组件内的图标 - 图标之间的间距 */
+.avatar-uploader .el-upload-list--picture-card .el-upload-list__item-actions span+span {
+  margin-left: 10px;
+}
+
+/* 美化上传组件内的图标 - 鼠标悬停 */
+.avatar-uploader .el-upload-list--picture-card .el-upload-list__item-actions span:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   4. 拖拽上传
+   ========================================================================== */
+
+/* 拖拽上传组件样式 */
+.drag-upload {
+  width: 100%;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.drag-upload .el-upload {
+  width: 100%;
+  display: block;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.drag-upload .el-upload-dragger {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.drag-upload-content {
+  text-align: center;
+  padding: 20px;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.upload-icon {
+  font-size: 48px;
+  color: #909399;
+  margin-bottom: 10px;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.drag-upload .el-upload__text {
+  color: #606266;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* 拖拽上传组件样式 - 上传组件 */
+.drag-upload .el-upload__text em {
+  color: #409EFF;
+  font-style: normal;
+}
+
+/* 表格中的图片样式 */
+.table-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* 表格中的图片样式 */
+.table-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: transform 0.3s;
+}
+
+/* 表格中的图片样式 - 鼠标悬停 */
+.table-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* 表格中的图片样式 - 没有图片 */
+.no-image {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f7fa;
+  color: #909399;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px dashed #d9d9d9;
+}
+
+/* 自定义预览对话框样式 */
+.preview-dialog {
+  background: transparent !important;
+}
+
+/* 自定义预览对话框样式 - 对话框头部 */
+.preview-dialog .el-dialog__header,
+.preview-dialog .el-dialog__body {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+/* 自定义预览对话框样式 - 对话框头部 - 关闭按钮 */
+.preview-dialog .el-dialog__headerbtn {
+  display: none;
+}
+
+/* 自定义预览对话框样式 - 关闭按钮 */
+.image-preview-close {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 2001;
+  transition: all 0.3s;
+}
+
+/* 自定义预览对话框样式 - 关闭按钮 - 鼠标悬停 */
+.image-preview-close:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: rotate(90deg);
+}
+
+/* 覆盖 Element Plus 对话框默认样式 */
+.preview-dialog .el-dialog {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+/* 覆盖 Element Plus 对话框默认样式 - 遮罩层 */
+.preview-dialog .el-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* 纯图片预览样式 - 没有任何边框和按钮 */
+.pure-image-preview .el-dialog {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* 纯图片预览样式 - 对话框头部和主体 */
+.pure-image-preview .el-dialog__header,
+.pure-image-preview .el-dialog__body {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  width: 100%;
+  height: 100%;
+}
+
+/* 纯图片预览样式 - 图片 */
+.image-preview-pure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* 纯图片预览样式 - 图片 */
+.image-preview-pure img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 纯图片预览样式 - 遮罩层 */
+.pure-image-preview .el-overlay {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ==========================================================================
+   5.典型表单样式-左右布局
+   ========================================================================== */
+
+/* 横向分栏典型表单样式 */
+.typical-form-container.typical-form-horizontal {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 32px 24px 32px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* 左侧典型表单样式 */
+.typical-form-left {
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* 右侧典型表单样式 */
+.typical-form-right {
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* 典型表单标题样式 */
+.typical-form-title {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ebeef5;
+}
+
+/* 典型表单操作按钮样式 */
+.typical-form-actions {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #ebeef5;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+/* 时间选择器容器 */
+.time-range-container {
+  width: 100%;
+}
+
+/* 复选框容器 */
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   5. 典型表单样式-封面图
+   ========================================================================== */
+
+/* 典型表单上传区块样式 */
+.typical-upload-section {
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+/* 典型表单上传区块样式 - 第一个区块无顶部间距 */
+.typical-upload-section:first-of-type {
+  margin-top: 0;
+}
+
+/* 上传区块头部 */
+.upload-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+/* 上传区块标题 */
+.upload-section-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #303133;
+}
+
+/* 上传区块描述 */
+.upload-section-desc {
+  font-size: 12px;
+  color: #909399;
+}
+
+/* 封面图上传区域长方形 */
+.cover-rect {
+  width: 360px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* 封面图上传 */
+.typical-cover-upload .el-upload {
+  width: 360px;
+  height: 200px;
+}
+
+/* 封面图预览 */
+.typical-cover-preview.cover-rect {
+  width: 360px;
+  height: 200px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 封面图 */
+.typical-cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 封面图操作层 */
+.typical-cover-actions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* 封面图预览 - 鼠标悬停 */
+.typical-cover-preview.cover-rect:hover .typical-cover-actions {
+  opacity: 1;
+}
+
+/* 封面图操作图标 */
+.typical-cover-action-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+/* 封面图上传占位 */
+.typical-cover-uploader.cover-rect {
+  width: 360px;
+  height: 200px;
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+  transition: border-color 0.3s;
+}
+
+/* 封面图上传占位 - 鼠标悬停 */
+.typical-cover-uploader.cover-rect:hover {
+  border-color: #409eff;
+}
+
+/* ==========================================================================
+   5. 典型表单样式-图集
+   ========================================================================== */
+
+/* 图集上传 */
+.typical-gallery-upload {
+  width: 100%;
+}
+
+/* 图集上传 - 图片卡片样式 */
+.typical-gallery-upload .el-upload--picture-card {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+}
+
+/* 图集上传 - 图片卡片样式 - 图片卡片 */
+.typical-gallery-upload .el-upload-list--picture-card .el-upload-list__item {
+  width: 100px;
+  height: 100px;
+}
+
+/* 活动图集图片卡片及悬浮按钮 */
+.gallery-image-card {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f5f7fa;
+}
+
+/* 活动图集图片卡片 */
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 活动图集图片卡片及悬浮按钮 */
+.gallery-image-actions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 2;
+}
+
+/* 活动图集图片卡片及悬浮按钮 - 鼠标悬停 */
+.gallery-image-card:hover .gallery-image-actions {
+  opacity: 1;
+}
+
+/* 活动图集图片卡片及悬浮按钮 - 按钮 */
+.gallery-image-actions .el-button {
+  margin: 4px 0;
+  width: 70px;
+}
+
+/* ==========================================================================
+   5. 典型表单样式-附件
+   ========================================================================== */
+
+/* 附件上传 */
+.typical-attachment-upload {
+  width: 100%;
+}
+
+/* 附件上传 - 附件卡片样式 */
+.typical-attachment-upload .el-upload-list__item {
+  transition: background-color 0.3s;
+}
+
+/* 附件上传 - 附件卡片样式 - 鼠标悬停 */
+.typical-attachment-upload .el-upload-list__item:hover {
+  background-color: #f5f7fa;
+}

@@ -1,0 +1,51 @@
+.detail-box{
+    display: flex;
+    .time-box{
+        max-height: 620px;
+        overflow: auto;
+        padding: 2px;
+    }
+    .basic-box{
+         max-height: 680px;
+        overflow: auto;
+    }
+    .basic-info{
+        flex: 3;
+        padding-right: 15px;
+        border-right: 1px solid #eee;
+    }
+    .approval-process{
+        // flex: 2;
+        padding:0 0 0 15px ;
+        font-size: 14px;
+        min-width: 200px;
+        .no-infomation{
+            text-align: center;
+            color: #aaa;
+            margin-top: 30px;
+        }
+        
+        .approval-title{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            .approval-title-name{
+                color: #5677ff;
+            }
+        }
+        .approval-content{
+            background-color: #f0f3ff;
+            padding: 15px 0;
+            .approval-content-text{
+                line-height: 32px;
+                padding: 0 20px;
+                .text-color{
+                    color: #aaa;
+                    display: inline-block;
+                    margin-right: 8px;
+                }
+            }
+           
+        }
+    }
+}

@@ -1,0 +1,244 @@
+// 基本列表     --------------------------------------------------------------------------------------
+.app-container {
+  height: calc(100vh - 84px);
+  padding: 12px !important;
+  background-color: #f2f7f7;
+
+  // 搜索盒子
+  .container-query {
+    background-color: #fff !important;
+    padding: 12px 12px 0 12px;
+    margin-bottom: 12px;
+    padding: 16px 16px 0;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.3s;
+    &.FoldTrue {
+      height: auto;
+    }
+    &.FoldFalse {
+      height: 56px; // 46 + 16 - 6
+    }
+    .form-left-content {
+      float: left;
+      flex: 1;
+      &.tree_input_box {
+        display: flex;
+        align-items: center;
+        .tree_input {
+          width: 100%;
+        }
+      }
+    }
+    .form-right-btn {
+      float: right;
+      max-width: 216px;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-around;
+      gap: 8px;
+    }
+    // .el-select {
+    //   width: 100%;
+    // }
+  }
+  // 内容盒子
+  .container-body {
+    background-color: #fff !important;
+    padding: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    .body-toolbar {
+      margin-bottom: 12px;
+      display: flex;
+      gap: 8px;
+    }
+  }
+  // ----------------------------------------------------------------------------
+  // 左树右表样式
+  &.tree-modal {
+    height: 650px !important;
+    padding: 12px !important;
+  }
+  &.tree-list {
+    display: flex;
+    .left-tree-box {
+      margin-right: 8px;
+      background-color: #fff;
+      padding: 16px 8px;
+      border-radius: 6px;
+      transition: all 0.3s;
+      overflow: hidden;
+      .el-tree {
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+        padding-bottom: 66px;
+      }
+    }
+    .right-list-box {
+      flex: 1;
+      width: 0;
+    }
+    .fold-expand-box {
+      display: inline-block;
+      position: relative;
+      margin-right: 12px;
+      top: -4px;
+      left: -4px;
+      cursor: pointer;
+    }
+  }
+}
+
+.np {
+  padding: 0 !important;
+}
+// 新增、编辑
+.form-part-modal {
+  .form-part-modal-top {
+    line-height: 40px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    .part-modal-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .part-modal-btn {
+      line-height: 22px;
+      height: 24px;
+      font-size: 12px;
+      padding: 0 8px;
+      margin-left: 12px;
+    }
+  }
+  .form-part-modal-content {
+    // background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 16px;
+  }
+}
+// 分步表单
+.steps-part-modal {
+  .steps-part-modal-top {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  .steps-part-modal-content {
+    display: flex;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 16px;
+    .steps-success-box {
+    }
+  }
+}
+// 详情
+.detail-part-modal {
+  .detail-part-modal-top {
+    line-height: 40px;
+    margin-bottom: 12px;
+    .part-modal-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .part-modal-btn {
+      line-height: 22px;
+      height: 24px;
+      font-size: 12px;
+      padding: 0 8px;
+      margin-left: 12px;
+    }
+  }
+  .detail-part-modal-content {
+    .detail-content {
+      border: 1px solid #e9e9e9;
+      display: flex;
+      flex-wrap: wrap;
+      .detail-item {
+        line-height: 24px;
+        width: 50%;
+        display: flex;
+        border-bottom: 1px solid #e9e9e9;
+        &.noBoder {
+          border-bottom: none;
+        }
+        &.w100 {
+          width: 100%;
+        }
+        .item-label {
+          color: #777;
+          background-color: #f2f7f7;
+          width: 136px;
+          flex-shrink: 0;
+          padding: 8px 12px;
+        }
+        .item-value {
+          color: #000;
+          flex: 1;
+          padding: 8px 12px;
+          &.img-list {
+            display: flex;
+            flex-wrap: wrap;
+          }
+          .imgbox {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            padding: 2px;
+          }
+          .el-tag {
+            margin-right: 4px !important;
+            margin-bottom: 4px;
+          }
+        }
+      }
+      .detail-item2 {
+        width: 33%;
+      }
+    }
+  }
+}
+// 时间线流程详情
+.flow-part-modal {
+  padding: 16px;
+}
+
+.mt16 {
+  margin-top: 16px;
+}
+.mt12 {
+  margin-top: 12px;
+}
+.mt8 {
+  margin-top: 8px;
+}
+.mb16 {
+  margin-bottom: 16px;
+}
+.mb12 {
+  margin-bottom: 12px;
+}
+.mb8 {
+  margin-bottom: 8px;
+}
+
+// 导入按钮样式
+.export-button {
+  position: relative;
+  .export-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    outline: none;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+  }
+}

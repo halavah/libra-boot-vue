@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>栅格布局，prod</title>
+  <!-- 导入 ICON -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <!-- 导入 ElementPlus -->
+  <link rel="stylesheet" href="/public/element-plus/index.css">
+  <!-- 导入 Layui -->
+  <link rel="stylesheet" href="/public/layui/css/layui.css">
+  <!-- 其他头部信息 -->
+  <style>
+    .el-table__row {
+      user-select: none;
+    }
+
+    .centered-text {
+      display: grid;
+      text-align: center;
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <el-container v-loading.lock="loading">
+      <el-main style="overflow: hidden">
+        <el-row>
+          <el-col :span="24">
+            <el-form ref="searchFormRef" :model="searchForm" :rules="searchFormRules" :inline="true">
+              <el-form-item label="检像票状态" v-show="false">
+                <el-input v-model="searchForm.vState" clearable />
+              </el-form-item>
+              <el-form-item label="关键字" prop="searchKey">
+                <el-input v-model="searchForm.searchKey" clearable />
+              </el-form-item>
+              <el-form-item label="年月" prop="vDay">
+                <el-date-picker v-model="searchForm.vDay" type="date" format="YYYY年MM月DD日" value-format="YYYY-MM-DD"
+                  placeholder="选择年月" @change="fun_search(searchFormRef)">
+                </el-date-picker>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="fun_search(searchFormRef)">查询</el-button>
+                <el-button type="success" @click="fun_create">新建</el-button>
+                <el-button type="danger" @click="fun_delete">删除</el-button>
+              </el-form-item>
+            </el-form>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24">
+            <div
+              style="display: flex; align-items: center; justify-content: center; white-space: nowrap; margin-bottom: 30px;">
+              <span id="rqspan" style="color: black; font-size: 25px;"></span>
+            </div>
+            <div>
+              <span
+                style="width: 140px;height: 2px;position: absolute;right: 20px;top: 30px;color: black;font-size: 18px;">单位:
+                兆瓦</span>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24">
+            <el-table ref="dataTableRef" :data="dataList.slice((currentPage-1)*pageSize, currentPage*pageSize)"
+              row-key="obj_id" @current-change="handleCurrentRowChange" @row-dblclick="fun_detail" table-layout="auto"
+              border stripe highlight-current-row>
+              <el-table-column label="序号" type="index" width="60"></el-table-column>
+              <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+              <el-table-column prop="rq" label="日期" width="180"></el-table-column>
+              <el-table-column prop="address" label="地址"></el-table-column>
+            </el-table>
+            <el-pagination v-modeL:currentPage="currentPage" v-model:page-size="pageSize" :page-sizes="pageSizes"
+              :totaL="dataTotal" hide-on-singLe-page @current-change="handleCurrentPagerChange"
+              Layout="total, sizes, prev, pager, next, jumper" />
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24">
+            <div>
+              <span
+                style="width: 170px;height: 10px;position: absolute;right: 40px;top: 0px;color: red;font-size: 16px;">请在10月份之前上报！</span>
+            </div>
+          </el-col>
+        </el-row>
+        <el-dialog width="30%" v-model="dataFormVisible" :title="dataFormTitle">
+          <el-form ref="dataFormRef" :model="dataForm" :rules="dataFormRules" :disabled="dataFormStatus == 'detail'">
+            <el-form-item label="姓名" prop="name">
+              <el-input v-model="dataForm.name" clearable></el-input>
+            </el-form-item>
+            <el-form-item label="日期" prop="rq">
+              <el-date-picker v-model="dataForm.rq" type="month" format="YYYY年MM月DD日" value-format="YYYY-MM-DD"
+                placeholder="选择年月"></el-date-picker>
+            </el-form-item>
+            <el-form-item label="地址" prop="address">
+              <el-input v-model="dataForm.address" clearable></el-input>
+            </el-form-item>
+          </el-form>
+          <template #footer v-if="dataFormStatus != 'detail' && !loading">
+            <span class="dialog-footer">
+              <el-button @click="cancle(dataFormRef)">取 消</el-button>
+              <el-button type="primary" @click="fun_save(dataFormRef)" v-if="dataFormStatus != 'detail'">确 定</el-button>
+            </span>
+          </template>
+        </el-dialog>
+      </el-main>
+    </el-container>
+  </div>
+</body>
+<!-- 导入 Vue3 -->
+<script src="/public/vue/vue.global.prod.js"></script>
+<script src="/public/axios/axios.min.js"></script>
+<!-- 导入 ElementPlus -->
+<script src="/public/element-plus/index.full.min.js"></script>
+<script src="/public/element-plus/locale/zh-cn.min.js"></script>
+<!-- 导入 Layui -->
+<script src="/public/layui/layui.js"></script>
+<!-- 导入 Dayjs -->
+<script src="/public/dayjs/dayjs.min.js"></script>
+<!-- 导入 Echarts -->
+<script src="/public/echarts/echarts.js"></script>
+<!-- 导入 Jquery -->
+<script src="/public/jquery/jquery.min.js"></script>
+<!-- 导入 index.js -->
+<script src="index.js"></script>
+
+</html>

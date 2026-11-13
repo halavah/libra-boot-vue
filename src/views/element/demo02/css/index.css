@@ -1,0 +1,205 @@
+/* ==========================================================================
+   通用页面和容器样式 (Scoped to .root-container)
+   ========================================================================== */
+
+/* 页面根容器 */
+.root-container {
+  /* 使用 Flexbox 实现垂直三段式布局 */
+  display: flex;
+  /* 启用 Flexbox */
+  flex-direction: column;
+  /* 子元素垂直排列 */
+  /* 高度占满视口 */
+  height: 100vh;
+  /* 基础字体大小 */
+  font-size: 14px;
+  /* 防止根容器自身出现滚动条 (重要) */
+  overflow: hidden;
+  /* 页面背景色 */
+  background-color: #f5f7fa;
+  /* 页面内边距 */
+  padding: 20px;
+  /* 让 height/width 包含 padding 和 border */
+  box-sizing: border-box;
+}
+
+/* 通用 Element Plus 卡片头部样式 (可选，如果需要统一调整) */
+.root-container .el-card__header {
+  /* 卡片头部的内边距 */
+  padding: 15px 20px;
+  /* 头部下方的分隔线 */
+  border-bottom: 1px solid #ebeef5;
+  /* 头部标题加粗 */
+  font-weight: bold;
+}
+
+/* 通用 Element Plus 卡片主体样式 */
+.root-container .el-card__body {
+  /* 卡片主体的内边距 */
+  padding: 20px;
+}
+
+/* ==========================================================================
+   布局 1: 筛选区域 (.layout-search)
+   ========================================================================== */
+
+/* 筛选区域外层容器 - 作为 Flex 项目 */
+.root-container .layout-search {
+  /* flex: 0 0 auto; 的简写，表示不放大、不缩小、基于内容的原始尺寸 */
+  flex-shrink: 0;
+  /* 防止被压缩 */
+  /* 与下方内容区域的间距 */
+  margin-bottom: 15px;
+  /* 筛选区域自身的内边距 */
+  padding: 20px;
+  /* 白色背景 */
+  background-color: #fff;
+  /* 圆角 */
+  border-radius: 4px;
+  /* 浅灰色边框 */
+  border: 1px solid #ebeef5;
+  /* 轻微阴影效果 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 筛选条件容器 (内部各项使用 Flex 布局) */
+.root-container .layout-search .search-filters {
+  /* 使用 Flexbox 布局内部筛选条件 */
+  display: flex;
+  /* 允许筛选条件自动换行 */
+  flex-wrap: wrap;
+  /* 设置行间距和列间距 */
+  gap: 15px 20px;
+  /* 子项垂直对齐方式 (顶部对齐) */
+  align-items: flex-start;
+}
+
+/* 筛选条件表单项 */
+.root-container .layout-search .search-filters .el-form-item {
+  /* 移除 Element Plus 表单项默认的下外边距，使用 gap 控制间距 */
+  margin-bottom: 0;
+}
+
+/* 设置具体筛选控件的宽度 */
+/* 产线树形选择器宽度 */
+.root-container .layout-search .search-tree-select {
+  width: 240px;
+}
+
+/* 设备号输入框宽度 */
+.root-container .layout-search .search-input {
+  width: 220px;
+}
+
+/* 故障模式选择器宽度 */
+.root-container .layout-search .search-select {
+  width: 220px;
+}
+
+/* 日期范围选择器宽度 */
+.root-container .layout-search .search-datepicker {
+  width: 280px;
+}
+
+/* 查询/重置按钮容器 - 现在是 flex 项目 */
+.root-container .layout-search .search-buttons {
+  /* margin-left is controlled by gap */
+}
+
+/* 查询/重置按钮的表单项 */
+.root-container .layout-search .search-buttons .el-form-item {
+  /* 移除 Element Plus 表单项默认的下外边距 */
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   布局 2: 内容区域 (.layout-content)
+   ========================================================================== */
+
+/* 内容区域外层容器 (包含左右两列) - 作为 Flex 项目 */
+.root-container .layout-content {
+  /* flex: 1 1 0; 的简写，表示放大比例为1，缩小比例为1，基础尺寸为0 */
+  /* 关键：使其占据所有剩余垂直空间 */
+  flex-grow: 1;
+  /* 关键：隐藏可能因计算误差产生的微小滚动条 */
+  overflow-y: hidden;
+  overflow-x: hidden;
+  /* 关键：允许 flex item 在内容可能溢出时正确收缩，防止破坏布局 */
+  min-height: 0;
+  /* 与下方分析区域的间距 */
+  margin-bottom: 15px;
+  /* 内边距由子组件或内部元素控制 */
+}
+
+/* 左右卡片 (列表卡片和图表卡片) 的通用基础样式 */
+.root-container .layout-content .list-card,
+.root-container .layout-content .chart-card {
+  /* 白色背景 */
+  background-color: #fff;
+  /* 圆角 */
+  border-radius: 4px;
+  /* 浅灰色边框 */
+  border: 1px solid #ebeef5;
+  /* 轻微阴影效果 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* 注意：卡片的具体高度由内部元素决定或通过 JS 设置 */
+}
+
+/* 左侧列表区域的表格样式 */
+.root-container .layout-content .list-card .el-table {
+  /* 确保表格宽度充满其父容器 (el-card__body) */
+  width: 100%;
+  /* Height is controlled by JS */
+}
+
+/* 右侧图表区域的图表容器样式 */
+.root-container .layout-content .chart-container {
+  /* 图表宽度充满其父容器 (el-card__body) */
+  width: 100%;
+  /* Height is controlled by JS */
+  /* 保证最小高度 */
+  min-height: 300px;
+}
+
+/* ==========================================================================
+   布局 3: 分析功能区域 (.layout-analysis)
+   ========================================================================== */
+
+/* 分析功能区域卡片样式 - 作为 Flex 项目 */
+.root-container .layout-analysis {
+  /* flex: 0 0 auto; 的简写 */
+  flex-shrink: 0;
+  /* 防止被压缩 */
+  /* 内边距由卡片自身控制 */
+}
+
+.root-container .layout-analysis .analysis-card {
+  /* 白色背景 */
+  background-color: #fff;
+  /* 圆角 */
+  border-radius: 4px;
+  /* 浅灰色边框 */
+  border: 1px solid #ebeef5;
+  /* 轻微阴影效果 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* margin-top 由 layout-content 的 margin-bottom 控制 */
+}
+
+/* 分析功能区域文本域样式 (使其看起来像普通文本，仅用于展示) */
+.root-container .layout-analysis .el-textarea__inner {
+  /* 移除边框和阴影，使其不像输入框 */
+  border: none;
+  box-shadow: none;
+  /* 透明背景 */
+  background-color: transparent;
+  /* 调整内部上下边距 */
+  padding: 5px 0;
+  /* 继承父级字体大小 */
+  font-size: inherit;
+  /* 文本颜色 */
+  color: #606266;
+  /* 默认鼠标样式 */
+  cursor: default;
+  /* 禁止调整大小 (虽然 Vue 模板中已有 :resize="none") */
+  resize: none;
+}

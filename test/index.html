@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>导航页面 - 测试</title>
+  <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
+  <!-- 引入全局样式 (提供基础样式) -->
+  <link rel="stylesheet" href="/styles/global.css">
+  <style>
+    body {
+      margin: 0;
+      /* 移除 body 默认边距 */
+      display: flex;
+      /* 启用 Flexbox 布局 */
+      min-height: 100vh;
+      /* 确保 body 至少和视口一样高 */
+      padding: 20px;
+      /* 在 body 周围添加一些间距 */
+      box-sizing: border-box;
+      /* 让 padding 包含在宽高内 */
+    }
+
+    /* --- 主容器样式 --- */
+    #main-container {
+      display: flex;
+      /* 内部使用 Flexbox */
+      flex: 1;
+      /* 占据 body 的所有可用空间 */
+      gap: 20px;
+      /* 设置左右两栏之间的间距 */
+    }
+
+    /* --- 内容盒子样式 (左右两栏通用) --- */
+    .content-box {
+      display: flex;
+      /* 使用 Flexbox 垂直布局 */
+      flex-direction: column;
+      /* 内部元素垂直排列 */
+      flex: 1;
+      /* 让两栏平分宽度 */
+      border: 1px solid #ddd;
+      /* 添加淡淡的轮廓线 */
+      /* padding: 20px;  将 padding 移到内部元素 */
+      /* overflow-y: auto;  滚动交给内部 div */
+      height: calc(100vh - 40px);
+      /* 高度填充视口，减去 body 的 padding */
+      box-sizing: border-box;
+      /* 让 padding 和 border 包含在宽高内 */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* --- 主标题样式 --- */
+    .content-box h2 {
+      margin: 20px 20px 0 20px;
+      /* 添加左右和上边距，底部边距由下划线处理 */
+      padding-bottom: 0.4em;
+      /* 标题和下划线的间距 */
+      font-size: 1.4em;
+      color: #1a1a1a;
+      border-bottom: 2px solid #ccc;
+      /* 保留下划线 */
+      flex-shrink: 0;
+      /* 防止标题被压缩 */
+    }
+
+    /* --- 可滚动列表区域样式 --- */
+    .scrollable-list {
+      flex: 1;
+      /* 占据剩余所有垂直空间 */
+      overflow-y: auto;
+      /* 允许垂直滚动 */
+      padding: 0 20px 20px 20px;
+      /* 添加左右和底部内边距，顶部由标题处理 */
+      margin-top: 1.5em;
+      /* 与原标题下边距保持一致 */
+    }
+
+    /* --- 分组标题样式 (适用于 .scrollable-list 内部) --- */
+    .group-title {
+      /* JS 生成的 div 使用此 class */
+      font-weight: 600;
+      margin-top: 1.5em;
+      margin-bottom: 0.6em;
+      font-size: 1.2em;
+      color: #1a1a1a;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 0.3em;
+    }
+
+    /* 移除第一个分组标题的上边距 (现在基于 .scrollable-list) */
+    .scrollable-list>.group-title:first-of-type {
+      margin-top: 0;
+    }
+
+    /* --- 列表样式 (适用于 .scrollable-list 内部) --- */
+    .group-list {
+      /* JS 生成的 ul 使用此 class */
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      padding-left: 10px;
+      /* 轻微缩进组件链接 */
+      margin-top: 0.5em;
+    }
+
+    /* 列表项样式 */
+    .group-list li {
+      /* JS 生成的 li 在 .group-list 内 */
+      margin-bottom: 0.6em;
+    }
+
+    /* --- 链接样式 (适用于 .scrollable-list 内部) --- */
+    /* 应用于 .scrollable-list 内的所有 a 标签 */
+    .scrollable-list a {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+
+    #component-list-container a:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 主容器 -->
+  <div id="main-container">
+    <!-- 左侧 SFC 容器 -->
+    <div id="sfc-container" class="content-box">
+      <h2>SFC测试</h2>
+      <div class="scrollable-list">
+        <!-- SFC 链接将由 JavaScript 在此生成 -->
+      </div>
+    </div>
+    <!-- 右侧非 SFC 容器 -->
+    <div id="non-sfc-container" class="content-box">
+      <h2>非SFC测试</h2>
+      <div class="scrollable-list">
+        <!-- 非 SFC 链接将由 JavaScript 在此生成 -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- 辅助函数：生成链接列表 ---
+    function generateLinks(container, groups, isSfc) {
+      // 遍历每个分组 (模块)
+      for (const moduleName in groups) {
+        if (groups.hasOwnProperty(moduleName) && groups[moduleName].length > 0) {
+          const components = groups[moduleName]; // 获取当前模块的组件列表
+
+          // 创建模块标题
+          const groupTitle = document.createElement('div');
+          groupTitle.className = 'group-title';
+          // 不再需要后缀区分，由主标题区分
+          groupTitle.textContent = moduleName;
+          container.appendChild(groupTitle);
+
+          // 创建组件列表
+          const groupList = document.createElement('ul');
+          groupList.className = 'group-list';
+          container.appendChild(groupList);
+
+          // 为模块内的每个组件生成链接
+          components.forEach(componentName => {
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.target = '_blank'; // 添加 target="_blank" 以在新标签页打开
+            link.textContent = componentName; // 链接文本显示组件名
+
+            if (isSfc) {
+              // SFC 组件链接
+              const componentPath = `${moduleName}/${componentName}`;
+              link.href = `./load-component.html?component=${encodeURIComponent(componentPath)}`;
+            } else {
+              // 非 SFC 组件链接 (直接指向 HTML)，修正路径指向 /src/views2/
+              link.href = `/src/views2/${moduleName}/${componentName}/index.html`;
+            }
+
+            listItem.appendChild(link);
+            groupList.appendChild(listItem);
+          });
+        }
+      }
+    }
+
+    // --- 异步加载并生成链接 (主函数) ---
+    async function loadAndGenerateAllLinks() {
+      // 获取可滚动的列表容器
+      const sfcListContainer = document.querySelector('#sfc-container .scrollable-list');
+      const nonSfcListContainer = document.querySelector('#non-sfc-container .scrollable-list');
+
+      if (!sfcListContainer || !nonSfcListContainer) {
+        console.error('未找到 SFC 或 非SFC 的可滚动列表容器元素');
+        return;
+      }
+
+      // 清空可能存在的旧内容或错误提示
+      sfcListContainer.innerHTML = '';
+      nonSfcListContainer.innerHTML = '';
+
+
+      try {
+        // 同时请求两个配置文件
+        const [sfcResponse, nonSfcResponse] = await Promise.all([
+          fetch('./views.json').catch(e => { console.warn('加载 config.json 失败:', e); return null; }), // SFC 配置
+          fetch('./views2.json').catch(e => { console.warn('加载 config2.json 失败:', e); return null; }) // 非 SFC 配置
+        ]);
+
+        // 处理 SFC 组件
+        if (sfcResponse && sfcResponse.ok) {
+          const sfcGroups = await sfcResponse.json();
+          generateLinks(sfcListContainer, sfcGroups, true); // 将链接生成到 sfcListContainer
+        } else if (sfcResponse) {
+          console.error(`加载 views.json 时 HTTP 错误! status: ${sfcResponse.status}`);
+          sfcListContainer.innerHTML = '<p style="color: red;">加载 SFC 列表失败。</p>'; // 使用 innerHTML 替换内容
+        }
+
+        // 处理非 SFC 组件
+        if (nonSfcResponse && nonSfcResponse.ok) {
+          const nonSfcGroups = await nonSfcResponse.json();
+          generateLinks(nonSfcListContainer, nonSfcGroups, false); // 将链接生成到 nonSfcListContainer
+        } else if (nonSfcResponse) {
+          console.error(`加载 views2.json 时 HTTP 错误! status: ${nonSfcResponse.status}`);
+          nonSfcListContainer.innerHTML = '<p style="color: red;">加载 非SFC 列表失败。</p>'; // 使用 innerHTML 替换内容
+        }
+
+        // 如果两个文件都加载失败，显示错误
+        if (!sfcResponse && !nonSfcResponse) {
+          throw new Error('无法加载 config.json 和 config2.json');
+        }
+
+      } catch (error) {
+        console.error('加载或生成组件列表时出错:', error);
+        // 在两个列表容器都显示错误信息
+        const errorMsg = '<p style="color: red;">加载组件列表时出错，请检查控制台错误信息。</p>';
+        if (sfcListContainer) sfcListContainer.innerHTML = errorMsg; // 使用 innerHTML 替换内容
+        if (nonSfcListContainer) nonSfcListContainer.innerHTML = errorMsg; // 使用 innerHTML 替换内容
+      }
+    }
+
+    // 执行加载和生成函数
+    loadAndGenerateAllLinks();
+  </script>
+</body>
+
+</html>
