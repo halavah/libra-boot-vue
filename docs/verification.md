@@ -20,6 +20,12 @@ Not run: Firefox, WebKit, physical mobile devices, a full keyboard/screen-reader
 
 The project has no business backend, login, real upload endpoint or persistence. Runtime compilation requires a CSP that permits evaluation and inline styles. Only reviewed bundled examples are supported; this is not a sandbox for untrusted Vue code.
 
+## Directory and serving boundaries
+
+The repository has four working areas: `site/` contains the deployable website, `scripts/` contains local development commands, `tests/` contains automated acceptance, and `docs/` contains verification and provenance records. Start commands run from the repository root, while the HTTP document root is always `site/`. The server does not expose repository documentation, tooling or tests. Catalogue documentation links lead to the authorized source repository.
+
+Inside `site/`, `catalog/` registers examples, `runtime/` implements the preview and shared browser modules, `examples/sfc/` and `examples/html/` hold the two formats, and `assets/styles/` and `assets/vendor/` contain styling and upstream distributions. Dependency file paths in `docs/dependency-manifest.json` are relative to the repository root; catalogue entry paths are relative to the site root. Vendored file contents and their hashes are unchanged by directory organization.
+
 ## Distribution privacy and Git
 
 Static review covered all 151 tracked files at the implementation baseline: 147 UTF-8 text files and four upstream font binaries. Credential, production identifier and credential-bearing URL checks also covered all 108 unique historical blobs. No original business credential, production address, private filesystem path or personal record was identified. The private-address pattern in the upstream SFC loader matched V8 version strings, not network endpoints; the unmodified upstream bytes remain covered by the dependency hashes. All 35 vendored files matched their recorded SHA-256 digests. Necessary upstream copyright notices and the maintainer's public GitHub identity are retained.

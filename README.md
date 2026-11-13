@@ -67,7 +67,7 @@ npm test
 npm run scan
 ```
 
-项目版本查看获授权的仓库标签或发布渠道；本说明不复制项目发行版本号。第三方依赖的准确版本与哈希记录在 dependency-manifest.json。
+项目版本查看获授权的仓库标签或发布渠道；本说明不复制项目发行版本号。第三方依赖的准确版本与哈希记录在 docs/dependency-manifest.json。
 
 ## 🧩 示例内容
 
@@ -87,25 +87,33 @@ npm run scan
 
 ```text
 libra-boot-vue/
-├─ index.html                    示例目录
-├─ catalog/                      两类示例清单
-├─ runtime/                      Vue 预览、最小依赖组与共享演示逻辑
-├─ examples/sfc/                 Vue 单文件组件、JS、CSS、子组件和 JSON
-├─ examples/html/                直接打开的 HTML 与外部 JS
-├─ public/vendor/                经过来源及摘要核对的第三方浏览器构建
-├─ public/styles/                公共样式
-├─ scripts/                      静态服务、引用核对与脱敏检查
-├─ tests/                        数据、清单与静态服务测试
-├─ dependency-manifest.json      依赖来源、版本、摘要、许可
-├─ migration-manifest.json       示例主题对应与处置清单
-└─ THIRD_PARTY_NOTICES.md         第三方声明
+├─ site/                         可直接托管的静态站点
+│  ├─ index.html                 示例目录首页
+│  ├─ catalog/                   SFC 与 HTML 入口清单
+│  ├─ runtime/                   预览器和浏览器共享逻辑
+│  ├─ examples/
+│  │  ├─ sfc/                    Vue 组件示例
+│  │  └─ html/                   独立 HTML 示例
+│  └─ assets/
+│     ├─ styles/                 公共样式
+│     └─ vendor/                 已核验的第三方分发文件
+├─ scripts/                      本地服务和检查命令
+├─ tests/                        单元测试与浏览器验收
+├─ docs/                         验收说明、依赖与迁移清单
+├─ package.json                  统一开发命令
+├─ LICENSE                       MIT
+├─ THIRD_PARTY_NOTICES.md         第三方声明
+├─ README.md                     中文说明
+└─ README_EN.md                  英文说明
 ```
+
+开发命令在工程根目录运行，服务自动定位 `site/`。修改示例进入 `site/examples/`，登记入口进入 `site/catalog/`，核对依赖进入 `docs/dependency-manifest.json`。示例按格式、组件库分组；例内 JS、CSS 和子组件的拆分用于演示模块组织，保留其教学作用。
 
 ## ⚙️ 运行机制
 
 SFC 预览页只接受清单内的示例标识。Vue 和 vue3-sfc-loader 在浏览器获取并编译本地组件，Element Plus、Ant Design Vue、ECharts 等按依赖组加载。HTML 示例直接进入自己的页面，不依赖 Vue Router、Vite 或后端应用。
 
-公共 JS/CSS 和脚本路径由项目静态根提供。预览器拒绝外站依赖和未登记入口；静态服务只开放 index、catalog、runtime、examples、public 与说明文件，拒绝点文件、目录穿越、符号链接及写请求。
+公共 JS/CSS 和脚本路径以 `site/` 为静态根提供。预览器拒绝外站依赖和未登记入口；静态服务只开放 `site/` 内的站点文件，拒绝点文件、目录穿越、符号链接及写请求。
 
 Vue 模板与 SFC 加载器需要浏览器运行时编译。随附服务的内容安全策略因此允许 self 脚本与 unsafe-eval，样式允许库注入；这不是严格无 eval CSP 方案，也不是执行不可信组件的安全沙箱。仅运行维护者审核过的示例，不要与敏感业务应用共用来源。
 
@@ -131,9 +139,9 @@ check 校验目录、入口、局部引用、库文件摘要及许可记录；�
 
 ## 🧭 部署与排错
 
-分发时保持目录层次，使用独立来源。生产静态服务只应暴露运行资源与公开说明，不应暴露 scripts、tests、.git、归档或环境文件；保留正确 JavaScript、JSON、Vue 文本及字体 MIME 类型。此工程不自动创建云站点或部署到已有业务域名。
+部署时只发布 `site/` 的内容，使用独立来源；`scripts/`、`tests/`、`docs/`、`.git`、归档和环境文件留在站点根之外。首页说明链接指向授权源码仓，阅读需仓库权限；保留正确 JavaScript、JSON、Vue 文本及字体 MIME 类型。此工程不自动创建云站点或部署到已有业务域名。
 
-- **目录加载失败**：检查是否通过 HTTP 打开、服务根是否为本工程，以及 catalog 文件是否存在。
+- **目录加载失败**：检查是否通过 HTTP 打开、服务根是否为 `site/`，以及 catalog 文件是否存在。
 - **组件缺失**：运行 check，确认示例已登记及相对路径未被改坏。
 - **图表或控件空白**：检查对应 vendor 文件与目录清单中的依赖组，不用真实 CDN 临时替代。
 - **严格 CSP 拒绝 eval**：当前运行时编译方式不支持该策略；需要预编译方案，不能直接放宽敏感站点策略。

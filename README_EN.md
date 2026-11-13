@@ -67,7 +67,7 @@ npm test
 npm run scan
 ```
 
-Consult the authorized repository tags or releases for the project version. Exact dependency versions and hashes are recorded separately in dependency-manifest.json.
+Consult the authorized repository tags or releases for the project version. Exact dependency versions and hashes are recorded separately in docs/dependency-manifest.json.
 
 ## 🧩 Examples
 
@@ -87,25 +87,33 @@ Examples were rewritten around the original technical topics using neutral data.
 
 ```text
 libra-boot-vue/
-├─ index.html                    Example catalogue
-├─ catalog/                      SFC and HTML registrations
-├─ runtime/                      Preview, dependency groups, shared demo logic
-├─ examples/sfc/                 Vue, JS, CSS, children, and JSON
-├─ examples/html/                Direct HTML pages and scripts
-├─ public/vendor/                Verified upstream browser distributions
-├─ public/styles/                Shared CSS
-├─ scripts/                      Static server, reference and privacy checks
-├─ tests/                        Data, catalogue, and server tests
-├─ dependency-manifest.json      Versions, provenance, hashes, and licenses
-├─ migration-manifest.json       Example topic mapping and exclusions
-└─ THIRD_PARTY_NOTICES.md         Third-party notices
+├─ site/                         Deployable static site
+│  ├─ index.html                 Catalogue homepage
+│  ├─ catalog/                   SFC and HTML registrations
+│  ├─ runtime/                   Preview and shared browser code
+│  ├─ examples/
+│  │  ├─ sfc/                    Vue component examples
+│  │  └─ html/                   Standalone HTML examples
+│  └─ assets/
+│     ├─ styles/                 Shared CSS
+│     └─ vendor/                 Verified upstream distributions
+├─ scripts/                      Local server and checks
+├─ tests/                        Unit and browser tests
+├─ docs/                         Verification and dependency/migration manifests
+├─ package.json                  Development commands
+├─ LICENSE                       MIT
+├─ THIRD_PARTY_NOTICES.md         Third-party notices
+├─ README.md                     Chinese instructions
+└─ README_EN.md                  English instructions
 ```
+
+Run development commands from the repository root; the server resolves `site/` automatically. Edit demos in `site/examples/`, register them in `site/catalog/`, and keep dependency provenance in `docs/dependency-manifest.json`. The catalogue groups examples by format and library; per-example JS, CSS and child files intentionally demonstrate module separation.
 
 ## ⚙️ Runtime model
 
 The SFC preview accepts registered example identities only. Vue and vue3-sfc-loader fetch and compile trusted local components in the browser. UI and chart packages load by dependency group. HTML examples open their own pages without Vue Router, Vite, or an application backend.
 
-The preview rejects external and unregistered resources. The included server exposes runtime directories and documentation only, denying dotfiles, traversal, symlinks, and writes.
+The preview rejects external and unregistered resources. The included server serves only `site/` as its document root, denying dotfiles, traversal, symlinks, and writes.
 
 Vue and the SFC loader require runtime compilation. The included CSP therefore permits self scripts plus unsafe-eval and library-injected styles. This is not a strict no-eval CSP implementation or a sandbox for untrusted components. Run reviewed examples on an origin separate from sensitive applications.
 
@@ -131,9 +139,9 @@ Also test each example in a browser, inspecting errors, requests, CRUD, file inp
 
 ## 🧭 Deployment and troubleshooting
 
-Keep the directory hierarchy and use a separate origin. Production hosting should expose runtime assets and public documentation only, not scripts, tests, .git, archives, or environment files. Preserve MIME types for JavaScript, JSON, Vue source text, and fonts. This project does not automatically create a cloud site or alter existing business domains.
+Deploy the contents of `site/` to a separate origin. Keep `scripts/`, `tests/`, `docs/`, `.git`, archives and environment files outside the web root. The catalogue documentation links point to the authorized source repository and require repository access. Preserve MIME types for JavaScript, JSON, Vue source text, and fonts. This project does not automatically create a cloud site or alter existing business domains.
 
-- **Catalogue fails:** use HTTP and verify the project root and catalogue files.
+- **Catalogue fails:** use HTTP and verify that the document root is `site/` and that its catalogue files exist.
 - **Missing component:** run check and review the registered entry and relative paths.
 - **Blank chart or widget:** check local vendor files and declared dependencies; do not substitute a live CDN ad hoc.
 - **Strict CSP blocks eval:** this runtime compiler requires a different policy or a precompiled implementation. Do not relax a sensitive site's policy.

@@ -1,2 +1,2 @@
 * text=auto
-public/vendor/** -text
+site/assets/vendor/** -text

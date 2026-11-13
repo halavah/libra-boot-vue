@@ -12,7 +12,7 @@ try{
  const context=await browser.newContext({viewport:{width:1280,height:900},acceptDownloads:true});
  await context.route('**/*',route=>{const url=new URL(route.request().url());if(url.origin!==origin){externalRequests++;return route.abort()}return route.continue()});
  context.setDefaultTimeout(7000);
- const catalogues=await Promise.all(['sfc','html'].map(async k=>JSON.parse(await readFile(new URL('../catalog/'+k+'.json',import.meta.url),'utf8')).examples));
+ const catalogues=await Promise.all(['sfc','html'].map(async k=>JSON.parse(await readFile(new URL('../site/catalog/'+k+'.json',import.meta.url),'utf8')).examples));
  const home=await context.newPage();await home.goto(origin);await home.waitForFunction(()=>document.querySelectorAll('.card').length===25);await home.getByLabel('搜索示例').fill('ECharts');await home.getByRole('button',{name:'筛选',exact:true}).click();assert.equal(await home.locator('.card').count(),3);await home.getByRole('button',{name:/^重\s*置$/}).click();assert.equal(await home.locator('.card').count(),25);await home.close();
  for(const item of catalogues.flat().filter(item=>!process.env.LIBRA_TEST_EXAMPLE||item.kind+'/'+item.id===process.env.LIBRA_TEST_EXAMPLE)){
   const page=await context.newPage();const errors=[],httpErrors=[];page.on('pageerror',error=>errors.push(error.message));page.on('response',response=>{if(response.status()>=400)httpErrors.push({url:new URL(response.url()).pathname,status:response.status()})});
