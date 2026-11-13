@@ -1,146 +1,163 @@
+<a id="top"></a>
 <div align="center">
 
-# Libra Boot Vue
+# 🚀 Libra Boot Vue
 
-**A Vue example project retaining its original components, layouts, routing and static-page organization for developers to read, run and reuse.**
+**Vue examples for exploring component libraries, charts, file controls and directory-discovered navigation.**
 
-[![Vue](https://img.shields.io/badge/Vue-3-42b883)](https://vuejs.org/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-browser-F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Vue](https://img.shields.io/badge/Vue-component%20examples-42b883)](https://vuejs.org/)
+[![Vite](https://img.shields.io/badge/Vite-development-646CFF)](https://vite.dev/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 **English** | [简体中文](README.md)
 
 </div>
 
-> **This README follows the open-source documentation convention**: structure and badges use a consistent format, badges point only to publicly accessible resources, and release information belongs to the release channel.
-
-## 📖 Contents
-
-- [Quick start](#-quick-start)
-- [Installation](#-installation)
-- [Directories and entry points](#-directories-and-entry-points)
-- [Examples and APIs](#-examples-and-apis)
-- [Data and resources](#-data-and-resources)
-- [Validation and troubleshooting](#-validation-and-troubleshooting)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Contact](#-contact)
-- [Star History](#-star-history)
-- [Back to top](#-back-to-top)
-
-## 🚀 Quick start
-
-Prepare Node.js and pnpm. Run at the project root:
-
-```sh
-pnpm install --frozen-lockfile
-pnpm dev
-```
-
-Open `http://127.0.0.1:5173/`. The homepage discovers systems, modules and pages. Choose a page to enter its layout; API-dependent examples also require your own service configuration.
-
-```sh
-pnpm build
-pnpm preview
-```
-
-These are the original Vite commands. Output goes to `dist/`; a successful build does not establish that every business API works.
-
-## 📦 Installation
-
-Source repositories remain private. Obtain collaborator access and register your SSH public key:
-
-```sh
-git clone --branch master git@gitee.com:halavah/libra-boot-vue.git
-cd libra-boot-vue
-```
-
-Local and remote collaboration use `master`. The maintainer synchronizes GitHub and Gitee and manually selects repository visibility and the remote default branch. No npm package or business backend is distributed. Refer to the authorized release channel for project versions.
-
-## 🗂️ Directories and entry points
-
-```text
-libra-boot-vue/
-├─ src/
-│  ├─ App.vue                 Root component
-│  ├─ Home.vue                Discovered-page overview
-│  ├─ Home_bak.vue            Retained implementation
-│  ├─ main.js                 Application entry
-│  ├─ views/                  Base components and file examples
-│  ├─ views2/                 HTML and component examples
-│  ├─ views3/                 Upload, form and export examples
-│  ├─ layouts/                Layouts and menus
-│  ├─ router/                 Routes and retained implementation
-│  ├─ mixins/                 Shared mixins
-│  ├─ plugins/                Plugins
-│  └─ assets/                 Source styles
-├─ public/                    Browser resources and licenses
-├─ test/                      Static catalogue and SFC preview
-├─ index.html
-├─ package.json
-├─ pnpm-lock.yaml
-├─ vite.config.js
-├─ README.md
-├─ README_EN.md
-└─ LICENSE
-```
-
-Original directories, filenames, example boundaries, Vue sections and indentation are retained. Examples are not merged into a new architecture, and TypeScript examples remain TypeScript. Retained Home/router implementations and supporting files remain present.
-
-`test/` is a manual static example catalogue, not an automated test suite. To inspect original static paths, run another HTTP server from the project root:
-
-```sh
-pnpm exec http-server . -p 5174
-```
-
-Open `http://127.0.0.1:5174/test/index.html`. It loads `public/` and source components directly. File-protocol access is unsupported; do not expose the full source directory as a public service.
-
-## 🧩 Examples and APIs
-
-Routes and menus are discovered from the remaining example directories. Layouts, plugins, mixins and static loaders remain. Three view groups provide base components, independent pages, and upload/form/export examples; simulated data within the retained examples remains. Business examples use products, orders, returns and after-sales scenarios. File-handling examples live directly in `src/views3/{export,upload-file,upload-file2,upload-form}`.
-
-Other examples retain their API integrations, including upload/export calls. The root Mock plugin and injection are removed; no local Mock service is provided. Real origins are replaced by unavailable examples such as `api.example.invalid`, and literal credentials are cleared. Local Vite proxies are configuration examples; their servers are not included. Request paths, methods, field keys and authentication call structure remain for users to configure their own services and test credentials. An unavailable example address is not a working replacement backend.
-
-## 🔐 Data and resources
-
-Personal records, contact details, organizations and industrial content use demonstration values. Replaced business labels use e-commerce shops, products, orders and after-sales terminology while retaining field keys, types, trees and interactions. Public region dictionaries are not treated as personal addresses.
-
-Phone/identity placeholders deliberately cannot identify or contact a real person. Original strict validation may reject them; use synthetic data in your isolated environment rather than real personal data.
-
-Retained business screenshots use neutral placeholders at the same paths with no original pixels or metadata. Two fonts with unverified redistribution permission are excluded; their stylesheet location remains with local-font fallback. Upstream browser files retain their notices and required licenses in their resource directories.
-
-## ✅ Validation and troubleshooting
-
-Run `pnpm build` to validate the production build. The test directory is a manual preview catalogue, not an automated test suite. A successful build does not validate backend, upload or authentication flows.
-
-- API-dependent pages require your backend and proxy configuration.
-- Missing static registrations are reported as source/catalogue discrepancies, not removed silently.
-- Use your own test credentials for authorized file endpoints; none are embedded.
-- Changed screenshots and fonts are deliberate content redaction, with source paths and component structure retained.
-- Existing chunk-size and dependency-comment warnings do not authorize unrelated refactoring.
-
-## 🤝 Contributing
-
-Authorized collaborators branch from `master` and submit a PR. Preserve directories, naming, Vue sections, indentation and interactions; redaction is not a reason to rewrite, abstract or merge examples.
-
-Check dependencies and references, build, exercise affected pages and state checks not run. Do not commit real credentials, personal records, unredacted screenshots, environment files or unlicensed fonts. Agree on scope before architectural changes.
-
-## 📄 License
-
-Project-authored code uses [MIT](LICENSE), permitting use, modification, commercial use and distribution while requiring retention of copyright and license notices, without warranty. MIT facilitates example reuse; third-party resources retain their own licenses.
-
-## 📮 Contact
-
-Maintainer: [halavah](https://github.com/halavah). Authorized collaborators can use repository Issues or PRs with file paths, reproduction steps and sanitized evidence. Do not upload real business records.
-
-## ⭐ Star History
-
-Repositories remain private, so inaccessible statistics graphics are omitted. Public channels can be configured after the maintainer approves publication.
-
-## ⬆ Back to top
+> This README follows the open-source documentation standard: consistent structure and badges, public badge resources only, and release-channel pages for current versions.
 
 ---
 
-Made with ❤️. If the examples help, consider following and supporting the project when it becomes public.
+## 📖 Contents
 
-[Back to top](#libra-boot-vue)
+- [Quick start](#quick-start)
+- [Installation](#installation)
+- [Running examples](#screenshots)
+- [Examples and boundaries](#examples)
+- [Structure](#structure)
+- [Static preview](#static-preview)
+- [Verification and troubleshooting](#verification)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Star History](#star-history)
+- [Back to top](#back-to-top)
+
+---
+
+<a id="quick-start"></a>
+## 🚀 Quick start
+
+Use a current Node.js LTS release satisfying the locked dependencies and a pnpm release supporting this lockfile. From the cloned project root:
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev --host 127.0.0.1
+```
+
+Open `http://127.0.0.1:5173/`. The overview currently discovers three systems and 22 Vue pages. Expand system 3 and open `upload-file2` to inspect file-handling controls. Counts describe the current source, not a fixed public API.
+
+If pnpm blocks dependency build scripts, review the named packages under your local pnpm policy; do not disable verification globally.
+
+<a id="installation"></a>
+## 📦 Installation
+
+| Channel | Availability | Purpose |
+|---|---|---|
+| Authorized GitHub source | Private | Clone and run the project |
+| Authorized Gitee source | Private | SSH mirror for collaborators |
+| npm package / hosted backend | Not provided | This is a source example project |
+
+Source code: [GitHub](https://github.com/halavah/libra-boot-vue) · [Gitee](https://gitee.com/halavah/libra-boot-vue). Both require repository access. The collaboration branch is `master`.
+
+Documentation: this README and [简体中文](README.md); dependency behavior and exact scripts are defined in [package.json](package.json) and [vite.config.js](vite.config.js). Repository releases, when provided to collaborators, are the version channel.
+
+<a id="screenshots"></a>
+## 🖼️ Running examples
+
+These are browser screenshots of the running project, using synthetic e-commerce data.
+
+![System overview](assets/screenshots/overview.png)
+*Automatic discovery, search and page navigation.*
+
+![Return-reason chart](assets/screenshots/returns-chart.png)
+*`/layout/element/demo01`: local demonstration data rendered as a table and ECharts chart.*
+
+![File-upload controls](assets/screenshots/file-upload.png)
+*`/layout/upload-file2`: controls and layout are visible; this screenshot does not claim a successful backend upload.*
+
+<a id="examples"></a>
+## 🧩 Examples and boundaries
+
+| Entry | What it does | Backend needed? |
+|---|---|---|
+| `/` | Discover systems, search, navigate, export overview as Markdown/JSON | No |
+| `/layout/element/demo01` | Render a local-data return-reason table and chart | No for this example |
+| `/layout/ant-design-vue/demo01` | Alternative component-library example | Depends on the example |
+| `/layout/upload-file2` | File, folder and Base64 upload controls | Yes for actual upload |
+| `test/index.html` | Manual static catalogue and SFC loader | Depends on the target example |
+
+There is no root Mock server. API placeholders such as `api.example.invalid` intentionally cannot reach a real service; localhost endpoints require your own backend. Field keys and call structures remain for integration. Synthetic values, image placeholders and locally available font fallbacks must not be mistaken for original business records.
+
+<a id="structure"></a>
+## 🗂️ Structure
+
+```text
+src/
+├─ App.vue / Home.vue / main.js
+├─ views/       # Element Plus, Ant Design Vue, file handling
+├─ views2/      # HTML, communication, charts and trees
+├─ views3/      # export / upload-file / upload-file2 / upload-form
+├─ layouts/     # Systems, menus and tabs
+├─ router/      # Directory-discovered routes
+├─ mixins/ / plugins/
+└─ assets/      # Styles and sanitized assets
+public/         # Browser resources, region dictionary and licenses
+test/           # Static catalogue and SFC loader
+assets/screenshots/ # Screenshots in this README
+```
+
+<a id="static-preview"></a>
+## 🌐 Static preview
+
+For independent HTML and runtime SFC loading, serve the project root separately:
+
+```sh
+pnpm exec http-server . -a 127.0.0.1 -p 5174
+```
+
+Open `http://127.0.0.1:5174/test/index.html`. Keep port 5173 for Vite and port 5174 for the raw static loader. Loading SFC source through Vite is not equivalent to the raw loader. This catalogue is manual, not an automated test suite. Some inherited entries or stylesheet paths are missing; inspect the source path before using an entry. Do not expose the source root publicly.
+
+<a id="verification"></a>
+## ✅ Verification and troubleshooting
+
+```sh
+pnpm build
+pnpm preview --host 127.0.0.1
+```
+
+Production output is `dist/`. Local verification covered the production build, three-system/four-file-page discovery, overview navigation, representative charts and file-control rendering. Upload completion, external authentication, all static entries and mobile/cross-browser compatibility were not validated. Existing dependency-comment, sourcemap and chunk-size warnings may appear; they do not justify unrelated refactoring.
+
+<a id="contributing"></a>
+## 🤝 Contributing
+
+Authorized collaborators create a feature branch from `master`, validate their changes and submit a PR. Public repositories may be forked first. Keep changes focused and state the commands run and any checks omitted.
+
+Preserve example boundaries, filenames, Vue sections and indentation. Check automatic routing, menu counts, static-preview links and both README languages. Use synthetic e-commerce data; do not commit real accounts, private endpoints, business screenshots, environment files or unlicensed fonts.
+
+<a id="license"></a>
+## 📄 License
+
+[MIT License](LICENSE).
+
+- ✅ Allows commercial use, modification, redistribution and private use.
+- ⚠️ Keep the copyright and permission notice in copies or substantial portions. Third-party resources retain their own licenses.
+- No warranty or liability is provided.
+
+MIT keeps reuse straightforward while preserving attribution.
+
+<a id="contact"></a>
+## 📮 Contact
+
+Maintainer: [halavah](https://github.com/halavah). Authorized collaborators can report problems through this repository’s Issues or PRs. Include paths, reproduction steps and sanitized evidence. Repository visibility is controlled by the maintainer.
+
+<a id="star-history"></a>
+## ⭐ Star History
+
+The repository is private. No public repository-statistics badge or Star History image is embedded; these can be added and checked after publication.
+
+<a id="back-to-top"></a>
+## ⬆ Back to top
+
+Made with ❤️. If this project helps you, consider giving it a Star.
+
+[⬆ Back to top](#top)

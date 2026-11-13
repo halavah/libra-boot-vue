@@ -1,11 +1,12 @@
+<a id="top"></a>
 <div align="center">
 
-# Libra Boot Vue
+# 🚀 Libra Boot Vue
 
-**保留原有 Vue 工程组织方式的前端示例工程，供开发者阅读、运行和复用组件、布局、路由及静态页面示例。**
+**供开发者运行、阅读和复用组件、图表、文件控件与自动导航的 Vue 示例工程。**
 
-[![Vue](https://img.shields.io/badge/Vue-3-42b883)](https://vuejs.org/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-browser-F7DF1E)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+[![Vue](https://img.shields.io/badge/Vue-component%20examples-42b883)](https://vuejs.org/)
+[![Vite](https://img.shields.io/badge/Vite-development-646CFF)](https://vite.dev/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 [English](README_EN.md) | **简体中文**
@@ -14,133 +15,151 @@
 
 > **本文遵循开源说明规范**：结构与徽章按统一体例，徽章仅指向公开可访问资源，版本信息指向发布渠道动态页。
 
+---
+
 ## 📖 目录
 
-- [快速开始](#-快速开始)
-- [安装](#-安装)
-- [目录与入口](#-目录与入口)
-- [示例与接口](#-示例与接口)
-- [数据与资源](#-数据与资源)
-- [验证与排错](#-验证与排错)
-- [贡献指南](#-贡献指南)
-- [License](#-license)
-- [联系我们](#-联系我们)
-- [Star History](#-star-history)
-- [回到顶部](#-回到顶部)
-
-## 🚀 快速开始
-
-准备 Node.js 和 pnpm，在工程根目录运行：
-
-```sh
-pnpm install --frozen-lockfile
-pnpm dev
-```
-
-打开 `http://127.0.0.1:5173/`，首页展示自动扫描的系统、模块与页面。选择页面进入布局和对应组件；接口类页面还需要按下文配置服务。
-
-```sh
-pnpm build
-pnpm preview
-```
-
-以上保留原有 Vite 开发、构建和预览脚本。构建产物为 `dist/`，构建通过不代表全部业务接口已可用。
-
-## 📦 安装
-
-源码仓库保持私有，需先获得协作权限并配置自己的 SSH 公钥：
-
-```sh
-git clone --branch master git@gitee.com:halavah/libra-boot-vue.git
-cd libra-boot-vue
-```
-
-本地和远端协作主线使用 `master`。维护者同步 GitHub 与 Gitee；是否公开及远程默认分支由维护者在平台手动设置。本工程不发布 npm 包，不提供在线业务后端。项目版本查看获授权仓库的发布渠道。
-
-## 🗂️ 目录与入口
-
-```text
-libra-boot-vue/
-├─ src/
-│  ├─ App.vue                 根组件
-│  ├─ Home.vue                自动扫描的页面总览
-│  ├─ Home_bak.vue            保留的页面实现
-│  ├─ main.js                 应用入口与组件库注册
-│  ├─ views/                  基础组件和文件示例
-│  ├─ views2/                 独立 HTML 与组件通信示例
-│  ├─ views3/                 文件上传、表单与导出示例
-│  ├─ layouts/                布局和菜单配置
-│  ├─ router/                 路由及保留实现
-│  ├─ mixins/                 公共混入
-│  ├─ plugins/                插件
-│  └─ assets/                 源码样式
-├─ public/                    浏览器资源及各依赖许可
-├─ test/                      静态目录和 SFC 预览入口
-├─ index.html
-├─ package.json
-├─ pnpm-lock.yaml
-├─ vite.config.js
-├─ README.md
-├─ README_EN.md
-└─ LICENSE
-```
-
-目录、文件名、示例拆分和代码缩进保持原工程关系；不将示例合并成新架构，也不把原 TypeScript 示例改成 JavaScript。`Home_bak.vue`、备用路由和各示例附属文件保留。
-
-`test/` 是原有静态示例导航，不是自动化测试套件。需要按原始文件路径查看静态示例时，可在工程根目录另开静态 HTTP 服务：
-
-```sh
-pnpm exec http-server . -p 5174
-```
-
-打开 `http://127.0.0.1:5174/test/index.html`。该入口直接加载 `public/` 和源组件，不能通过双击文件运行，也不应把整个源码目录暴露为公开服务。
-
-## 🧩 示例与接口
-
-Vue 应用按目录自动生成路由和菜单，保留布局、插件、混入及其余示例。静态入口保留原清单和加载器。工程包含三组视图：基础组件、独立页面，以及文件上传、表单和导出；各示例内部的模拟数据保留。业务演示采用商品、订单、退货和售后场景；文件处理示例直接位于 `src/views3/{export,upload-file,upload-file2,upload-form}`。
-
-其余示例的联调接口及文件上传／导出调用保留。根目录 Mock 插件和注入已移除，不提供本地 Mock 服务。真实服务地址已替换为 `api.example.invalid` 等不可用示例地址，字面量访问凭据清空。`vite.config.js` 中的本地代理仍是示例联调配置，不随仓库提供对应服务器。接口路径、请求方法、字段键和认证调用结构保留，使用者需配置自己的服务与测试凭据；不能将不可连接的演示地址当成已完成的本地替代后端。
-
-## 🔐 数据与资源
-
-真实人员、联系信息、组织和行业内容已替换为演示数据；需要替换的业务标签采用电商店铺、商品、订单和售后语境。原字段键、类型、树形关系及交互结构保留，地区公共字典不作为个人地址删除。
-
-手机号、证件号等采用明确不可联系、不可识别的占位值。严格校验表单可能拒绝这些占位值，这是保留原校验逻辑的结果；请在自有隔离测试环境提供合成数据，不填入或提交真实个人资料。
-
-保留示例中的业务截图采用同路径纯色占位图，不包含原图像素或元数据。未能确认分发许可的两份字体文件不进入源码，原字体样式位置保留并改为本机字体回退。第三方浏览器资源、必要版权和许可证在各自资源目录保留，不将第三方代码声明为自有代码。
-
-## ✅ 验证与排错
-
-执行 `pnpm build` 检查生产构建。`test/` 为手动预览目录，不是自动化测试套件；构建通过不代表后端、上传或鉴权流程通过验证。
-
-- **页面需要接口**：检查自己的后端和代理配置；示例地址不会自动变成业务服务。
-- **静态清单入口不存在**：核对 `test/` 清单与源码实际路径。原清单仍有缺失入口，不提供空页面冒充可用。
-- **文件请求未授权**：使用自己的测试凭据；仓库没有内置可用口令。
-- **字体或截图不同**：属于素材脱敏处理，组件源码、路径和排版关系仍保留。
-- **构建提示包体较大或依赖注释告警**：记录实际结果，不为消除告警擅自重构原代码。
-
-## 🤝 贡献指南
-
-获授权的协作者从 `master` 创建独立分支，修改后提交 PR。修订须保持现有目录、文件命名、Vue 分块、缩进和交互关系；不要以脱敏为由重写、抽象或合并示例。
-
-提交前核对依赖、入口和引用，执行构建并验证受影响页面，写明未运行的检查。禁止提交真实接口凭据、个人资料、未脱敏截图、环境文件或未经许可的字体。新增功能或架构调整先明确范围。
-
-## 📄 License
-
-自有代码采用 [MIT](LICENSE)。允许使用、修改、商业使用和分发；分发时须保留版权和许可声明，不提供担保。选择 MIT 是为了方便复用示例代码。第三方资源分别适用其原许可证。
-
-## 📮 联系我们
-
-维护者：[halavah](https://github.com/halavah)。有仓库权限的协作者通过对应仓库的 Issues 或 PR 反馈，附原有文件路径、复现步骤与脱敏结果，不上传真实业务数据。
-
-## ⭐ Star History
-
-仓库保持私有，不嵌入无法匿名访问的统计图。维护者确认可公开后，再配置公开展示渠道。
-
-## ⬆ 回到顶部
+- [快速开始](#quick-start)
+- [安装与源码](#installation)
+- [运行截图](#screenshots)
+- [示例与边界](#examples)
+- [目录结构](#structure)
+- [静态预览](#static-preview)
+- [验证与排错](#verification)
+- [贡献指南](#contributing)
+- [License](#license)
+- [联系我们](#contact)
+- [Star History](#star-history)
+- [回到顶部](#back-to-top)
 
 ---
 
-用 ❤️ 构建。如果示例对您有帮助，欢迎在项目公开后关注与支持。
+<a id="quick-start"></a>
+## 🚀 快速开始
 
-[回到顶部](#libra-boot-vue)
+准备满足锁文件依赖要求的 Node.js 活跃 LTS 和兼容锁文件的 pnpm，在工程根目录执行：
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev --host 127.0.0.1
+```
+
+打开 `http://127.0.0.1:5173/`。当前首页扫描出 3 个系统、22 个 Vue 页面；展开系统3，点击 `upload-file2` 可查看文件处理控件。页面数量来自当前源码扫描，不作为固定接口承诺。
+
+pnpm 若阻止依赖构建脚本，应按本机策略核对提示的依赖，不要全局关闭校验。
+
+<a id="installation"></a>
+## 📦 安装与源码
+
+| 渠道 | 可用性 | 用途 |
+|---|---|---|
+| 获授权的 GitHub 源码 | 私有 | 克隆并运行工程 |
+| 获授权的 Gitee 源码 | 私有 | 协作者通过 SSH 使用镜像 |
+| npm 包／在线业务后端 | 不提供 | 本项目按源码示例使用 |
+
+源码：[GitHub](https://github.com/halavah/libra-boot-vue) · [Gitee](https://gitee.com/halavah/libra-boot-vue)，访问需要仓库权限；协作主线为 `master`。
+
+文档：本篇及 [English README](README_EN.md)；实际脚本与配置见 [package.json](package.json)、[vite.config.js](vite.config.js)。版本以向协作者提供的仓库发布渠道为准。
+
+<a id="screenshots"></a>
+## 🖼️ 运行截图
+
+以下截图来自浏览器中的实际运行页面，业务内容使用虚构电商数据。
+
+![系统导航总览](assets/screenshots/overview.png)
+*自动扫描系统与页面，提供搜索和页面入口。*
+
+![退货原因图表](assets/screenshots/returns-chart.png)
+*`/layout/element/demo01`：本地演示数据形成列表与 ECharts 图表。*
+
+![文件上传控件](assets/screenshots/file-upload.png)
+*`/layout/upload-file2`：展示控件及布局，不代表后端上传流程已验证成功。*
+
+<a id="examples"></a>
+## 🧩 示例与边界
+
+| 入口 | 作用 | 是否需要后端 |
+|---|---|---|
+| `/` | 扫描系统、搜索、跳转，导出 Markdown／JSON 总览 | 不需要 |
+| `/layout/element/demo01` | 用本地数据展示退货原因列表与图表 | 此示例不需要 |
+| `/layout/ant-design-vue/demo01` | 另一套组件库的示例 | 以具体示例为准 |
+| `/layout/upload-file2` | 文件、自定义目录及 Base64 上传控件 | 真正上传需要 |
+| `test/index.html` | 手动静态目录与 SFC 加载器 | 以目标示例为准 |
+
+工程不提供根目录 Mock 服务。`api.example.invalid` 等地址是不可用占位符，localhost 接口需要配置自己的后端；字段键与调用结构用于接入。模拟数据、图片占位图和本机字体回退均不代表原业务资料。
+
+<a id="structure"></a>
+## 🗂️ 目录结构
+
+```text
+src/
+├─ App.vue / Home.vue / main.js
+├─ views/       # Element Plus、Ant Design Vue、文件处理
+├─ views2/      # 独立 HTML、组件通信、图表与树形示例
+├─ views3/      # export / upload-file / upload-file2 / upload-form
+├─ layouts/     # 系统切换、菜单、标签页
+├─ router/      # 按目录扫描路由
+├─ mixins/ / plugins/
+└─ assets/      # 样式与脱敏资源
+public/         # 浏览器依赖、地区字典、资源及第三方许可
+test/           # 静态预览目录与 SFC 加载器
+assets/screenshots/ # 本文运行截图
+```
+
+<a id="static-preview"></a>
+## 🌐 静态预览
+
+独立 HTML 与运行时 SFC 加载器另开静态服务：
+
+```sh
+pnpm exec http-server . -a 127.0.0.1 -p 5174
+```
+
+打开 `http://127.0.0.1:5174/test/index.html`。5173 用于 Vite，5174 用于原始静态加载器，两种方式不等价。`test/` 是手动示例目录，不是自动化测试套件；部分沿用入口或样式路径仍缺失，使用前核对实际源文件，不要将源码根目录公开托管。
+
+<a id="verification"></a>
+## ✅ 验证与排错
+
+```sh
+pnpm build
+pnpm preview --host 127.0.0.1
+```
+
+产物为 `dist/`。本地已验证生产构建、三个系统与四个文件页面的发现、首页导航、代表性图表及文件控件渲染。未验证上传完成、外部鉴权、全部静态入口或手机／跨浏览器兼容；依赖注释、源码映射及大包体提示不代表已经完成性能优化。
+
+<a id="contributing"></a>
+## 🤝 贡献指南
+
+获授权协作者从 `master` 创建功能分支，完成验证后提交 PR；公开仓也可先 Fork。保持提交范围明确，写清实际执行的命令及未运行检查。
+
+保留示例边界、文件名、Vue 分块与原有缩进。核对自动路由、菜单计数、静态预览入口及中英文说明；业务数据使用虚构电商场景，不提交真实账号、私有接口、业务截图、环境文件或许可不明字体。
+
+<a id="license"></a>
+## 📄 License
+
+[MIT License](LICENSE)。
+
+- ✅ 允许商业使用、修改、分发和私有使用。
+- ⚠️ 在副本或实质性部分中保留版权与许可声明；第三方资源仍遵守各自许可。
+- 不提供担保，作者不承担许可所述责任。
+
+选择 MIT，便于开发者复用示例与工具，同时保留来源声明。
+
+<a id="contact"></a>
+## 📮 联系我们
+
+维护者：[halavah](https://github.com/halavah)。获授权协作者可通过本仓 Issues 或 PR 反馈，附上文件位置、复现步骤和脱敏证据。仓库可见性由维护者管理。
+
+<a id="star-history"></a>
+## ⭐ Star History
+
+当前仓库私有，不嵌入需公开读取仓库数据的统计徽章或 Star History 图片；公开后再补充并验证。
+
+<a id="back-to-top"></a>
+## ⬆ 回到顶部
+
+用 ❤️ 构建 | Made with ❤️
+
+如果这个项目对您有帮助，欢迎在公开后给予 Star 支持。
+
+[⬆ 回到顶部](#top)
