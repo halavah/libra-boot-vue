@@ -1,0 +1,8 @@
+import {appRoot} from './catalog.js';
+const resources={vue:{scripts:['vue/vue.global.prod.js']},loader:{scripts:['vue3-sfc-loader/vue3-sfc-loader.js']},dayjs:{scripts:['dayjs/dayjs.min.js']},element:{styles:['element-plus/index.css'],scripts:['element-plus/index.full.min.js']},ant:{styles:['ant-design-vue/antd.min.css'],scripts:['dayjs/dayjs.min.js','dayjs/plugin/advancedFormat.js','dayjs/plugin/customParseFormat.js','dayjs/plugin/localeData.js','dayjs/plugin/quarterOfYear.js','dayjs/plugin/weekOfYear.js','dayjs/plugin/weekYear.js','dayjs/plugin/weekday.js','ant-design-vue/antd.min.js']},echarts:{scripts:['echarts/echarts.min.js']},layui:{styles:['layui/css/layui.css'],scripts:['layui/layui.js']}};
+const loaded=new Map();
+function insert(path,style=false){
+ const key=(style?'css:':'js:')+path;if(loaded.has(key))return loaded.get(key);
+ const promise=new Promise((resolve,reject)=>{const el=document.createElement(style?'link':'script');const timeout=setTimeout(()=>{el.remove();reject(new Error(`资源加载超时：${path}`))},15000);el.onload=()=>{clearTimeout(timeout);resolve()};el.onerror=()=>{clearTimeout(timeout);el.remove();reject(new Error(`无法加载本地资源：${path}`))};const url=new URL('public/vendor/'+path,appRoot).href;if(style){el.rel='stylesheet';el.href=url}else{el.src=url;el.async=false}document.head.append(el)});loaded.set(key,promise);return promise;
+}
+export async function loadDependencies(names){for(const name of names){const value=resources[name];if(!value)throw new Error('未登记的依赖组。');for(const path of value.styles||[])await insert(path,true);for(const path of value.scripts||[])await insert(path)}}

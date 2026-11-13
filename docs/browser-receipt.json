@@ -1,0 +1,396 @@
+{
+  "browser": "Chromium",
+  "examples": [
+    {
+      "id": "element/demo01",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "element/demo02",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "element/demo03",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "element/demo04",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "element/demo05",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "ant/demo01",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "ant/demo02",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "ant/demo03",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "ant/demo04",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "ant/demo05",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "office/export",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "csv-download",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "office/upload-file",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "file-empty",
+        "file-preview",
+        "file-clear",
+        "file-size",
+        "file-type",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "office/upload-form",
+      "kind": "sfc",
+      "actions": [
+        "load",
+        "file-empty",
+        "file-preview",
+        "file-clear",
+        "file-size",
+        "file-type",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "element/demo01",
+      "kind": "html",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "element/demo02",
+      "kind": "html",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "element/demo03",
+      "kind": "html",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "element/demo04",
+      "kind": "html",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "element/demo05",
+      "kind": "html",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "ant/demo01",
+      "kind": "html",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "echarts/demo01",
+      "kind": "html",
+      "actions": [
+        "load",
+        "chart-render",
+        "chart-filter",
+        "chart-reset",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "echarts/demo02",
+      "kind": "html",
+      "actions": [
+        "load",
+        "chart-render",
+        "chart-filter",
+        "chart-reset",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "echarts/demo03",
+      "kind": "html",
+      "actions": [
+        "load",
+        "chart-render",
+        "chart-filter",
+        "chart-reset",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "layui/demo01",
+      "kind": "html",
+      "actions": [
+        "load",
+        "layui-render",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "layui/demo02",
+      "kind": "html",
+      "actions": [
+        "load",
+        "layui-render",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "layui/demo03",
+      "kind": "html",
+      "actions": [
+        "load",
+        "layui-form",
+        "layui-render",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    }
+  ],
+  "externalRequests": 0,
+  "invalidIdentityRejected": true
+}

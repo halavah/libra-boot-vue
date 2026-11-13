@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "candidateCount": 25,
+  "examples": [
+    {
+      "kind": "sfc",
+      "sourceGroup": "element",
+      "sourceExample": "demo01",
+      "target": "element/demo01",
+      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "element",
+      "sourceExample": "demo02",
+      "target": "element/demo02",
+      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "element",
+      "sourceExample": "demo03",
+      "target": "element/demo03",
+      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "element",
+      "sourceExample": "demo04",
+      "target": "element/demo04",
+      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "element",
+      "sourceExample": "demo05",
+      "target": "element/demo05",
+      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "ant-design-vue",
+      "sourceExample": "demo01",
+      "target": "ant/demo01",
+      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "ant-design-vue",
+      "sourceExample": "demo02",
+      "target": "ant/demo02",
+      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "ant-design-vue",
+      "sourceExample": "demo03",
+      "target": "ant/demo03",
+      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "ant-design-vue",
+      "sourceExample": "demo04",
+      "target": "ant/demo04",
+      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "ant-design-vue",
+      "sourceExample": "demo05",
+      "target": "ant/demo05",
+      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "office",
+      "sourceExample": "export",
+      "target": "office/export",
+      "adaptation": "local CSV or local-only File API; no upload service"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "office",
+      "sourceExample": "upload-file",
+      "target": "office/upload-file",
+      "adaptation": "local CSV or local-only File API; no upload service"
+    },
+    {
+      "kind": "sfc",
+      "sourceGroup": "office",
+      "sourceExample": "upload-form",
+      "target": "office/upload-form",
+      "adaptation": "local CSV or local-only File API; no upload service"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "element",
+      "sourceExample": "demo01",
+      "target": "element/demo01",
+      "adaptation": "local CRUD; no authentication or service calls"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "element",
+      "sourceExample": "demo02",
+      "target": "element/demo02",
+      "adaptation": "local CRUD; no authentication or service calls"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "element",
+      "sourceExample": "demo03",
+      "target": "element/demo03",
+      "adaptation": "local CRUD; no authentication or service calls"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "element",
+      "sourceExample": "demo04",
+      "target": "element/demo04",
+      "adaptation": "local CRUD; no authentication or service calls"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "element",
+      "sourceExample": "demo05",
+      "target": "element/demo05",
+      "adaptation": "local CRUD; no authentication or service calls"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "ant-design-vue",
+      "sourceExample": "demo01",
+      "target": "ant/demo01",
+      "adaptation": "local CRUD; no authentication or service calls"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "echarts",
+      "sourceExample": "demo01",
+      "target": "echarts/demo01",
+      "adaptation": "synthetic chart data; local filters; explicit data table"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "echarts",
+      "sourceExample": "demo02",
+      "target": "echarts/demo02",
+      "adaptation": "synthetic chart data; local filters; explicit data table"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "echarts",
+      "sourceExample": "demo03",
+      "target": "echarts/demo03",
+      "adaptation": "synthetic chart data; local filters; explicit data table"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "layui",
+      "sourceExample": "demo01",
+      "target": "layui/demo01",
+      "adaptation": "local data or native form validation; no external service"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "layui",
+      "sourceExample": "demo02",
+      "target": "layui/demo02",
+      "adaptation": "local data or native form validation; no external service"
+    },
+    {
+      "kind": "html",
+      "sourceGroup": "layui",
+      "sourceExample": "demo03",
+      "target": "layui/demo03",
+      "adaptation": "local data or native form validation; no external service"
+    }
+  ],
+  "excludedEntries": 8,
+  "excludedReason": "Missing source entry; not replaced with empty examples",
+  "businessData": "All demo data reconstructed; no original business records copied",
+  "unregisteredSourceExamples": "Not included"
+}

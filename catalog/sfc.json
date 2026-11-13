@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "examples": [
+    {
+      "id": "element/demo01",
+      "title": "Element Plus · 表格筛选与本地数据",
+      "group": "Element Plus",
+      "kind": "sfc",
+      "entry": "examples/sfc/element/demo01/index.vue",
+      "dependencies": [
+        "vue",
+        "element",
+        "echarts"
+      ],
+      "description": "表格筛选与本地数据；模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "id": "element/demo02",
+      "title": "Element Plus · 父子组件与布局",
+      "group": "Element Plus",
+      "kind": "sfc",
+      "entry": "examples/sfc/element/demo02/index.vue",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "父子组件与布局；模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "element/demo03",
+      "title": "Element Plus · 外部脚本、样式与图表",
+      "group": "Element Plus",
+      "kind": "sfc",
+      "entry": "examples/sfc/element/demo03/index.vue",
+      "dependencies": [
+        "vue",
+        "element",
+        "echarts"
+      ],
+      "description": "外部脚本、样式与图表；模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "element/demo04",
+      "title": "Element Plus · JavaScript 分离与响应更新",
+      "group": "Element Plus",
+      "kind": "sfc",
+      "entry": "examples/sfc/element/demo04/index.vue",
+      "dependencies": [
+        "vue",
+        "element",
+        "echarts"
+      ],
+      "description": "JavaScript 分离与响应更新；模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "element/demo05",
+      "title": "Element Plus · 内联脚本与组件通信",
+      "group": "Element Plus",
+      "kind": "sfc",
+      "entry": "examples/sfc/element/demo05/index.vue",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "内联脚本与组件通信；模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "ant/demo01",
+      "title": "Ant Design Vue · 表格筛选与本地数据",
+      "group": "Ant Design Vue",
+      "kind": "sfc",
+      "entry": "examples/sfc/ant/demo01/index.vue",
+      "dependencies": [
+        "vue",
+        "ant",
+        "echarts"
+      ],
+      "description": "表格筛选与本地数据；模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "id": "ant/demo02",
+      "title": "Ant Design Vue · 父子组件与布局",
+      "group": "Ant Design Vue",
+      "kind": "sfc",
+      "entry": "examples/sfc/ant/demo02/index.vue",
+      "dependencies": [
+        "vue",
+        "ant"
+      ],
+      "description": "父子组件与布局；模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "ant/demo03",
+      "title": "Ant Design Vue · 外部脚本、样式与图表",
+      "group": "Ant Design Vue",
+      "kind": "sfc",
+      "entry": "examples/sfc/ant/demo03/index.vue",
+      "dependencies": [
+        "vue",
+        "ant",
+        "echarts"
+      ],
+      "description": "外部脚本、样式与图表；模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "ant/demo04",
+      "title": "Ant Design Vue · JavaScript 分离与响应更新",
+      "group": "Ant Design Vue",
+      "kind": "sfc",
+      "entry": "examples/sfc/ant/demo04/index.vue",
+      "dependencies": [
+        "vue",
+        "ant",
+        "echarts"
+      ],
+      "description": "JavaScript 分离与响应更新；模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "ant/demo05",
+      "title": "Ant Design Vue · 内联脚本与组件通信",
+      "group": "Ant Design Vue",
+      "kind": "sfc",
+      "entry": "examples/sfc/ant/demo05/index.vue",
+      "dependencies": [
+        "vue",
+        "ant"
+      ],
+      "description": "内联脚本与组件通信；模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "office/export",
+      "title": "Office · 本地 CSV 导出",
+      "group": "Office",
+      "kind": "sfc",
+      "entry": "examples/sfc/office/export/index.vue",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "筛选后导出演示数据，转义 CSV 与公式起始字符。",
+      "checks": [
+        "csv-download",
+        "filter"
+      ]
+    },
+    {
+      "id": "office/upload-file",
+      "title": "Office · 本地文件选择与预览",
+      "group": "Office",
+      "kind": "sfc",
+      "entry": "examples/sfc/office/upload-file/index.vue",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "纯浏览器文件校验与预览，不连接上传接口。",
+      "checks": [
+        "file-empty",
+        "file-size",
+        "file-type",
+        "file-preview",
+        "file-clear"
+      ]
+    },
+    {
+      "id": "office/upload-form",
+      "title": "Office · 带表单的文件校验",
+      "group": "Office",
+      "kind": "sfc",
+      "entry": "examples/sfc/office/upload-form/index.vue",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "纯浏览器文件校验与预览，不连接上传接口。",
+      "checks": [
+        "file-empty",
+        "file-size",
+        "file-type",
+        "file-preview",
+        "file-clear"
+      ]
+    }
+  ]
+}
