@@ -231,7 +231,9 @@ const systemStats = computed(() => {
   const allSystems = getEnabledSystems();
 
   return allSystems.map((system) => {
-    const menus = getSystemMenus(system.id);
+    const menus = getSystemMenus(system.id).map(menu =>
+      menu.path ? { ...menu, children: [menu] } : menu
+    );
     const moduleCount = menus.length;
     const pageCount = menus.reduce(
       (sum, menu) => sum + (menu.children?.length || 0),

@@ -29,7 +29,7 @@ const dynamicRoutes = Object.keys(viewModules).map((path) => {
     return null;
   }
 
-  const viewFolder = nameMatch[1]; // views, views2, views3, views4, ..., viewsN
+  const viewFolder = nameMatch[1]; // views, views2, views3, ..., viewsN
   const relativePath = nameMatch[2]; // entrance/recruitment/register
   const pathSegments = relativePath.split('/');
 

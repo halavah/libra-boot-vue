@@ -5,7 +5,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 
 export default {
-  name: 'export',
+  name: 'upload-form',
   setup() {
     // 加载
     // 1.主页面
@@ -72,9 +72,9 @@ export default {
 
     // ===== 文件上传 =====
     // 文件地址
-    const fileUrl = "http://localhost:9932/libra-office/sys/common/upload"
+    const fileUrl = "http://localhost:9932/libra-office/file/upload"
     // 图片地址
-    const imageUrl = "http://localhost:9932/libra-office/sys/common/static/"
+    const imageUrl = "http://localhost:9932/libra-office/file/static/"
     // 调用Token
     const uploadHeaders = {
       'X-Access-Token': ''
@@ -479,7 +479,7 @@ export default {
             "breakDownName": "演示订单售后记录002",
             "plNo": "Y501",
             "equipmentName": "演示商品003",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y501042501",
             "informDate": "2025-05-22",
             "imageUrl": "https://picsum.photos/200/200?random=1"
@@ -490,7 +490,7 @@ export default {
             "breakDownName": "演示订单售后记录003",
             "plNo": "Y501",
             "equipmentName": "演示商品004",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y501041302",
             "informDate": "2025-05-21",
             "imageUrl": "https://picsum.photos/200/200?random=2"
@@ -501,7 +501,7 @@ export default {
             "breakDownName": "演示订单售后记录004",
             "plNo": "Y501",
             "equipmentName": "演示商品005",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y501041805",
             "informDate": "2025-05-16",
             "imageUrl": "https://picsum.photos/200/200?random=3"
@@ -512,7 +512,7 @@ export default {
             "breakDownName": "演示售后单001：订单商品漏发需补寄",
             "plNo": "Y201",
             "equipmentName": "演示订单售后记录005",
-            "relegationName": "电气",
+            "relegationName": "订单问题",
             "equipmentNo": "Y201020104",
             "informDate": "2025-05-13",
             "imageUrl": "https://picsum.photos/200/200?random=4"
@@ -523,7 +523,7 @@ export default {
             "breakDownName": "家电旗舰店二商品分组PF链停",
             "plNo": "Y201",
             "equipmentName": "演示订单售后记录006",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y201060303",
             "informDate": "2025-05-13",
             "imageUrl": "https://picsum.photos/200/200?random=5"
@@ -534,7 +534,7 @@ export default {
             "breakDownName": "演示售后单101：商品规格与描述不符",
             "plNo": "W901",
             "equipmentName": "演示商品006",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "W901020701",
             "informDate": "2025-05-12",
             "imageUrl": "https://picsum.photos/200/200?random=6"
@@ -545,7 +545,7 @@ export default {
             "breakDownName": "演示订单售后记录007",
             "plNo": "Y801",
             "equipmentName": "演示商品007",
-            "relegationName": "电气",
+            "relegationName": "订单问题",
             "equipmentNo": "Y802033616",
             "informDate": "2025-05-12",
             "imageUrl": "https://picsum.photos/200/200?random=7"
@@ -556,7 +556,7 @@ export default {
             "breakDownName": "演示订单售后记录008",
             "plNo": "Y501",
             "equipmentName": "演示商品005",
-            "relegationName": "电气",
+            "relegationName": "订单问题",
             "equipmentNo": "Y501041706",
             "informDate": "2025-05-05",
             "imageUrl": "https://picsum.photos/200/200?random=8"
@@ -567,7 +567,7 @@ export default {
             "breakDownName": "演示订单售后记录009",
             "plNo": "Y401",
             "equipmentName": "演示商品008",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y401060511",
             "informDate": "2025-04-30",
             "imageUrl": "https://picsum.photos/200/200?random=9"
@@ -578,7 +578,7 @@ export default {
             "breakDownName": "演示订单售后记录010",
             "plNo": "Y201",
             "equipmentName": "演示订单售后记录011",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y201020706",
             "informDate": "2025-04-24",
             "imageUrl": "https://picsum.photos/200/200?random=10"
@@ -589,7 +589,7 @@ export default {
             "breakDownName": "演示售后单002：商品规格与下单选择不符",
             "plNo": "W903",
             "equipmentName": "演示商品009",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "W903050101",
             "informDate": "2025-04-23",
             "imageUrl": "https://picsum.photos/200/200?random=11"
@@ -600,7 +600,7 @@ export default {
             "breakDownName": "演示订单售后记录012",
             "plNo": "Y801",
             "equipmentName": "演示商品010",
-            "relegationName": "电气",
+            "relegationName": "订单问题",
             "equipmentNo": "Y802033509",
             "informDate": "2025-04-23",
             "imageUrl": "https://picsum.photos/200/200?random=12"
@@ -611,7 +611,7 @@ export default {
             "breakDownName": "售后报告",
             "plNo": "W403",
             "equipmentName": "演示订单售后记录013",
-            "relegationName": "电气",
+            "relegationName": "订单问题",
             "equipmentNo": "W461171007",
             "informDate": "2025-04-21",
             "imageUrl": "https://picsum.photos/200/200?random=13"
@@ -622,7 +622,7 @@ export default {
             "breakDownName": "演示订单售后记录014",
             "plNo": "Y201",
             "equipmentName": "演示订单售后记录015",
-            "relegationName": "电气",
+            "relegationName": "订单问题",
             "equipmentNo": "Y201030504",
             "informDate": "2025-04-21",
             "imageUrl": "https://picsum.photos/200/200?random=14"
@@ -633,7 +633,7 @@ export default {
             "breakDownName": "演示订单售后记录016",
             "plNo": "Y501",
             "equipmentName": "演示商品011",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y501020508",
             "informDate": "2025-04-20",
             "imageUrl": "https://picsum.photos/200/200?random=14"
@@ -644,7 +644,7 @@ export default {
             "breakDownName": "演示订单售后记录017",
             "plNo": "Y801",
             "equipmentName": "演示商品012",
-            "relegationName": "电气",
+            "relegationName": "订单问题",
             "equipmentNo": "Y802031207",
             "informDate": "2025-04-20",
             "imageUrl": "https://picsum.photos/200/200?random=15"
@@ -655,7 +655,7 @@ export default {
             "breakDownName": "演示订单售后记录018",
             "plNo": "Y801",
             "equipmentName": "演示商品013",
-            "relegationName": "电气",
+            "relegationName": "订单问题",
             "equipmentNo": "Y802031701",
             "informDate": "2025-04-20",
             "imageUrl": "https://picsum.photos/200/200?random=16"
@@ -666,7 +666,7 @@ export default {
             "breakDownName": "演示售后单003：物流包裹破损申请换货",
             "plNo": "W904",
             "equipmentName": "演示订单售后记录019",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "W904020401",
             "informDate": "2025-04-19",
             "imageUrl": "https://picsum.photos/200/200?random=17"
@@ -677,7 +677,7 @@ export default {
             "breakDownName": "演示售后单102：商品颜色与描述不符",
             "plNo": "Y401",
             "equipmentName": "演示商品014",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y401060301",
             "informDate": "2025-04-18",
             "imageUrl": "https://picsum.photos/200/200?random=18"
@@ -688,7 +688,7 @@ export default {
             "breakDownName": "演示订单售后记录020",
             "plNo": "Y801",
             "equipmentName": "演示订单售后记录021",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y802030812",
             "informDate": "2025-04-18",
             "imageUrl": "https://picsum.photos/200/200?random=19"
@@ -699,7 +699,7 @@ export default {
             "breakDownName": "演示订单售后记录022",
             "plNo": "Y801",
             "equipmentName": "演示订单售后记录023",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y802033906",
             "informDate": "2025-04-17",
             "imageUrl": "https://picsum.photos/200/200?random=20"
@@ -710,7 +710,7 @@ export default {
             "breakDownName": "演示售后单003：物流包裹破损申请换货",
             "plNo": "W904",
             "equipmentName": "演示订单售后记录019",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "W904020401",
             "informDate": "2025-04-15",
             "imageUrl": "https://picsum.photos/200/200?random=21"
@@ -721,7 +721,7 @@ export default {
             "breakDownName": "演示订单售后记录024",
             "plNo": "Y501",
             "equipmentName": "演示商品015",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y501020101",
             "informDate": "2025-04-14",
             "imageUrl": "https://picsum.photos/200/200?random=22"
@@ -732,7 +732,7 @@ export default {
             "breakDownName": "演示售后单004：订单重复扣款申请退款",
             "plNo": "Y807",
             "equipmentName": "演示商品016",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y812012007",
             "informDate": "2025-04-12",
             "imageUrl": "https://picsum.photos/200/200?random=23"
@@ -743,7 +743,7 @@ export default {
             "breakDownName": "演示售后单005：预售订单延期发货",
             "plNo": "Y807",
             "equipmentName": "演示商品017",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y812021916",
             "informDate": "2025-04-06",
             "imageUrl": "https://picsum.photos/200/200?random=24"
@@ -754,7 +754,7 @@ export default {
             "breakDownName": "演示售后单103：商品尺寸不合适",
             "plNo": "Y401",
             "equipmentName": "演示订单售后记录025",
-            "relegationName": "电气",
+            "relegationName": "订单问题",
             "equipmentNo": "Y401113402",
             "informDate": "2025-04-04",
             "imageUrl": "https://picsum.photos/200/200?random=25"
@@ -765,7 +765,7 @@ export default {
             "breakDownName": "演示售后单006：商品配件缺失申请补发",
             "plNo": "Y202",
             "equipmentName": "演示订单售后记录026",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y202040903",
             "informDate": "2025-04-03",
             "imageUrl": "https://picsum.photos/200/200?random=26"
@@ -776,7 +776,7 @@ export default {
             "breakDownName": "演示售后单104：商品质量问题",
             "plNo": "Y807",
             "equipmentName": "演示商品018",
-            "relegationName": "机械",
+            "relegationName": "商品问题",
             "equipmentNo": "Y812012010",
             "informDate": "2025-04-03",
             "imageUrl": "https://picsum.photos/200/200?random=27"
@@ -1269,13 +1269,13 @@ export default {
         "code": 200,
         "result": [
           {
-            "relegationNameType": "电气"
+            "relegationNameType": "订单问题"
           },
           {
-            "relegationNameType": "机械"
+            "relegationNameType": "商品问题"
           },
           {
-            "relegationNameType": "原料、生产操作、工艺质量类"
+            "relegationNameType": "商品、库存与订单履约类"
           }
         ],
         "timestamp": 1748142663474
@@ -1480,167 +1480,6 @@ export default {
       _this.dataFormTitle = '详情'
       _this.dataFormVisible = true;
       _this.dataFormStatus = 'detail';
-    },
-
-    /*******************************************************导出：Excel*******************************************************/
-
-    // easy：get请求
-    async exportExcelEasyGetRequest() {
-      const url = new URL(this.wsUrl + '/exportExcel/easy/getRequest');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // easy：post请求
-    async exportExcelEasyPostRequest() {
-      let _this = this;
-      _this.loading = true;
-      let params = {
-        year: dayjs().format('YYYY'),
-        title: '售后数据导出'
-      };
-      await axios({
-        url: _this.wsUrl + '/exportExcel/easy/postRequest',
-        method: 'POST',
-        data: JSON.stringify(params),
-        headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-        responseType: 'blob'
-      }).then(res => {
-        if (res.data) {
-          const blob = new Blob([res.data], {
-            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-          });
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.download = decodeURIComponent(res.headers['file-name']);
-          link.click();
-          window.URL.revokeObjectURL(link.href);
-        } else {
-          ElMessage.error('导出失败');
-        }
-        _this.loading = false;
-      });
-    },
-
-    // poi：get请求
-    async exportExcelPoi() {
-      const url = new URL(this.wsUrl + '/exportExcel/poi');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // poi：get请求，template
-    async exportExcelPoiTemplate() {
-      const url = new URL(this.wsUrl + '/exportExcel/poi/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求
-    async exportExcelAspose() {
-      const url = new URL(this.wsUrl + '/exportExcel/aspose');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求，util
-    async exportExcelAsposeUtil() {
-      const url = new URL(this.wsUrl + '/exportExcel/aspose/util');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求，template
-    async exportExcelAsposeTemplate() {
-      const url = new URL(this.wsUrl + '/exportExcel/aspose/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-
-    /*******************************************************导出：Word*******************************************************/
-
-    // poi：get请求
-    async exportWordPoi() {
-      const url = new URL(this.wsUrl + '/exportWord/poi');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // poi：get请求，template
-    async exportWordPoiTemplate() {
-      const url = new URL(this.wsUrl + '/exportWord/poi/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-
-    // aspose：get请求
-    async exportWordAspose() {
-      const url = new URL(this.wsUrl + '/exportWord/aspose');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求，template
-    async exportWordAsposeTemplate() {
-      const url = new URL(this.wsUrl + '/exportWord/aspose/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    /*******************************************************导出：Pptx*******************************************************/
-
-    // poi：get请求
-    async exportPptxPoi() {
-      const url = new URL(this.wsUrl + '/exportPptx/poi');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // poi：get请求，template
-    async exportPptxPoiTemplate() {
-      const url = new URL(this.wsUrl + '/exportPptx/poi/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求
-    async exportPptxAspose() {
-      const url = new URL(this.wsUrl + '/exportPptx/aspose');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // aspose：get请求，template
-    async exportPptxAsposeTemplate() {
-      const url = new URL(this.wsUrl + '/exportPptx/aspose/template');
-      url.searchParams.append('year', dayjs().format('YYYY'));
-      url.searchParams.append('title', '售后数据导出');
-      window.open(url.toString());
-    },
-
-    // 表格图片预览
-    previewTableImage(row) {
-      if (row.imageUrl) {
-        this.dialogImageUrl = row.imageUrl;
-        this.dialogVisible = true;
-      } else {
-        ElMessage.warning('该行没有图片');
-      }
     },
   },
 };

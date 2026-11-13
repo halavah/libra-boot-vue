@@ -68,8 +68,7 @@ libra-boot-vue/
 │  ├─ main.js                 Application entry
 │  ├─ views/                  Base components and file examples
 │  ├─ views2/                 HTML and component examples
-│  ├─ views3/                 Charts and simulated-data examples
-│  ├─ views4/                 Upload, form and export examples
+│  ├─ views3/                 Upload, form and export examples
 │  ├─ layouts/                Layouts and menus
 │  ├─ router/                 Routes and retained implementation
 │  ├─ mixins/                 Shared mixins
@@ -98,7 +97,7 @@ Open `http://127.0.0.1:5174/test/index.html`. It loads `public/` and source comp
 
 ## 🧩 Examples and APIs
 
-Routes and menus are discovered from the remaining example directories. Layouts, plugins, mixins and static loaders remain. Former-company onboard examples and the root mock and docs directories are removed; simulated data within other examples remains. Business examples use products, orders, returns and after-sales scenarios. File-handling examples live directly in `src/views4/{export,upload-file,upload-file2,upload-form}`.
+Routes and menus are discovered from the remaining example directories. Layouts, plugins, mixins and static loaders remain. Three view groups provide base components, independent pages, and upload/form/export examples; simulated data within the retained examples remains. Business examples use products, orders, returns and after-sales scenarios. File-handling examples live directly in `src/views3/{export,upload-file,upload-file2,upload-form}`.
 
 Other examples retain their API integrations, including upload/export calls. The root Mock plugin and injection are removed; no local Mock service is provided. Real origins are replaced by unavailable examples such as `api.example.invalid`, and literal credentials are cleared. Local Vite proxies are configuration examples; their servers are not included. Request paths, methods, field keys and authentication call structure remain for users to configure their own services and test credentials. An unavailable example address is not a working replacement backend.
 
