@@ -18,7 +18,7 @@ export const generateMenuConfig = () => {
 
   Object.keys(viewModules).forEach(path => {
     // 从路径中提取模块名和组件名
-    // 例如：/src/views/onboard/onbApplicant/index.vue
+    // 例如：/src/views/element/demo01/index.vue
     const pathMatch = path.match(/\/src\/views\/(.*?)\/(.*?)\/index\.vue$/)
 
     if (pathMatch) {
@@ -45,22 +45,7 @@ export const generateMenuConfig = () => {
   })
 
   // 转换为数组并排序
-  const menuConfig = Object.values(moduleGroups).sort((a, b) => {
-    // 自定义排序：onboard, onboard_comp, 其他按字母顺序
-    const order = ['onboard', 'onboard_comp']
-    const aIndex = order.indexOf(a.id)
-    const bIndex = order.indexOf(b.id)
-
-    if (aIndex !== -1 && bIndex !== -1) {
-      return aIndex - bIndex
-    } else if (aIndex !== -1) {
-      return -1
-    } else if (bIndex !== -1) {
-      return 1
-    } else {
-      return a.id.localeCompare(b.id)
-    }
-  })
+  const menuConfig = Object.values(moduleGroups).sort((a, b) => a.id.localeCompare(b.id))
 
   // 对每个模块的子项进行排序
   menuConfig.forEach(module => {

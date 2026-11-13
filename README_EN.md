@@ -68,17 +68,14 @@ libra-boot-vue/
 │  ├─ main.js                 Application entry
 │  ├─ views/                  Base components and file examples
 │  ├─ views2/                 HTML and component examples
-│  ├─ views3/                 Extended and Mock examples
-│  ├─ views4/                 Further API-dependent examples
+│  ├─ views3/                 Charts and simulated-data examples
 │  ├─ layouts/                Layouts and menus
 │  ├─ router/                 Routes and retained implementation
 │  ├─ mixins/                 Shared mixins
 │  ├─ plugins/                Plugins
 │  └─ assets/                 Source styles
 ├─ public/                    Browser resources and licenses
-├─ mock/                      Local Mock data and endpoints
 ├─ test/                      Static catalogue and SFC preview
-├─ docs/验证说明.md            Chinese validation record
 ├─ index.html
 ├─ package.json
 ├─ pnpm-lock.yaml
@@ -100,9 +97,9 @@ Open `http://127.0.0.1:5174/test/index.html`. It loads `public/` and source comp
 
 ## 🧩 Examples and APIs
 
-Original layouts, routing, plugins, mixins, views, static registrations and loader behavior remain. Missing registered entries and loader compatibility limits are reported rather than hidden by removing registrations or creating empty pages.
+Routes and menus are discovered from the remaining example directories. Layouts, plugins, mixins and static loaders remain. Former-company onboard examples and the root mock and docs directories are removed; simulated data within other examples remains.
 
-Mock and API integrations, including upload/export calls, remain structurally unchanged. Real origins are replaced by unavailable examples such as `api.example.invalid`, and literal credentials are cleared. Local Vite proxies are configuration examples; their servers are not included. Request paths, methods, field keys and authentication call structure remain for users to configure their own services and test credentials. An unavailable example address is not a working replacement backend.
+Other examples retain their API integrations, including upload/export calls. The root Mock plugin and injection are removed; no local Mock service is provided. Real origins are replaced by unavailable examples such as `api.example.invalid`, and literal credentials are cleared. Local Vite proxies are configuration examples; their servers are not included. Request paths, methods, field keys and authentication call structure remain for users to configure their own services and test credentials. An unavailable example address is not a working replacement backend.
 
 ## 🔐 Data and resources
 
@@ -110,11 +107,11 @@ Personal records, contact details, organizations and industrial content use demo
 
 Phone/identity placeholders deliberately cannot identify or contact a real person. Original strict validation may reject them; use synthetic data in your isolated environment rather than real personal data.
 
-Twenty-six business screenshots use neutral placeholders at the same paths and dimensions with no original pixels or metadata. Two fonts with unverified redistribution permission are excluded; their stylesheet location remains with local-font fallback. Upstream browser files retain their notices and required licenses in their resource directories.
+Retained business screenshots use neutral placeholders at the same paths with no original pixels or metadata. Two fonts with unverified redistribution permission are excluded; their stylesheet location remains with local-font fallback. Upstream browser files retain their notices and required licenses in their resource directories.
 
 ## ✅ Validation and troubleshooting
 
-See the [Chinese validation record](docs/验证说明.md) for checks actually performed and their limits. Results from another implementation are not inherited.
+Run `pnpm build` to validate the production build. The test directory is a manual preview catalogue, not an automated test suite. A successful build does not validate backend, upload or authentication flows.
 
 - API-dependent pages require your backend and proxy configuration.
 - Missing static registrations are reported as source/catalogue discrepancies, not removed silently.

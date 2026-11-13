@@ -1,6 +1,5 @@
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
-import {viteMockServe} from 'vite-plugin-mock'
 import {resolve} from 'path'
 
 export default defineConfig(({command, mode}) => {
@@ -12,16 +11,7 @@ export default defineConfig(({command, mode}) => {
       },
     },
     plugins: [
-      vue(),
-      viteMockServe({
-        enable: true, // 是否开启
-        logger: true, // 显示Mock日志
-        supportTs: false, // 不使用TypeScript
-        injectCode: `
-          import { setupProdMockServer } from './mock/mockProdServer';
-          setupProdMockServer();
-        `,
-      })
+      vue()
     ],
     css: {
       devSourcemap: true, // 开启 CSS sourcemap 调试
@@ -40,16 +30,6 @@ export default defineConfig(({command, mode}) => {
       },
       // 代理设置
       proxy: {
-        // // 规则一：处理 /dev-api/onboard/ 的请求（更具体的规则，必须放在前面）
-        // // 它会匹配所有以 /dev-api/onboard 开头的请求
-        // '/dev-api/onboard': {
-        //   target: 'http://127.0.0.1:9931', // 假设 onboard 服务的地址是这个
-        //   changeOrigin: true,
-        //   rewrite: (path) => path.replace(/^\/dev-api\/onboard/, ''), // 重点：将 /dev-api/onboard 整个去掉
-        // },
-
-        // // 规则二：处理所有其他的 /dev-api/ 请求（通用规则，放在后面作为回退）
-        // // 它会匹配所有其他以 /dev-api 开头的请求
         '/dev-api': {
           // 你可以为它设置一个不同的 target，比如一个API网关
           // target: 'http://127.0.0.1:9000',
