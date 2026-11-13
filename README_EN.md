@@ -31,7 +31,7 @@
 - [Back to top](#-back-to-top)
 
 
-External SFC JavaScript modules use `.mjs` so the loader treats them as ESM. HTML examples use native module scripts. Optional browser acceptance requires a separate Playwright and Chromium installation; run `node tests/browser.mjs`. These tools are not runtime dependencies of the static site.
+External SFC JavaScript modules use `.mjs` so the loader treats them as ESM. HTML examples use native module scripts. Optional browser acceptance requires a separate Playwright and Chromium installation; run `node tests/browser/examples.mjs`. These tools are not runtime dependencies of the static site.
 
 ## 🚀 Quick start
 
@@ -41,7 +41,7 @@ Obtain an authorized source checkout and run this command at the project root:
 node scripts/serve.mjs --port 8080
 ```
 
-Open `http://127.0.0.1:8080/`. The catalogue should contain 25 examples. Select an SFC or HTML example and open it; the Element Plus table example includes local filtering, paging, and editing.
+Open `http://127.0.0.1:8080/`. The catalogue should contain 23 examples. Select an SFC or HTML example and open it; the Element Plus table example includes local filtering, paging, and editing.
 
 There is no dependency installation, frontend build, or business login. Use Node.js 20 or newer. If the port is occupied, select another port between 1024 and 65535. Opening HTML via the file protocol is unsupported because catalogues, components, and demo JSON are fetched over HTTP.
 
@@ -73,9 +73,9 @@ Consult the authorized repository tags or releases for the project version. Exac
 
 | Format | Category | Count | Topics |
 |---|---|---:|---|
-| Vue SFC | Element Plus | 5 | Tables and JSON, child components, external JS/CSS, charts, inline scripts |
-| Vue SFC | Ant Design Vue | 5 | Corresponding UI patterns with per-example dependencies |
-| Vue SFC | Office | 3 | Local CSV export, file preview, and file form validation |
+| Vue SFC | Element Plus | 4 | Tables and JSON, child components, external JS/CSS, charts, inline scripts |
+| Vue SFC | Ant Design Vue | 4 | Corresponding UI patterns with per-example dependencies |
+| Vue SFC | Local files | 3 | Local CSV export, file preview, and file form validation |
 | HTML | Element Plus | 5 | Filtering, pagination, local CRUD, layout, and export |
 | HTML | Ant Design Vue | 1 | Local table and editing state |
 | HTML | ECharts | 3 | Dashboard, grouped bars, donut chart, and readable data tables |
@@ -89,25 +89,33 @@ Examples were rewritten around the original technical topics using neutral data.
 libra-boot-vue/
 ├─ site/                         Deployable static site
 │  ├─ index.html                 Catalogue homepage
-│  ├─ catalog/                   SFC and HTML registrations
-│  ├─ runtime/                   Preview and shared browser code
+│  ├─ app/                       Catalogue and preview tooling
+│  │  ├─ examples.json           Single source of example registrations
+│  │  └─ preview.html            Vue preview page
 │  ├─ examples/
-│  │  ├─ sfc/                    Vue component examples
+│  │  ├─ vue/                    Vue component examples
 │  │  └─ html/                   Standalone HTML examples
-│  └─ assets/
-│     ├─ styles/                 Shared CSS
-│     └─ vendor/                 Verified upstream distributions
+│  ├─ shared/
+│  │  ├─ components/             Shared Vue components
+│  │  ├─ data/                   Synthetic product fixtures
+│  │  ├─ helpers/                CSV, validation and record helpers
+│  │  ├─ demos/                  Shared example controllers
+│  │  └─ styles/                 Shared CSS
+│  └─ vendor/                    Verified upstream files and licenses
 ├─ scripts/                      Local server and checks
-├─ tests/                        Unit and browser tests
-├─ docs/                         Verification and dependency/migration manifests
-├─ package.json                  Development commands
-├─ LICENSE                       MIT
-├─ THIRD_PARTY_NOTICES.md         Third-party notices
-├─ README.md                     Chinese instructions
-└─ README_EN.md                  English instructions
+├─ tests/
+│  ├─ unit/                      Domain rules and pure functions
+│  ├─ integration/               Static HTTP access boundaries
+│  └─ browser/                   Full example acceptance
+├─ docs/                         Usage evidence and provenance manifests
+├─ package.json
+├─ LICENSE
+├─ THIRD_PARTY_NOTICES.md
+├─ README.md
+└─ README_EN.md
 ```
 
-Run development commands from the repository root; the server resolves `site/` automatically. Edit demos in `site/examples/`, register them in `site/catalog/`, and keep dependency provenance in `docs/dependency-manifest.json`. The catalogue groups examples by format and library; per-example JS, CSS and child files intentionally demonstrate module separation.
+Run development commands from the repository root; the server resolves `site/` automatically. Edit demos in `site/examples/`, register them in `site/app/examples.json`, and keep dependency provenance in `docs/dependency-manifest.json`. The catalogue groups examples by format and library; examples use meaningful names such as `parent-child` and `external-files`. Simple examples keep `index.vue`, `demo.mjs` and optional `style.css` together; only teaching-specific component splits remain local. Shared chart and selection components live in `site/shared/components/`.
 
 ## ⚙️ Runtime model
 
@@ -125,11 +133,13 @@ File examples read local txt, csv, or json files up to 1 MiB and preview at most
 
 Upstream attribution remains intact. Proprietary fonts, screenshots, backups, environment files, and business databases are excluded. Pattern scans cannot prove the absence of every sensitive value; review changes and generated output before sharing.
 
+The demo domain is an e-commerce product catalogue: synthetic `SKU-001` identifiers, product names, digital accessories/home goods/stationery categories, on-sale/off-shelf states and integer stock quantities in units. Filtering, editing, charts and CSV export use the same fields. Products are stored only in page memory; there are no real customers, orders, payments, merchants or production APIs. File examples preview local demonstration documents without uploading them.
+
 ## ✅ Validation
 
 ```sh
 node scripts/check.mjs
-node --test tests/*.test.mjs
+npm test
 node scripts/scan-sensitive.mjs
 ```
 
@@ -139,9 +149,9 @@ Also test each example in a browser, inspecting errors, requests, CRUD, file inp
 
 ## 🧭 Deployment and troubleshooting
 
-Deploy the contents of `site/` to a separate origin. Keep `scripts/`, `tests/`, `docs/`, `.git`, archives and environment files outside the web root. The catalogue documentation links point to the authorized source repository and require repository access. Preserve MIME types for JavaScript, JSON, Vue source text, and fonts. This project does not automatically create a cloud site or alter existing business domains.
+Deploy the contents of `site/` to a separate origin. Keep `scripts/`, `tests/`, `docs/`, `.git`, archives and environment files outside the web root. The catalogue documentation links point to the authorized source repository and require repository access. Preserve MIME types for JavaScript, JSON, Vue source text, and fonts. The Beichuang portfolio shows a project description and GitHub/Gitee source links only. It does not host this demo site or change repository visibility. The owner controls when the private repositories become public.
 
-- **Catalogue fails:** use HTTP and verify that the document root is `site/` and that its catalogue files exist.
+- **Catalogue fails:** use HTTP and verify that the document root is `site/` and that its app/examples.json exists.
 - **Missing component:** run check and review the registered entry and relative paths.
 - **Blank chart or widget:** check local vendor files and declared dependencies; do not substitute a live CDN ad hoc.
 - **Strict CSP blocks eval:** this runtime compiler requires a different policy or a precompiled implementation. Do not relax a sensitive site's policy.

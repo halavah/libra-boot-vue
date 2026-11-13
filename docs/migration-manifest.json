@@ -1,185 +1,134 @@
 {
-  "schemaVersion": 1,
-  "candidateCount": 25,
-  "examples": [
+  "schemaVersion": 2,
+  "sourceEntries": 25,
+  "retainedExamples": 23,
+  "mapping": [
     {
-      "kind": "sfc",
-      "sourceGroup": "element",
-      "sourceExample": "demo01",
-      "target": "element/demo01",
-      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+      "from": "sfc/element/demo01",
+      "to": "vue/element-plus/table-filter",
+      "action": "renamed"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "element",
-      "sourceExample": "demo02",
-      "target": "element/demo02",
-      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+      "from": "sfc/element/demo02",
+      "to": "vue/element-plus/parent-child",
+      "action": "renamed"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "element",
-      "sourceExample": "demo03",
-      "target": "element/demo03",
-      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+      "from": "sfc/element/demo03",
+      "to": "vue/element-plus/external-files",
+      "action": "renamed"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "element",
-      "sourceExample": "demo04",
-      "target": "element/demo04",
-      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+      "from": "sfc/element/demo04",
+      "to": "vue/element-plus/external-files",
+      "action": "merged-identical-example"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "element",
-      "sourceExample": "demo05",
-      "target": "element/demo05",
-      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+      "from": "sfc/element/demo05",
+      "to": "vue/element-plus/inline-script",
+      "action": "renamed"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "ant-design-vue",
-      "sourceExample": "demo01",
-      "target": "ant/demo01",
-      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+      "from": "sfc/ant/demo01",
+      "to": "vue/ant-design-vue/table-filter",
+      "action": "renamed"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "ant-design-vue",
-      "sourceExample": "demo02",
-      "target": "ant/demo02",
-      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+      "from": "sfc/ant/demo02",
+      "to": "vue/ant-design-vue/parent-child",
+      "action": "renamed"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "ant-design-vue",
-      "sourceExample": "demo03",
-      "target": "ant/demo03",
-      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+      "from": "sfc/ant/demo03",
+      "to": "vue/ant-design-vue/external-files",
+      "action": "renamed"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "ant-design-vue",
-      "sourceExample": "demo04",
-      "target": "ant/demo04",
-      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+      "from": "sfc/ant/demo04",
+      "to": "vue/ant-design-vue/external-files",
+      "action": "merged-identical-example"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "ant-design-vue",
-      "sourceExample": "demo05",
-      "target": "ant/demo05",
-      "adaptation": "neutral demo data; local interactions; JavaScript and CSS only"
+      "from": "sfc/ant/demo05",
+      "to": "vue/ant-design-vue/inline-script",
+      "action": "renamed"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "office",
-      "sourceExample": "export",
-      "target": "office/export",
-      "adaptation": "local CSV or local-only File API; no upload service"
+      "from": "sfc/office/export",
+      "to": "vue/files/csv-export",
+      "action": "renamed"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "office",
-      "sourceExample": "upload-file",
-      "target": "office/upload-file",
-      "adaptation": "local CSV or local-only File API; no upload service"
+      "from": "sfc/office/upload-file",
+      "to": "vue/files/file-preview",
+      "action": "renamed"
     },
     {
-      "kind": "sfc",
-      "sourceGroup": "office",
-      "sourceExample": "upload-form",
-      "target": "office/upload-form",
-      "adaptation": "local CSV or local-only File API; no upload service"
+      "from": "sfc/office/upload-form",
+      "to": "vue/files/file-form",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "element",
-      "sourceExample": "demo01",
-      "target": "element/demo01",
-      "adaptation": "local CRUD; no authentication or service calls"
+      "from": "html/element/demo01",
+      "to": "html/element-plus/product-table",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "element",
-      "sourceExample": "demo02",
-      "target": "element/demo02",
-      "adaptation": "local CRUD; no authentication or service calls"
+      "from": "html/element/demo02",
+      "to": "html/element-plus/product-editor",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "element",
-      "sourceExample": "demo03",
-      "target": "element/demo03",
-      "adaptation": "local CRUD; no authentication or service calls"
+      "from": "html/element/demo03",
+      "to": "html/element-plus/selection-layout",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "element",
-      "sourceExample": "demo04",
-      "target": "element/demo04",
-      "adaptation": "local CRUD; no authentication or service calls"
+      "from": "html/element/demo04",
+      "to": "html/element-plus/edit-state",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "element",
-      "sourceExample": "demo05",
-      "target": "element/demo05",
-      "adaptation": "local CRUD; no authentication or service calls"
+      "from": "html/element/demo05",
+      "to": "html/element-plus/product-export",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "ant-design-vue",
-      "sourceExample": "demo01",
-      "target": "ant/demo01",
-      "adaptation": "local CRUD; no authentication or service calls"
+      "from": "html/ant/demo01",
+      "to": "html/ant-design-vue/product-table",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "echarts",
-      "sourceExample": "demo01",
-      "target": "echarts/demo01",
-      "adaptation": "synthetic chart data; local filters; explicit data table"
+      "from": "html/echarts/demo01",
+      "to": "html/echarts/inventory-dashboard",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "echarts",
-      "sourceExample": "demo02",
-      "target": "echarts/demo02",
-      "adaptation": "synthetic chart data; local filters; explicit data table"
+      "from": "html/echarts/demo02",
+      "to": "html/echarts/category-stock",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "echarts",
-      "sourceExample": "demo03",
-      "target": "echarts/demo03",
-      "adaptation": "synthetic chart data; local filters; explicit data table"
+      "from": "html/echarts/demo03",
+      "to": "html/echarts/stock-share",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "layui",
-      "sourceExample": "demo01",
-      "target": "layui/demo01",
-      "adaptation": "local data or native form validation; no external service"
+      "from": "html/layui/demo01",
+      "to": "html/layui/product-table",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "layui",
-      "sourceExample": "demo02",
-      "target": "layui/demo02",
-      "adaptation": "local data or native form validation; no external service"
+      "from": "html/layui/demo02",
+      "to": "html/layui/product-filter",
+      "action": "renamed"
     },
     {
-      "kind": "html",
-      "sourceGroup": "layui",
-      "sourceExample": "demo03",
-      "target": "layui/demo03",
-      "adaptation": "local data or native form validation; no external service"
+      "from": "html/layui/demo03",
+      "to": "html/layui/product-form",
+      "action": "renamed"
     }
   ],
-  "excludedEntries": 8,
-  "excludedReason": "Missing source entry; not replaced with empty examples",
-  "businessData": "All demo data reconstructed; no original business records copied",
-  "unregisteredSourceExamples": "Not included"
+  "excludedMissingSourceEntries": 8,
+  "businessData": "Synthetic e-commerce products only; no business credentials or records copied"
 }

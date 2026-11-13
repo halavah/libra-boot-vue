@@ -1,6 +1,6 @@
 import http from 'node:http';import {readFile,lstat,realpath} from 'node:fs/promises';import path from 'node:path';import {fileURLToPath,pathToFileURL} from 'node:url';
 export const root=fileURLToPath(new URL('../site/',import.meta.url));
-const top=new Set(['index.html','runtime','catalog','examples','assets']);
+const top=new Set(['index.html','app','examples','shared','vendor']);
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.vue':'text/plain; charset=utf-8','.json':'application/json; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.woff':'font/woff','.woff2':'font/woff2','.ttf':'font/ttf','.eot':'application/vnd.ms-fontobject','.md':'text/plain; charset=utf-8','.txt':'text/plain; charset=utf-8'};
 export async function resolveStaticPath(raw,base=root){
  const encoded=raw.split('?')[0];if(/%2f|%5c|%00|%25/i.test(encoded))throw new Error('forbidden');

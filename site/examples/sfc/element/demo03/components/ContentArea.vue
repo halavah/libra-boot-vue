@@ -1,1 +1,0 @@
-<template><aside class="panel"><h2>子组件概览</h2><p>收到 {{rows.length}} 条父组件数据。</p><button type="button" :disabled="!rows.length" @click="$emit('select',rows[0])">从子组件选择首条</button><p class="note">父组件通过 props 传入数据，子组件通过事件通知选择。</p></aside></template><script>import options from '../js/ContentArea.mjs';export default options;</script><style src="../css/ContentArea.css"></style>

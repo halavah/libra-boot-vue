@@ -2,8 +2,8 @@
   "browser": "Chromium",
   "examples": [
     {
-      "id": "element/demo01",
-      "kind": "sfc",
+      "id": "element-plus/table-filter",
+      "kind": "vue",
       "actions": [
         "load",
         "filter",
@@ -18,25 +18,8 @@
       "pass": true
     },
     {
-      "id": "element/demo02",
-      "kind": "sfc",
-      "actions": [
-        "load",
-        "filter",
-        "pagination",
-        "create",
-        "edit",
-        "delete",
-        "child-event",
-        "narrow-layout"
-      ],
-      "errors": [],
-      "httpErrors": [],
-      "pass": true
-    },
-    {
-      "id": "element/demo03",
-      "kind": "sfc",
+      "id": "element-plus/parent-child",
+      "kind": "vue",
       "actions": [
         "load",
         "filter",
@@ -52,8 +35,8 @@
       "pass": true
     },
     {
-      "id": "element/demo04",
-      "kind": "sfc",
+      "id": "element-plus/external-files",
+      "kind": "vue",
       "actions": [
         "load",
         "filter",
@@ -69,8 +52,8 @@
       "pass": true
     },
     {
-      "id": "element/demo05",
-      "kind": "sfc",
+      "id": "element-plus/inline-script",
+      "kind": "vue",
       "actions": [
         "load",
         "filter",
@@ -86,8 +69,8 @@
       "pass": true
     },
     {
-      "id": "ant/demo01",
-      "kind": "sfc",
+      "id": "ant-design-vue/table-filter",
+      "kind": "vue",
       "actions": [
         "load",
         "filter",
@@ -102,25 +85,8 @@
       "pass": true
     },
     {
-      "id": "ant/demo02",
-      "kind": "sfc",
-      "actions": [
-        "load",
-        "filter",
-        "pagination",
-        "create",
-        "edit",
-        "delete",
-        "child-event",
-        "narrow-layout"
-      ],
-      "errors": [],
-      "httpErrors": [],
-      "pass": true
-    },
-    {
-      "id": "ant/demo03",
-      "kind": "sfc",
+      "id": "ant-design-vue/parent-child",
+      "kind": "vue",
       "actions": [
         "load",
         "filter",
@@ -136,8 +102,8 @@
       "pass": true
     },
     {
-      "id": "ant/demo04",
-      "kind": "sfc",
+      "id": "ant-design-vue/external-files",
+      "kind": "vue",
       "actions": [
         "load",
         "filter",
@@ -153,8 +119,8 @@
       "pass": true
     },
     {
-      "id": "ant/demo05",
-      "kind": "sfc",
+      "id": "ant-design-vue/inline-script",
+      "kind": "vue",
       "actions": [
         "load",
         "filter",
@@ -170,8 +136,8 @@
       "pass": true
     },
     {
-      "id": "office/export",
-      "kind": "sfc",
+      "id": "files/csv-export",
+      "kind": "vue",
       "actions": [
         "load",
         "filter",
@@ -184,8 +150,8 @@
       "pass": true
     },
     {
-      "id": "office/upload-file",
-      "kind": "sfc",
+      "id": "files/file-preview",
+      "kind": "vue",
       "actions": [
         "load",
         "file-empty",
@@ -200,8 +166,8 @@
       "pass": true
     },
     {
-      "id": "office/upload-form",
-      "kind": "sfc",
+      "id": "files/file-form",
+      "kind": "vue",
       "actions": [
         "load",
         "file-empty",
@@ -216,7 +182,7 @@
       "pass": true
     },
     {
-      "id": "element/demo01",
+      "id": "element-plus/product-table",
       "kind": "html",
       "actions": [
         "load",
@@ -232,7 +198,7 @@
       "pass": true
     },
     {
-      "id": "element/demo02",
+      "id": "element-plus/product-editor",
       "kind": "html",
       "actions": [
         "load",
@@ -248,7 +214,7 @@
       "pass": true
     },
     {
-      "id": "element/demo03",
+      "id": "element-plus/selection-layout",
       "kind": "html",
       "actions": [
         "load",
@@ -264,7 +230,7 @@
       "pass": true
     },
     {
-      "id": "element/demo04",
+      "id": "element-plus/edit-state",
       "kind": "html",
       "actions": [
         "load",
@@ -280,7 +246,24 @@
       "pass": true
     },
     {
-      "id": "element/demo05",
+      "id": "element-plus/product-export",
+      "kind": "html",
+      "actions": [
+        "load",
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "csv-download",
+        "narrow-layout"
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "pass": true
+    },
+    {
+      "id": "ant-design-vue/product-table",
       "kind": "html",
       "actions": [
         "load",
@@ -296,23 +279,7 @@
       "pass": true
     },
     {
-      "id": "ant/demo01",
-      "kind": "html",
-      "actions": [
-        "load",
-        "filter",
-        "pagination",
-        "create",
-        "edit",
-        "delete",
-        "narrow-layout"
-      ],
-      "errors": [],
-      "httpErrors": [],
-      "pass": true
-    },
-    {
-      "id": "echarts/demo01",
+      "id": "echarts/inventory-dashboard",
       "kind": "html",
       "actions": [
         "load",
@@ -326,7 +293,7 @@
       "pass": true
     },
     {
-      "id": "echarts/demo02",
+      "id": "echarts/category-stock",
       "kind": "html",
       "actions": [
         "load",
@@ -340,7 +307,7 @@
       "pass": true
     },
     {
-      "id": "echarts/demo03",
+      "id": "echarts/stock-share",
       "kind": "html",
       "actions": [
         "load",
@@ -354,7 +321,7 @@
       "pass": true
     },
     {
-      "id": "layui/demo01",
+      "id": "layui/product-table",
       "kind": "html",
       "actions": [
         "load",
@@ -366,7 +333,7 @@
       "pass": true
     },
     {
-      "id": "layui/demo02",
+      "id": "layui/product-filter",
       "kind": "html",
       "actions": [
         "load",
@@ -378,7 +345,7 @@
       "pass": true
     },
     {
-      "id": "layui/demo03",
+      "id": "layui/product-form",
       "kind": "html",
       "actions": [
         "load",
@@ -392,5 +359,15 @@
     }
   ],
   "externalRequests": 0,
-  "invalidIdentityRejected": true
+  "invalidIdentityRejected": true,
+  "sourceDigestSha256": "0ac7cd3db7bce788c1a5cb334708a68eb69c45ebdf0573a45ed6c3d73fc1e4fd",
+  "verifiedDate": "2026-11-13",
+  "environment": {
+    "image": "mcr.microsoft.com/playwright:v1.65.0-noble",
+    "network": "none",
+    "sourceMount": "read-only",
+    "memoryMiB": 1024,
+    "cpuCores": 2,
+    "pidsLimit": 256
+  }
 }

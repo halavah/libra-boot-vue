@@ -1,33 +1,42 @@
-# Verification
+# 验证与交付边界
 
-Validation date: 2026-11-13. The catalogue contains 13 SFC and 12 HTML examples. All 25 passed local Chromium acceptance using a new temporary browser context and synthetic data. No existing browser profile, account or business service was used.
+验证日期：2026-11-13。工程包含 23 个有效示例：11 个 Vue 单文件组件示例、12 个独立 HTML 示例。运行源码、检查脚本及测试的内容摘要为 `0ac7cd3db7bce788c1a5cb334708a68eb69c45ebdf0573a45ed6c3d73fc1e4fd`，按路径排序，将每个文件的相对路径、空字节及 SHA-256 摘要依次送入 SHA-256 计算。
 
-| Check | Result |
+## 实际运行结果
+
+| 检查 | 结果 |
 |---|---|
-| `npm run check` | 25 entries, local references, dependency hashes and license records verified |
-| `npm test` | 7 tests passed: filtering, pagination, CSV escaping, file constraints, catalogue identity, loader policy and local HTTP boundaries |
-| `npm run scan` | Authored text checked for private paths, real service addresses, credential assignments and unwanted artifacts; vendored bytes checked separately by hash |
-| `node tests/browser.mjs` | 25 examples passed; see the machine-readable [receipt](browser-receipt.json) |
-| Browser requests | Zero external requests during acceptance |
-| Narrow layout | All examples checked at 390 × 844 CSS pixels; no whole-page horizontal overflow |
-| Negative cases | Invalid example identity rejected; missing/oversized/unsupported files rejected |
+| `npm run check` | 23 个清单入口、HTML 标识、引用、第三方摘要及许可记录通过 |
+| `npm test` | 10 项单元及集成测试通过 |
+| `npm run scan` | 自有文本模式检查通过；第三方另做摘要核验 |
+| `node tests/browser/examples.mjs` | 23 个示例全部通过，机器记录见 `browser-receipt.json` |
+| 外部请求 | 0；无外网的容器仅通过内部回环访问测试站点 |
+| 窄屏 | 390 × 844 CSS 像素，无整页横向溢出；宽屏初始视口为 1280 × 900 |
 
-The browser checks exercised the declared interactions, including filtering, pagination, create/edit/delete, child events, CSV download, file preview/clear, charts and Layui rendering. Initial viewport was 1280 × 900. Sample screenshots were inspected locally; they are not distributed as source assets.
+交互验收覆盖筛选、分页、商品新增／编辑／删除、父子组件事件、库存原生约束、CSV 实际下载及内容、文件预览／清空／大小与类型拒绝、图表筛选和 Layui 组件。非法预览标识明确拒绝。两个 JSON 商品文件与生成数据完全一致，CSV 与统计图使用相同的商品品类和库存字段。
 
-To repeat: use Node.js 20 or newer, run the three npm checks above, install Playwright separately with Chromium, and run `node tests/browser.mjs`. Optional environment variables select a Playwright module, Chromium executable and output directory; no machine-specific path is committed. Browser artifacts default to the ignored `artifacts` directory. SFC external ESM files use `.mjs`; Ant Design Vue loads its required Day.js plugins; the in-DOM Ant table uses a dynamic slot name to preserve case.
+## 隔离环境与复验
 
-Not run: Firefox, WebKit, physical mobile devices, a full keyboard/screen-reader audit, production hosting, performance benchmarks and an exhaustive security audit. The final browser run used an isolated temporary profile with external requests blocked by the test harness; an OS sandbox was not used for that final run because it canceled file downloads. Passing tests and pattern scans do not establish absence of every vulnerability or sensitive value.
+本轮使用官方 Playwright Linux 工具镜像 `mcr.microsoft.com/playwright:v1.65.0-noble`、Node.js 26 和 Chromium。测试驱动为已安装的 Playwright `1.66.0-alpha-2026-11-09`，显式指定镜像中的浏览器可执行文件；未复用个人浏览器资料。
 
-The project has no business backend, login, real upload endpoint or persistence. Runtime compilation requires a CSP that permits evaluation and inline styles. Only reviewed bundled examples are supported; this is not a sandbox for untrusted Vue code.
+容器无外网、无发布端口，源码和测试工具只读挂载，不挂载宿主机账号资料、SSH 密钥或 Docker socket。环境变量清空后仅填入工具路径、临时 HOME、临时目录和测试配置。容器限制为 1 GiB 内存、禁止额外交换、2 核 CPU、256 个进程、120 秒 CPU 时间、128 MiB 单文件、256 MiB 临时工作区及 32 MiB 临时目录；父进程设置 220 秒总时限。删除容器不影响现有业务容器。只提取经过文件名和大小限制的验收记录及样例截图，截图不进入源码分发。
 
-## Directory and serving boundaries
+复验时在仓库根目录依次运行 `npm run check`、`npm test`、`npm run scan`。浏览器测试需另备 Playwright 与 Chromium，再运行 `node tests/browser/examples.mjs`；`LIBRA_PLAYWRIGHT_MODULE`、`LIBRA_CHROMIUM_EXECUTABLE`、`LIBRA_TEST_OUTPUT` 可指定测试工具和输出位置。开发者普通运行本地示例不需要安装这些测试依赖。
 
-The repository has four working areas: `site/` contains the deployable website, `scripts/` contains local development commands, `tests/` contains automated acceptance, and `docs/` contains verification and provenance records. Start commands run from the repository root, while the HTTP document root is always `site/`. The server does not expose repository documentation, tooling or tests. Catalogue documentation links lead to the authorized source repository.
+未运行：Firefox、WebKit、实体手机、完整键盘／读屏审查、Node.js 20 实机兼容验证、性能基准及穷尽性漏洞审计。通过当前检查不等于所有浏览器兼容或绝无敏感信息。
 
-Inside `site/`, `catalog/` registers examples, `runtime/` implements the preview and shared browser modules, `examples/sfc/` and `examples/html/` hold the two formats, and `assets/styles/` and `assets/vendor/` contain styling and upstream distributions. Dependency file paths in `docs/dependency-manifest.json` are relative to the repository root; catalogue entry paths are relative to the site root. Vendored file contents and their hashes are unchanged by directory organization.
+## 目录及信任边界
 
-## Distribution privacy and Git
+开发命令在仓库根目录执行，HTTP 根固定为 `site/`。`app/examples.json` 是唯一入口清单；`app/` 负责目录及预览工具，`examples/vue/` 与 `examples/html/` 存放示例，`shared/` 分离组件、商品数据、纯函数、演示逻辑与样式，`vendor/` 保留第三方原始文件及许可。`scripts/`、`tests/`、`docs/` 与 Git 元数据不通过开发静态服务开放。
 
-Static review covered all 151 tracked files at the implementation baseline: 147 UTF-8 text files and four upstream font binaries. Credential, production identifier and credential-bearing URL checks also covered all 108 unique historical blobs. No original business credential, production address, private filesystem path or personal record was identified. The private-address pattern in the upstream SFC loader matched V8 version strings, not network endpoints; the unmodified upstream bytes remain covered by the dependency hashes. All 35 vendored files matched their recorded SHA-256 digests. Necessary upstream copyright notices and the maintainer's public GitHub identity are retained.
+清单入口相对于站点根，`docs/dependency-manifest.json` 中的文件地址相对于仓库根。SFC 外部模块使用 `.mjs`；预览器只加载登记的 Vue 示例及指定公共目录，拒绝外站地址和越界加载。HTML 的清单标识与页面元数据一一核对。Vue 编译器需要允许运行时编译的内容安全策略，本工程只运行维护者审核的示例，不是执行未知组件的安全沙箱。
 
-Git uses `master` locally and for both push destinations. The Gitee SSH URL is `git@gitee.com:halavah/libra-boot-vue.git`; no access token or password is embedded in a remote URL. GitHub visibility is private, and Gitee anonymous repository access is denied. Remote default-branch selection remains with the owner. Pattern matching and manual review reduce disclosure risk but cannot prove the absence of every sensitive value. This static review did not rerun the browser tests or constitute an exhaustive security audit.
+## 数据与脱敏
+
+全部商品为虚构数据，使用 SKU、商品名、品类、在售／下架状态和非负整数库存，库存单位为“件”。仅保存在当前页面内存，不接真实登录、支付、客户、供应商或生产接口；文件只在本地预览，不上传服务器。已检查自有工作文件及自有 Git 历史中的原业务背景、生产地址与凭据模式，没有识别到原业务内容或真实秘密。模式扫描不能替代持续人工检查。
+
+35 个第三方文件的 SHA-256 摘要保持完整，版权和许可证不作脱敏删除。第三方加载器中类似内网 IP 的数字实际属于上游 V8 版本号，未作为业务地址处理。
+
+## 发布与访问
+
+GitHub 与 Gitee 的源码仓保持私有，Git 协作主线为 `master`，Gitee 使用 SSH。仓库是否公开由维护者手动决定；仓库默认分支也由维护者在平台设置中选择。北窗 PC/H5 的 `/opensource/libra-boot-vue` 仅展示项目说明与两个源码链接，提示仓库需权限，不部署或嵌入本工程的完整演示站。维护者公开仓库后，源码链接继续使用相同地址。

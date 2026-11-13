@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 1,
+  "examples": [
+    {
+      "id": "element-plus/table-filter",
+      "title": "Element Plus · 表格筛选与本地数据",
+      "group": "Element Plus",
+      "kind": "vue",
+      "entry": "examples/vue/element-plus/table-filter/index.vue",
+      "dependencies": [
+        "vue",
+        "element",
+        "echarts"
+      ],
+      "description": "表格筛选与本地数据；电商模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "id": "element-plus/parent-child",
+      "title": "Element Plus · 父子组件与布局",
+      "group": "Element Plus",
+      "kind": "vue",
+      "entry": "examples/vue/element-plus/parent-child/index.vue",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "父子组件与布局；电商模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "element-plus/external-files",
+      "title": "Element Plus · 外部脚本、样式与图表",
+      "group": "Element Plus",
+      "kind": "vue",
+      "entry": "examples/vue/element-plus/external-files/index.vue",
+      "dependencies": [
+        "vue",
+        "element",
+        "echarts"
+      ],
+      "description": "外部脚本、样式与图表；电商模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "element-plus/inline-script",
+      "title": "Element Plus · 内联脚本与组件通信",
+      "group": "Element Plus",
+      "kind": "vue",
+      "entry": "examples/vue/element-plus/inline-script/index.vue",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "内联脚本与组件通信；电商模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "ant-design-vue/table-filter",
+      "title": "Ant Design Vue · 表格筛选与本地数据",
+      "group": "Ant Design Vue",
+      "kind": "vue",
+      "entry": "examples/vue/ant-design-vue/table-filter/index.vue",
+      "dependencies": [
+        "vue",
+        "ant",
+        "echarts"
+      ],
+      "description": "表格筛选与本地数据；电商模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "id": "ant-design-vue/parent-child",
+      "title": "Ant Design Vue · 父子组件与布局",
+      "group": "Ant Design Vue",
+      "kind": "vue",
+      "entry": "examples/vue/ant-design-vue/parent-child/index.vue",
+      "dependencies": [
+        "vue",
+        "ant"
+      ],
+      "description": "父子组件与布局；电商模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "ant-design-vue/external-files",
+      "title": "Ant Design Vue · 外部脚本、样式与图表",
+      "group": "Ant Design Vue",
+      "kind": "vue",
+      "entry": "examples/vue/ant-design-vue/external-files/index.vue",
+      "dependencies": [
+        "vue",
+        "ant",
+        "echarts"
+      ],
+      "description": "外部脚本、样式与图表；电商模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "ant-design-vue/inline-script",
+      "title": "Ant Design Vue · 内联脚本与组件通信",
+      "group": "Ant Design Vue",
+      "kind": "vue",
+      "entry": "examples/vue/ant-design-vue/inline-script/index.vue",
+      "dependencies": [
+        "vue",
+        "ant"
+      ],
+      "description": "内联脚本与组件通信；电商模拟数据，刷新还原。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "child-event"
+      ]
+    },
+    {
+      "id": "files/csv-export",
+      "title": "Office · 本地 CSV 导出",
+      "group": "Office",
+      "kind": "vue",
+      "entry": "examples/vue/files/csv-export/index.vue",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "筛选后导出演示数据，转义 CSV 与公式起始字符。",
+      "checks": [
+        "csv-download",
+        "filter"
+      ]
+    },
+    {
+      "id": "files/file-preview",
+      "title": "Office · 本地文件选择与预览",
+      "group": "Office",
+      "kind": "vue",
+      "entry": "examples/vue/files/file-preview/index.vue",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "纯浏览器文件校验与预览，不连接上传接口。",
+      "checks": [
+        "file-empty",
+        "file-size",
+        "file-type",
+        "file-preview",
+        "file-clear"
+      ]
+    },
+    {
+      "id": "files/file-form",
+      "title": "Office · 带表单的文件校验",
+      "group": "Office",
+      "kind": "vue",
+      "entry": "examples/vue/files/file-form/index.vue",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "纯浏览器文件校验与预览，不连接上传接口。",
+      "checks": [
+        "file-empty",
+        "file-size",
+        "file-type",
+        "file-preview",
+        "file-clear"
+      ]
+    },
+    {
+      "id": "element-plus/product-table",
+      "title": "Element Plus · 独立页面表格",
+      "group": "Element Plus",
+      "kind": "html",
+      "entry": "examples/html/element-plus/product-table/index.html",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "独立 HTML、外部 JavaScript 与本地电商模拟数据。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "id": "element-plus/product-editor",
+      "title": "Element Plus · 本地增删改与校验",
+      "group": "Element Plus",
+      "kind": "html",
+      "entry": "examples/html/element-plus/product-editor/index.html",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "独立 HTML、外部 JavaScript 与本地电商模拟数据。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "id": "element-plus/selection-layout",
+      "title": "Element Plus · 容器布局与选择",
+      "group": "Element Plus",
+      "kind": "html",
+      "entry": "examples/html/element-plus/selection-layout/index.html",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "独立 HTML、外部 JavaScript 与本地电商模拟数据。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "id": "element-plus/edit-state",
+      "title": "Element Plus · 列表与编辑状态",
+      "group": "Element Plus",
+      "kind": "html",
+      "entry": "examples/html/element-plus/edit-state/index.html",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "独立 HTML、外部 JavaScript 与本地电商模拟数据。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "id": "element-plus/product-export",
+      "title": "Element Plus · 筛选与演示数据导出",
+      "group": "Element Plus",
+      "kind": "html",
+      "entry": "examples/html/element-plus/product-export/index.html",
+      "dependencies": [
+        "vue",
+        "element"
+      ],
+      "description": "独立 HTML、外部 JavaScript 与本地电商模拟数据。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete",
+        "csv-download"
+      ]
+    },
+    {
+      "id": "ant-design-vue/product-table",
+      "title": "Ant Design Vue · 独立页面表格",
+      "group": "Ant Design Vue",
+      "kind": "html",
+      "entry": "examples/html/ant-design-vue/product-table/index.html",
+      "dependencies": [
+        "vue",
+        "ant"
+      ],
+      "description": "独立 HTML、外部 JavaScript 与本地电商模拟数据。",
+      "checks": [
+        "filter",
+        "pagination",
+        "create",
+        "edit",
+        "delete"
+      ]
+    },
+    {
+      "id": "echarts/inventory-dashboard",
+      "title": "ECharts · 多图仪表盘",
+      "group": "ECharts",
+      "kind": "html",
+      "entry": "examples/html/echarts/inventory-dashboard/index.html",
+      "dependencies": [
+        "echarts"
+      ],
+      "description": "本地统计图与可阅读数据表，筛选后同步更新。",
+      "checks": [
+        "chart-render",
+        "chart-filter",
+        "chart-reset"
+      ]
+    },
+    {
+      "id": "echarts/category-stock",
+      "title": "ECharts · 品类筛选柱形图",
+      "group": "ECharts",
+      "kind": "html",
+      "entry": "examples/html/echarts/category-stock/index.html",
+      "dependencies": [
+        "echarts"
+      ],
+      "description": "本地统计图与可阅读数据表，筛选后同步更新。",
+      "checks": [
+        "chart-render",
+        "chart-filter",
+        "chart-reset"
+      ]
+    },
+    {
+      "id": "echarts/stock-share",
+      "title": "ECharts · 统计环形图",
+      "group": "ECharts",
+      "kind": "html",
+      "entry": "examples/html/echarts/stock-share/index.html",
+      "dependencies": [
+        "echarts"
+      ],
+      "description": "本地统计图与可阅读数据表，筛选后同步更新。",
+      "checks": [
+        "chart-render",
+        "chart-filter",
+        "chart-reset"
+      ]
+    },
+    {
+      "id": "layui/product-table",
+      "title": "Layui · 本地分页表格",
+      "group": "Layui",
+      "kind": "html",
+      "entry": "examples/html/layui/product-table/index.html",
+      "dependencies": [
+        "layui"
+      ],
+      "description": "使用本地表格、日期和表单控件，不提交到任何服务。",
+      "checks": [
+        "layui-render"
+      ]
+    },
+    {
+      "id": "layui/product-filter",
+      "title": "Layui · 筛选与日期控件",
+      "group": "Layui",
+      "kind": "html",
+      "entry": "examples/html/layui/product-filter/index.html",
+      "dependencies": [
+        "layui"
+      ],
+      "description": "使用本地表格、日期和表单控件，不提交到任何服务。",
+      "checks": [
+        "layui-render"
+      ]
+    },
+    {
+      "id": "layui/product-form",
+      "title": "Layui · 表单提交反馈",
+      "group": "Layui",
+      "kind": "html",
+      "entry": "examples/html/layui/product-form/index.html",
+      "dependencies": [
+        "layui"
+      ],
+      "description": "使用本地表格、日期和表单控件，不提交到任何服务。",
+      "checks": [
+        "layui-render",
+        "layui-form"
+      ]
+    }
+  ]
+}

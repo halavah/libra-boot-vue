@@ -1,2 +1,2 @@
 * text=auto
-site/assets/vendor/** -text
+site/vendor/** -text

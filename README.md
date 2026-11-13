@@ -31,7 +31,7 @@
 - [回到顶部](#-回到顶部)
 
 
-SFC 的外部 JavaScript 模块使用 `.mjs`，避免加载器将其解释为 CommonJS；普通 HTML 示例使用原生模块脚本。可选浏览器验收需另外安装 Playwright 与 Chromium，然后运行 `node tests/browser.mjs`；这些测试依赖不属于静态站运行依赖。
+SFC 的外部 JavaScript 模块使用 `.mjs`，避免加载器将其解释为 CommonJS；普通 HTML 示例使用原生模块脚本。可选浏览器验收需另外安装 Playwright 与 Chromium，然后运行 `node tests/browser/examples.mjs`；这些测试依赖不属于静态站运行依赖。
 
 ## 🚀 快速开始
 
@@ -41,7 +41,7 @@ SFC 的外部 JavaScript 模块使用 `.mjs`，避免加载器将其解释为 Co
 node scripts/serve.mjs --port 8080
 ```
 
-打开 `http://127.0.0.1:8080/`，页面应显示 25 个示例。选择“Vue 单文件组件”或“独立 HTML”，点击“打开示例”；例如“Element Plus · 表格筛选与本地数据”提供筛选、分页和页面内增删改。
+打开 `http://127.0.0.1:8080/`，页面应显示 23 个示例。选择“Vue 单文件组件”或“独立 HTML”，点击“打开示例”；例如“Element Plus · 表格筛选与本地数据”提供筛选、分页和页面内增删改。
 
 没有安装步骤、前端打包步骤或业务登录。请使用 Node.js 20 或更新版本；若端口被占用，改用另一个 1024～65535 之间的端口。不支持双击 HTML 的 file 协议打开，因为目录、组件和演示 JSON 需要通过 HTTP 获取。
 
@@ -73,9 +73,9 @@ npm run scan
 
 | 形式 | 分类 | 数量 | 演示内容 |
 |---|---|---:|---|
-| Vue 单文件组件 | Element Plus | 5 | 表格与 JSON、父子组件、外部 JS/CSS、图表、内联脚本 |
-| Vue 单文件组件 | Ant Design Vue | 5 | 同主题的另一种 UI 实现，依赖按示例加载 |
-| Vue 单文件组件 | Office | 3 | 本地 CSV 导出、文件选择与预览、带表单的文件校验 |
+| Vue 单文件组件 | Element Plus | 4 | 表格与 JSON、父子组件、外部 JS/CSS、图表、内联脚本 |
+| Vue 单文件组件 | Ant Design Vue | 4 | 同主题的另一种 UI 实现，依赖按示例加载 |
+| Vue 单文件组件 | 本地文件 | 3 | 本地 CSV 导出、文件选择与预览、带表单的文件校验 |
 | 独立 HTML | Element Plus | 5 | 表格筛选、分页、模拟增删改、布局与导出 |
 | 独立 HTML | Ant Design Vue | 1 | 表格与本地编辑状态 |
 | 独立 HTML | ECharts | 3 | 多图仪表盘、分组柱形图、环形图及明细表 |
@@ -87,27 +87,35 @@ npm run scan
 
 ```text
 libra-boot-vue/
-├─ site/                         可直接托管的静态站点
+├─ site/                         可独立托管的静态站点
 │  ├─ index.html                 示例目录首页
-│  ├─ catalog/                   SFC 与 HTML 入口清单
-│  ├─ runtime/                   预览器和浏览器共享逻辑
+│  ├─ app/                       目录、预览器与依赖加载
+│  │  ├─ examples.json           唯一示例入口清单
+│  │  └─ preview.html            Vue 组件预览页
 │  ├─ examples/
-│  │  ├─ sfc/                    Vue 组件示例
+│  │  ├─ vue/                    Vue 组件示例
 │  │  └─ html/                   独立 HTML 示例
-│  └─ assets/
-│     ├─ styles/                 公共样式
-│     └─ vendor/                 已核验的第三方分发文件
-├─ scripts/                      本地服务和检查命令
-├─ tests/                        单元测试与浏览器验收
-├─ docs/                         验收说明、依赖与迁移清单
-├─ package.json                  统一开发命令
-├─ LICENSE                       MIT
-├─ THIRD_PARTY_NOTICES.md         第三方声明
-├─ README.md                     中文说明
-└─ README_EN.md                  英文说明
+│  ├─ shared/
+│  │  ├─ components/             公共 Vue 组件
+│  │  ├─ data/                   虚构商品数据
+│  │  ├─ helpers/                CSV、文件校验与筛选函数
+│  │  ├─ demos/                  共享演示逻辑
+│  │  └─ styles/                 公共样式
+│  └─ vendor/                    第三方原始文件及许可
+├─ scripts/                      启动服务、引用与脱敏检查
+├─ tests/
+│  ├─ unit/                      业务规则与纯函数测试
+│  ├─ integration/               静态服务访问边界测试
+│  └─ browser/                   逐例交互验收
+├─ docs/                         验收记录、依赖与迁移清单
+├─ package.json
+├─ LICENSE
+├─ THIRD_PARTY_NOTICES.md
+├─ README.md
+└─ README_EN.md
 ```
 
-开发命令在工程根目录运行，服务自动定位 `site/`。修改示例进入 `site/examples/`，登记入口进入 `site/catalog/`，核对依赖进入 `docs/dependency-manifest.json`。示例按格式、组件库分组；例内 JS、CSS 和子组件的拆分用于演示模块组织，保留其教学作用。
+开发命令在工程根目录运行，服务自动定位 `site/`。修改示例进入 `site/examples/`，登记入口进入 `site/app/examples.json`，核对依赖进入 `docs/dependency-manifest.json`。示例按格式、组件库分组；示例采用 `parent-child`、`external-files` 等功能名；简单示例将 `index.vue`、`demo.mjs`、可选的 `style.css` 就近放置，仅保留有教学作用的组件拆分。复用图表和选择组件放在 `site/shared/components/`。
 
 ## ⚙️ 运行机制
 
@@ -125,11 +133,13 @@ Vue 模板与 SFC 加载器需要浏览器运行时编译。随附服务的内�
 
 第三方包版权和合法署名保留在其声明中。字体、截图、备份、环境配置和业务数据库不随工程分发。模式扫描不能证明绝对无敏感内容，公开或对外共享前仍需检查文件、依赖变更和示例输出。
 
+示例统一采用电商商品目录：`SKU-001` 等虚构编号、商品名称、数码配件／家居用品／办公文具三个品类、在售／下架状态、以“件”为单位的非负整数库存。筛选、编辑、图表与 CSV 使用同一套字段；库存可编辑范围为 0～999999。商品只保存在页面内存中，不包含真实客户、订单、支付、商户资料或生产接口。文件示例仅在本地预览演示文档，不上传到服务器。
+
 ## ✅ 验证与检查
 
 ```sh
 node scripts/check.mjs
-node --test tests/*.test.mjs
+npm test
 node scripts/scan-sensitive.mjs
 ```
 
@@ -139,9 +149,9 @@ check 校验目录、入口、局部引用、库文件摘要及许可记录；�
 
 ## 🧭 部署与排错
 
-部署时只发布 `site/` 的内容，使用独立来源；`scripts/`、`tests/`、`docs/`、`.git`、归档和环境文件留在站点根之外。首页说明链接指向授权源码仓，阅读需仓库权限；保留正确 JavaScript、JSON、Vue 文本及字体 MIME 类型。此工程不自动创建云站点或部署到已有业务域名。
+部署时只发布 `site/` 的内容，使用独立来源；`scripts/`、`tests/`、`docs/`、`.git`、归档和环境文件留在站点根之外。首页说明链接指向授权源码仓，阅读需仓库权限；保留正确 JavaScript、JSON、Vue 文本及字体 MIME 类型。北窗只展示本项目介绍与 GitHub／Gitee 源码链接，不承载这套演示站，也不修改仓库可见性。私有仓库何时公开由维护者手动决定。
 
-- **目录加载失败**：检查是否通过 HTTP 打开、服务根是否为 `site/`，以及 catalog 文件是否存在。
+- **目录加载失败**：检查是否通过 HTTP 打开、服务根是否为 `site/`，以及 app/examples.json是否存在。
 - **组件缺失**：运行 check，确认示例已登记及相对路径未被改坏。
 - **图表或控件空白**：检查对应 vendor 文件与目录清单中的依赖组，不用真实 CDN 临时替代。
 - **严格 CSP 拒绝 eval**：当前运行时编译方式不支持该策略；需要预编译方案，不能直接放宽敏感站点策略。

@@ -1,0 +1,1 @@
+<template><aside class="panel"><h2>子组件概览</h2><p>收到 {{rows.length}} 件商品数据。</p><button type="button" :disabled="!rows.length" @click="$emit('select',rows[0])">从子组件选择首条</button><p class="note">父组件通过 props 传入数据，子组件通过事件通知选择。</p></aside></template><script>export default {props:{rows:{type:Array,required:true}},emits:['select']};</script>
