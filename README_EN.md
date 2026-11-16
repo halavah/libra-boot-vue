@@ -55,9 +55,6 @@ Vite serves the development application on port 5173. `--strictPort` stops start
 
 These are browser screenshots of the running project, using synthetic e-commerce data.
 
-![System overview](assets/screenshots/overview.png)
-*Automatic discovery, search and page navigation.*
-
 ![Return-reason chart](assets/screenshots/returns-chart.png)
 *`/layout/element/demo01`: local demonstration data rendered as a table and ECharts chart.*
 

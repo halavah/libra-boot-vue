@@ -55,9 +55,6 @@ Vite 在 5173 端口提供开发服务；`--strictPort` 会在端口占用时停
 
 以下截图来自浏览器中的实际运行页面，业务内容使用虚构电商数据。
 
-![系统导航总览](assets/screenshots/overview.png)
-*自动扫描系统与页面，提供搜索和页面入口。*
-
 ![退货原因图表](assets/screenshots/returns-chart.png)
 *`/layout/element/demo01`：本地演示数据形成列表与 ECharts 图表。*
 
