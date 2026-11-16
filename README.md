@@ -20,8 +20,8 @@
 ## 📖 目录
 
 - [快速开始](#quick-start)
-- [安装与源码](#installation)
 - [运行截图](#screenshots)
+- [安装与源码](#installation)
 - [示例与边界](#examples)
 - [目录结构](#structure)
 - [静态预览](#static-preview)
@@ -37,29 +37,18 @@
 <a id="quick-start"></a>
 ## 🚀 快速开始
 
-准备满足锁文件依赖要求的 Node.js 活跃 LTS 和兼容锁文件的 pnpm，在工程根目录执行：
+准备 Node.js 22 或更新版本、pnpm 9 或更新版本；克隆源码后，在工程根目录执行：
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm dev --host 127.0.0.1
+pnpm dev --host 127.0.0.1 --port 5173 --strictPort
 ```
 
 打开 `http://127.0.0.1:5173/`。当前首页扫描出 3 个系统、22 个 Vue 页面；展开系统3，点击 `upload-file2` 可查看文件处理控件。页面数量来自当前源码扫描，不作为固定接口承诺。
 
 pnpm 若阻止依赖构建脚本，应按本机策略核对提示的依赖，不要全局关闭校验。
 
-<a id="installation"></a>
-## 📦 安装与源码
-
-| 渠道 | 可用性 | 用途 |
-|---|---|---|
-| 获授权的 GitHub 源码 | 私有 | 克隆并运行工程 |
-| 获授权的 Gitee 源码 | 私有 | 协作者通过 SSH 使用镜像 |
-| npm 包／在线业务后端 | 不提供 | 本项目按源码示例使用 |
-
-源码：[GitHub](https://github.com/halavah/libra-boot-vue) · [Gitee](https://gitee.com/halavah/libra-boot-vue)，访问需要仓库权限；协作主线为 `master`。
-
-文档：本篇及 [English README](README_EN.md)；实际脚本与配置见 [package.json](package.json)、[vite.config.js](vite.config.js)。版本以向协作者提供的仓库发布渠道为准。
+Vite 在 5173 端口提供开发服务；`--strictPort` 会在端口占用时停止启动，不会悄悄更换地址。需要换端口时显式修改命令。Vue 渲染组件，Element Plus 与 Ant Design Vue 提供控件，ECharts 用于图表。
 
 <a id="screenshots"></a>
 ## 🖼️ 运行截图
@@ -74,6 +63,19 @@ pnpm 若阻止依赖构建脚本，应按本机策略核对提示的依赖，不
 
 ![文件上传控件](assets/screenshots/file-upload.png)
 *`/layout/upload-file2`：展示控件及布局，不代表后端上传流程已验证成功。*
+
+<a id="installation"></a>
+## 📦 安装与源码
+
+| 渠道 | 可用性 | 用途 |
+|---|---|---|
+| 获授权的 GitHub 源码 | 私有 | 克隆并运行工程 |
+| 获授权的 Gitee 源码 | 私有 | 协作者通过 SSH 使用镜像 |
+| npm 包／在线业务后端 | 不提供 | 本项目按源码示例使用 |
+
+源码：[GitHub](https://github.com/halavah/libra-boot-vue) · [Gitee](https://gitee.com/halavah/libra-boot-vue)，访问需要仓库权限；协作主线为 `master`。
+
+文档：本篇直接提供运行下列示例所需的环境、命令、入口和限制。`pnpm dev` 启动 Vite，`pnpm build` 编译到 `dist/`，`pnpm preview` 预览已构建产物；依赖安装使用仓内 pnpm 锁文件。项目版本以向协作者提供的仓库发布渠道为准。
 
 <a id="examples"></a>
 ## 🧩 示例与边界
@@ -117,12 +119,14 @@ pnpm exec http-server . -a 127.0.0.1 -p 5174
 
 打开 `http://127.0.0.1:5174/test/index.html`。5173 用于 Vite，5174 用于原始静态加载器，两种方式不等价。`test/` 是手动示例目录，不是自动化测试套件；部分沿用入口或样式路径仍缺失，使用前核对实际源文件，不要将源码根目录公开托管。
 
+静态目录中的 `ant-design-vue/demo06-less不可用`、`element/demo06-less不可用` 没有对应 SFC 入口；部分 HTML 示例还引用了缺失的样式路径。本篇上方的 Vite 示例是最小预览路径，静态目录中的链接不代表每个条目均已验证可用。
+
 <a id="verification"></a>
 ## ✅ 验证与排错
 
 ```sh
 pnpm build
-pnpm preview --host 127.0.0.1
+pnpm preview --host 127.0.0.1 --port 4173 --strictPort
 ```
 
 产物为 `dist/`。本地已验证生产构建、三个系统与四个文件页面的发现、首页导航、代表性图表及文件控件渲染。未验证上传完成、外部鉴权、全部静态入口或手机／跨浏览器兼容；依赖注释、源码映射及大包体提示不代表已经完成性能优化。

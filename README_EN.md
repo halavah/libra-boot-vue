@@ -20,8 +20,8 @@
 ## 📖 Contents
 
 - [Quick start](#quick-start)
-- [Installation](#installation)
 - [Running examples](#screenshots)
+- [Installation](#installation)
 - [Examples and boundaries](#examples)
 - [Structure](#structure)
 - [Static preview](#static-preview)
@@ -37,29 +37,18 @@
 <a id="quick-start"></a>
 ## 🚀 Quick start
 
-Use a current Node.js LTS release satisfying the locked dependencies and a pnpm release supporting this lockfile. From the cloned project root:
+Use Node.js 22 or newer and pnpm 9 or newer. Run these commands from the project root after cloning the source:
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm dev --host 127.0.0.1
+pnpm dev --host 127.0.0.1 --port 5173 --strictPort
 ```
 
 Open `http://127.0.0.1:5173/`. The overview currently discovers three systems and 22 Vue pages. Expand system 3 and open `upload-file2` to inspect file-handling controls. Counts describe the current source, not a fixed public API.
 
 If pnpm blocks dependency build scripts, review the named packages under your local pnpm policy; do not disable verification globally.
 
-<a id="installation"></a>
-## 📦 Installation
-
-| Channel | Availability | Purpose |
-|---|---|---|
-| Authorized GitHub source | Private | Clone and run the project |
-| Authorized Gitee source | Private | SSH mirror for collaborators |
-| npm package / hosted backend | Not provided | This is a source example project |
-
-Source code: [GitHub](https://github.com/halavah/libra-boot-vue) · [Gitee](https://gitee.com/halavah/libra-boot-vue). Both require repository access. The collaboration branch is `master`.
-
-Documentation: this README and [简体中文](README.md); dependency behavior and exact scripts are defined in [package.json](package.json) and [vite.config.js](vite.config.js). Repository releases, when provided to collaborators, are the version channel.
+Vite serves the development application on port 5173. `--strictPort` stops startup if the port is occupied instead of silently changing the URL. Choose another explicit port if needed. Vue renders the components; Element Plus and Ant Design Vue provide controls, and ECharts renders charts.
 
 <a id="screenshots"></a>
 ## 🖼️ Running examples
@@ -74,6 +63,19 @@ These are browser screenshots of the running project, using synthetic e-commerce
 
 ![File-upload controls](assets/screenshots/file-upload.png)
 *`/layout/upload-file2`: controls and layout are visible; this screenshot does not claim a successful backend upload.*
+
+<a id="installation"></a>
+## 📦 Installation
+
+| Channel | Availability | Purpose |
+|---|---|---|
+| Authorized GitHub source | Private | Clone and run the project |
+| Authorized Gitee source | Private | SSH mirror for collaborators |
+| npm package / hosted backend | Not provided | This is a source example project |
+
+Source code: [GitHub](https://github.com/halavah/libra-boot-vue) · [Gitee](https://gitee.com/halavah/libra-boot-vue). Both require repository access. The collaboration branch is `master`.
+
+Documentation: this README contains the prerequisites, commands, entry points and limitations needed for the examples below. `pnpm dev` starts Vite, `pnpm build` compiles to `dist/`, and `pnpm preview` serves an existing build. Dependency installation uses the committed pnpm lockfile. Repository releases, when provided to collaborators, are the project-version channel.
 
 <a id="examples"></a>
 ## 🧩 Examples and boundaries
@@ -117,12 +119,14 @@ pnpm exec http-server . -a 127.0.0.1 -p 5174
 
 Open `http://127.0.0.1:5174/test/index.html`. Keep port 5173 for Vite and port 5174 for the raw static loader. Loading SFC source through Vite is not equivalent to the raw loader. This catalogue is manual, not an automated test suite. Some inherited entries or stylesheet paths are missing; inspect the source path before using an entry. Do not expose the source root publicly.
 
+The static catalogue still contains `ant-design-vue/demo06-less不可用` and `element/demo06-less不可用`, which have no matching SFC entry. Some HTML examples also reference absent stylesheet paths. The main Vite examples above are the supported minimal preview path; a static catalogue link is not a promise that every listed example runs.
+
 <a id="verification"></a>
 ## ✅ Verification and troubleshooting
 
 ```sh
 pnpm build
-pnpm preview --host 127.0.0.1
+pnpm preview --host 127.0.0.1 --port 4173 --strictPort
 ```
 
 Production output is `dist/`. Local verification covered the production build, three-system/four-file-page discovery, overview navigation, representative charts and file-control rendering. Upload completion, external authentication, all static entries and mobile/cross-browser compatibility were not validated. Existing dependency-comment, sourcemap and chunk-size warnings may appear; they do not justify unrelated refactoring.
